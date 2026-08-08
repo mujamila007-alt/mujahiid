@@ -1,0 +1,9 @@
+CARA UPLOAD VERSI HTML STATIS
+
+1. Upload seluruh isi folder ke public_html.
+2. Halaman utama memakai index.html.
+3. Halaman admin memakai admin-verifikasi/index.html dan admin-metode-iklan/index.html.
+4. Halaman metode memakai metode/index.html.
+5. Halaman verifikasi memakai verifikasi-canva/index.html.
+6. Pastikan file CSS, JavaScript, gambar, JSON, dan folder blk ikut terupload.
+7. Versi ini tidak membutuhkan interpreter server-side.

@@ -1,0 +1,27 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /*
+      RULES SEMENTARA / TESTING untuk membuka error:
+      FirebaseError: Missing or insufficient permissions
+
+      Dipakai oleh:
+      - /admin-metode-iklan/
+      - halaman metode iklan user
+
+      PERINGATAN:
+      Rules ini terbuka. Setelah sistem login admin dibuat,
+      ganti dengan rules yang memakai Firebase Authentication.
+    */
+
+    match /settings/iklanMethod {
+      allow read, write: if true;
+    }
+
+    match /iklanRegistrations/{registrationId} {
+      allow read, write, create, update, delete: if true;
+    }
+  }
+}

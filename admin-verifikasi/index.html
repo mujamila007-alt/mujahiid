@@ -1,0 +1,1709 @@
+<!doctype html>
+<html lang="id" translate="no" class="notranslate">
+<head>
+  <meta name="google" content="notranslate">
+  <meta name="googlebot" content="notranslate">
+  <meta http-equiv="Content-Language" content="id">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080912">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>Admin Verifikasi Canva - Mujahiid</title>
+
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+  <style>
+
+:root {
+    --bg: #070812;
+    --bg2: #0d1224;
+    --card: rgba(255, 255, 255, .074);
+    --card2: rgba(255, 255, 255, .105);
+    --border: rgba(255, 255, 255, .135);
+    --border2: rgba(255, 255, 255, .25);
+    --text: #f8fbff;
+    --muted: #a8b2c7;
+    --soft: #748096;
+    --blue: #62a0ff;
+    --orange: #ff8a24;
+    --gold: #f7c85b;
+    --green: #35dca4;
+    --red: #ff5e7a;
+    --shadow: 0 34px 90px rgba(0, 0, 0, .52);
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    min-height: 100%;
+    scroll-behavior: smooth;
+}
+body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+        radial-gradient(circle at 12% -10%, rgba(98,160,255,.34), transparent 31rem),
+        radial-gradient(circle at 96% 2%, rgba(255,138,36,.25), transparent 29rem),
+        radial-gradient(circle at 43% 112%, rgba(53,220,164,.14), transparent 25rem),
+        linear-gradient(145deg, #05060c 0%, var(--bg2) 54%, #05060a 100%);
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -4;
+    pointer-events: none;
+    background-image:
+        linear-gradient(rgba(255,255,255,.035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    mask-image: radial-gradient(circle at top, rgba(0,0,0,.86), transparent 76%);
+}
+.admin-aurora {
+    position: fixed;
+    inset: -26vh -18vw auto;
+    z-index: -3;
+    height: 75vh;
+    pointer-events: none;
+    filter: blur(52px);
+    opacity: .82;
+    background:
+        radial-gradient(circle at 20% 43%, rgba(98,160,255,.45), transparent 24%),
+        radial-gradient(circle at 58% 22%, rgba(255,138,36,.31), transparent 24%),
+        radial-gradient(circle at 83% 50%, rgba(247,200,91,.22), transparent 27%);
+    animation: auroraMove 12s ease-in-out infinite alternate;
+}
+@keyframes auroraMove {
+    from { transform: translate3d(-2%, -1%, 0) rotate(-3deg) scale(1); }
+    to { transform: translate3d(3%, 4%, 0) rotate(3deg) scale(1.08); }
+}
+.app-root,
+.admin-container {
+    width: min(100% - 16px, 1500px);
+    margin: 0 auto;
+    padding: 14px 0 46px;
+}
+.header-glass,
+.admin-hero {
+    position: sticky;
+    top: 8px;
+    z-index: 30;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+    padding: 14px 16px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background: rgba(8, 9, 18, .72);
+    box-shadow: 0 18px 48px rgba(0,0,0,.34);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    animation: slideDown .6s ease both;
+}
+@keyframes slideDown {
+    from { opacity: 0; transform: translateY(-16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+.logo-area h1,
+.admin-title {
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: clamp(1.05rem, 2.5vw, 1.55rem);
+    line-height: 1.1;
+    letter-spacing: -.04em;
+    font-weight: 900;
+}
+.logo-area h1 svg,
+.admin-title svg,
+.panel-title svg,
+.setting-label svg,
+.stat-badge svg,
+.btn-action svg,
+.btn svg {
+    width: 17px;
+    height: 17px;
+    flex: 0 0 auto;
+}
+.logo-area h1 svg,
+.admin-title svg {
+    width: 24px;
+    height: 24px;
+    color: var(--gold);
+}
+.logo-area p,
+.admin-subtitle,
+.subhead {
+    margin: 5px 0 0;
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.55;
+}
+.stats-compact,
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.stat-badge,
+.admin-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 38px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(255,255,255,.06);
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+.stat-badge svg,
+.admin-pill svg {
+    color: var(--blue);
+}
+.stat-number,
+.quota-number {
+    color: var(--gold);
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+.control-panel,
+.card-panel {
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 16px;
+    padding: 18px;
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    background:
+        linear-gradient(145deg, rgba(255,255,255,.11), rgba(255,255,255,.052)),
+        rgba(11,13,24,.62);
+    box-shadow: 0 20px 56px rgba(0,0,0,.28);
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+    animation: fadeUp .65s ease both;
+}
+.control-panel::before,
+.card-panel::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+        radial-gradient(circle at 0 0, rgba(98,160,255,.17), transparent 18rem),
+        radial-gradient(circle at 100% 0, rgba(255,138,36,.12), transparent 18rem);
+}
+.control-panel > *,
+.card-panel > * {
+    position: relative;
+    z-index: 1;
+}
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(16px) scale(.985); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+}
+.panel-header,
+.section-header,
+.flex-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+.panel-title,
+.card-panel h2 {
+    margin: 0 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #d9e5ff;
+    font-size: 13px;
+    font-weight: 900;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+}
+.card-panel h2 {
+    font-size: 15px;
+    text-transform: none;
+    letter-spacing: -.02em;
+}
+.input-row,
+.flex-row.fields {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+.input-group,
+.setting-item {
+    margin-bottom: 14px;
+}
+.input-group label,
+.setting-label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 7px;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+.input-group input,
+.input-modern,
+.search-input {
+    width: 100%;
+    border: 1px solid rgba(255,255,255,.14);
+    outline: none;
+    border-radius: 18px;
+    background: rgba(0,0,0,.24);
+    color: var(--text);
+    font: inherit;
+    font-size: 12px;
+    padding: 12px 13px;
+    transition: border-color .2s ease, box-shadow .2s ease, background .2s ease, transform .2s ease;
+}
+.input-group input:focus,
+.input-modern:focus,
+.search-input:focus {
+    border-color: rgba(255,138,36,.55);
+    box-shadow: 0 0 0 4px rgba(255,138,36,.12);
+    background: rgba(0,0,0,.30);
+    transform: translateY(-1px);
+}
+.input-group input::placeholder,
+.input-modern::placeholder,
+.search-input::placeholder {
+    color: var(--soft);
+}
+.current-password-display,
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(247,200,91,.12);
+    color: #ffdfa1;
+    border: 1px solid rgba(247,200,91,.20);
+    font-weight: 900;
+    font-size: 12px;
+}
+.btn-action,
+.btn,
+.search-btn,
+.clear-search {
+    position: relative;
+    overflow: hidden;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    min-height: 38px;
+    padding: 9px 13px;
+    border-radius: 15px;
+    border: 1px solid rgba(255,255,255,.16);
+    color: #06111f;
+    background: linear-gradient(135deg, #a8ceff, #2867ff);
+    font: inherit;
+    font-size: 11px;
+    font-weight: 900;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .22s cubic-bezier(.2,.9,.25,1.4), filter .22s ease, border-color .22s ease, box-shadow .22s ease;
+    -webkit-tap-highlight-color: transparent;
+}
+.btn-action:hover,
+.btn:hover,
+.search-btn:hover,
+.clear-search:hover {
+    transform: translateY(-2px) scale(1.012);
+    border-color: var(--border2);
+    filter: saturate(1.08);
+}
+.btn-action:active,
+.btn:active,
+.search-btn:active,
+.clear-search:active {
+    transform: translateY(1px) scale(.965);
+}
+.btn-action::after,
+.btn::after,
+.search-btn::after,
+.clear-search::after {
+    content: "";
+    position: absolute;
+    left: var(--x, 50%);
+    top: var(--y, 50%);
+    width: 16px;
+    height: 16px;
+    border-radius: 999px;
+    background: rgba(255,255,255,.42);
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 0;
+    pointer-events: none;
+}
+.muja-ripple::after {
+    animation: ripple .56s ease-out;
+}
+@keyframes ripple {
+    0% { transform: translate(-50%, -50%) scale(0); opacity: .55; }
+    100% { transform: translate(-50%, -50%) scale(18); opacity: 0; }
+}
+.btn-danger,
+.btn.btn-danger {
+    background: linear-gradient(135deg, #ff9aa9, var(--red));
+    color: #24050a;
+}
+.btn-success,
+.btn.btn-primary,
+.btn-primary {
+    background: linear-gradient(135deg, #ffd59d, var(--orange));
+    color: #1c0c03;
+}
+.btn-warning,
+.btn.btn-warning {
+    background: linear-gradient(135deg, #ffe7a5, var(--gold));
+    color: #1b1003;
+}
+.btn-secondary,
+.btn-outline-blue {
+    background: rgba(255,255,255,.07);
+    color: var(--text);
+}
+.btn-test {
+    background: linear-gradient(135deg, #8ee7ff, var(--blue));
+    color: #06111f;
+}
+.btn-small {
+    min-height: 30px;
+    padding: 6px 10px;
+    border-radius: 12px;
+    font-size: 10px;
+}
+.save-status,
+#status-message {
+    display: inline-flex;
+    align-items: center;
+    min-height: 24px;
+    color: #b7ffe8;
+    font-size: 11px;
+    font-weight: 800;
+}
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 40px;
+    padding: 5px 6px 5px 11px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: rgba(0,0,0,.22);
+}
+.search-container svg {
+    width: 15px;
+    height: 15px;
+    color: var(--soft);
+}
+.search-input {
+    min-width: 210px;
+    padding: 7px 2px;
+    border: none;
+    background: transparent;
+    box-shadow: none;
+}
+.clear-search {
+    min-height: 28px;
+    padding: 5px 8px;
+    background: transparent;
+    color: var(--muted);
+}
+.search-info {
+    color: var(--soft);
+    font-size: 10px;
+    font-weight: 800;
+}
+.table-wrapper,
+.registrations-container {
+    overflow: auto;
+    max-height: 440px;
+    border: 1px solid rgba(255,255,255,.10);
+    border-radius: 20px;
+    background: rgba(0,0,0,.18);
+}
+.user-table,
+.admin-table {
+    width: 100%;
+    min-width: 880px;
+    border-collapse: collapse;
+    font-size: 11px;
+}
+.user-table th,
+.admin-table th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    padding: 12px 11px;
+    text-align: left;
+    color: #d9e5ff;
+    background: rgba(8,9,18,.94);
+    border-bottom: 1px solid rgba(255,255,255,.10);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: .05em;
+    text-transform: uppercase;
+}
+.user-table td,
+.admin-table td {
+    padding: 11px;
+    color: #edf4ff;
+    border-bottom: 1px solid rgba(255,255,255,.06);
+}
+.user-table tr:hover td,
+.admin-table tr:hover td {
+    background: rgba(255,255,255,.045);
+}
+.empty-message {
+    text-align: center;
+    padding: 32px !important;
+    color: var(--muted) !important;
+}
+.email-badge,
+.wa-badge {
+    color: #ffdfa1;
+    font-weight: 900;
+}
+.wa-badge {
+    color: #b7ffe8;
+}
+.info-badge,
+.warning-badge,
+.danger-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 5px 9px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 900;
+}
+.info-badge {
+    color: #cfe0ff;
+    background: rgba(98,160,255,.14);
+    border: 1px solid rgba(98,160,255,.22);
+}
+.warning-badge {
+    color: #ffdfa1;
+    background: rgba(247,200,91,.13);
+    border: 1px solid rgba(247,200,91,.22);
+}
+.danger-badge {
+    color: #ffd2dc;
+    background: rgba(255,94,122,.13);
+    border: 1px solid rgba(255,94,122,.22);
+}
+.debug-console {
+    display: none;
+    max-height: 210px;
+    overflow-y: auto;
+    margin-bottom: 16px;
+    padding: 13px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,94,122,.26);
+    background: rgba(0,0,0,.54);
+    color: #ffd2dc;
+    font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+    font-size: 11px;
+}
+.debug-console.show {
+    display: block;
+}
+.debug-entry {
+    margin: 5px 0;
+    padding-left: 9px;
+    border-left: 3px solid var(--red);
+}
+.debug-entry.success {
+    border-left-color: var(--green);
+    color: #b7ffe8;
+}
+.quota-display {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+    margin: 15px 0;
+}
+.quota-item {
+    padding: 14px;
+    border: 1px solid rgba(247,200,91,.18);
+    border-radius: 18px;
+    background: rgba(247,200,91,.08);
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    font-weight: 800;
+}
+.quota-item .quota-number {
+    display: block;
+    margin-top: 4px;
+    font-size: 2rem;
+}
+.toggle-switch {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    padding: 12px 13px;
+    border-radius: 18px;
+    border: 1px solid rgba(53,220,164,.18);
+    background: rgba(53,220,164,.08);
+    margin-bottom: 14px;
+}
+.toggle-label {
+    color: #b7ffe8;
+    font-size: 12px;
+    font-weight: 900;
+}
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 54px;
+    height: 30px;
+}
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    inset: 0;
+    border-radius: 999px;
+    cursor: pointer;
+    background: rgba(255,255,255,.14);
+    transition: .24s;
+}
+.slider::before {
+    content: "";
+    position: absolute;
+    width: 23px;
+    height: 23px;
+    left: 4px;
+    top: 3.5px;
+    border-radius: 50%;
+    background: #fff;
+    transition: .24s cubic-bezier(.2,.9,.25,1.4);
+}
+input:checked + .slider {
+    background: linear-gradient(135deg, #86f7c9, #22c55e);
+}
+input:checked + .slider::before {
+    transform: translateX(23px);
+}
+.footer-note,
+.admin-note {
+    margin-top: 16px;
+    padding: 14px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.045);
+    color: var(--muted);
+    text-align: center;
+    font-size: 11px;
+    line-height: 1.6;
+}
+.post-inner-area,
+#center-container,
+#outer-wrapper {
+    background: transparent !important;
+}
+.item-post h1.entry-title,
+.mega-outer,
+#breadcrumb,
+.separator {
+    display: none !important;
+}
+@media (max-width: 760px) {
+    .app-root,
+    .admin-container {
+        width: min(100% - 10px, 760px);
+        padding-top: 8px;
+    }
+    .header-glass,
+    .admin-hero {
+        position: relative;
+        top: auto;
+        border-radius: 22px;
+    }
+    .input-row,
+    .flex-row.fields {
+        grid-template-columns: 1fr;
+    }
+    .search-input {
+        min-width: 120px;
+    }
+    .control-panel,
+    .card-panel {
+        padding: 13px;
+        border-radius: 22px;
+    }
+    .btn-action,
+    .btn {
+        min-height: 34px;
+        padding: 8px 10px;
+        font-size: 10px;
+    }
+}
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+  
+/* =========================================================
+   FIX SVG SIZE - supaya icon tidak membesar satu halaman
+   ========================================================= */
+.app-root svg,
+.admin-container svg {
+    width: 16px !important;
+    height: 16px !important;
+    max-width: 16px !important;
+    max-height: 16px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    display: inline-block !important;
+    vertical-align: -0.18em !important;
+    flex: 0 0 auto !important;
+}
+
+.logo-area h1 > svg,
+.admin-title > svg {
+    width: 24px !important;
+    height: 24px !important;
+    max-width: 24px !important;
+    max-height: 24px !important;
+}
+
+.logo-area p svg,
+.admin-subtitle svg,
+.footer-note svg,
+.admin-note svg,
+.panel-title svg,
+.card-panel h2 svg,
+.setting-label svg,
+.input-group label svg,
+.stat-badge svg,
+.admin-pill svg,
+.search-container > svg,
+.toggle-label svg {
+    width: 15px !important;
+    height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+}
+
+.btn-action svg,
+.btn svg,
+.search-btn svg,
+.clear-search svg {
+    width: 15px !important;
+    height: 15px !important;
+    max-width: 15px !important;
+    max-height: 15px !important;
+}
+
+/* Kalau browser memberi ukuran default SVG 300x150, aturan ini memaksa tetap kecil */
+svg[viewBox] {
+    overflow: visible;
+}
+
+</style>
+</head>
+<body>
+  <div class="admin-aurora" aria-hidden="true"></div>
+
+  <main class="app-root">
+    <div id="debugConsole" class="debug-console"></div>
+
+    <header class="header-glass">
+      <div class="logo-area">
+        <h1><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3l2.4 5 5.4.8-3.9 3.8.9 5.4L12 15.4 7.2 18l.9-5.4-3.9-3.8 5.4-.8L12 3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Admin Verifikasi Canva</h1>
+        <p><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1A2 2 0 1 1 4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.4 7A2 2 0 1 1 7.2 4.2l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 1 1 20 7.2l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.6 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.4.7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Kontrol link, kuota, password, device blokir, dan pencarian data.</p>
+      </div>
+
+      <div class="stats-compact">
+        <div class="stat-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M21 21v-2a4 4 0 0 0-3-3.87M17 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Total Join <span class="stat-number" id="totalJoinCount">0</span> / <span class="stat-number" id="maxUserLimit">100</span></div>
+        <div class="stat-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M2 12s3.8-7 10-7 10 7 10 7-3.8 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="2"/></svg> Total Pengunjung <span class="stat-number" id="totalVisitorCount">0</span></div>
+        <div class="stat-badge"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 19V5M8 19v-8M12 19V8M16 19v-5M20 19V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Tersisa <span class="stat-number" id="remainingCount">100</span></div>
+        <button id="testConnectionBtn" class="btn-action btn-test"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 8v4a5 5 0 0 0 10 0V8M9 2v6M15 2v6M12 17v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Test Koneksi</button>
+        <button id="refreshBtn" class="btn-action"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12a9 9 0 0 1-15.1 6.6M3 12A9 9 0 0 1 18.1 5.4M21 4v6h-6M3 20v-6h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Refresh</button>
+        <button id="logoutBtn" class="btn-action btn-danger"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 17l5-5-5-5M15 12H3M21 3v18h-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Keluar</button>
+      </div>
+    </header>
+
+    <section class="control-panel">
+      <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 15.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z" stroke="currentColor" stroke-width="2"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.9l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.9-.3 1.7 1.7 0 0 0-1 1.6V21a2 2 0 1 1-4 0v-.2a1.7 1.7 0 0 0-1-1.6 1.7 1.7 0 0 0-1.9.3l-.1.1A2 2 0 1 1 4.2 17l.1-.1a1.7 1.7 0 0 0 .3-1.9 1.7 1.7 0 0 0-1.6-1H3a2 2 0 1 1 0-4h.2a1.7 1.7 0 0 0 1.6-1 1.7 1.7 0 0 0-.3-1.9L4.4 7A2 2 0 1 1 7.2 4.2l.1.1a1.7 1.7 0 0 0 1.9.3h.1a1.7 1.7 0 0 0 1-1.6V3a2 2 0 1 1 4 0v.2a1.7 1.7 0 0 0 1 1.6 1.7 1.7 0 0 0 1.9-.3l.1-.1A2 2 0 1 1 20 7.2l-.1.1a1.7 1.7 0 0 0-.3 1.9v.1a1.7 1.7 0 0 0 1.6 1H21a2 2 0 1 1 0 4h-.2a1.7 1.7 0 0 0-1.4.7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Konfigurasi Utama</div>
+
+      <div class="input-group">
+        <label><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.1 0l2-2a5 5 0 0 0-7.1-7.1l-1.1 1.1M14 11a5 5 0 0 0-7.1 0l-2 2A5 5 0 0 0 12 20.1l1.1-1.1" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Link Invite Canva Pro</label>
+        <input type="text" id="inviteLinkInput" placeholder="https://www.canva.com/brand/join?token=..." value="https://www.canva.com/brand/join?token=587NGnwuwj14rSzFrW2C1Q&referrer=team-invite">
+      </div>
+
+      <div class="input-group">
+        <label><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6.5A2.5 2.5 0 0 1 6.5 4h11A2.5 2.5 0 0 1 20 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-11A2.5 2.5 0 0 1 4 17.5v-11Z" stroke="currentColor" stroke-width="2"/><path d="M10 8.5l6 3.5-6 3.5v-7Z" fill="currentColor"/></svg> Link YouTube Verifikasi</label>
+        <input type="text" id="youtubeLinkInput" placeholder="https://youtube.com/shorts/..." value="https://youtube.com/shorts/nleNUMqCwhc">
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M21 21v-2a4 4 0 0 0-3-3.87M17 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Limit Maksimal User</label>
+          <input type="number" id="maxUserInput" min="1" max="1000" value="100">
+        </div>
+
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 10V8a5 5 0 0 1 10 0v2M6 10h12v10H6V10Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M12 14v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Password Verifikasi</label>
+          <div style="display:flex;align-items:center;gap:10px;">
+            <input type="text" id="passwordInput" placeholder="Password" value="GBG" style="flex:1;">
+            <span class="current-password-display" id="currentPassDisplay">GBG</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-row">
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.47 14.38c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.16-.17.2-.35.22-.64.08-.3-.15-1.26-.46-2.39-1.48-.88-.79-1.48-1.76-1.65-2.06-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.03-.52-.07-.15-.67-1.61-.92-2.21-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.02-1.04 2.48s1.07 2.88 1.21 3.07c.15.2 2.1 3.2 5.08 4.49.71.31 1.26.49 1.69.63.71.23 1.36.2 1.87.12.57-.08 1.76-.72 2.01-1.41.25-.69.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35M12.05 21.79h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.89-9.88 2.64 0 5.12 1.03 6.99 2.9a9.82 9.82 0 0 1 2.89 6.99c0 5.45-4.44 9.88-9.88 9.88"/></svg> Link Grup WhatsApp</label>
+          <input type="text" id="waGroupInput" value="https://chat.whatsapp.com/JsDrkBB1g1iIelyQU1PVcz">
+        </div>
+
+        <div class="input-group">
+          <label><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0a12 12 0 1 0 0 24 12 12 0 0 0 0-24Zm5.9 8.22-1.98 9.28c-.14.66-.53.82-1.08.51l-3-2.21-1.45 1.39c-.16.16-.3.3-.6.3l.21-3.05 5.56-5.02c.24-.21-.05-.33-.37-.12l-6.87 4.32-2.96-.92c-.64-.2-.66-.64.14-.95l11.57-4.46c.54-.2 1.01.13.83.94Z"/></svg> Link Grup Telegram</label>
+          <input type="text" id="tgGroupInput" value="https://t.me/yourgroup">
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <button id="saveConfigBtn" class="btn-action btn-success"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M17 21v-8H7v8M7 3v5h8" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Simpan Semua Konfigurasi</button>
+        <span class="save-status" id="saveStatus"></span>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <div class="flex-row">
+        <div>
+          <div class="panel-title" style="margin-bottom:8px;"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M21 21v-2a4 4 0 0 0-3-3.87M17 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Manajemen Kuota Join</div>
+          <p style="color:var(--muted);font-size:11px;line-height:1.6;">User terhitung saat menekan tombol Aktifkan Sekarang.</p>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;">
+          <button id="setQuotaBtn" class="btn-action btn-warning"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4 12.5-12.5Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg> Atur Kuota Manual</button>
+          <button id="resetQuotaBtn" class="btn-action btn-danger"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M3 6h18M8 6V4h8v2M19 6l-1 15H6L5 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg> Reset Semua Data</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <div class="panel-header">
+        <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M21 21v-2a4 4 0 0 0-3-3.87M17 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Daftar User Yang Sudah Join</div>
+        <div class="search-container">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="searchUserInput" class="search-input" placeholder="Cari email atau WA..." onkeyup="filterTable('user')">
+          <button class="clear-search" onclick="clearSearch('user')" title="Clear search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <span class="search-info" id="userSearchInfo"></span>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="user-table" id="userTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Email</th>
+              <th>WhatsApp</th>
+              <th>Waktu Join</th>
+              <th>Device ID</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="userTableBody">
+            <tr><td colspan="6" class="empty-message">Memuat data...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <div class="panel-header">
+        <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="5" y="3" width="14" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M10 18h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Monitoring Device</div>
+        <div class="search-container">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="searchDeviceInput" class="search-input" placeholder="Cari email atau device..." onkeyup="filterTable('device')">
+          <button class="clear-search" onclick="clearSearch('device')" title="Clear search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <span class="search-info" id="deviceSearchInfo"></span>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="user-table" id="deviceTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Device Fingerprint</th>
+              <th>Email Terakhir</th>
+              <th>Join Count</th>
+              <th>Status</th>
+              <th>Terakhir Join</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="deviceTrackingBody">
+            <tr><td colspan="7" class="empty-message">Memuat data device...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <div class="panel-header">
+        <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M5.8 5.8l12.4 12.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Daftar Device Terblokir</div>
+        <div class="search-container">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="searchDeviceBlockedInput" class="search-input" placeholder="Cari email atau device..." onkeyup="filterTable('deviceBlocked')">
+          <button class="clear-search" onclick="clearSearch('deviceBlocked')" title="Clear search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <span class="search-info" id="deviceBlockedSearchInfo"></span>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="user-table" id="deviceBlockedTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Device Fingerprint</th>
+              <th>Email Terdeteksi</th>
+              <th>Alasan</th>
+              <th>Sisa Blokir</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="deviceBlockedTableBody">
+            <tr><td colspan="6" class="empty-message">Memuat data device blokir...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="control-panel">
+      <div class="panel-header">
+        <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Daftar Email Terblokir</div>
+        <div class="search-container">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input type="text" id="searchBlockedInput" class="search-input" placeholder="Cari email atau WA..." onkeyup="filterTable('blocked')">
+          <button class="clear-search" onclick="clearSearch('blocked')" title="Clear search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+          <span class="search-info" id="blockedSearchInfo"></span>
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="user-table" id="blockedTable">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Email</th>
+              <th>WhatsApp</th>
+              <th>Sisa Masa Blokir</th>
+              <th>Berakhir Pada</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody id="blockedTableBody">
+            <tr><td colspan="6" class="empty-message">Memuat data blokir...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <div class="footer-note"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M5.8 5.8l12.4 12.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Admin Panel • Sistem 3x Kesempatan • Search aktif di setiap tabel</div>
+  </main>
+
+  <script>
+
+    // =============== DEBUG UTILITY ===============
+    const debugConsole = document.getElementById('debugConsole');
+    
+    function debugLog(message, type = 'info') {
+        console.log(`[${type.toUpperCase()}] ${message}`);
+        
+        const entry = document.createElement('div');
+        entry.className = `debug-entry ${type}`;
+        entry.textContent = `[${new Date().toLocaleTimeString()}] ${message}`;
+        debugConsole.appendChild(entry);
+        debugConsole.scrollTop = debugConsole.scrollHeight;
+        
+        // Tampilkan debug console
+        debugConsole.classList.add('show');
+    }
+    
+    function debugClear() {
+        debugConsole.innerHTML = '';
+        debugConsole.classList.remove('show');
+    }
+    
+    // =============== KONFIGURASI FIREBASE ===============
+    const firebaseConfig = {
+        apiKey: "AIzaSyAcN0uaLfWmxp3ZBbWIomPXHenx3gjr5-w",
+        authDomain: "akses-canva-pro-terbatas.firebaseapp.com",
+        databaseURL: "https://akses-canva-pro-terbatas-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "akses-canva-pro-terbatas",
+        storageBucket: "akses-canva-pro-terbatas.firebasestorage.app",
+        messagingSenderId: "424693923668",
+        appId: "1:424693923668:web:ab4cc45f700a36699c12c1"
+    };
+    
+    debugLog('Inisialisasi Firebase...', 'info');
+    
+    try {
+        firebase.initializeApp(firebaseConfig);
+        debugLog('Firebase berhasil diinisialisasi', 'success');
+    } catch (e) {
+        debugLog('GAGAL inisialisasi Firebase: ' + e.message, 'error');
+    }
+    
+    const db = firebase.firestore();
+    
+    // =============== KONSTANTA ===============
+    const CONFIG_COLLECTION = "admin_config";
+    const CONFIG_DOC = "settings";
+    const ACTIVATIONS_COLLECTION = "user_activations";
+    const BLOCKED_COLLECTION = "email_blocked";
+    const USERS_COLLECTION = "canva_peserta_email";
+    const DEVICE_COLLECTION = "device_fingerprints";
+    const DEVICE_BLOCKED_COLLECTION = "device_blocked";
+    
+    let maxUsers = 100;
+    let currentPassword = "GBG";
+    
+    // Data storage untuk search
+    let userData = [];
+    let deviceData = [];
+    let deviceBlockedData = [];
+    let blockedData = [];
+    
+    // =============== DOM ELEMENTS ===============
+    const inviteLinkInput = document.getElementById('inviteLinkInput');
+    const youtubeLinkInput = document.getElementById('youtubeLinkInput');
+    const maxUserInput = document.getElementById('maxUserInput');
+    const passwordInput = document.getElementById('passwordInput');
+    const waGroupInput = document.getElementById('waGroupInput');
+    const tgGroupInput = document.getElementById('tgGroupInput');
+    const currentPassDisplay = document.getElementById('currentPassDisplay');
+    const saveConfigBtn = document.getElementById('saveConfigBtn');
+    const saveStatus = document.getElementById('saveStatus');
+    const totalJoinSpan = document.getElementById('totalJoinCount');
+    const totalVisitorSpan = document.getElementById('totalVisitorCount');
+    const maxUserLimitSpan = document.getElementById('maxUserLimit');
+    const remainingSpan = document.getElementById('remainingCount');
+    const resetQuotaBtn = document.getElementById('resetQuotaBtn');
+    const setQuotaBtn = document.getElementById('setQuotaBtn');
+    const testConnectionBtn = document.getElementById('testConnectionBtn');
+    const userTableBody = document.getElementById('userTableBody');
+    const blockedTableBody = document.getElementById('blockedTableBody');
+    const deviceTrackingBody = document.getElementById('deviceTrackingBody');
+    const deviceBlockedTableBody = document.getElementById('deviceBlockedTableBody');
+    const refreshBtn = document.getElementById('refreshBtn');
+    const logoutBtn = document.getElementById('logoutBtn');
+    
+    // =============== TEST KONEKSI ===============
+    async function testConnection() {
+        debugLog('========== TEST KONEKSI ==========', 'info');
+        debugLog('Testing koneksi ke Firestore...', 'info');
+        
+        try {
+            // Test 1: Coba akses Firestore
+            const testDoc = await db.collection(CONFIG_COLLECTION).doc('_test_connection').get();
+            debugLog(' Test 1: Akses Firestore BERHASIL', 'success');
+            
+            // Test 2: Coba tulis data test
+            try {
+                await db.collection(CONFIG_COLLECTION).doc('_test_connection').set({
+                    testTimestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                    testValue: 'connection_test'
+                });
+                debugLog(' Test 2: Write data test BERHASIL', 'success');
+                
+                // Hapus data test
+                await db.collection(CONFIG_COLLECTION).doc('_test_connection').delete();
+                debugLog(' Test 3: Delete data test BERHASIL', 'success');
+            } catch (writeError) {
+                debugLog(' Test 2: GAGAL menulis data - ' + writeError.message, 'error');
+                debugLog('   → Periksa aturan keamanan Firestore Anda!', 'error');
+                debugLog('   → Pastikan allow read, write: if true; (untuk testing)', 'error');
+            }
+            
+            // Test 3: Coba baca konfigurasi yang ada
+            try {
+                const configDoc = await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).get();
+                if (configDoc.exists) {
+                    debugLog(' Test 4: Dokumen konfigurasi ditemukan', 'success');
+                    debugLog('   Data: ' + JSON.stringify(configDoc.data()), 'info');
+                } else {
+                    debugLog(' Test 4: Dokumen konfigurasi BELUM ada', 'info');
+                }
+            } catch (configError) {
+                debugLog(' Test 4: GAGAL membaca konfigurasi - ' + configError.message, 'error');
+            }
+            
+            alert(' Test koneksi selesai! Lihat debug console untuk detail.');
+        } catch (e) {
+            debugLog(' GAGAL koneksi ke Firestore: ' + e.message, 'error');
+            alert(' GAGAL koneksi! Error: ' + e.message);
+        }
+    }
+    
+    // =============== SEARCH FUNCTIONS ===============
+    function filterTable(type) {
+        let searchInput, tableId, dataArray, infoSpan, renderFunction;
+        
+        switch(type) {
+            case 'user':
+                searchInput = document.getElementById('searchUserInput');
+                dataArray = userData;
+                infoSpan = document.getElementById('userSearchInfo');
+                renderFunction = renderUserTable;
+                break;
+            case 'device':
+                searchInput = document.getElementById('searchDeviceInput');
+                dataArray = deviceData;
+                infoSpan = document.getElementById('deviceSearchInfo');
+                renderFunction = renderDeviceTable;
+                break;
+            case 'deviceBlocked':
+                searchInput = document.getElementById('searchDeviceBlockedInput');
+                dataArray = deviceBlockedData;
+                infoSpan = document.getElementById('deviceBlockedSearchInfo');
+                renderFunction = renderDeviceBlockedTable;
+                break;
+            case 'blocked':
+                searchInput = document.getElementById('searchBlockedInput');
+                dataArray = blockedData;
+                infoSpan = document.getElementById('blockedSearchInfo');
+                renderFunction = renderBlockedTable;
+                break;
+            default:
+                return;
+        }
+        
+        const searchTerm = searchInput.value.toLowerCase().trim();
+        
+        if (searchTerm === '') {
+            renderFunction(dataArray);
+            infoSpan.textContent = '';
+            return;
+        }
+        
+        const filteredData = dataArray.filter(item => {
+            return Object.values(item).some(value => {
+                if (typeof value === 'string') {
+                    return value.toLowerCase().includes(searchTerm);
+                }
+                if (typeof value === 'number') {
+                    return value.toString().includes(searchTerm);
+                }
+                return false;
+            });
+        });
+        
+        renderFunction(filteredData);
+        infoSpan.textContent = `(${filteredData.length} dari ${dataArray.length})`;
+    }
+    
+    function clearSearch(type) {
+        let searchInput, infoSpan;
+        
+        switch(type) {
+            case 'user':
+                searchInput = document.getElementById('searchUserInput');
+                infoSpan = document.getElementById('userSearchInfo');
+                break;
+            case 'device':
+                searchInput = document.getElementById('searchDeviceInput');
+                infoSpan = document.getElementById('deviceSearchInfo');
+                break;
+            case 'deviceBlocked':
+                searchInput = document.getElementById('searchDeviceBlockedInput');
+                infoSpan = document.getElementById('deviceBlockedSearchInfo');
+                break;
+            case 'blocked':
+                searchInput = document.getElementById('searchBlockedInput');
+                infoSpan = document.getElementById('blockedSearchInfo');
+                break;
+            default:
+                return;
+        }
+        
+        searchInput.value = '';
+        infoSpan.textContent = '';
+        filterTable(type);
+    }
+    
+    // =============== RENDER FUNCTIONS ===============
+    function renderUserTable(users) {
+        if (!userTableBody) return;
+        
+        if (users.length === 0) {
+            userTableBody.innerHTML = `<tr><td colspan="6" class="empty-message">Tidak ada data yang cocok.</td></tr>`;
+            return;
+        }
+        
+        let html = '';
+        users.forEach((user, idx) => {
+            const date = user.joinedAt ? new Date(user.joinedAt).toLocaleString('id-ID') : '-';
+            const deviceId = user.deviceFingerprint ? user.deviceFingerprint.substring(0, 16) + '...' : 'Unknown';
+            const whatsapp = user.whatsapp || '-';
+            
+            html += `<tr>
+                <td>${idx + 1}</td>
+                <td class="email-badge">${user.email || '-'}</td>
+                <td class="wa-badge">${whatsapp}</td>
+                <td>${date}</td>
+                <td style="font-size:0.7rem; color:#94a3b8;" title="${user.deviceFingerprint || ''}">${deviceId}</td>
+                <td>
+                    <button class="btn-action btn-small" onclick="deleteActivation('${user.id}', '${user.email}')">
+                        Hapus
+                    </button>
+                </td>
+            </tr>`;
+        });
+        userTableBody.innerHTML = html;
+    }
+    
+    function renderDeviceTable(devices) {
+        if (!deviceTrackingBody) return;
+        
+        if (devices.length === 0) {
+            deviceTrackingBody.innerHTML = `<tr><td colspan="7" class="empty-message">Tidak ada data yang cocok.</td></tr>`;
+            return;
+        }
+        
+        let html = '';
+        devices.forEach((device, idx) => {
+            const fpShort = device.fingerprint ? device.fingerprint.substring(0, 20) + '...' : 'Unknown';
+            const lastDate = device.lastTimestamp ? new Date(device.lastTimestamp).toLocaleString('id-ID') : '-';
+            const joinCount = device.joinCount;
+            
+            let statusBadge = '';
+            if (joinCount === 1) {
+                statusBadge = '<span class="info-badge">Normal (Join 1)</span>';
+            } else if (joinCount === 2) {
+                statusBadge = '<span class="warning-badge">Peringatan (Join 2)</span>';
+            } else {
+                statusBadge = '<span class="danger-badge">Seharusnya Diblokir (Join 3+)</span>';
+            }
+            
+            html += `<tr>
+                <td>${idx + 1}</td>
+                <td style="font-size:0.7rem;" title="${device.fingerprint || ''}">${fpShort}</td>
+                <td>${device.lastEmail || '-'}</td>
+                <td style="font-weight: bold; text-align: center;">${joinCount}</td>
+                <td>${statusBadge}</td>
+                <td>${lastDate}</td>
+                <td>
+                    <button class="btn-action btn-small" onclick="resetDeviceCount('${device.fingerprint}')">
+                        Reset
+                    </button>
+                </td>
+            </tr>`;
+        });
+        deviceTrackingBody.innerHTML = html;
+    }
+    
+    function renderDeviceBlockedTable(blocked) {
+        if (!deviceBlockedTableBody) return;
+        
+        if (blocked.length === 0) {
+            deviceBlockedTableBody.innerHTML = `<tr><td colspan="6" class="empty-message">Tidak ada data yang cocok.</td></tr>`;
+            return;
+        }
+        
+        let html = '';
+        blocked.forEach((item, idx) => {
+            const now = Date.now();
+            let remainingDays = 0;
+            const fingerprint = item.fingerprint ? item.fingerprint.substring(0, 20) + '...' : 'Unknown';
+            const emails = item.emails ? item.emails.join(', ') : '-';
+            
+            if (item.expiredAt && item.expiredAt > now) {
+                remainingDays = Math.ceil((item.expiredAt - now) / (1000 * 3600 * 24));
+            }
+            
+            html += `<tr>
+                <td>${idx + 1}</td>
+                <td style="font-size:0.7rem;" title="${item.fingerprint || ''}">${fingerprint}</td>
+                <td style="font-size:0.75rem;">${emails}</td>
+                <td>${item.reason || 'Spam device'}</td>
+                <td><span class="danger-badge">${remainingDays} hari</span></td>
+                <td>
+                    <button class="btn-action btn-small btn-success" onclick="deleteDeviceBlocked('${item.id}')">
+                        Buka Blokir
+                    </button>
+                </td>
+            </tr>`;
+        });
+        deviceBlockedTableBody.innerHTML = html;
+    }
+    
+    function renderBlockedTable(blocked) {
+        if (!blockedTableBody) return;
+        
+        if (blocked.length === 0) {
+            blockedTableBody.innerHTML = `<tr><td colspan="6" class="empty-message">Tidak ada data yang cocok.</td></tr>`;
+            return;
+        }
+        
+        let html = '';
+        blocked.forEach((item, idx) => {
+            const now = Date.now();
+            let remainingDays = 0;
+            let expiredDateStr = '-';
+            
+            if (item.expiredAt && item.expiredAt > now) {
+                remainingDays = Math.ceil((item.expiredAt - now) / (1000 * 3600 * 24));
+                const expDate = new Date(item.expiredAt);
+                expiredDateStr = expDate.toLocaleDateString('id-ID');
+            }
+            
+            html += `<tr>
+                <td>${idx + 1}</td>
+                <td style="color:#fca5a5; font-weight:500;">${item.email || '-'}</td>
+                <td class="wa-badge">${item.whatsapp || '-'}</td>
+                <td><span class="info-badge">${remainingDays} hari lagi</span></td>
+                <td>${expiredDateStr}</td>
+                <td>
+                    <button class="btn-action btn-small" onclick="deleteBlocked('${item.id}', '${item.email}')">
+                        Buka Blokir
+                    </button>
+                </td>
+            </tr>`;
+        });
+        blockedTableBody.innerHTML = html;
+    }
+    
+    // =============== DATA LOADING ===============
+    async function loadConfig() {
+        debugLog('Memuat konfigurasi...', 'info');
+        
+        try {
+            const docSnap = await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).get();
+            
+            if (docSnap.exists) {
+                const data = docSnap.data();
+                
+                if (data.inviteLink) inviteLinkInput.value = data.inviteLink;
+                if (data.youtubeLink) youtubeLinkInput.value = data.youtubeLink;
+                if (data.maxUsers) {
+                    maxUsers = data.maxUsers;
+                    maxUserInput.value = maxUsers;
+                    maxUserLimitSpan.innerText = maxUsers;
+                }
+                if (data.password) {
+                    currentPassword = data.password;
+                    passwordInput.value = currentPassword;
+                    currentPassDisplay.innerText = currentPassword;
+                }
+                if (data.waGroup) waGroupInput.value = data.waGroup;
+                if (data.tgGroup) tgGroupInput.value = data.tgGroup;
+                
+                debugLog(' Konfigurasi berhasil dimuat', 'success');
+            } else {
+                debugLog(' Konfigurasi belum ada, membuat default...', 'info');
+                await saveConfig();
+            }
+        } catch (e) {
+            debugLog(' GAGAL memuat konfigurasi: ' + e.message, 'error');
+            console.error("Gagal load config:", e);
+        }
+    }
+    
+    async function saveConfig() {
+        debugLog('========== MENYIMPAN KONFIGURASI ==========', 'info');
+        
+        try {
+            saveStatus.innerHTML = 'Menyimpan...';
+            
+            maxUsers = parseInt(maxUserInput.value) || 100;
+            currentPassword = passwordInput.value.trim() || "GBG";
+            
+            const configData = {
+                inviteLink: inviteLinkInput.value.trim(),
+                youtubeLink: youtubeLinkInput.value.trim(),
+                maxUsers: maxUsers,
+                password: currentPassword,
+                waGroup: waGroupInput.value.trim(),
+                tgGroup: tgGroupInput.value.trim(),
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            };
+            
+            debugLog('Data yang akan disimpan: ' + JSON.stringify(configData, null, 2), 'info');
+            
+            await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).set(configData, { merge: true });
+            
+            maxUserLimitSpan.innerText = maxUsers;
+            currentPassDisplay.innerText = currentPassword;
+            
+            debugLog(' Konfigurasi BERHASIL disimpan!', 'success');
+            saveStatus.innerHTML = 'Tersimpan!';
+            
+            setTimeout(() => saveStatus.innerHTML = '', 3000);
+            
+            await loadUserActivations();
+        } catch (e) {
+            debugLog(' GAGAL menyimpan konfigurasi: ' + e.message, 'error');
+            console.error('Error detail:', e);
+            saveStatus.innerHTML = 'Gagal! ' + e.message;
+        }
+    }
+    
+    async function loadUserActivations() {
+        try {
+            const snapshot = await db.collection(ACTIVATIONS_COLLECTION).orderBy("joinedAt", "desc").get();
+            userData = [];
+            snapshot.forEach(doc => userData.push({ id: doc.id, ...doc.data() }));
+            
+            const actualCount = userData.length;
+            
+            const configSnap = await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).get();
+            let simulatedQuota = 0;
+            if (configSnap.exists && configSnap.data().simulatedQuota) {
+                simulatedQuota = configSnap.data().simulatedQuota;
+            }
+            
+            const effectiveUsed = Math.max(actualCount, simulatedQuota);
+            const remaining = Math.max(0, maxUsers - effectiveUsed);
+            
+            totalJoinSpan.innerText = effectiveUsed;
+            remainingSpan.innerText = remaining;
+            
+            renderUserTable(userData);
+            filterTable('user');
+        } catch (e) {
+            console.error(e);
+            userTableBody.innerHTML = `<tr><td colspan="6" class="empty-message">Error: ${e.message}</td></tr>`;
+        }
+    }
+    
+    async function loadDeviceTracking() {
+        try {
+            const snapshot = await db.collection(DEVICE_COLLECTION).orderBy("timestamp", "desc").get();
+            
+            const deviceMap = new Map();
+            snapshot.forEach(doc => {
+                const data = doc.data();
+                const fp = data.fingerprint;
+                if (!fp) return;
+                
+                if (!deviceMap.has(fp)) {
+                    deviceMap.set(fp, {
+                        fingerprint: fp,
+                        emails: new Set(),
+                        lastEmail: data.email,
+                        lastTimestamp: data.timestamp,
+                        joinCount: 0
+                    });
+                }
+                const device = deviceMap.get(fp);
+                device.emails.add(data.email);
+                device.joinCount = device.emails.size;
+                if (data.timestamp > device.lastTimestamp) {
+                    device.lastEmail = data.email;
+                    device.lastTimestamp = data.timestamp;
+                }
+            });
+            
+            deviceData = Array.from(deviceMap.values()).sort((a, b) => b.lastTimestamp - a.lastTimestamp);
+            
+            renderDeviceTable(deviceData);
+            filterTable('device');
+        } catch (e) {
+            console.error(e);
+            deviceTrackingBody.innerHTML = `<tr><td colspan="7" class="empty-message">Error: ${e.message}</td></tr>`;
+        }
+    }
+    
+    async function loadDeviceBlocked() {
+        try {
+            const snapshot = await db.collection(DEVICE_BLOCKED_COLLECTION).orderBy("blockedAt", "desc").get();
+            deviceBlockedData = [];
+            snapshot.forEach(doc => deviceBlockedData.push({ id: doc.id, ...doc.data() }));
+            
+            renderDeviceBlockedTable(deviceBlockedData);
+            filterTable('deviceBlocked');
+        } catch (e) {
+            console.error(e);
+            deviceBlockedTableBody.innerHTML = `<tr><td colspan="6" class="empty-message">Error: ${e.message}</td></tr>`;
+        }
+    }
+    
+    async function loadBlockedEmails() {
+        try {
+            const snapshot = await db.collection(BLOCKED_COLLECTION).orderBy("expiredAt", "asc").get();
+            blockedData = [];
+            
+            for (const doc of snapshot.docs) {
+                const data = doc.data();
+                let whatsapp = '-';
+                
+                if (data.userRef) {
+                    try {
+                        const userDoc = await db.collection(USERS_COLLECTION).doc(data.userRef).get();
+                        if (userDoc.exists) {
+                            whatsapp = userDoc.data().whatsapp || '-';
+                        }
+                    } catch (e) {
+                        console.warn('Gagal ambil data user:', e);
+                    }
+                }
+                
+                blockedData.push({ id: doc.id, ...data, whatsapp });
+            }
+            
+            renderBlockedTable(blockedData);
+            filterTable('blocked');
+        } catch (e) {
+            console.error(e);
+            blockedTableBody.innerHTML = `<tr><td colspan="6" class="empty-message">Error: ${e.message}</td></tr>`;
+        }
+    }
+    
+    // =============== ACTION FUNCTIONS ===============
+    async function resetDeviceCount(fingerprint) {
+        if (!confirm('Reset join count untuk device ini? Device akan mulai dari 0 lagi.')) return;
+        try {
+            const snapshot = await db.collection(DEVICE_COLLECTION).where("fingerprint", "==", fingerprint).get();
+            const batch = db.batch();
+            snapshot.forEach(doc => batch.delete(doc.ref));
+            await batch.commit();
+            debugLog('Device count direset untuk: ' + fingerprint.substring(0, 20), 'success');
+            loadDeviceTracking();
+        } catch (e) {
+            alert('Gagal: ' + e.message);
+            debugLog('Gagal reset device: ' + e.message, 'error');
+        }
+    }
+    
+    async function deleteActivation(id, email) {
+        if (!confirm(`Hapus data aktivasi untuk email "${email}"?`)) return;
+        try {
+            await db.collection(ACTIVATIONS_COLLECTION).doc(id).delete();
+            debugLog('Aktivasi dihapus: ' + email, 'success');
+            loadUserActivations();
+        } catch (e) {
+            alert('Gagal hapus: ' + e.message);
+            debugLog('Gagal hapus aktivasi: ' + e.message, 'error');
+        }
+    }
+    
+    async function deleteBlocked(id, email) {
+        if (!confirm(`Buka blokir untuk email "${email}"?`)) return;
+        try {
+            await db.collection(BLOCKED_COLLECTION).doc(id).delete();
+            debugLog('Blokir dibuka: ' + email, 'success');
+            loadBlockedEmails();
+        } catch (e) {
+            alert('Gagal: ' + e.message);
+            debugLog('Gagal buka blokir: ' + e.message, 'error');
+        }
+    }
+    
+    async function deleteDeviceBlocked(id) {
+        if (!confirm(`Buka blokir device ini?`)) return;
+        try {
+            await db.collection(DEVICE_BLOCKED_COLLECTION).doc(id).delete();
+            debugLog('Device blokir dibuka', 'success');
+            loadDeviceBlocked();
+        } catch (e) {
+            alert('Gagal: ' + e.message);
+            debugLog('Gagal buka device blokir: ' + e.message, 'error');
+        }
+    }
+    
+    async function resetQuota() {
+        if (!confirm(' Yakin ingin menghapus SEMUA data user yang sudah join?')) return;
+        
+        try {
+            const snapshot = await db.collection(ACTIVATIONS_COLLECTION).get();
+            const batch = db.batch();
+            snapshot.forEach(doc => batch.delete(doc.ref));
+            await batch.commit();
+            
+            await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).set({
+                simulatedQuota: 0,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+            
+            debugLog('Kuota direset ke 0', 'success');
+            
+            if (confirm('Ingin juga membersihkan data registrasi, blokir email, dan device tracking?')) {
+                const batch2 = db.batch();
+                
+                const usersSnap = await db.collection(USERS_COLLECTION).get();
+                usersSnap.forEach(doc => batch2.delete(doc.ref));
+                
+                const blockedSnap = await db.collection(BLOCKED_COLLECTION).get();
+                blockedSnap.forEach(doc => batch2.delete(doc.ref));
+                
+                const deviceSnap = await db.collection(DEVICE_COLLECTION).get();
+                deviceSnap.forEach(doc => batch2.delete(doc.ref));
+                
+                const deviceBlockedSnap = await db.collection(DEVICE_BLOCKED_COLLECTION).get();
+                deviceBlockedSnap.forEach(doc => batch2.delete(doc.ref));
+                
+                await batch2.commit();
+                debugLog('Semua data dibersihkan', 'success');
+            }
+            
+            alert(' Data berhasil direset!');
+            refreshAll();
+        } catch (e) {
+            alert('Gagal reset: ' + e.message);
+            debugLog('Gagal reset: ' + e.message, 'error');
+        }
+    }
+    
+    async function setQuotaManual() {
+        const snapshot = await db.collection(ACTIVATIONS_COLLECTION).get();
+        const actualCount = snapshot.size;
+        
+        const configSnap = await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).get();
+        let currentSimulated = 0;
+        if (configSnap.exists && configSnap.data().simulatedQuota != null) {
+            currentSimulated = configSnap.data().simulatedQuota;
+        }
+        
+        const message = `=== ATUR SIMULASI KUOTA ===\n\n` +
+                       ` User Aktual: ${actualCount}\n` +
+                       ` Simulasi Saat Ini: ${currentSimulated}\n` +
+                       ` Max Kuota: ${maxUsers}\n\n` +
+                       `Masukkan jumlah user yang ingin DISIMULASIKAN:`;
+        
+        const newQuota = prompt(message, currentSimulated);
+        if (newQuota === null) return;
+        
+        const quotaNum = parseInt(newQuota);
+        if (isNaN(quotaNum) || quotaNum < 0) {
+            alert(' Masukkan angka 0 atau lebih!');
+            return;
+        }
+        
+        if (!confirm(`Atur simulasi kuota menjadi ${quotaNum} user?`)) return;
+        
+        try {
+            await db.collection(CONFIG_COLLECTION).doc(CONFIG_DOC).set({
+                simulatedQuota: quotaNum,
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            }, { merge: true });
+            
+            debugLog(`Simulasi kuota diatur ke ${quotaNum}`, 'success');
+            alert(` Simulasi kuota diatur ke ${quotaNum}.`);
+            loadUserActivations();
+        } catch (e) {
+            alert('Gagal: ' + e.message);
+            debugLog('Gagal atur kuota: ' + e.message, 'error');
+        }
+    }
+    
+
+    async function loadVisitorStats() {
+        try {
+            const response = await fetch('/data/muja-visitor-stats.json?v=' + Date.now(), {
+                cache: 'no-store',
+                headers: { 'Accept': 'application/json' }
+            });
+            const data = await response.json();
+            if (!data || typeof data !== 'object') throw new Error('Data pengunjung tidak valid');
+
+            const totalUniqueVisitors = data.totalUniqueVisitors ?? Object.keys(data.visitors || {}).length;
+            if (totalVisitorSpan) {
+                totalVisitorSpan.innerText = Number(totalUniqueVisitors || 0).toLocaleString('id-ID');
+                totalVisitorSpan.title = `Total kunjungan halaman: ${Number(data.totalVisits || 0).toLocaleString('id-ID')}`;
+            }
+        } catch (e) {
+            if (totalVisitorSpan) totalVisitorSpan.innerText = '0';
+            debugLog('Gagal memuat total pengunjung: ' + e.message, 'error');
+        }
+    }
+
+    function refreshAll() {
+        debugLog('========== REFRESH SEMUA DATA ==========', 'info');
+        loadConfig();
+        loadVisitorStats();
+        loadUserActivations();
+        loadDeviceTracking();
+        loadDeviceBlocked();
+        loadBlockedEmails();
+    }
+    
+    // =============== EXPOSE GLOBAL FUNCTIONS ===============
+    window.deleteActivation = deleteActivation;
+    window.deleteBlocked = deleteBlocked;
+    window.deleteDeviceBlocked = deleteDeviceBlocked;
+    window.resetDeviceCount = resetDeviceCount;
+    window.filterTable = filterTable;
+    window.clearSearch = clearSearch;
+    
+    // =============== EVENT LISTENERS ===============
+    saveConfigBtn.addEventListener('click', saveConfig);
+    resetQuotaBtn.addEventListener('click', resetQuota);
+    setQuotaBtn.addEventListener('click', setQuotaManual);
+    refreshBtn.addEventListener('click', refreshAll);
+    testConnectionBtn.addEventListener('click', testConnection);
+    
+    logoutBtn.addEventListener('click', () => {
+        if (confirm('Keluar dari panel admin?')) {
+            window.location.reload();
+        }
+    });
+    
+    // =============== AUTO REFRESH ===============
+    setInterval(refreshAll, 30000);
+    
+    // =============== INITIAL LOAD ===============
+    debugLog(' Admin Panel dimulai', 'info');
+    debugLog('Cek izin Firestore di: https://console.firebase.google.com/project/akses-canva-pro-terbatas/firestore/rules', 'info');
+    refreshAll();
+
+
+// =============== SATISFYING BUTTON REACTION ===============
+document.addEventListener('pointerdown', function(event) {
+    const button = event.target.closest('button, .btn-action, .clear-search');
+
+    if (!button) return;
+
+    const rect = button.getBoundingClientRect();
+
+    button.style.setProperty('--x', `${event.clientX - rect.left}px`);
+    button.style.setProperty('--y', `${event.clientY - rect.top}px`);
+
+    button.classList.remove('muja-ripple');
+    void button.offsetWidth;
+    button.classList.add('muja-ripple');
+});
+
+  </script>
+</body>
+</html>

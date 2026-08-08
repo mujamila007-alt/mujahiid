@@ -1,0 +1,2503 @@
+<!doctype html>
+<html lang="id" translate="no" class="notranslate">
+<head>
+  <meta name="google" content="notranslate">
+  <meta name="googlebot" content="notranslate">
+  <meta http-equiv="Content-Language" content="id">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#080912">
+<meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/theme.css?v=20260808">
+    <script src="/ai-web-config.js?v=20260808"></script>
+    <script src="/theme.js?v=20260808"></script>
+    <link rel="icon" type="image/png" href="logo-mujahiid.png">
+<title>Verifikasi Canva Pro - Mujahiid</title>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com?v=20260808">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap&v=20260808" rel="stylesheet">
+
+  <style>
+  :root {
+    --bg:#080912;
+    --bg2:#0d1121;
+    --glass:rgba(255,
+    255,
+    255,
+    .074);
+    --glass2:rgba(255,
+    255,
+    255,
+    .105);
+    --border:rgba(255,
+    255,
+    255,
+    .135);
+    --border2:rgba(255,
+    255,
+    255,
+    .235);
+    --text:#f8fbff;
+    --muted:#a8b2c7;
+    --soft:#768199;
+    --blue:#62a0ff;
+    --blue2:#2867ff;
+    --orange:#ff8a24;
+    --gold:#f7c85b;
+    --green:#35dca4;
+    --red:#ff5e7a;
+    --purple:#a879ff;
+    --shadow:0 34px 90px rgba(0,
+    0,
+    0,
+    .52)
+  }
+  * {
+    box-sizing:border-box
+  }
+  html {
+    min-height:100%;
+    scroll-behavior:smooth
+  }
+  body {
+    margin:0;
+    min-height:100vh;
+    font-family:"Plus Jakarta Sans",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+    color:var(--text);
+    background:radial-gradient(circle at 12% -10%,
+    rgba(98,
+    160,
+    255,
+    .34),
+    transparent 31rem),
+    radial-gradient(circle at 96% 2%,
+    rgba(255,
+    138,
+    36,
+    .25),
+    transparent 29rem),
+    radial-gradient(circle at 43% 112%,
+    rgba(53,
+    220,
+    164,
+    .14),
+    transparent 25rem),
+    linear-gradient(145deg,
+    #05060c 0%,
+    var(--bg2) 54%,
+    #05060a 100%);
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility
+  }
+  body:before {
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+    background-image:linear-gradient(rgba(255,
+    255,
+    255,
+    .035) 1px,
+    transparent 1px),
+    linear-gradient(90deg,
+    rgba(255,
+    255,
+    255,
+    .035) 1px,
+    transparent 1px);
+    background-size:42px 42px;
+    mask-image:radial-gradient(circle at top,
+    rgba(0,
+    0,
+    0,
+    .86),
+    transparent 76%)
+  }
+  .muja-aurora {
+    position:fixed;
+    inset:-26vh -18vw auto;
+    height:75vh;
+    z-index:-3;
+    pointer-events:none;
+    filter:blur(52px);
+    opacity:.82;
+    background:radial-gradient(circle at 20% 43%,
+    rgba(98,
+    160,
+    255,
+    .45),
+    transparent 24%),
+    radial-gradient(circle at 58% 22%,
+    rgba(255,
+    138,
+    36,
+    .31),
+    transparent 24%),
+    radial-gradient(circle at 83% 50%,
+    rgba(247,
+    200,
+    91,
+    .22),
+    transparent 27%);
+    animation:auroraMove 12s ease-in-out infinite alternate
+  }
+  .muja-shine-bg {
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    pointer-events:none;
+    background:linear-gradient(118deg,
+    transparent 0 44%,
+    rgba(255,
+    255,
+    255,
+    .044) 45%,
+    transparent 48% 100%),
+    radial-gradient(circle at 50% 32%,
+    rgba(255,
+    255,
+    255,
+    .04),
+    transparent 30rem);
+    animation:bgBreath 8s ease-in-out infinite alternate
+  }
+  @keyframes auroraMove {
+    from {
+      transform:translate3d(-2%,
+      -1%,
+      0) rotate(-3deg) scale(1)
+    }
+    to {
+      transform:translate3d(3%,
+      4%,
+      0) rotate(3deg) scale(1.08)
+    }
+  }
+  @keyframes bgBreath {
+    from {
+      opacity:.48
+    }
+    to {
+      opacity:.86
+    }
+  }
+  .muja-page {
+    width:min(100% - 16px,
+    1040px);
+    min-height:100vh;
+    margin:0 auto;
+    padding:12px 0 48px
+  }
+  .muja-topbar {
+    position:sticky;
+    top:8px;
+    z-index:50;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:14px;
+    padding:9px 11px;
+    border:1px solid var(--border);
+    border-radius:24px;
+    background:rgba(8,
+    9,
+    18,
+    .72);
+    box-shadow:0 18px 48px rgba(0,
+    0,
+    0,
+    .34);
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    animation:slideDown .58s ease both
+  }
+  @keyframes slideDown {
+    from {
+      opacity:0;
+      transform:translateY(-14px)
+    }
+    to {
+      opacity:1;
+      transform:translateY(0)
+    }
+  }
+  .muja-brand {
+    display:flex;
+    align-items:center;
+    gap:10px;
+    min-width:0;
+    color:inherit;
+    text-decoration:none
+  }
+  .brand-mark {
+    width:46px;
+    height:46px;
+    display:grid;
+    place-items:center;
+    overflow:hidden;
+    border-radius:16px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .18);
+    background:rgba(255,
+    255,
+    255,
+    .08);
+    box-shadow:0 14px 32px rgba(0,
+    0,
+    0,
+    .28),
+    inset 0 1px 0 rgba(255,
+    255,
+    255,
+    .18);
+    flex:0 0 auto
+  }
+  .brand-mark img {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover
+  }
+  .muja-brand-title {
+    display:block;
+    font-family:sans-serif;
+    font-size:15px;
+    font-weight:800;
+    letter-spacing:2px;
+    line-height:1;
+    white-space:nowrap
+  }
+  .muja-brand-sub {
+    display:block;
+    margin-top:3px;
+    color:var(--muted);
+    font-size:10px;
+    font-weight:700;
+    white-space:nowrap
+  }
+  .muja-status {
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    padding:8px 11px;
+    border-radius:999px;
+    border:1px solid rgba(53,
+    220,
+    164,
+    .24);
+    background:rgba(53,
+    220,
+    164,
+    .105);
+    color:#b7ffe8;
+    font-size:10px;
+    font-weight:800;
+    white-space:nowrap
+  }
+  .muja-status:before {
+    content:"";
+    width:7px;
+    height:7px;
+    border-radius:99px;
+    background:var(--green);
+    box-shadow:0 0 0 6px rgba(53,
+    220,
+    164,
+    .12)
+  }
+  .muja-shell {
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:34px;
+    background:linear-gradient(145deg,
+    rgba(255,
+    255,
+    255,
+    .12),
+    rgba(255,
+    255,
+    255,
+    .052) 44%,
+    rgba(255,
+    255,
+    255,
+    .026)),
+    rgba(11,
+    13,
+    24,
+    .58);
+    box-shadow:var(--shadow);
+    backdrop-filter:blur(24px);
+    -webkit-backdrop-filter:blur(24px);
+    animation:shellIn .72s ease both
+  }
+  @keyframes shellIn {
+    from {
+      opacity:0;
+      transform:scale(.985) translateY(12px)
+    }
+    to {
+      opacity:1;
+      transform:scale(1) translateY(0)
+    }
+  }
+  .muja-shell:before {
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 0 0,
+    rgba(98,
+    160,
+    255,
+    .26),
+    transparent 24rem),
+    radial-gradient(circle at 100% 0,
+    rgba(255,
+    138,
+    36,
+    .18),
+    transparent 24rem),
+    linear-gradient(120deg,
+    rgba(255,
+    255,
+    255,
+    .13),
+    transparent 20%);
+    pointer-events:none
+  }
+  .muja-hero {
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:minmax(0,
+    1fr) minmax(270px,
+    .92fr);
+    gap:18px;
+    align-items:center;
+    padding:clamp(20px,
+    4vw,
+    42px)
+  }
+  .muja-kicker {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    width:fit-content;
+    margin-bottom:14px;
+    padding:7px 10px;
+    border-radius:999px;
+    border:1px solid rgba(98,
+    160,
+    255,
+    .25);
+    background:rgba(98,
+    160,
+    255,
+    .11);
+    color:#d2e4ff;
+    font-size:10px;
+    font-weight:800;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    animation:fadeUp .6s .08s ease both
+  }
+  .muja-kicker svg {
+    width:14px;
+    height:14px;
+    flex:0 0 auto
+  }
+  .muja-title {
+    margin:0;
+    font-family:sans-serif;
+    font-size:clamp(1.72rem,
+    4.8vw,
+    3.85rem);
+    line-height:.94;
+    letter-spacing:-2px;
+    font-weight:800;
+    animation:fadeUp .6s .16s ease both
+  }
+  .muja-title span {
+    display:inline-block;
+    color:transparent;
+    background:linear-gradient(110deg,
+    #fff 4%,
+    #ffe2a0 36%,
+    #ff9a36 62%,
+    #8db8ff 92%);
+    -webkit-background-clip:text;
+    background-clip:text
+  }
+  .muja-desc {
+    max-width:600px;
+    margin:14px 0 0;
+    color:var(--muted);
+    font-size:11.5px;
+    line-height:1.7;
+    animation:fadeUp .6s .24s ease both
+  }
+  .muja-hero-note {
+    display:flex;
+    align-items:flex-start;
+    gap:9px;
+    max-width:570px;
+    margin-top:16px;
+    padding:12px 13px;
+    border:1px solid rgba(247,
+    200,
+    91,
+    .22);
+    border-radius:18px;
+    background:rgba(247,
+    200,
+    91,
+    .09);
+    color:#ffdfa1;
+    font-size:10.5px;
+    line-height:1.55;
+    animation:fadeUp .6s .32s ease both
+  }
+  .muja-hero-note svg {
+    width:16px;
+    height:16px;
+    flex:0 0 auto;
+    margin-top:1px
+  }
+  @keyframes fadeUp {
+    from {
+      opacity:0;
+      transform:translateY(16px)
+    }
+    to {
+      opacity:1;
+      transform:translateY(0)
+    }
+  }
+ 
+  .muja-orbit {
+    position:absolute;
+    width:235px;
+    height:235px;
+    border-radius:999px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .13);
+    animation:rotateSlow 18s linear infinite
+  }
+  .muja-orbit:before,
+  .muja-orbit:after {
+    content:"";
+    position:absolute;
+    width:11px;
+    height:11px;
+    border-radius:99px;
+    background:var(--gold);
+    box-shadow:0 0 28px rgba(247,
+    200,
+    91,
+    .78)
+  }
+  .muja-orbit:before {
+    top:28px;
+    left:26px
+  }
+  .muja-orbit:after {
+    right:18px;
+    bottom:44px;
+    background:var(--blue);
+    box-shadow:0 0 28px rgba(98,
+    160,
+    255,
+    .7)
+  }
+  @keyframes rotateSlow {
+    to {
+      transform:rotate(360deg)
+    }
+  }
+  .muja-logo-hero {
+    position:relative;
+    z-index:1;
+    width:122px;
+    height:122px;
+    overflow:hidden;
+    border-radius:34px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .18);
+    background:rgba(255,
+    255,
+    255,
+    .08);
+    box-shadow:0 30px 70px rgba(0,
+    0,
+    0,
+    .40),
+    inset 0 1px 0 rgba(255,
+    255,
+    255,
+    .22);
+    animation:logoFloat 4.8s ease-in-out infinite
+  }
+  @keyframes logoFloat {
+    0%,
+    100% {
+      transform:translateY(0)
+    }
+    50% {
+      transform:translateY(-9px)
+    }
+  }
+  .muja-logo-hero img {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover
+  }
+  .muja-floating-card {
+    position:absolute;
+    z-index:2;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px 11px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .14);
+    border-radius:16px;
+    background:rgba(8,
+    9,
+    18,
+    .62);
+    box-shadow:0 14px 34px rgba(0,
+    0,
+    0,
+    .25);
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    color:var(--text);
+    font-size:10px;
+    font-weight:800;
+    animation:cardFloat 4.4s ease-in-out infinite
+  }
+  .muja-floating-card svg {
+    width:16px;
+    height:16px;
+    color:var(--gold);
+    flex:0 0 auto
+  }
+  .muja-floating-card small {
+    display:block;
+    margin-top:2px;
+    color:var(--muted);
+    font-size:9px;
+    font-weight:700
+  }
+  .muja-float-1 {
+    top:28px;
+    left:18px
+  }
+  .muja-float-2 {
+    right:18px;
+    bottom:32px;
+    animation-delay:-1.4s
+  }
+  @keyframes cardFloat {
+    0%,
+    100% {
+      transform:translateY(0)
+    }
+    50% {
+      transform:translateY(-7px)
+    }
+  }
+  .muja-main-grid {
+    position:relative;
+    z-index:1;
+    display:grid;
+    grid-template-columns:.84fr 1.16fr;
+    gap:14px;
+    padding:0 clamp(16px,
+    4vw,
+    42px) clamp(16px,
+    4vw,
+    42px)
+  }
+  .muja-card {
+    position:relative;
+    overflow:hidden;
+    border:1px solid var(--border);
+    border-radius:28px;
+    background:rgba(255,
+    255,
+    255,
+    .064);
+    box-shadow:0 20px 50px rgba(0,
+    0,
+    0,
+    .25);
+    animation:fadeUp .62s .22s ease both
+  }
+  .muja-card:before {
+    content:"";
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    background:radial-gradient(circle at 14% 0%,
+    rgba(98,
+    160,
+    255,
+    .18),
+    transparent 14rem),
+    radial-gradient(circle at 100% 0%,
+    rgba(255,
+    138,
+    36,
+    .12),
+    transparent 14rem)
+  }
+  .muja-card-inner {
+    position:relative;
+    z-index:1;
+    padding:16px
+  }
+  .muja-card-head {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-bottom:12px
+  }
+  .muja-tag {
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    width:fit-content;
+    padding:6px 9px;
+    border-radius:999px;
+    border:1px solid rgba(98,
+    160,
+    255,
+    .28);
+    background:rgba(98,
+    160,
+    255,
+    .11);
+    color:#d2e4ff;
+    font-size:9px;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.08em
+  }
+  .muja-tag svg {
+    width:13px;
+    height:13px
+  }
+  .muja-icon-box {
+    display:grid;
+    place-items:center;
+    width:40px;
+    height:40px;
+    border-radius:15px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .14);
+    background:rgba(255,
+    255,
+    255,
+    .07);
+    color:var(--gold)
+  }
+  .muja-icon-box svg {
+    width:20px;
+    height:20px
+  }
+  .muja-card h2 {
+    margin:0;
+    color:#fff;
+    font-size:16px;
+    line-height:1.12;
+    letter-spacing:-.03em
+  }
+  .muja-card p {
+    margin:7px 0 0;
+    color:var(--muted);
+    font-size:10.8px;
+    line-height:1.58
+  }
+  .quota-info {
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    margin-top:14px;
+    padding:11px 12px;
+    border-radius:18px;
+    border:1px solid rgba(247,
+    200,
+    91,
+    .22);
+    background:rgba(247,
+    200,
+    91,
+    .09)
+  }
+  .quota-text {
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    color:#ffdfa1;
+    font-size:10.5px;
+    font-weight:800
+  }
+  .quota-text svg {
+    width:15px;
+    height:15px
+  }
+  .quota-number {
+    padding:6px 9px;
+    border-radius:999px;
+    background:rgba(0,
+    0,
+    0,
+    .28);
+    color:var(--gold);
+    font-size:11px;
+    font-weight:800
+  }
+  .muja-progress-list {
+    display:grid;
+    gap:9px;
+    margin:15px 0 0;
+    padding:0;
+    list-style:none
+  }
+  .muja-progress-list li {
+    display:flex;
+    align-items:center;
+    gap:8px;
+    padding:9px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .10);
+    border-radius:15px;
+    background:rgba(255,
+    255,
+    255,
+    .045);
+    color:#dbe4f4;
+    font-size:10.2px;
+    font-weight:700
+  }
+  .muja-progress-list svg {
+    width:15px;
+    height:15px;
+    color:var(--green);
+    flex:0 0 auto
+  }
+  .muja-stage {
+    display:none;
+    animation:stageIn .44s ease both
+  }
+  .muja-stage.is-visible {
+    display:block
+  }
+  @keyframes stageIn {
+    from {
+      opacity:0;
+      transform:translateY(14px) scale(.985)
+    }
+    to {
+      opacity:1;
+      transform:translateY(0) scale(1)
+    }
+  }
+  .muja-video {
+    position:relative;
+    overflow:hidden;
+    margin-top:14px;
+    border-radius:22px;
+    aspect-ratio:16/9;
+    background:#000;
+    box-shadow:0 22px 48px rgba(0,
+    0,
+    0,
+    .34);
+    cursor:pointer;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .12)
+  }
+  .muja-video img {
+    width:100%;
+    height:100%;
+    display:block;
+    object-fit:cover;
+    transition:transform .55s ease,
+    filter .55s ease
+  }
+  .muja-video:hover img {
+    transform:scale(1.06);
+    filter:brightness(.92) saturate(1.08)
+  }
+  .muja-play {
+    position:absolute;
+    inset:0;
+    display:grid;
+    place-items:center;
+    background:linear-gradient(180deg,
+    transparent,
+    rgba(0,
+    0,
+    0,
+    .22))
+  }
+  .muja-play span {
+    display:grid;
+    place-items:center;
+    width:58px;
+    height:58px;
+    border-radius:22px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .20);
+    background:rgba(8,
+    9,
+    18,
+    .68);
+    color:white;
+    backdrop-filter:blur(16px);
+    -webkit-backdrop-filter:blur(16px);
+    transition:transform .25s cubic-bezier(.2,
+    .9,
+    .25,
+    1.4),
+    background .25s ease
+  }
+  .muja-video:hover .muja-play span {
+    transform:scale(1.08);
+    background:rgba(255,
+    138,
+    36,
+    .22)
+  }
+  .muja-play svg {
+    width:26px;
+    height:26px
+  }
+  .muja-step-info {
+    display:flex;
+    align-items:flex-start;
+    gap:8px;
+    margin-top:12px;
+    padding:10px 11px;
+    border:1px solid rgba(247,
+    200,
+    91,
+    .18);
+    border-radius:17px;
+    background:rgba(247,
+    200,
+    91,
+    .08);
+    color:#ffdfa1;
+    font-size:10.5px;
+    font-weight:700;
+    line-height:1.48
+  }
+  .muja-step-info svg {
+    width:15px;
+    height:15px;
+    flex:0 0 auto;
+    margin-top:1px
+  }
+  .muja-actions {
+    display:grid;
+    gap:9px;
+    margin-top:12px
+  }
+  .button-group {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+    margin-top:9px
+  }
+  .muja-btn,
+  .verify-btn,
+  .submit-email,
+  .submit-password,
+  .btn-canva-pro,
+  .btn-wa-special,
+  .btn-tg-special,
+  .btn-join-group-small,
+  .btn-tutorial-small,
+  .btn-see-password,
+  .btn-join-group,
+  .btn-understand {
+    position:relative;
+    overflow:hidden;
+    width:100%;
+    min-height:39px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    padding:10px 12px;
+    border-radius:15px;
+    border:1px solid rgba(255,
+    255,
+    255,
+    .16);
+    text-decoration:none;
+    font-family:inherit;
+    font-size:11px;
+    font-weight:800;
+    cursor:pointer;
+    color:#fff;
+    background:rgba(255,
+    255,
+    255,
+    .06);
+    transition:transform .22s cubic-bezier(.2,
+    .9,
+    .25,
+    1.4),
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease,
+    filter .22s ease;
+    -webkit-tap-highlight-color:transparent
+  }
+  .muja-btn:hover,
+  .verify-btn:hover,
+  .submit-email:hover,
+  .submit-password:hover,
+  .btn-canva-pro:hover,
+  .btn-wa-special:hover,
+  .btn-tg-special:hover,
+  .btn-join-group-small:hover,
+  .btn-tutorial-small:hover,
+  .btn-see-password:hover,
+  .btn-join-group:hover,
+  .btn-understand:hover {
+    transform:translateY(-2px) scale(1.012);
+    border-color:rgba(255,
+    255,
+    255,
+    .28);
+    filter:saturate(1.06)
+  }
+  .muja-btn:active,
+  .verify-btn:active,
+  .submit-email:active,
+  .submit-password:active,
+  .btn-canva-pro:active,
+  .btn-wa-special:active,
+  .btn-tg-special:active,
+  .btn-join-group-small:active,
+  .btn-tutorial-small:active,
+  .btn-see-password:active,
+  .btn-join-group:active,
+  .btn-understand:active {
+    transform:translateY(1px) scale(.975)
+  }
+  .muja-btn:after,
+  .verify-btn:after,
+  .submit-email:after,
+  .submit-password:after,
+  .btn-canva-pro:after,
+  .btn-wa-special:after,
+  .btn-tg-special:after,
+  .btn-join-group-small:after,
+  .btn-tutorial-small:after,
+  .btn-see-password:after,
+  .btn-join-group:after,
+  .btn-understand:after {
+    content:"";
+    position:absolute;
+    width:16px;
+    height:16px;
+    border-radius:999px;
+    background:rgba(255,
+    255,
+    255,
+    .42);
+    left:var(--x,
+    50%);
+    top:var(--y,
+    50%);
+    transform:translate(-50%,
+    -50%) scale(0);
+    opacity:0;
+    pointer-events:none
+  }
+  .muja-ripple:after {
+    animation:ripple .54s ease-out
+  }
+  @keyframes ripple {
+    0% {
+      transform:translate(-50%,
+      -50%) scale(0);
+      opacity:.55
+    }
+    100% {
+      transform:translate(-50%,
+      -50%) scale(18);
+      opacity:0
+    }
+  }
+  button svg,
+  .muja-btn svg,
+  .admin-link svg {
+    width:15px;
+    height:15px;
+    flex:0 0 auto
+  }
+  .verify-btn,
+  .submit-password,
+  .btn-canva-pro,
+  .btn-see-password {
+    color:#1c0c03;
+    background:linear-gradient(135deg,
+    #ffd59d,
+    var(--orange));
+    box-shadow:0 16px 32px rgba(255,
+    138,
+    36,
+    .24)
+  }
+  .submit-email,
+  .btn-join-group-small,
+  .btn-join-group {
+    background:linear-gradient(135deg,
+    #86f7c9,
+    #22c55e);
+    color:#061409;
+    box-shadow:0 16px 32px rgba(53,
+    220,
+    164,
+    .18)
+  }
+  .btn-tg-special {
+    background:linear-gradient(135deg,
+    #a8ceff,
+    var(--blue2));
+    color:#06111f;
+    box-shadow:0 16px 32px rgba(98,
+    160,
+    255,
+    .22)
+  }
+  .btn-tutorial-small,
+  .btn-understand {
+    background:linear-gradient(135deg,
+    #ffe7a5,
+    var(--gold));
+    color:#1b1003;
+    box-shadow:0 16px 32px rgba(247,
+    200,
+    91,
+    .20)
+  }
+  .btn-wa-special {
+    background:linear-gradient(135deg,
+    #62f0a2,
+    #16a34a);
+    color:#061409
+  }
+  button:disabled {
+    cursor:not-allowed;
+    opacity:.72;
+    transform:none!important
+  }
+  .loading-spinner {
+    display:inline-block;
+    width:16px;
+    height:16px;
+    border:2px solid rgba(255,
+    255,
+    255,
+    .35);
+    border-top-color:currentColor;
+    border-radius:50%;
+    animation:spin .78s linear infinite
+  }
+  .loading-text {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px
+  }
+  @keyframes spin {
+    to {
+      transform:rotate(360deg)
+    }
+  }
+  .muja-form-title {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    margin:0 0 14px;
+    color:#ffdfa1;
+    font-size:12px;
+    font-weight:800;
+    text-align:center
+  }
+  .muja-form-title svg {
+    width:16px;
+    height:16px
+  }
+  .email-input,
+  .wa-input,
+  .password-input {
+    width:100%;
+    margin-bottom:12px;
+    padding:13px 14px;
+    border-radius:16px;
+    border:1px solid rgba(247,
+    200,
+    91,
+    .26);
+    outline:none;
+    background:rgba(0,
+    0,
+    0,
+    .24);
+    color:var(--text);
+    font:inherit;
+    font-size:12px;
+    text-align:center;
+    transition:border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease,
+    transform .2s ease
+  }
+  .email-input:focus,
+  .wa-input:focus,
+  .password-input:focus {
+    border-color:rgba(255,
+    138,
+    36,
+    .6);
+    background:rgba(0,
+    0,
+    0,
+    .32);
+    box-shadow:0 0 0 4px rgba(255,
+    138,
+    36,
+    .11);
+    transform:translateY(-1px)
+  }
+  .email-input::placeholder,
+  .wa-input::placeholder,
+  .password-input::placeholder {
+    color:var(--soft)
+  }
+  .email-note {
+    min-height:4px;
+    color:#ffdfa1;
+    font-size:10px;
+    margin-top:-6px;
+    margin-bottom:8px;
+    text-align:center
+  }
+  .message-box {
+    display:none;
+    margin-top:10px;
+    padding:11px 12px;
+    border-radius:16px;
+    font-size:10.6px;
+    font-weight:700;
+    line-height:1.48;
+    animation:messagePop .28s ease both
+  }
+  @keyframes messagePop {
+    from {
+      opacity:0;
+      transform:translateY(8px) scale(.98)
+    }
+    to {
+      opacity:1;
+      transform:translateY(0) scale(1)
+    }
+  }
+  .success {
+    color:#c7ffe6;
+    background:rgba(34,
+    197,
+    94,
+    .15);
+    border:1px solid rgba(34,
+    197,
+    94,
+    .24)
+  }
+  .error {
+    color:#ffd2dc;
+    background:rgba(255,
+    94,
+    122,
+    .14);
+    border:1px solid rgba(255,
+    94,
+    122,
+    .26)
+  }
+  .warning {
+    color:#ffdfa1;
+    background:rgba(247,
+    200,
+    91,
+    .12);
+    border:1px solid rgba(247,
+    200,
+    91,
+    .26)
+  }
+  .info {
+    color:#d2e4ff;
+    background:rgba(98,
+    160,
+    255,
+    .13);
+    border:1px solid rgba(98,
+    160,
+    255,
+    .25)
+  }
+  .full-quota-section,
+  .device-blocked-section,
+  .warning-popup,
+  .blocked-highlight {
+    display:none;
+    animation:stageIn .44s ease both
+  }
+  .full-quota-section.is-visible,
+  .device-blocked-section.is-visible,
+  .warning-popup.is-visible,
+  .blocked-highlight.is-visible {
+    display:block
+  }
+  .muja-alert-card {
+    text-align:center;
+    border:1px solid rgba(255,
+    94,
+    122,
+    .24);
+    background:radial-gradient(circle at top,
+    rgba(255,
+    94,
+    122,
+    .16),
+    transparent 16rem),
+    rgba(255,
+    255,
+    255,
+    .055);
+    border-radius:24px;
+    padding:16px
+  }
+  .muja-alert-icon {
+    display:grid;
+    place-items:center;
+    width:58px;
+    height:58px;
+    margin:0 auto 12px;
+    border-radius:20px;
+    border:1px solid rgba(255,
+    94,
+    122,
+    .26);
+    background:rgba(255,
+    94,
+    122,
+    .13);
+    color:#ffd2dc
+  }
+  .muja-alert-icon svg {
+    width:28px;
+    height:28px
+  }
+  .muja-alert-title {
+    margin:0 0 10px;
+    color:#ffd2dc;
+    font-size:18px;
+    font-weight:800;
+    letter-spacing:-.03em
+  }
+  .muja-alert-message {
+    margin:0 0 14px;
+    color:#ffe5a8;
+    font-size:11.2px;
+    line-height:1.65
+  }
+  .full-quota-buttons {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px
+  }
+  .warning-popup {
+    border-color:rgba(247,
+    200,
+    91,
+    .26);
+    background:radial-gradient(circle at top,
+    rgba(247,
+    200,
+    91,
+    .14),
+    transparent 16rem),
+    rgba(255,
+    255,
+    255,
+    .055)
+  }
+  .warning-popup .muja-alert-icon {
+    border-color:rgba(247,
+    200,
+    91,
+    .26);
+    background:rgba(247,
+    200,
+    91,
+    .13);
+    color:#ffdfa1
+  }
+  .warning-popup .muja-alert-title {
+    color:#ffdfa1
+  }
+  .password-hint-box {
+    display:none;
+    margin-top:13px;
+    padding:14px;
+    text-align:center;
+    border-radius:20px;
+    border:1px dashed rgba(247,
+    200,
+    91,
+    .44);
+    background:rgba(247,
+    200,
+    91,
+    .08);
+    animation:stageIn .35s ease both
+  }
+  .password-hint-box.is-visible {
+    display:block
+  }
+  .password-hint-icon {
+    display:grid;
+    place-items:center;
+    width:44px;
+    height:44px;
+    margin:0 auto 10px;
+    border-radius:16px;
+    border:1px solid rgba(247,
+    200,
+    91,
+    .26);
+    color:#ffdfa1;
+    background:rgba(247,
+    200,
+    91,
+    .10)
+  }
+  .password-hint-icon svg {
+    width:22px;
+    height:22px
+  }
+  .password-hint-text {
+    color:#ffe5a8;
+    font-size:10.8px;
+    font-weight:800;
+    line-height:1.52;
+    letter-spacing:.04em;
+    margin-bottom:12px;
+    text-transform:uppercase
+  }
+  .join-section p {
+    text-align:center;
+    margin:8px 0 14px;
+    color:var(--muted);
+    font-size:10.8px;
+    line-height:1.55
+  }
+  .join-group-section {
+    margin-top:14px;
+    padding:13px;
+    border-radius:20px;
+    border:1px solid rgba(98,
+    160,
+    255,
+    .25);
+    background:rgba(98,
+    160,
+    255,
+    .08);
+    text-align:center
+  }
+  .join-group-section h4 {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    margin:0 0 10px;
+    color:#d2e4ff;
+    font-size:11px;
+    font-weight:800
+  }
+  .join-group-section h4 svg {
+    width:15px;
+    height:15px
+  }
+  .join-group-note {
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
+    color:var(--muted);
+    font-size:9.8px;
+    margin:9px 0 0
+  }
+  .join-group-note svg {
+    width:13px;
+    height:13px
+  }
+  .admin-link {
+    text-align:center;
+    margin-top:14px;
+    padding-top:13px;
+    border-top:1px dashed rgba(255,
+    255,
+    255,
+    .16)
+  }
+  .admin-link a {
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:7px;
+    color:#ffdfa1;
+    text-decoration:none;
+    font-size:10.5px;
+    font-weight:800
+  }
+  .admin-link svg {
+    width:14px;
+    height:14px
+  }
+  .muja-footer {
+    position:relative;
+    z-index:1;
+    padding:4px 18px 20px;
+    text-align:center;
+    color:var(--soft);
+    font-size:10px;
+    font-weight:700
+  }
+  .static_page .item-post h1.entry-title,
+  #breadcrumb,
+  .separator {
+    display:none!important
+  }
+  .post-inner-area,
+  #center-container,
+  #outer-wrapper {
+    background:transparent!important
+  }
+  .mega-outer {
+    display:none!important
+  }
+  @media(max-width:880px) {
+    .muja-page {
+      width:min(100% - 12px,
+      640px)
+    }
+    .muja-hero {
+      grid-template-columns:1fr
+    }
+  
+    .muja-logo-hero {
+      width:104px;
+      height:104px;
+      border-radius:30px
+    }
+    .muja-orbit {
+      width:200px;
+      height:200px
+    }
+    .muja-main-grid {
+      grid-template-columns:1fr
+    }
+  }
+  @media(max-width:520px) {
+    .muja-page {
+      width:min(100% - 10px,
+      640px);
+      padding-top:8px
+    }
+    .muja-topbar {
+      border-radius:20px;
+      padding:8px
+    }
+    .brand-mark {
+      width:42px;
+      height:42px;
+      border-radius:15px
+    }
+    .muja-brand-sub,
+    .muja-status {
+      display:none
+    }
+    .muja-shell {
+      border-radius:26px
+    }
+    .muja-hero {
+      padding:20px 13px 14px;
+      gap:12px
+    }
+    .muja-title {
+      font-size:clamp(1.55rem,
+      8.7vw,
+      2.2rem)
+    }
+    .muja-desc {
+      font-size:10.5px
+    }
+    .muja-hero-note {
+      font-size:10px;
+      border-radius:15px
+    }
+   
+    .muja-logo-hero {
+      width:76px;
+      height:76px;
+      border-radius:22px
+    }
+    .muja-orbit {
+      width:142px;
+      height:142px
+    }
+    .muja-floating-card {
+      display:none
+    }
+    .muja-main-grid {
+      padding:0 10px 12px;
+      gap:9px
+    }
+    .muja-card {
+      border-radius:22px
+    }
+    .muja-card-inner {
+      padding:12px
+    }
+    .muja-card h2 {
+      font-size:14px
+    }
+    .muja-card p {
+      font-size:10px
+    }
+    .button-group,
+    .full-quota-buttons {
+      grid-template-columns:1fr 1fr;
+      gap:8px
+    }
+    .muja-btn,
+    .verify-btn,
+    .submit-email,
+    .submit-password,
+    .btn-canva-pro,
+    .btn-wa-special,
+    .btn-tg-special,
+    .btn-join-group-small,
+    .btn-tutorial-small,
+    .btn-see-password,
+    .btn-join-group,
+    .btn-understand {
+      min-height:34px;
+      padding:8px 8px;
+      border-radius:12px;
+      font-size:10px
+    }
+    .email-input,
+    .wa-input,
+    .password-input {
+      padding:11px 12px;
+      border-radius:13px;
+      font-size:11px
+    }
+    .muja-alert-title {
+      font-size:15px
+    }
+  }
+  @media(prefers-reduced-motion:reduce) {
+    *,
+    *:before,
+    *:after {
+      animation-duration:.001ms!important;
+      animation-iteration-count:1!important;
+      scroll-behavior:auto!important;
+      transition:none!important
+    }
+  }
+  </style>
+</head>
+
+<body>
+<div class="muja-aurora" aria-hidden="true">
+</div><div class="muja-shine-bg" aria-hidden="true">
+</div>
+<main class="muja-page">
+  <nav class="muja-topbar" aria-label="Brand">
+    <a class="muja-brand" href="https://mujahiid.xo.je/" aria-label="Mujahiid Canva Pro">
+      <span class="brand-mark" aria-hidden="true">
+        <img src="logo-mujahiid.png?v=20260808
+        " alt="Logo Mujahiid">
+      </span><span>
+      <span class="muja-brand-title">
+        Mujahiid
+      </span><span class="muja-brand-sub">
+      Canva Pro Verification
+    </span>
+  </span>
+</a>
+      <div class="muja-top-actions">
+  <button
+    id="mujaThemeToggle"
+    class="muja-theme-toggle"
+    type="button"
+    aria-label="Ganti tema"
+    aria-pressed="false"
+    title="Ganti tema"
+  >
+    <svg class="muja-sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <svg class="muja-moon-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 14.4A8.5 8.5 0 0 1 9.6 3a7 7 0 1 0 11.4 11.4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </button><span class="muja-status">
+Akses Aktif
+          </span></div>
+</nav>
+<section id="top" class="muja-shell">
+  <div class="muja-hero">
+    <div>
+      <div class="muja-kicker">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path d="M12 3l2.3 4.65 5.13.74-3.71 3.62.88 5.11L12 14.7l-4.6 2.42.88-5.11-3.71-3.62 5.13-.74L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        </svg>Verifikasi resmi
+      </div><h1 class="muja-title">
+      Aktivasi <span>
+      Canva Pro
+    </span>
+  </h1><p class="muja-desc">
+  Selesaikan verifikasi video, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.
+</p><div class="muja-hero-note">
+<svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+  <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+  <path d="M12 8v5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  <path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+</svg><span>
+Gunakan email Gmail aktif. Sistem akan menolak spam email dan device yang terdeteksi melanggar aturan.
+</span>
+</div>
+</div>
+<div class="muja-floating-card muja-float-1">
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="2"/>
+  <path d="M10 9l5 3-5 3V9z" fill="currentColor"/>
+</svg><span>
+Video Check<small>
+Like & komentar
+</small>
+</span>
+</div><div class="muja-floating-card muja-float-2">
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M7 10V8a5 5 0 0110 0v2M6 10h12v9H6z" stroke="currentColor" stroke-width="2"/>
+</svg><span>
+Password<small>
+Konfirmasi akhir
+</small>
+</span>
+</div>
+</div>
+</div>
+<div class="muja-main-grid">
+  <aside class="muja-card">
+    <div class="muja-card-inner">
+      <div class="muja-card-head">
+        <span class="muja-tag">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M10 11a4 4 0 100-8 4 4 0 000 8M21 21v-2a4 4 0 00-3-3.87M17 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>Status Kuota
+        </span><span class="muja-icon-box" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M4 19V5M8 19v-8M12 19V8M16 19v-5M20 19V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </span>
+    </div><div class="quota-info" id="normalQuotaInfo">
+<span class="quota-text">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M10 11a4 4 0 100-8 4 4 0 000 8M21 21v-2a4 4 0 00-3-3.87M17 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+  </svg>Kuota tersisa
+</span><span class="quota-number" id="quotaDisplay">
+...
+</span>
+</div>
+</div>
+</aside>
+<section class="muja-card">
+  <div class="muja-card-inner">
+    <div class="full-quota-section muja-alert-card" id="fullQuotaSection">
+      <div class="muja-alert-icon">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M17 21v-2a4 4 0 00-4-4H7a4 4 0 00-4 4v2M10 11a4 4 0 100-8 4 4 0 000 8M21 21v-2a4 4 0 00-3-3.87M17 3.13a4 4 0 010 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+      </div><div class="muja-alert-title">
+      Canva Pro Sudah Full
+    </div><div class="muja-alert-message">
+    Tunggu beberapa menit atau beberapa jam sampai halaman terbuka kembali. Join grup untuk info pembaruan Canva Pro hari ini.
+  </div><div class="full-quota-buttons">
+  <button class="btn-wa-special" id="fullQuotaWaBtn">
+    WhatsApp
+  </button><button class="btn-tg-special" id="fullQuotaTgBtn">
+  Telegram
+</button>
+</div>
+</div>
+<div class="device-blocked-section muja-alert-card" id="deviceBlockedSection">
+  <div class="muja-alert-icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+      <path d="M5.8 5.8l12.4 12.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+  </div><div class="muja-alert-title">
+  Device Diblokir
+</div><div class="muja-alert-message" id="deviceBlockedMessage">
+Terdeteksi aktivitas spam dengan beberapa email berbeda di device yang sama.
+</div>
+</div>
+<div class="warning-popup muja-alert-card" id="warningPopup">
+  <div class="muja-alert-icon">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M12 3l9 16H3L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M12 9v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+      <path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+    </svg>
+  </div><div class="muja-alert-title">
+  Peringatan Spam
+</div><div class="muja-alert-message" id="warningPopupMessage">
+Jangan spam email. Jika join lagi pada device yang sama untuk ke-3 kalinya, sistem akan memblokir Anda selama 1 bulan.
+</div><button class="btn-understand" id="understandBtn">
+Saya Mengerti
+</button>
+</div>
+<div id="videoSection" class="muja-stage">
+  <div class="muja-card-head">
+    <span class="muja-tag">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="2"/>
+        <path d="M10 9l5 3-5 3V9z" fill="currentColor"/>
+      </svg>Tahap 1
+    </span><span class="muja-icon-box">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="2"/>
+      <path d="M10 9l5 3-5 3V9z" fill="currentColor"/>
+    </svg>
+  </span>
+</div><h2>
+Verifikasi Video
+</h2><p>
+Buka video, lalu lakukan like dan komentar sebagai bukti verifikasi.
+</p><div class="muja-video" id="videoThumb">
+<img src="https://img.youtube.com/vi/nleNUMqCwhc/maxresdefault.jpg" alt="Thumbnail" id="videoThumbImg">
+<div class="muja-play">
+  <span>
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M9 7l9 5-9 5V7z" fill="currentColor"/>
+    </svg>
+  </span>
+</div>
+</div><div class="muja-step-info">
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg><span>
+Wajib like dan komentar video sebagai bukti verifikasi.
+</span>
+</div><div class="muja-actions">
+<button id="verifyVideoBtn" class="verify-btn">
+  Verifikasi Video
+</button><div class="button-group">
+<button id="joinGroupGreenBtn" class="btn-join-group-small">
+  Join Grup
+</button><button id="tutorialYellowBtn" class="btn-tutorial-small">
+Tutorial
+</button>
+</div>
+    <ul class="muja-progress-list">
+<li>
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>Verifikasi video
+</li><li>
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>Konfirmasi email & WhatsApp
+</li><li>
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>Masukkan password
+</li><li>
+<svg viewBox="0 0 24 24" fill="none">
+  <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>Aktivasi Canva Pro
+</li>
+</ul>
+    <div class="admin-link">
+<a href="#" id="reportLink">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M21 15a4 4 0 01-4 4H7l-4 3V7a4 4 0 014-4h10a4 4 0 014 4v8z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+  </svg>Lapor Masalah
+</a>
+</div>
+</div><div id="videoMessage" class="message-box">
+</div>
+</div>
+<div id="emailSection" class="muja-stage">
+  <div class="muja-form-title">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+      <path d="M5 7l7 6 7-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>Masukkan Email & WhatsApp
+  </div><input type="email" id="userEmail" class="email-input" placeholder="contoh: nama@gmail.com" autocomplete="off">
+  <div class="email-note">
+  </div><input type="tel" id="userWhatsapp" class="wa-input" placeholder="Nomor WA contoh: 628123456789" autocomplete="off">
+  <button id="submitEmailBtn" class="submit-email">
+    Konfirmasi Email & WA
+  </button><div id="emailMessage" class="message-box">
+</div>
+</div>
+<div id="passwordSection" class="muja-stage">
+  <div class="muja-form-title">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M7 10V8a5 5 0 0110 0v2M6 10h12v9H6z" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 14v2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>Masukkan Ulang Password
+  </div><input type="password" id="confirmPassword" class="password-input" placeholder="Ketik password" autocomplete="off">
+  <button id="submitPasswordBtn" class="submit-password">
+    Konfirmasi Password
+  </button><div id="passwordMessage" class="message-box">
+</div><div class="password-hint-box" id="passwordHintBox">
+<div class="password-hint-icon">
+  <svg viewBox="0 0 24 24" fill="none">
+    <path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.75V16h8v-1.25A7 7 0 0012 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+</div><div class="password-hint-text" id="passwordHintText">
+Password ada di dalam video. Tiga huruf berada di waktu yang berbeda.
+</div><button class="btn-see-password" id="seePasswordBtn">
+Lihat Password
+</button>
+</div>
+</div>
+<div id="joinSection" class="muja-stage join-section">
+  <div class="muja-form-title">
+    <svg viewBox="0 0 24 24" fill="none">
+      <path d="M12 3l2.3 4.65 5.13.74-3.71 3.62.88 5.11L12 14.7l-4.6 2.42.88-5.11-3.71-3.62 5.13-.74L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>Berhasil, Aktifkan Canva Pro
+  </div><p>
+  Tekan tombol di bawah untuk membuka akses premium.
+</p><button id="activateNowBtn" class="btn-canva-pro">
+Aktifkan Sekarang
+</button><div id="joinMessage" class="message-box">
+</div>
+</div>
+<div id="blockedEmailSection" class="muja-stage blocked-highlight">
+  <div class="muja-alert-card" style="box-shadow:none;border:none;background:transparent">
+    <div class="muja-alert-icon">
+      <svg viewBox="0 0 24 24" fill="none">
+        <path d="M12 3l9 16H3L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M12 9v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        <path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+      </svg>
+    </div><div class="muja-alert-title" id="blockMessage">
+    Email Sudah Terdaftar
+  </div><div class="muja-alert-message">
+  <div id="remainingTimeText">
+  </div><div id="emailDisplay">
+</div>
+</div>
+</div><div class="join-group-section">
+<h4>
+  Bergabung Dengan Komunitas
+</h4><button id="joinGroupBtn" class="btn-join-group">
+Join Grup
+</button><p class="join-group-note">
+Dapatkan info update dan berita terbaru.
+</p>
+</div>
+</div>
+</div>
+</section>
+</div><footer class="muja-footer">
+© 2026
+Canva Unlock • Verifikasi Email, WA, dan Password
+</footer>
+</section>
+</main>
+
+  <script>
+  const SVG={
+    rocket:'<svg viewBox="0 0 24 24" fill="none"><path d="M13 4c3.6.45 6.05 2.9 7 7-3.15 1.05-5.65 3.35-7.5 6.5L9 14l-2.5-2.5C9.65 9.65 11.95 7.15 13 4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 16l-3 3M15 9h.01" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/></svg>',check:'<svg viewBox="0 0 24 24" fill="none"><path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg>',crown:'<svg viewBox="0 0 24 24" fill="none"><path d="M12 3l2.3 4.65 5.13.74-3.71 3.62.88 5.11L12 14.7l-4.6 2.42.88-5.11-3.71-3.62 5.13-.74L12 3z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg>',video:'<svg viewBox="0 0 24 24" fill="none"><path d="M4 6h16v12H4V6z" stroke="currentColor" stroke-width="2"/><path d="M10 9l5 3-5 3V9z" fill="currentColor"/></svg>',spinner:'<span class="loading-spinner"></span>'
+  };
+  const firebaseConfig={
+    apiKey: "AIzaSyAcN0uaLfWmxp3ZBbWIomPXHenx3gjr5-w",
+    authDomain: "akses-canva-pro-terbatas.firebaseapp.com",
+    databaseURL: "https://akses-canva-pro-terbatas-default-rtdb.asia-southeast1.firebasedatabase.app",
+    projectId: "akses-canva-pro-terbatas",
+    storageBucket: "akses-canva-pro-terbatas.firebasestorage.app",
+    messagingSenderId: "424693923668",
+    appId: "1:424693923668:web:ab4cc45f700a36699c12c1"
+  };
+  firebase.initializeApp(firebaseConfig);
+  const db=firebase.firestore();
+  const COLLECTION_USERS="canva_peserta_email",COLLECTION_BLOCKED="email_blocked",ACTIVATIONS_COLLECTION="user_activations",DEVICE_COLLECTION="device_fingerprints",DEVICE_BLOCKED_COLLECTION="device_blocked";
+  const BLOKIR_HARI=5,DEVICE_BLOCK_DAYS=30;
+  let MAX_USERS=100,REQUIRED_PASSWORD="GBG",CANVA_LINK="https://www.canva.com/brand/join?token=587NGnwuwj14rSzFrW2C1Q&referrer=team-invite",VIDEO_LINK="https://youtube.com/shorts/nleNUMqCwhc",WA_GROUP="https://chat.whatsapp.com/JsDrkBB1g1iIelyQU1PVcz",TG_GROUP="https://t.me/yourgroup",TUTORIAL_LINK="https://youtube.com/shorts/xvO7-WyBJ-k?si=BmnKiS0u7Ef1_dXr";
+  function hashString(str) {
+    let h1=0xdeadbeef^str.length,h2=0x41c6ce57^str.length;
+    for(let i=0,ch;
+    i<str.length;
+    i++) {
+      ch=str.charCodeAt(i);
+      h1=Math.imul(h1^ch,2654435761);
+      h2=Math.imul(h2^ch,1597334677)
+    }h1=Math.imul(h1^(h1>>>16),2246822507)^Math.imul(h2^(h2>>>13),3266489909);
+    h2=Math.imul(h2^(h2>>>16),2246822507)^Math.imul(h1^(h1>>>13),3266489909);
+    return(4294967296*(2097151&h2)+(h1>>>0)).toString(16)
+  }
+  function generateDeviceFingerprint() {
+    const components=[navigator.userAgent,navigator.platform,navigator.language,navigator.hardwareConcurrency||'unknown',navigator.deviceMemory||'unknown',screen.colorDepth,screen.width+'x'+screen.height,new Date().getTimezoneOffset(),!!window.sessionStorage,!!window.localStorage,navigator.cookieEnabled];
+    let canvasFingerprint='';
+    try{
+      const canvas=document.createElement('canvas'),ctx=canvas.getContext('2d');
+      canvas.width=200;
+      canvas.height=50;
+      ctx.textBaseline='top';
+      ctx.font='14px Arial';
+      ctx.fillStyle='#f60';
+      ctx.fillRect(125,1,62,20);
+      ctx.fillStyle='#069';
+      ctx.fillText('Device Fingerprint',2,15);
+      canvasFingerprint=canvas.toDataURL()
+    } catch(e) {
+    canvasFingerprint='canvas-error'
+  }components.push(canvasFingerprint);
+  return hashString(components.join('###'))
+  }
+  const deviceFingerprint=generateDeviceFingerprint();
+  function extractVideoId(url) {
+    try {
+      const parsed = new URL(url, window.location.origin);
+
+      if (parsed.hostname.includes('youtu.be')) {
+        const id = parsed.pathname.replace('/', '').split('/')[0];
+        return id || 'nleNUMqCwhc';
+      }
+
+      if (parsed.pathname.includes('/shorts/')) {
+        const parts = parsed.pathname.split('/shorts/');
+        const id = (parts[1] || '').split('/')[0];
+        return id || 'nleNUMqCwhc';
+      }
+
+      const watchId = parsed.searchParams.get('v');
+      if (watchId) return watchId;
+
+      if (parsed.pathname.includes('/embed/')) {
+        const parts = parsed.pathname.split('/embed/');
+        const id = (parts[1] || '').split('/')[0];
+        return id || 'nleNUMqCwhc';
+      }
+
+      return 'nleNUMqCwhc';
+    } catch (error) {
+      return 'nleNUMqCwhc';
+    }
+  }
+
+  function setVisible(el,visible) {
+    if(!el)return;
+    el.classList.toggle('is-visible',!!visible);
+    el.style.display=visible?'block':'none'
+  }
+  function setButtonLoading(button,text) {
+    if(!button)return'';
+    const original=button.innerHTML;
+    button.disabled=true;
+    button.innerHTML=`<span class="loading-text">${
+      SVG.spinner
+    } ${
+    text
+  }</span>`;
+  return original
+  }
+  function restoreButton(button,original) {
+    if(!button)return;
+    button.disabled=false;
+    button.innerHTML=original
+  }
+  function applySatisfyingClick() {
+    document.querySelectorAll('button,.admin-link a').forEach(el=> {
+      el.addEventListener('pointerdown',e=> {
+        const r=el.getBoundingClientRect();
+        el.style.setProperty('--x',`${
+          e.clientX-r.left
+        }px`);
+        el.style.setProperty('--y',`${
+          e.clientY-r.top
+        }px`);
+        el.classList.remove('muja-ripple');
+        void el.offsetWidth;
+        el.classList.add('muja-ripple')
+      })
+    })
+  }
+  async function fetchAllConfig() {
+    try{
+      const docSnap=await db.collection("admin_config").doc("settings").get();
+      if(docSnap.exists) {
+        const d=docSnap.data();
+        if(d.inviteLink)CANVA_LINK=d.inviteLink;
+        if(d.youtubeLink)VIDEO_LINK=d.youtubeLink;
+        if(d.maxUsers)MAX_USERS=d.maxUsers;
+        if(d.password)REQUIRED_PASSWORD=d.password;
+        if(d.waGroup)WA_GROUP=d.waGroup;
+        if(d.tgGroup)TG_GROUP=d.tgGroup;
+        if(d.tutorialLink)TUTORIAL_LINK=d.tutorialLink
+      }const videoId=extractVideoId(VIDEO_LINK);
+      videoThumbImg.src=`https://img.youtube.com/vi/${
+        videoId
+      }/maxresdefault.jpg`;
+      reportLink.href=WA_GROUP;
+      fullQuotaWaBtn.onclick=()=>window.open(WA_GROUP,'_blank');
+      fullQuotaTgBtn.onclick=()=>window.open(TG_GROUP,'_blank');
+      joinGroupBtn.onclick=()=>window.open(WA_GROUP,'_blank');
+      joinGroupGreenBtn.onclick=()=>window.open(WA_GROUP,'_blank')
+    } catch(e) {
+    console.warn("Gagal fetch config, menggunakan default.",e)
+  }
+  }
+  async function checkQuotaFull() {
+    try{
+      const snapshot=await db.collection(ACTIVATIONS_COLLECTION).get();
+      const actualUsed=snapshot.size;
+      const configSnap=await db.collection("admin_config").doc("settings").get();
+      let simulatedQuota=0;
+      if(configSnap.exists&&configSnap.data().simulatedQuota) {
+        simulatedQuota=configSnap.data().simulatedQuota
+      }const effectiveUsed=Math.max(actualUsed,simulatedQuota);
+      const remaining=Math.max(0,MAX_USERS-effectiveUsed);
+      quotaDisplay.innerHTML=`${
+        remaining
+      } / ${
+      MAX_USERS
+    }`;
+    return{
+      isFull:effectiveUsed>=MAX_USERS,used:effectiveUsed,remaining
+    }
+  } catch(e) {
+  console.error("Gagal cek kuota:",e);
+  quotaDisplay.innerHTML=`? / ${
+    MAX_USERS
+  }`;
+  return{
+    isFull:false,used:0,remaining:MAX_USERS
+  }
+  }
+  }
+  async function checkDeviceBlocked() {
+    try{
+      const snapshot=await db.collection(DEVICE_BLOCKED_COLLECTION).where("fingerprint","==",deviceFingerprint).where("expiredAt",">",Date.now()).limit(1).get();
+      if(!snapshot.empty) {
+        const data=snapshot.docs[0].data();
+        const remainingDays=Math.ceil((data.expiredAt-Date.now())/(1000*3600*24));
+        return{
+          blocked:true,remainingDays,reason:data.reason
+        }
+      }return{
+      blocked:false
+    }
+  } catch(e) {
+  console.error("Error cek device blocked:",e);
+  return{
+    blocked:false
+  }
+  }
+  }
+  async function checkDeviceSpam(currentEmail) {
+    try{
+      const snapshot=await db.collection(DEVICE_COLLECTION).where("fingerprint","==",deviceFingerprint).get();
+      const emails=new Set();
+      snapshot.forEach(doc=> {
+        const email=doc.data().email;
+        if(email)emails.add(email.toLowerCase())
+      });
+      emails.add(currentEmail.toLowerCase());
+      const emailCount=emails.size;
+      if(emailCount===1||emailCount===2) {
+        await db.collection(DEVICE_COLLECTION).add({
+          fingerprint:deviceFingerprint,email:currentEmail.toLowerCase(),timestamp:Date.now(),userAgent:navigator.userAgent,joinCount:emailCount
+        });
+        return{
+          isSpam:false,isWarning:emailCount===2,emailCount
+        }
+      }if(emailCount>=3) {
+      const blockExpiry=Date.now()+(DEVICE_BLOCK_DAYS*24*60*60*1000);
+      await db.collection(DEVICE_BLOCKED_COLLECTION).add({
+        fingerprint:deviceFingerprint,emails:Array.from(emails),reason:`Login spam dengan ${
+          emailCount
+        } email berbeda di device yang sama`,blockedAt:Date.now(),expiredAt:blockExpiry
+      });
+      return{
+        isSpam:true,emailCount
+      }
+    }return{
+    isSpam:false,isWarning:false
+  }
+  } catch(e) {
+  console.error("Error check device spam:",e);
+  return{
+    isSpam:false,isWarning:false
+  }
+  }
+  }
+  function validateGmail(email) {
+    const emailLower = email.toLowerCase().trim();
+
+    if (!emailLower.endsWith('@gmail.com')) {
+      return {
+        valid: false,
+        message: 'Format email salah. Hanya menerima email @gmail.com'
+      };
+    }
+
+    const namePart = emailLower.slice(0, -10);
+    const allowed = 'abcdefghijklmnopqrstuvwxyz0123456789._%+-';
+
+    if (!namePart || [...namePart].some(char => !allowed.includes(char))) {
+      return {
+        valid: false,
+        message: 'Format email salah. Contoh: nama@gmail.com'
+      };
+    }
+
+    return { valid: true };
+  }
+
+  function showMessage(element,msg,type="error") {
+    element.innerHTML=msg;
+    element.className=`message-box ${
+      type
+    }`;
+    element.style.display="block";
+    setTimeout(()=> {
+      element.style.display="none"
+    },5000)
+  }
+  function openWithDelay(url,button) {
+    const originalText=setButtonLoading(button,'Membuka');
+    setTimeout(()=> {
+      window.open(url,'_blank');
+      restoreButton(button,originalText)
+    },900)
+  }
+  async function checkEmailBlocked(email) {
+    const emailLower=email.toLowerCase().trim();
+    const snapshot=await db.collection(COLLECTION_BLOCKED).where("email","==",emailLower).limit(1).get();
+    if(snapshot.empty)return null;
+    const doc=snapshot.docs[0],data=doc.data(),now=Date.now();
+    if(data.expiredAt>now) {
+      return{
+        id:doc.id,...data,remainingDays:Math.ceil((data.expiredAt-now)/(1000*3600*24))
+      }
+    }await db.collection(COLLECTION_BLOCKED).doc(doc.id).delete();
+    return null
+  }
+  async function checkEmailRegistered(email) {
+    const emailLower=email.toLowerCase().trim();
+    const snapshot=await db.collection(COLLECTION_USERS).where("email","==",emailLower).limit(1).get();
+    if(snapshot.empty)return null;
+    return{
+      id:snapshot.docs[0].id,...snapshot.docs[0].data()
+    }
+  }
+  async function registerUser(email,whatsapp) {
+    const now=Date.now();
+    const newUser={
+      email:email.toLowerCase().trim(),whatsapp:whatsapp||'',registeredAt:now,deviceFingerprint:deviceFingerprint,createdAt:firebase.firestore.FieldValue.serverTimestamp()
+    };
+    const docRef=await db.collection(COLLECTION_USERS).add(newUser);
+    const blockedExpiry=now+(BLOKIR_HARI*24*60*60*1000);
+    await db.collection(COLLECTION_BLOCKED).add({
+      email:email.toLowerCase().trim(),expiredAt:blockedExpiry,registeredAt:now,userRef:docRef.id
+    });
+    return{
+      id:docRef.id,...newUser
+    }
+  }
+  const normalQuotaInfo=document.getElementById('normalQuotaInfo'),fullQuotaSection=document.getElementById('fullQuotaSection'),deviceBlockedSection=document.getElementById('deviceBlockedSection'),deviceBlockedMessage=document.getElementById('deviceBlockedMessage'),warningPopup=document.getElementById('warningPopup'),understandBtn=document.getElementById('understandBtn'),videoSection=document.getElementById('videoSection'),verifyBtn=document.getElementById('verifyVideoBtn'),joinGroupGreenBtn=document.getElementById('joinGroupGreenBtn'),tutorialYellowBtn=document.getElementById('tutorialYellowBtn'),videoMessage=document.getElementById('videoMessage'),emailSection=document.getElementById('emailSection'),userEmailInput=document.getElementById('userEmail'),userWhatsappInput=document.getElementById('userWhatsapp'),submitEmailBtn=document.getElementById('submitEmailBtn'),emailMessage=document.getElementById('emailMessage'),passwordSection=document.getElementById('passwordSection'),confirmPasswordInput=document.getElementById('confirmPassword'),submitPasswordBtn=document.getElementById('submitPasswordBtn'),passwordMessage=document.getElementById('passwordMessage'),joinSection=document.getElementById('joinSection'),activateNowBtn=document.getElementById('activateNowBtn'),joinMessage=document.getElementById('joinMessage'),blockedEmailSection=document.getElementById('blockedEmailSection'),blockMessage=document.getElementById('blockMessage'),remainingTimeText=document.getElementById('remainingTimeText'),emailDisplaySpan=document.getElementById('emailDisplay'),videoThumb=document.getElementById('videoThumb'),videoThumbImg=document.getElementById('videoThumbImg'),joinGroupBtn=document.getElementById('joinGroupBtn'),passwordHintBox=document.getElementById('passwordHintBox'),seePasswordBtn=document.getElementById('seePasswordBtn'),quotaDisplay=document.getElementById('quotaDisplay'),reportLink=document.getElementById('reportLink'),fullQuotaWaBtn=document.getElementById('fullQuotaWaBtn'),fullQuotaTgBtn=document.getElementById('fullQuotaTgBtn');
+  let videoVerified=false,videoTimer=null,currentEmail=null,currentWhatsapp=null,passwordAttempts=0;
+  videoThumb.addEventListener('click',()=>openWithDelay(VIDEO_LINK,videoThumb));
+  tutorialYellowBtn.addEventListener('click',()=>openWithDelay(TUTORIAL_LINK,tutorialYellowBtn));
+  understandBtn.addEventListener('click',()=> {
+    setVisible(warningPopup,false);
+    setVisible(emailSection,false);
+    setVisible(passwordSection,true);
+    passwordSection.scrollIntoView({
+      behavior:'smooth',block:'center'
+    })
+  });
+  async function checkAndDisplayBasedOnStatus() {
+    passwordAttempts=0;
+    setVisible(passwordHintBox,false);
+    const deviceBlocked=await checkDeviceBlocked();
+    if(deviceBlocked.blocked) {
+      normalQuotaInfo.style.display='none';
+      [fullQuotaSection,videoSection,emailSection,passwordSection,joinSection,blockedEmailSection,warningPopup].forEach(el=>setVisible(el,false));
+      setVisible(deviceBlockedSection,true);
+      deviceBlockedMessage.innerHTML=`${
+        deviceBlocked.reason||'Terdeteksi aktivitas spam dengan beberapa email berbeda di device yang sama.'
+      }<br><strong style="display:block;
+      margin-top:10px;
+      ">Anda diblokir ${
+        deviceBlocked.remainingDays
+      } hari lagi.</strong><span style="display:block;
+      margin-top:8px;
+      ">Patuhi peraturan admin dan jangan spam login.</span>`;
+      return
+    }setVisible(deviceBlockedSection,false);
+    setVisible(warningPopup,false);
+    const quotaStatus=await checkQuotaFull();
+    if(quotaStatus.isFull) {
+      normalQuotaInfo.style.display='none';
+      setVisible(fullQuotaSection,true);
+      [videoSection,emailSection,passwordSection,joinSection,blockedEmailSection].forEach(el=>setVisible(el,false));
+      return
+    }normalQuotaInfo.style.display='flex';
+    setVisible(fullQuotaSection,false);
+    setVisible(videoSection,true);
+    [emailSection,passwordSection,joinSection,blockedEmailSection].forEach(el=>setVisible(el,false));
+    videoVerified=false;
+    if(videoTimer)clearTimeout(videoTimer);
+    verifyBtn.disabled=false;
+    verifyBtn.innerHTML=`${
+      SVG.video
+    } Verifikasi Video`;
+    confirmPasswordInput.value='';
+    userEmailInput.value='';
+    userWhatsappInput.value='';
+    setVisible(passwordHintBox,false)
+  }
+  function startVerification() {
+    const originalText=setButtonLoading(verifyBtn,'Memulai Verifikasi');
+    showMessage(videoMessage,'Verifikasi video dimulai. Like dan komentar video sebagai bukti.','info');
+    setTimeout(()=> {
+      window.open(VIDEO_LINK,'_blank');
+      showMessage(videoMessage,'Video dibuka. Verifikasi berlangsung 10 detik.','info');
+      verifyBtn.innerHTML=`<span class="loading-text">${
+        SVG.spinner
+      } Menunggu Like & Komentar</span>`;
+      videoTimer=setTimeout(()=> {
+        videoVerified=true;
+        showMessage(videoMessage,'Verifikasi sukses. Sekarang masukkan email dan WhatsApp.','success');
+        setVisible(videoSection,false);
+        setVisible(emailSection,true);
+        restoreButton(verifyBtn,originalText);
+        emailSection.scrollIntoView({
+          behavior:'smooth',block:'center'
+        })
+      },10000)
+    },900)
+  }
+  verifyBtn.addEventListener('click',startVerification);
+  async function handleSubmitEmail() {
+    if(!videoVerified)return showMessage(emailMessage,'Verifikasi video dulu.','error');
+    const email=userEmailInput.value.trim(),whatsapp=userWhatsappInput.value.trim();
+    if(!email)return showMessage(emailMessage,'Email tidak boleh kosong.','warning');
+    const emailValidation=validateGmail(email);
+    if(!emailValidation.valid)return showMessage(emailMessage,emailValidation.message,'error');
+    if(!whatsapp)return showMessage(emailMessage,'Nomor WhatsApp tidak boleh kosong.','warning');
+    
+      const cleanWhatsapp = whatsapp.replace(/\s|-/g, '');
+      const waIsValid = cleanWhatsapp.length >= 10
+        && cleanWhatsapp.length <= 15
+        && [...cleanWhatsapp].every((char, index) => {
+          if (index === 0 && char === '+') return true;
+          return char >= '0' && char <= '9';
+        });
+
+      if (!waIsValid) {
+        return showMessage(
+          emailMessage,
+          'Format nomor WhatsApp tidak valid. Minimal 10 digit.',
+          'warning'
+        );
+      }
+
+      const originalText=setButtonLoading(submitEmailBtn,'Memeriksa Data');
+    try{
+      const emailLower=email.toLowerCase().trim();
+      const spamCheck=await checkDeviceSpam(emailLower);
+      if(spamCheck.isSpam) {
+        showMessage(emailMessage,`Device diblokir 1 bulan. Terdeteksi ${
+          spamCheck.emailCount
+        } email berbeda.`,'error');
+        setTimeout(()=>location.reload(),3000);
+        return
+      }const blocked=await checkEmailBlocked(emailLower);
+      if(blocked) {
+        blockMessage.innerHTML=`Email "${
+          emailLower
+        }" sudah pernah mendaftar.`;
+        remainingTimeText.innerHTML=`Sisa masa tunggu: ${
+          blocked.remainingDays
+        } hari`;
+        emailDisplaySpan.innerHTML=`Email terdaftar: ${
+          emailLower
+        }`;
+        setVisible(emailSection,false);
+        setVisible(blockedEmailSection,true);
+        return
+      }const existing=await checkEmailRegistered(emailLower);
+      if(existing)await db.collection(COLLECTION_USERS).doc(existing.id).delete();
+      currentEmail=emailLower;
+      currentWhatsapp=whatsapp;
+      await registerUser(emailLower,whatsapp);
+      if(spamCheck.isWarning) {
+        setVisible(emailSection,false);
+        setVisible(warningPopup,true);
+        warningPopup.scrollIntoView({
+          behavior:'smooth',block:'center'
+        });
+        return
+      }showMessage(emailMessage,'Data berhasil diverifikasi. Sekarang masukkan password.','success');
+      setTimeout(()=> {
+        setVisible(emailSection,false);
+        setVisible(passwordSection,true);
+        passwordAttempts=0;
+        setVisible(passwordHintBox,false);
+        passwordSection.scrollIntoView({
+          behavior:'smooth',block:'center'
+        })
+      },700)
+    } catch(err) {
+    showMessage(emailMessage,'Gagal: '+err.message,'error')
+  } finally{
+  restoreButton(submitEmailBtn,originalText)
+  }
+  }
+  submitEmailBtn.addEventListener('click',handleSubmitEmail);
+  userEmailInput.addEventListener('keypress',e=> {
+    if(e.key==='Enter')handleSubmitEmail()
+  });
+  userWhatsappInput.addEventListener('keypress',e=> {
+    if(e.key==='Enter')handleSubmitEmail()
+  });
+  function handlePasswordSubmit() {
+    if(!videoVerified)return showMessage(passwordMessage,'Verifikasi video dulu.','error');
+    if(!currentEmail)return showMessage(passwordMessage,'Email belum dimasukkan.','error');
+    const enteredPass=confirmPasswordInput.value.trim();
+    if(!enteredPass)return showMessage(passwordMessage,'Password tidak boleh kosong.','warning');
+    if(enteredPass!==REQUIRED_PASSWORD) {
+      passwordAttempts++;
+      setVisible(passwordHintBox,true);
+      showMessage(passwordMessage,'Password salah. Lihat petunjuk di bawah.','error');
+      confirmPasswordInput.value='';
+      return
+    }showMessage(passwordMessage,'Password benar. Silakan aktivasi Canva Pro.','success');
+    setVisible(passwordHintBox,false);
+    setTimeout(()=> {
+      setVisible(passwordSection,false);
+      setVisible(joinSection,true);
+      joinSection.scrollIntoView({
+        behavior:'smooth',block:'center'
+      })
+    },700)
+  }
+  submitPasswordBtn.addEventListener('click',handlePasswordSubmit);
+  confirmPasswordInput.addEventListener('keypress',e=> {
+    if(e.key==='Enter')handlePasswordSubmit()
+  });
+  seePasswordBtn.addEventListener('click',()=> {
+    window.open(VIDEO_LINK,'_blank');
+    showMessage(passwordMessage,'Video dibuka. Password 3 huruf ada di dalam video.','info')
+  });
+  async function handleActivateNow() {
+    if(!videoVerified)return showMessage(joinMessage,'Verifikasi gagal, ulangi proses.','error');
+    if(!currentEmail)return showMessage(joinMessage,'Email tidak ditemukan.','error');
+    const originalText=setButtonLoading(activateNowBtn,'Mengecek Kuota');
+    try{
+      const deviceBlocked=await checkDeviceBlocked();
+      if(deviceBlocked.blocked) {
+        showMessage(joinMessage,'Device Anda diblokir. Refresh halaman.','error');
+        setTimeout(()=>location.reload(),2000);
+        return
+      }const quotaStatus=await checkQuotaFull();
+      if(quotaStatus.isFull) {
+        showMessage(joinMessage,'Maaf, kuota sudah penuh. Refresh halaman.','error');
+        setTimeout(()=>location.reload(),2000);
+        return
+      }const existingCheck=await db.collection(ACTIVATIONS_COLLECTION).where("email","==",currentEmail).get();
+      if(!existingCheck.empty) {
+        showMessage(joinMessage,'Email sudah terdaftar. Membuka Canva Pro.','info');
+        window.open(CANVA_LINK,'_blank');
+        setTimeout(()=>location.reload(),2000);
+        return
+      }await db.collection(ACTIVATIONS_COLLECTION).add({
+      email:currentEmail,whatsapp:currentWhatsapp||'',deviceFingerprint:deviceFingerprint,joinedAt:Date.now(),userAgent:navigator.userAgent,platform:navigator.platform
+    });
+    showMessage(joinMessage,'Selamat, akses Canva Pro dibuka.','success');
+    window.open(CANVA_LINK,'_blank');
+    setTimeout(()=>location.reload(),2000)
+  } catch(error) {
+  showMessage(joinMessage,'Terjadi kesalahan: '+error.message,'error')
+  } finally{
+  restoreButton(activateNowBtn,originalText)
+  }
+  }
+  activateNowBtn.addEventListener('click',handleActivateNow);
+  window.addEventListener('load',async()=> {
+    applySatisfyingClick();
+    await fetchAllConfig();
+    checkAndDisplayBasedOnStatus()
+  });
+  </script>
+</body>
+</html>
