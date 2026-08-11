@@ -1,77 +1,44 @@
-============================================================
-PANDUAN ADMIN PORTAL BLK - VERSI SUPABASE STORAGE
-============================================================
+PANDUAN ADMIN BLK - LOGIN FIREBASE + FOTO SUPABASE
+=================================================
 
-VERSI INI TIDAK MENGGUNAKAN FIREBASE STORAGE.
+VERSI INI TIDAK MEMINTA PASSWORD SUPABASE.
 
-Arsitektur:
-- Firebase Authentication : login admin utama
-- Firestore               : data modul, catatan, URL/path, pengaturan portal
-- Supabase Auth           : otorisasi upload/hapus Storage
-- Supabase Storage        : contoh foto + file materi dari perangkat
-- Vercel                  : hosting website
+LOGIN ADMIN
+- Halaman /admin-blk/ hanya login dengan Firebase Authentication.
+- Email dan password yang dimasukkan adalah akun Firebase.
+- Jika lupa password, klik "Lupa password Firebase? Kirim email reset" pada halaman login.
+- Supabase Authentication tidak dipakai oleh halaman admin.
 
-Untuk pemasangan pertama, ikuti langkah lengkap di:
-PANDUAN-SUPABASE-BLK.txt
+PENYIMPANAN
+- Firebase Authentication : login admin
+- Firestore               : data modul, catatan, URL/path, pengaturan
+- Supabase Storage        : contoh foto dan file materi upload
+- Vercel API              : membuat izin upload Supabase secara aman
 
-File setup Supabase:
-SUPABASE-SETUP.sql
+SUPABASE
+- Bucket: blk-assets
+- Project URL dan Publishable Key tetap berada di admin-blk/supabase-config.js
+- Secret key JANGAN dimasukkan ke GitHub/HTML.
 
-File konfigurasi yang harus diisi:
-admin-blk/supabase-config.js
+VERCEL
+Hanya satu Environment Variable yang WAJIB untuk project Supabase yang sekarang:
 
-============================================================
-FITUR MATERI LENGKAP
-============================================================
+SUPABASE_SECRET_KEY = sb_secret_...
 
-Setiap modul mempunyai tiga bagian:
-1. FILE MATERI
-2. CATATAN
-3. CONTOH FOTO
+Ambil dari Supabase > Settings > API Keys > Secret keys.
+Masukkan hanya di Vercel > Project > Settings > Environment Variables.
+Setelah Save, lakukan Redeploy.
 
-Admin dapat mengatur masing-masing bagian agar tampil atau disembunyikan.
-Menyembunyikan bagian tidak menghapus isinya.
+Environment Variable berikut OPSIONAL:
+SUPABASE_URL    (sudah ada fallback ke project Anda sekarang)
+SUPABASE_BUCKET (default blk-assets)
+ADMIN_EMAILS    (jika ingin membatasi email Firebase tertentu)
 
-CONTOH FOTO
-- Admin dapat menambah beberapa foto.
-- Admin dapat memberi judul dan keterangan.
-- JPG, PNG, WEBP.
-- Maksimal 8 MB per foto.
-- Disimpan di Supabase Storage.
-- Peserta hanya melihat pratinjau.
-- Tidak ada tombol edit atau download untuk peserta.
+UPLOAD FOTO
+1. Login /admin-blk/ dengan akun Firebase.
+2. Modul Pelatihan > pilih modul > Kelola File & Catatan.
+3. Tab Contoh Foto > Tambah foto.
+4. Pilih JPG/PNG/WEBP, maksimal 8 MB.
+5. Klik Simpan foto.
 
-FILE MATERI
-- Mode Upload dari perangkat memakai Supabase Storage.
-- Maksimal 25 MB per file.
-- Mode Link tetap bisa dipakai untuk file yang sudah berada di Google Drive,
-  website lain, dan sebagainya.
-
-CATATAN
-- Tetap disimpan di Firestore.
-- Tidak memerlukan Supabase Storage.
-
-============================================================
-UPLOAD KE GITHUB
-============================================================
-
-Untuk versi update ini, unggah/ganti:
-1. admin-blk/index.html
-2. admin-blk/supabase-config.js
-3. blk/index.html
-
-Setelah setup Supabase selesai, file berikut tidak wajib dipasang di website:
-- SUPABASE-SETUP.sql
-- PANDUAN-SUPABASE-BLK.txt
-- PANDUAN-ADMIN-BLK.txt
-
-============================================================
-PENTING
-============================================================
-
-Jangan menaruh Supabase Secret key atau service_role key di HTML/JavaScript.
-Gunakan Publishable key atau anon/public key saja.
-
-Setelah pertama kali memasang Supabase, Logout dari halaman admin lalu Login
-ulang agar sesi Firebase dan Supabase aktif bersama.
-============================================================
+Tidak perlu akun atau password Supabase Authentication.

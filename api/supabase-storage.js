@@ -2,6 +2,7 @@ import { createClient } from "@supabase/supabase-js";
 
 const FIREBASE_WEB_API_KEY = "AIzaSyAcN0uaLfWmxp3ZBbWIomPXHenx3gjr5-w";
 const DEFAULT_BUCKET = "blk-assets";
+const DEFAULT_SUPABASE_URL = "https://nvvkmdohelulylymlpme.supabase.co";
 
 function json(res, status, payload) {
   res.status(status).json(payload);
@@ -34,7 +35,7 @@ export default async function handler(req, res) {
     return json(res, 405, { error: "METHOD_NOT_ALLOWED" });
   }
 
-  const supabaseUrl = process.env.SUPABASE_URL;
+  const supabaseUrl = process.env.SUPABASE_URL || DEFAULT_SUPABASE_URL;
   const supabaseSecretKey = process.env.SUPABASE_SECRET_KEY;
   const bucket = process.env.SUPABASE_BUCKET || DEFAULT_BUCKET;
   const allowedEmails = String(process.env.ADMIN_EMAILS || "")
@@ -42,7 +43,7 @@ export default async function handler(req, res) {
     .map((v) => v.trim().toLowerCase())
     .filter(Boolean);
 
-  if (!supabaseUrl || !supabaseSecretKey) {
+  if (!supabaseSecretKey) {
     return json(res, 500, { error: "STORAGE_API_CONFIG" });
   }
 
