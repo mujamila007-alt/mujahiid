@@ -11,5 +11,5 @@
 // ============================================================
 
 export const SUPABASE_URL = "https://nvvkmdohelulylymlpme.supabase.co";
-export const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_stiQnbYfeTfXit4lT0F4Sg_Y87b5Jvu";
+export const SUPABASE_PUBLISHABLE_KEY = "sb_secret_KidNj7E8nEAF2GBRvlFivQ_SU78BGDI";
 export const SUPABASE_BUCKET = "blk-assets";
