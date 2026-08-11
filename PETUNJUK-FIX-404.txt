@@ -1,0 +1,28 @@
+FIX ERROR 404 supabase-config.js
+===============================
+
+Masalah:
+Browser meminta:
+https://www.mujaprime.web.id/supabase-config.js
+
+Padahal file berada di:
+https://www.mujaprime.web.id/admin-blk/supabase-config.js
+
+Perbaikan yang sudah dilakukan:
+1. Import supabase-config.js memakai path absolut /admin-blk/supabase-config.js.
+2. URL callback login tanpa password dinormalisasi ke /admin-blk/.
+3. supabase-config.js yang sudah berisi konfigurasi Anda ikut disertakan.
+4. blk/index.html tetap menyertakan tombol Copy Text pada Catatan Pelatihan.
+
+UPLOAD KE GITHUB:
+- admin-blk/index.html
+- admin-blk/supabase-config.js
+- blk/index.html
+
+Setelah commit:
+1. Tunggu Vercel selesai deploy.
+2. Buka https://www.mujaprime.web.id/admin-blk/
+3. Tekan Ctrl+F5 agar cache lama dibuang.
+4. Coba masukkan email admin dan klik Kirim Link Masuk.
+
+Jangan letakkan supabase-config.js di root website.
