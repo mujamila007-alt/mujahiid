@@ -101,6 +101,26 @@ G. KEAMANAN
 - File Storage dapat dibaca peserta yang mempunyai link.
 - Hanya pengguna yang login Firebase Authentication yang dapat mengunggah, mengedit, dan menghapus file.
 
+H. CONTOH FOTO DAN PENGATURAN TAMPILAN MATERI
+
+1. Buka admin-blk lalu pilih Modul Pelatihan.
+2. Klik Kelola file & catatan pada modul yang ingin diatur.
+3. Pada bagian Tampilan peserta, tersedia tiga pilihan:
+   - File materi
+   - Catatan
+   - Contoh foto
+4. Hilangkan centang File materi jika file belum tersedia. Data file tidak dihapus, hanya tidak ditampilkan pada portal peserta.
+5. Hilangkan centang Catatan jika penjelasan/catatan belum tersedia. Data catatan tetap tersimpan.
+6. Buka tab Contoh Foto lalu klik Tambah foto.
+7. Isi judul contoh, keterangan bagian yang harus terlihat, lalu unggah JPG, PNG, atau WEBP maksimal 8 MB.
+8. Contoh foto dapat diedit keterangannya atau dihapus oleh admin.
+9. Di portal peserta, tab Contoh Foto hanya muncul jika ada foto dan pengaturan Contoh foto diaktifkan.
+10. Peserta tidak mendapatkan tombol edit atau unduh. Klik kanan dan drag gambar juga diblokir pada tampilan portal.
+
+CATATAN PENTING TENTANG PERLINDUNGAN FOTO
+
+Website tidak dapat menjamin gambar 100 persen mustahil disimpan. Agar gambar bisa terlihat, browser tetap harus menerima data gambar. Versi ini menghilangkan tombol unduh, tidak membuat link unduh, memblokir klik kanan dan drag, serta membatasi hak tulis Firestore/Storage hanya untuk admin yang login. Pengguna yang sangat teknis masih dapat mengambil gambar melalui fitur browser atau screenshot.
+
 SUMBER RESMI FIREBASE
 https://firebase.google.com/docs/storage/web/start
 https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024
