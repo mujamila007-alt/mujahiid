@@ -1,127 +1,77 @@
-PANDUAN PEMBARUAN PORTAL PELATIHAN DIGITAL MARKETING BLK
+============================================================
+PANDUAN ADMIN PORTAL BLK - VERSI SUPABASE STORAGE
+============================================================
 
-A. FILE YANG DIPERBARUI DI GITHUB
+VERSI INI TIDAK MENGGUNAKAN FIREBASE STORAGE.
 
-1. Ganti blk/index.html.
-2. Ganti admin-blk/index.html.
-3. Jangan hapus file dan folder lain.
-4. Commit perubahan. Vercel akan melakukan deployment otomatis.
-5. File firestore-rules-blk.rules dan storage-rules-blk.rules dipasang melalui Firebase Console, bukan diunggah sebagai halaman website.
+Arsitektur:
+- Firebase Authentication : login admin utama
+- Firestore               : data modul, catatan, URL/path, pengaturan portal
+- Supabase Auth           : otorisasi upload/hapus Storage
+- Supabase Storage        : contoh foto + file materi dari perangkat
+- Vercel                  : hosting website
 
-B. PENYEBAB UMUM FILE TIDAK TERSIMPAN
+Untuk pemasangan pertama, ikuti langkah lengkap di:
+PANDUAN-SUPABASE-BLK.txt
 
-Cloud Storage for Firebase sekarang mengharuskan project memakai paket Blaze.
-Jika project masih memakai paket Spark, permintaan Storage dapat gagal dengan kode 402 atau 403 meskipun kode halaman sudah benar.
+File setup Supabase:
+SUPABASE-SETUP.sql
 
-Periksa langkah berikut:
+File konfigurasi yang harus diisi:
+admin-blk/supabase-config.js
 
-1. Buka Firebase Console untuk project akses-canva-pro-terbatas.
-2. Buka Usage and billing.
-3. Pastikan project memakai paket Blaze.
-4. Buka Databases & Storage > Storage.
-5. Pastikan bucket akses-canva-pro-terbatas.firebasestorage.app sudah aktif.
-6. Buka Storage > Rules.
-7. Salin seluruh isi storage-rules-blk.rules lalu klik Publish.
-8. Buka Firestore Database > Rules.
-9. Gabungkan isi firestore-rules-blk.rules dengan rules yang sudah dipakai halaman lain lalu klik Publish.
-10. Pastikan Email/Password aktif pada Authentication dan akun admin sudah dibuat.
+============================================================
+FITUR MATERI LENGKAP
+============================================================
 
-C. CARA MENGUJI UNGGAHAN
+Setiap modul mempunyai tiga bagian:
+1. FILE MATERI
+2. CATATAN
+3. CONTOH FOTO
 
-1. Buka https://domain-anda.com/admin-blk/.
-2. Login sebagai admin.
-3. Pilih Modul Pelatihan.
-4. Klik Kelola file & catatan pada salah satu modul.
-5. Klik Tambah file.
-6. Pilih Unggah file.
-7. Pilih atau seret file ke area unggah.
-8. Isi nama serta keterangan file.
-9. Klik Simpan file.
-10. Tunggu progres mencapai 100 persen.
-11. Pastikan pesan "File berhasil disimpan" muncul.
-12. Klik tombol buka pada daftar file untuk memastikan URL dapat digunakan.
+Admin dapat mengatur masing-masing bagian agar tampil atau disembunyikan.
+Menyembunyikan bagian tidak menghapus isinya.
 
-Jika muncul pesan akses ditolak, periksa paket Blaze dan rules.
-Jika muncul pesan bucket tidak tersedia, aktifkan Storage dan periksa nama bucket.
-Jika unggahan berhenti, periksa koneksi dan ukuran file.
-Ukuran maksimal setiap file adalah 25 MB.
+CONTOH FOTO
+- Admin dapat menambah beberapa foto.
+- Admin dapat memberi judul dan keterangan.
+- JPG, PNG, WEBP.
+- Maksimal 8 MB per foto.
+- Disimpan di Supabase Storage.
+- Peserta hanya melihat pratinjau.
+- Tidak ada tombol edit atau download untuk peserta.
 
-D. PILIHAN TANPA FIREBASE STORAGE
+FILE MATERI
+- Mode Upload dari perangkat memakai Supabase Storage.
+- Maksimal 25 MB per file.
+- Mode Link tetap bisa dipakai untuk file yang sudah berada di Google Drive,
+  website lain, dan sebagainya.
 
-Jika tidak ingin mengaktifkan paket Blaze:
+CATATAN
+- Tetap disimpan di Firestore.
+- Tidak memerlukan Supabase Storage.
 
-1. Upload file secara manual ke folder GitHub, misalnya blk/uploads/.
-2. Tunggu deployment Vercel selesai.
-3. Salin URL file, misalnya https://domain-anda.com/blk/uploads/materi.pdf.
-4. Di halaman admin pilih Tambah file > Pasang link.
-5. Tempel URL tersebut dan simpan.
+============================================================
+UPLOAD KE GITHUB
+============================================================
 
-Vercel yang memakai repository GitHub tidak dapat menulis file baru langsung ke repository dari halaman HTML statis. Karena itu, fitur unggah langsung memerlukan layanan penyimpanan seperti Firebase Storage.
+Untuk versi update ini, unggah/ganti:
+1. admin-blk/index.html
+2. admin-blk/supabase-config.js
+3. blk/index.html
 
-E. STRUKTUR 14 MATERI
+Setelah setup Supabase selesai, file berikut tidak wajib dipasang di website:
+- SUPABASE-SETUP.sql
+- PANDUAN-SUPABASE-BLK.txt
+- PANDUAN-ADMIN-BLK.txt
 
-Halaman admin akan memasang struktur berikut saat pertama kali login:
+============================================================
+PENTING
+============================================================
 
-01. Daftar & Profil Usaha
-02. Google Trends & Kata Kunci
-03. Desain Usaha di Canva
-04. Blogger & Website Usaha
-05. Google Profil Bisnis
-06. Google Ads
-07. Media Sosial Bisnis
-08. Meta Ads
-09. Marketplace
-10. TikTok & Shopee Affiliate
-11. Video AI dengan Google Flow
-12. Statistik & Insight
-13. Laporan Akhir
-14. PRA UJK
+Jangan menaruh Supabase Secret key atau service_role key di HTML/JavaScript.
+Gunakan Publishable key atau anon/public key saja.
 
-Jika struktur belum tampil, buka menu Modul Pelatihan lalu klik Pasang 14 Materi.
-Proses sinkronisasi mempertahankan file dan catatan lama yang sudah tersimpan.
-
-F. FITUR YANG SUDAH DIPERBAIKI
-
-- Progres unggahan tampil dari 0 sampai 100 persen.
-- File baru dicatat secara atomik agar tidak tertimpa data lama.
-- File unggahan dibersihkan jika penyimpanan metadata gagal.
-- Nama dan format file terisi otomatis dari file yang dipilih.
-- File dapat dipilih atau diseret ke area unggah.
-- Admin dapat membuka file untuk memeriksa hasil unggahan.
-- Pesan kegagalan menjelaskan masalah rules, Storage, billing, kuota, atau koneksi.
-- Tambah, edit, hapus file menggunakan data modul terbaru.
-- Tambah, edit, hapus catatan menggunakan data modul terbaru.
-- Struktur materi lama disinkronkan ke 14 materi tanpa menghapus file dan catatan yang sudah ada.
-
-G. KEAMANAN
-
-- Jangan menulis email dan password admin di HTML atau JavaScript.
-- Gunakan password admin yang kuat dan berbeda dari password peserta.
-- Password peserta disimpan sebagai hash SHA-256.
-- File Storage dapat dibaca peserta yang mempunyai link.
-- Hanya pengguna yang login Firebase Authentication yang dapat mengunggah, mengedit, dan menghapus file.
-
-H. CONTOH FOTO DAN PENGATURAN TAMPILAN MATERI
-
-1. Buka admin-blk lalu pilih Modul Pelatihan.
-2. Klik Kelola file & catatan pada modul yang ingin diatur.
-3. Pada bagian Tampilan peserta, tersedia tiga pilihan:
-   - File materi
-   - Catatan
-   - Contoh foto
-4. Hilangkan centang File materi jika file belum tersedia. Data file tidak dihapus, hanya tidak ditampilkan pada portal peserta.
-5. Hilangkan centang Catatan jika penjelasan/catatan belum tersedia. Data catatan tetap tersimpan.
-6. Buka tab Contoh Foto lalu klik Tambah foto.
-7. Isi judul contoh, keterangan bagian yang harus terlihat, lalu unggah JPG, PNG, atau WEBP maksimal 8 MB.
-8. Contoh foto dapat diedit keterangannya atau dihapus oleh admin.
-9. Di portal peserta, tab Contoh Foto hanya muncul jika ada foto dan pengaturan Contoh foto diaktifkan.
-10. Peserta tidak mendapatkan tombol edit atau unduh. Klik kanan dan drag gambar juga diblokir pada tampilan portal.
-
-CATATAN PENTING TENTANG PERLINDUNGAN FOTO
-
-Website tidak dapat menjamin gambar 100 persen mustahil disimpan. Agar gambar bisa terlihat, browser tetap harus menerima data gambar. Versi ini menghilangkan tombol unduh, tidak membuat link unduh, memblokir klik kanan dan drag, serta membatasi hak tulis Firestore/Storage hanya untuk admin yang login. Pengguna yang sangat teknis masih dapat mengambil gambar melalui fitur browser atau screenshot.
-
-SUMBER RESMI FIREBASE
-https://firebase.google.com/docs/storage/web/start
-https://firebase.google.com/docs/storage/faqs-storage-changes-announced-sept-2024
-https://firebase.google.com/docs/storage/security/rules-conditions
+Setelah pertama kali memasang Supabase, Logout dari halaman admin lalu Login
+ulang agar sesi Firebase dan Supabase aktif bersama.
+============================================================
