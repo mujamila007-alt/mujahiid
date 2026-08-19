@@ -1,9 +1,9 @@
-CARA UPLOAD VERSI HTML STATIS
+CARA UPLOAD VERSI BERSIH
 
-1. Upload seluruh isi folder ke public_html.
-2. Halaman utama memakai index.html.
-3. Halaman admin memakai admin-verifikasi/index.html dan admin-metode-iklan/index.html.
-4. Halaman metode memakai metode/index.html.
-5. Halaman verifikasi memakai verifikasi-canva/index.html.
-6. Pastikan file CSS, JavaScript, gambar, JSON, dan folder blk ikut terupload.
-7. Versi ini tidak membutuhkan interpreter server-side.
+1. Hapus seluruh isi website lama di public_html terlebih dahulu agar file lama tidak tertinggal.
+2. Upload seluruh isi folder mujahiid-main dari paket ini ke public_html.
+3. Pastikan file .htaccess ikut terupload.
+4. Pastikan folder blk, metode, alat-digital-marketing, dan data ikut terupload.
+5. Jangan mengunggah kembali folder atau file dari versi lama yang sudah dihapus.
+6. Setelah upload, buka beranda domain dan /blk/ untuk memastikan halaman tampil normal.
+7. Balas tiket penyedia hosting dan minta pemeriksaan ulang setelah konten lama benar-benar terhapus.

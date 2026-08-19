@@ -1,14 +1,5 @@
-CHAT AI DAN BAHASA - VERSI HTML STATIS
+CATATAN FITUR AI DAN BAHASA
 
-File utama:
-- index.html
-- metode/index.html
-- verifikasi-canva/index.html
-- theme.js
-- ai-web-config.js
-
-Catatan:
-- Chat AI browser tetap mengikuti konfigurasi ai-web-config.js.
-- Terjemahan manual tetap menggunakan data di theme.js.
-- Fitur server-side telah dinonaktifkan.
-- Statistik pengunjung lama tetap tersimpan di data/muja-visitor-stats.json, tetapi HTML statis tidak dapat menulis statistik baru ke file server.
+Versi bersih ini menonaktifkan koneksi AI langsung dari browser karena kunci API tidak boleh disimpan di file JavaScript publik.
+Jika fitur AI ingin diaktifkan kembali, gunakan endpoint server-side dengan environment variable untuk menyimpan kunci API.
+Jangan menaruh API key rahasia, token akses, OTP, atau kredensial pengguna di HTML/JavaScript publik.
