@@ -2169,7 +2169,7 @@ Canva Unlock • Verifikasi Email, WA, dan Password
       const remaining=Math.max(0,MAX_USERS-effectiveUsed);
       quotaDisplay.innerHTML=`${
         remaining
-      } dari ${
+      } / ${
       MAX_USERS
     }`;
     return{
@@ -2177,7 +2177,7 @@ Canva Unlock • Verifikasi Email, WA, dan Password
     }
   } catch(e) {
   console.error("Gagal cek kuota:",e);
-  quotaDisplay.innerHTML=`? dari ${
+  quotaDisplay.innerHTML=`? / ${
     MAX_USERS
   }`;
   return{
