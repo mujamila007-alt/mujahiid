@@ -131,8 +131,8 @@ Jawab: Kuota gratis memang terbatas kak. Coba lagi nanti, cek grup/YouTube @Muja
 window.AI_WEB_CONFIG = {
   apiKey: GROQ_WEB_API_KEY,
   pengetahuan: AI_WEB_PENGETAHUAN,
-  model: 'llama-3.3-70b-versatile',
-  fallbackModel: 'llama-3.3-70b-versatile',
+  model: 'openai/gpt-oss-20b',
+  fallbackModel: 'openai/gpt-oss-20b',
   siteName: 'Mujahiid',
   primeUrl: 'https://mujaprime.biz.id',
   mode: 'direct-groq-browser'
