@@ -861,7 +861,7 @@ svg[viewBox] {
 
         <div class="input-group">
           <label>Teks Pembuka di Bagian Atas</label>
-          <textarea id="verificationHeroTextInput">Selesaikan verifikasi video YouTube, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.</textarea>
+          <textarea id="verificationHeroTextInput">Selesaikan verifikasi video YouTube, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.</textarea>
         </div>
 
         <div class="input-row">
@@ -916,7 +916,7 @@ svg[viewBox] {
         </div>
         <div class="input-group">
           <label>Pesan Setelah Verifikasi Selesai</label>
-          <input type="text" id="verificationSuccessMessageInput" value="Verifikasi video berhasil. Sekarang masukkan email dan WhatsApp.">
+          <input type="text" id="verificationSuccessMessageInput" value="Verifikasi video berhasil. Sekarang masukkan email.">
         </div>
         <div class="input-row">
           <div class="input-group">
@@ -982,7 +982,7 @@ svg[viewBox] {
         <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M17 21v-2a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v2M10 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8M21 21v-2a4 4 0 0 0-3-3.87M17 3.13a4 4 0 0 1 0 7.75" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Daftar User Yang Sudah Join</div>
         <div class="search-container">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="searchUserInput" class="search-input" placeholder="Cari email atau WA..." onkeyup="filterTable('user')">
+          <input type="text" id="searchUserInput" class="search-input" placeholder="Cari email..." onkeyup="filterTable('user')">
           <button class="clear-search" onclick="clearSearch('user')" title="Clear search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
           <span class="search-info" id="userSearchInfo"></span>
         </div>
@@ -994,7 +994,7 @@ svg[viewBox] {
             <tr>
               <th>No</th>
               <th>Email</th>
-              <th>WhatsApp</th>
+              
               <th>Waktu Join</th>
               <th>Device ID</th>
               <th>Aksi</th>
@@ -1073,7 +1073,7 @@ svg[viewBox] {
         <div class="panel-title"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Daftar Email Terblokir</div>
         <div class="search-container">
           <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2"/><path d="M20 20l-3.5-3.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input type="text" id="searchBlockedInput" class="search-input" placeholder="Cari email atau WA..." onkeyup="filterTable('blocked')">
+          <input type="text" id="searchBlockedInput" class="search-input" placeholder="Cari email..." onkeyup="filterTable('blocked')">
           <button class="clear-search" onclick="clearSearch('blocked')" title="Clear search"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
           <span class="search-info" id="blockedSearchInfo"></span>
         </div>
@@ -1085,7 +1085,7 @@ svg[viewBox] {
             <tr>
               <th>No</th>
               <th>Email</th>
-              <th>WhatsApp</th>
+              
               <th>Sisa Masa Blokir</th>
               <th>Berakhir Pada</th>
               <th>Aksi</th>
@@ -1211,7 +1211,7 @@ svg[viewBox] {
 
     const VERIFICATION_PRESETS = {
         youtube_like_comment: {
-            heroText: 'Selesaikan verifikasi video YouTube, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',
+            heroText: 'Selesaikan verifikasi video YouTube, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.',
             cardTitle: 'YouTube Check',
             cardSubtitle: 'Like & komentar',
             title: 'Verifikasi Video YouTube',
@@ -1222,12 +1222,12 @@ svg[viewBox] {
             startMessage: 'Verifikasi video dimulai. Like dan komentar video sebagai bukti.',
             openedMessage: 'Video YouTube dibuka. Verifikasi berlangsung 10 detik.',
             waitingText: 'Menunggu Like & Komentar',
-            successMessage: 'Verifikasi video berhasil. Sekarang masukkan email dan WhatsApp.',
+            successMessage: 'Verifikasi video berhasil. Sekarang masukkan email.',
             passwordHint: 'Password ada di dalam video YouTube. Tiga huruf berada di waktu yang berbeda.',
             passwordButtonText: 'Lihat Password di Video'
         },
         instagram_follow: {
-            heroText: 'Selesaikan verifikasi dengan mengikuti akun Instagram, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',
+            heroText: 'Selesaikan verifikasi dengan mengikuti akun Instagram, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.',
             cardTitle: 'Instagram Check',
             cardSubtitle: 'Follow akun',
             title: 'Follow Instagram',
@@ -1238,12 +1238,12 @@ svg[viewBox] {
             startMessage: 'Verifikasi Instagram dimulai. Follow akun sebagai bukti.',
             openedMessage: 'Akun Instagram dibuka. Verifikasi berlangsung 10 detik.',
             waitingText: 'Menunggu Follow Instagram',
-            successMessage: 'Follow Instagram berhasil diverifikasi. Sekarang masukkan email dan WhatsApp.',
+            successMessage: 'Follow Instagram berhasil diverifikasi. Sekarang masukkan email.',
             passwordHint: 'Password ada di dalam tautan Instagram. Ikuti petunjuk yang diberikan admin.',
             passwordButtonText: 'Buka Instagram'
         },
         instagram_like: {
-            heroText: 'Selesaikan verifikasi dengan menyukai postingan Instagram, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',
+            heroText: 'Selesaikan verifikasi dengan menyukai postingan Instagram, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.',
             cardTitle: 'Instagram Check',
             cardSubtitle: 'Like postingan',
             title: 'Like Postingan Instagram',
@@ -1254,12 +1254,12 @@ svg[viewBox] {
             startMessage: 'Verifikasi Instagram dimulai. Like postingan sebagai bukti.',
             openedMessage: 'Postingan Instagram dibuka. Verifikasi berlangsung 10 detik.',
             waitingText: 'Menunggu Like Instagram',
-            successMessage: 'Like Instagram berhasil diverifikasi. Sekarang masukkan email dan WhatsApp.',
+            successMessage: 'Like Instagram berhasil diverifikasi. Sekarang masukkan email.',
             passwordHint: 'Password ada di dalam tautan Instagram. Ikuti petunjuk yang diberikan admin.',
             passwordButtonText: 'Buka Instagram'
         },
         tiktok_follow: {
-            heroText: 'Selesaikan verifikasi dengan mengikuti akun TikTok, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',
+            heroText: 'Selesaikan verifikasi dengan mengikuti akun TikTok, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.',
             cardTitle: 'TikTok Check',
             cardSubtitle: 'Follow akun',
             title: 'Follow TikTok',
@@ -1270,12 +1270,12 @@ svg[viewBox] {
             startMessage: 'Verifikasi TikTok dimulai. Follow akun sebagai bukti.',
             openedMessage: 'Akun TikTok dibuka. Verifikasi berlangsung 10 detik.',
             waitingText: 'Menunggu Follow TikTok',
-            successMessage: 'Follow TikTok berhasil diverifikasi. Sekarang masukkan email dan WhatsApp.',
+            successMessage: 'Follow TikTok berhasil diverifikasi. Sekarang masukkan email.',
             passwordHint: 'Password ada di dalam tautan TikTok. Ikuti petunjuk yang diberikan admin.',
             passwordButtonText: 'Buka TikTok'
         },
         facebook_like: {
-            heroText: 'Selesaikan verifikasi dengan menyukai postingan Facebook, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',
+            heroText: 'Selesaikan verifikasi dengan menyukai postingan Facebook, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.',
             cardTitle: 'Facebook Check',
             cardSubtitle: 'Like postingan',
             title: 'Like Postingan Facebook',
@@ -1286,12 +1286,12 @@ svg[viewBox] {
             startMessage: 'Verifikasi Facebook dimulai. Like postingan sebagai bukti.',
             openedMessage: 'Postingan Facebook dibuka. Verifikasi berlangsung 10 detik.',
             waitingText: 'Menunggu Like Facebook',
-            successMessage: 'Like Facebook berhasil diverifikasi. Sekarang masukkan email dan WhatsApp.',
+            successMessage: 'Like Facebook berhasil diverifikasi. Sekarang masukkan email.',
             passwordHint: 'Password ada di dalam tautan Facebook. Ikuti petunjuk yang diberikan admin.',
             passwordButtonText: 'Buka Facebook'
         },
         other: {
-            heroText: 'Selesaikan metode verifikasi yang tersedia, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',
+            heroText: 'Selesaikan metode verifikasi yang tersedia, masukkan email Gmail, lalu konfirmasi password untuk membuka akses Canva Pro.',
             cardTitle: 'Social Check',
             cardSubtitle: 'Ikuti petunjuk',
             title: 'Verifikasi Media Sosial',
@@ -1302,7 +1302,7 @@ svg[viewBox] {
             startMessage: 'Verifikasi dimulai. Ikuti petunjuk pada tautan yang dibuka.',
             openedMessage: 'Tautan verifikasi dibuka. Verifikasi berlangsung 10 detik.',
             waitingText: 'Menunggu Verifikasi',
-            successMessage: 'Verifikasi berhasil. Sekarang masukkan email dan WhatsApp.',
+            successMessage: 'Verifikasi berhasil. Sekarang masukkan email.',
             passwordHint: 'Password ada di dalam tautan verifikasi. Ikuti petunjuk yang diberikan admin.',
             passwordButtonText: 'Buka Tautan Verifikasi'
         }
@@ -1529,12 +1529,12 @@ svg[viewBox] {
         users.forEach((user, idx) => {
             const date = user.joinedAt ? new Date(user.joinedAt).toLocaleString('id-ID') : '-';
             const deviceId = user.deviceFingerprint ? user.deviceFingerprint.substring(0, 16) + '...' : 'Unknown';
-            const whatsapp = user.whatsapp || '-';
+            const whatsapp = '-';
             
             html += `<tr>
                 <td>${idx + 1}</td>
                 <td class="email-badge">${user.email || '-'}</td>
-                <td class="wa-badge">${whatsapp}</td>
+                
                 <td>${date}</td>
                 <td style="font-size:0.7rem; color:#94a3b8;" title="${user.deviceFingerprint || ''}">${deviceId}</td>
                 <td>
@@ -1645,7 +1645,7 @@ svg[viewBox] {
             html += `<tr>
                 <td>${idx + 1}</td>
                 <td style="color:#fca5a5; font-weight:500;">${item.email || '-'}</td>
-                <td class="wa-badge">${item.whatsapp || '-'}</td>
+                
                 <td><span class="info-badge">${remainingDays} hari lagi</span></td>
                 <td>${expiredDateStr}</td>
                 <td>
@@ -2036,7 +2036,7 @@ svg[viewBox] {
 
     async function loadVisitorStats() {
         try {
-            const response = await fetch('/muja-visitor-counter.php?action=stats&v=' + Date.now(), {
+            const response = await fetch('./muja-visitor-counter.php?action=stats&v=' + Date.now(), {
                 cache: 'no-store',
                 headers: { 'Accept': 'application/json' }
             });
@@ -2048,8 +2048,14 @@ svg[viewBox] {
                 totalVisitorSpan.title = `Total kunjungan halaman: ${Number(data.totalVisits || 0).toLocaleString('id-ID')}`;
             }
         } catch (e) {
-            if (totalVisitorSpan) totalVisitorSpan.innerText = '0';
-            debugLog('Gagal memuat total pengunjung: ' + e.message, 'error');
+            try {
+                const snap = await db.collection(DEVICE_COLLECTION).get();
+                if (totalVisitorSpan) totalVisitorSpan.innerText = snap.size.toLocaleString('id-ID');
+                return;
+            } catch (fallbackError) {
+                if (totalVisitorSpan) totalVisitorSpan.innerText = '0';
+                debugLog('Gagal memuat total pengunjung: ' + fallbackError.message, 'error');
+            }
         }
     }
 
