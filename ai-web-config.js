@@ -6,7 +6,7 @@
 
 // Catatan: key di JavaScript bisa terlihat publik oleh pengunjung.
 // Jika sudah dipakai di website publik, sebaiknya ganti/rotate key secara berkala.
-const GROQ_WEB_API_KEY = "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";
+const GROQ_WEB_API_KEY = "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";
 
 const AI_WEB_PENGETAHUAN = `
 Kamu adalah AI customer service resmi situs Mujahiid.
