@@ -1,0 +1,966 @@
+/*
+  THEME.CSS - MujaPrime / Mujahiid
+  Dark & Light Mode untuk halaman dengan class muja-*
+  Simpan file ini di folder yang sama dengan index.html
+*/
+
+:root {
+  color-scheme: dark;
+}
+
+body[data-muja-theme="dark"] {
+  color-scheme: dark;
+}
+
+body[data-muja-theme="light"] {
+  color-scheme: light;
+
+  --bg: #f7f9ff;
+  --bg-2: #eef3ff;
+  --glass: rgba(255, 255, 255, .74);
+  --glass-2: rgba(255, 255, 255, .86);
+  --border: rgba(17, 24, 39, .12);
+  --border-2: rgba(17, 24, 39, .22);
+  --text: #121826;
+  --muted: #4f5c73;
+  --soft: #6b7280;
+  --blue: #2563eb;
+  --blue-2: #1d4ed8;
+  --orange: #f97316;
+  --gold: #d97706;
+  --green: #059669;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --shadow: 0 30px 80px rgba(30, 41, 59, .16);
+
+  background:
+    radial-gradient(circle at 12% -10%, rgba(37, 99, 235, .18), transparent 31rem),
+    radial-gradient(circle at 96% 2%, rgba(249, 115, 22, .15), transparent 29rem),
+    radial-gradient(circle at 43% 112%, rgba(5, 150, 105, .12), transparent 25rem),
+    linear-gradient(145deg, #ffffff 0%, #eef3ff 54%, #ffffff 100%) !important;
+}
+
+/* Background grid saat light */
+body[data-muja-theme="light"]::before {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, .045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, .045) 1px, transparent 1px);
+}
+
+/* Aurora lebih soft saat light */
+body[data-muja-theme="light"] .muja-aurora {
+  opacity: .46;
+  filter: blur(60px);
+}
+
+body[data-muja-theme="light"] .muja-shine-bg {
+  opacity: .55;
+}
+
+/* Komponen utama */
+body[data-muja-theme="light"] .muja-topbar,
+body[data-muja-theme="light"] .muja-shell,
+body[data-muja-theme="light"] .muja-card {
+  background:
+    linear-gradient(145deg, rgba(255, 255, 255, .88), rgba(255, 255, 255, .68)),
+    rgba(255, 255, 255, .74) !important;
+  border-color: rgba(15, 23, 42, .12) !important;
+  box-shadow: 0 22px 60px rgba(30, 41, 59, .14) !important;
+}
+
+body[data-muja-theme="light"] .muja-card::before,
+body[data-muja-theme="light"] .muja-shell::before {
+  opacity: .56;
+}
+
+body[data-muja-theme="light"] .muja-showcase,
+body[data-muja-theme="light"] .muja-video,
+body[data-muja-theme="light"] .quota-info,
+body[data-muja-theme="light"] .muja-progress-list li,
+body[data-muja-theme="light"] .muja-step-info,
+body[data-muja-theme="light"] .join-group-section,
+body[data-muja-theme="light"] .password-hint-box,
+body[data-muja-theme="light"] .muja-alert-card {
+  background: rgba(255, 255, 255, .62) !important;
+  border-color: rgba(15, 23, 42, .12) !important;
+}
+
+body[data-muja-theme="light"] .muja-title,
+body[data-muja-theme="light"] .muja-card h2,
+body[data-muja-theme="light"] .muja-alert-title,
+body[data-muja-theme="light"] .muja-form-title,
+body[data-muja-theme="light"] .muja-brand-title {
+  color: #111827;
+}
+
+body[data-muja-theme="light"] .muja-title span {
+  background: linear-gradient(110deg, #111827 4%, #b45309 38%, #f97316 62%, #2563eb 92%);
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+body[data-muja-theme="light"] .muja-desc,
+body[data-muja-theme="light"] .muja-card p,
+body[data-muja-theme="light"] .muja-brand-sub,
+body[data-muja-theme="light"] .muja-footer,
+body[data-muja-theme="light"] .join-section p,
+body[data-muja-theme="light"] .join-group-note {
+  color: #4b5563;
+}
+
+body[data-muja-theme="light"] .email-input,
+body[data-muja-theme="light"] .wa-input,
+body[data-muja-theme="light"] .password-input {
+  background: rgba(255, 255, 255, .72) !important;
+  color: #111827 !important;
+  border-color: rgba(217, 119, 6, .22) !important;
+}
+
+body[data-muja-theme="light"] .email-input::placeholder,
+body[data-muja-theme="light"] .wa-input::placeholder,
+body[data-muja-theme="light"] .password-input::placeholder {
+  color: #6b7280;
+}
+
+/* Topbar actions */
+.muja-top-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+
+/* Urutan tombol atas: Translate kiri, Dark/Light kanan */
+.muja-top-actions .muja-lang-menu {
+  order: 1;
+}
+
+.muja-top-actions .muja-theme-toggle {
+  order: 2;
+}
+
+.muja-top-actions .muja-status {
+  order: 3;
+}
+
+/* Tombol Sun/Moon */
+.muja-theme-toggle {
+  position: relative;
+  overflow: hidden;
+  width: 42px;
+  height: 42px;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 16px;
+  color: #ffdfa1;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(247, 200, 91, .18), transparent 55%),
+    rgba(255, 255, 255, .07);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .14);
+  cursor: pointer;
+  transition:
+    transform .22s cubic-bezier(.2, .9, .25, 1.4),
+    border-color .22s ease,
+    background .22s ease,
+    color .22s ease,
+    box-shadow .22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.muja-theme-toggle:hover {
+  transform: translateY(-2px) scale(1.035);
+  border-color: rgba(255, 255, 255, .28);
+}
+
+.muja-theme-toggle:active {
+  transform: translateY(1px) scale(.94);
+}
+
+.muja-theme-toggle svg {
+  position: absolute;
+  width: 19px;
+  height: 19px;
+  display: block;
+  transition:
+    transform .36s cubic-bezier(.2, .9, .25, 1.4),
+    opacity .25s ease;
+}
+
+.muja-theme-toggle .muja-sun-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+.muja-theme-toggle .muja-moon-icon {
+  opacity: 0;
+  transform: rotate(-90deg) scale(.45);
+}
+
+body[data-muja-theme="light"] .muja-theme-toggle {
+  color: #1d4ed8;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(37, 99, 235, .15), transparent 55%),
+    rgba(255, 255, 255, .78);
+  border-color: rgba(15, 23, 42, .14);
+  box-shadow:
+    0 12px 28px rgba(30, 41, 59, .14),
+    inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+body[data-muja-theme="light"] .muja-theme-toggle .muja-sun-icon {
+  opacity: 0;
+  transform: rotate(90deg) scale(.45);
+}
+
+body[data-muja-theme="light"] .muja-theme-toggle .muja-moon-icon {
+  opacity: 1;
+  transform: rotate(0deg) scale(1);
+}
+
+/* Ripple untuk theme button */
+.muja-theme-toggle::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: var(--theme-x, 50%);
+  top: var(--theme-y, 50%);
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.muja-theme-toggle.is-rippling::after {
+  animation: mujaThemeRipple .55s ease-out;
+}
+
+@keyframes mujaThemeRipple {
+  0% {
+    opacity: .28;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(9);
+  }
+}
+
+@media (max-width: 520px) {
+  .muja-theme-toggle {
+    width: 38px;
+    height: 38px;
+    border-radius: 14px;
+  }
+
+  .muja-theme-toggle svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  .muja-top-actions {
+    gap: 6px;
+  }
+}
+
+
+/* =========================================================
+   LIGHT MODE TEXT FORCE BLACK
+   Semua teks di halaman menjadi hitam saat tema terang aktif.
+   Diletakkan di akhir file agar menimpa warna sebelumnya.
+   ========================================================= */
+
+body[data-muja-theme="light"],
+body[data-muja-theme="light"] * {
+  color: #111827 !important;
+}
+
+body[data-muja-theme="light"] a,
+body[data-muja-theme="light"] a *,
+body[data-muja-theme="light"] button,
+body[data-muja-theme="light"] button *,
+body[data-muja-theme="light"] input,
+body[data-muja-theme="light"] textarea,
+body[data-muja-theme="light"] select,
+body[data-muja-theme="light"] label,
+body[data-muja-theme="light"] p,
+body[data-muja-theme="light"] span,
+body[data-muja-theme="light"] div,
+body[data-muja-theme="light"] h1,
+body[data-muja-theme="light"] h2,
+body[data-muja-theme="light"] h3,
+body[data-muja-theme="light"] h4,
+body[data-muja-theme="light"] h5,
+body[data-muja-theme="light"] h6,
+body[data-muja-theme="light"] small,
+body[data-muja-theme="light"] strong,
+body[data-muja-theme="light"] li {
+  color: #111827 !important;
+}
+
+body[data-muja-theme="light"] input::placeholder,
+body[data-muja-theme="light"] textarea::placeholder {
+  color: #111827 !important;
+  opacity: .72;
+}
+
+/* Supaya teks gradient title juga menjadi hitam solid saat light */
+body[data-muja-theme="light"] .muja-title span {
+  color: #111827 !important;
+  background: none !important;
+  -webkit-background-clip: initial !important;
+  background-clip: initial !important;
+}
+
+/* SVG yang mengikuti currentColor ikut gelap agar seragam */
+body[data-muja-theme="light"] svg,
+body[data-muja-theme="light"] svg * {
+  color: #111827 !important;
+}
+
+/* Tombol tetap terlihat jelas saat teks hitam */
+body[data-muja-theme="light"] .muja-btn,
+body[data-muja-theme="light"] .verify-btn,
+body[data-muja-theme="light"] .submit-email,
+body[data-muja-theme="light"] .submit-password,
+body[data-muja-theme="light"] .btn-canva-pro,
+body[data-muja-theme="light"] .btn-wa-special,
+body[data-muja-theme="light"] .btn-tg-special,
+body[data-muja-theme="light"] .btn-join-group-small,
+body[data-muja-theme="light"] .btn-tutorial-small,
+body[data-muja-theme="light"] .btn-see-password,
+body[data-muja-theme="light"] .btn-join-group,
+body[data-muja-theme="light"] .btn-understand {
+  color: #111827 !important;
+}
+
+/* Status dan badge juga hitam */
+body[data-muja-theme="light"] .muja-status,
+body[data-muja-theme="light"] .muja-tag,
+body[data-muja-theme="light"] .muja-kicker,
+body[data-muja-theme="light"] .quota-text,
+body[data-muja-theme="light"] .quota-number,
+body[data-muja-theme="light"] .muja-form-title,
+body[data-muja-theme="light"] .muja-alert-title,
+body[data-muja-theme="light"] .muja-alert-message,
+body[data-muja-theme="light"] .message-box,
+body[data-muja-theme="light"] .email-note,
+body[data-muja-theme="light"] .password-hint-text {
+  color: #111827 !important;
+}
+
+
+/* =========================================================
+   LANGUAGE TOGGLE - tampil otomatis di .muja-top-actions
+   ========================================================= */
+.muja-lang-toggle {
+  position: relative;
+  overflow: hidden;
+  width: auto;
+  min-width: 58px;
+  height: 42px;
+  padding: 0 10px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  flex: 0 0 auto;
+  border: 1px solid rgba(255, 255, 255, .16);
+  border-radius: 16px;
+  color: #ffdfa1;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(247, 200, 91, .18), transparent 55%),
+    rgba(255, 255, 255, .07);
+  box-shadow:
+    0 14px 32px rgba(0, 0, 0, .24),
+    inset 0 1px 0 rgba(255, 255, 255, .14);
+  cursor: pointer;
+  transition:
+    transform .22s cubic-bezier(.2, .9, .25, 1.4),
+    border-color .22s ease,
+    background .22s ease,
+    color .22s ease,
+    box-shadow .22s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.muja-lang-toggle:hover {
+  transform: translateY(-2px) scale(1.035);
+  border-color: rgba(255, 255, 255, .28);
+}
+
+.muja-lang-toggle:active {
+  transform: translateY(1px) scale(.94);
+}
+
+.muja-lang-toggle .muja-lang-icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+  flex: 0 0 auto;
+}
+
+.muja-lang-current {
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 900;
+  letter-spacing: .08em;
+  color: currentColor;
+}
+
+.muja-lang-toggle::after {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: var(--lang-x, 50%);
+  top: var(--lang-y, 50%);
+  border-radius: 999px;
+  background: currentColor;
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+  pointer-events: none;
+}
+
+.muja-lang-toggle.is-rippling::after {
+  animation: mujaLangRipple .55s ease-out;
+}
+
+@keyframes mujaLangRipple {
+  0% {
+    opacity: .28;
+    transform: translate(-50%, -50%) scale(0);
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(9);
+  }
+}
+
+body[data-muja-theme="light"] .muja-lang-toggle {
+  color: #111827;
+  background:
+    radial-gradient(circle at 70% 25%, rgba(217, 119, 6, .18), transparent 55%),
+    rgba(255, 255, 255, .78);
+  border-color: rgba(15, 23, 42, .14);
+  box-shadow:
+    0 12px 28px rgba(30, 41, 59, .14),
+    inset 0 1px 0 rgba(255, 255, 255, .9);
+}
+
+body[data-muja-lang="en"] .muja-lang-toggle {
+  color: #7dd3fc;
+}
+
+body[data-muja-theme="light"][data-muja-lang="en"] .muja-lang-toggle {
+  color: #1d4ed8;
+}
+
+@media (max-width: 520px) {
+  .muja-lang-toggle {
+    min-width: 52px;
+    height: 38px;
+    padding: 0 8px;
+    border-radius: 14px;
+  }
+
+  .muja-lang-toggle .muja-lang-icon {
+    width: 17px;
+    height: 17px;
+  }
+
+  .muja-lang-current {
+    font-size: 10px;
+  }
+}
+
+/* =========================================================
+   MUJAPRIME MULTI LANGUAGE MENU - tanpa Google Translate
+   ========================================================= */
+.muja-lang-menu {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  flex: 0 0 auto;
+  z-index: 80;
+}
+
+.muja-lang-menu .muja-lang-toggle {
+  min-width: 62px;
+}
+
+.muja-lang-panel {
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  width: min(280px, calc(100vw - 26px));
+  max-height: min(420px, 72vh);
+  overflow: auto;
+  padding: 10px;
+  border-radius: 22px;
+  border: 1px solid rgba(255,255,255,.16);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(255, 191, 87, .20), transparent 42%),
+    radial-gradient(circle at 90% 15%, rgba(251, 146, 60, .16), transparent 36%),
+    rgba(17, 24, 39, .92);
+  box-shadow: 0 24px 70px rgba(0,0,0,.42), inset 0 1px 0 rgba(255,255,255,.11);
+  backdrop-filter: blur(22px) saturate(150%);
+  -webkit-backdrop-filter: blur(22px) saturate(150%);
+  opacity: 0;
+  transform: translateY(8px) scale(.96);
+  pointer-events: none;
+  transition: opacity .22s ease, transform .22s cubic-bezier(.2,.85,.2,1.2);
+}
+
+.muja-lang-menu.is-open .muja-lang-panel {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.muja-lang-option {
+  width: 100%;
+  appearance: none;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 16px;
+  background: rgba(255,255,255,.055);
+  color: rgba(255,255,255,.88);
+  padding: 10px 12px;
+  margin: 4px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-align: left;
+  cursor: pointer;
+  transition: transform .18s ease, background .18s ease, border-color .18s ease, color .18s ease;
+}
+
+.muja-lang-option span {
+  width: 38px;
+  min-width: 38px;
+  height: 28px;
+  border-radius: 11px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: .06em;
+  color: #111827;
+  background: linear-gradient(135deg, #facc15, #fb923c);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.45);
+}
+
+.muja-lang-option strong {
+  font-size: 13px;
+  line-height: 1.2;
+  font-weight: 850;
+}
+
+.muja-lang-option:hover,
+.muja-lang-option.is-active {
+  transform: translateY(-1px);
+  color: #fff;
+  border-color: rgba(251, 191, 36, .36);
+  background: rgba(251, 191, 36, .14);
+}
+
+.muja-lang-option.is-active::after {
+  content: "✓";
+  margin-left: auto;
+  color: #facc15;
+  font-weight: 950;
+}
+
+body[data-muja-theme="light"] .muja-lang-panel {
+  border-color: rgba(15,23,42,.14);
+  background:
+    radial-gradient(circle at 15% 10%, rgba(217,119,6,.18), transparent 42%),
+    rgba(255,255,255,.94);
+  box-shadow: 0 24px 55px rgba(30,41,59,.18), inset 0 1px 0 rgba(255,255,255,.85);
+}
+
+body[data-muja-theme="light"] .muja-lang-option {
+  color: #111827;
+  background: rgba(15,23,42,.04);
+  border-color: rgba(15,23,42,.10);
+}
+
+body[data-muja-theme="light"] .muja-lang-option:hover,
+body[data-muja-theme="light"] .muja-lang-option.is-active {
+  color: #111827;
+  background: rgba(217,119,6,.13);
+  border-color: rgba(217,119,6,.28);
+}
+
+body[data-muja-lang="ar"] .muja-lang-panel,
+body[data-muja-lang="ar"] .muja-lang-option {
+  text-align: right;
+}
+
+body[data-muja-lang="ar"] .muja-lang-option.is-active::after {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+body[data-muja-lang="ar"] .muja-lang-panel {
+  right: auto;
+  left: 0;
+}
+
+/* =========================================================
+   MUJAPRIME LIVE CHAT AI
+   ========================================================= */
+.muja-ai-chat {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 9999;
+  font-family: inherit;
+  color: #fff;
+}
+
+.muja-ai-fab {
+  position: relative;
+  border: 0;
+  min-width: 116px;
+  height: 52px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  padding: 0 16px;
+  color: #111827;
+  font-size: 13px;
+  font-weight: 950;
+  letter-spacing: .01em;
+  background: linear-gradient(135deg, #fde68a, #f59e0b 45%, #fb923c);
+  box-shadow: 0 18px 48px rgba(245, 158, 11, .34), 0 9px 24px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.62);
+  cursor: pointer;
+  overflow: hidden;
+  animation: mujaAiFloat 3.4s ease-in-out infinite;
+  transition: transform .22s cubic-bezier(.2,.9,.25,1.35), box-shadow .22s ease;
+}
+
+.muja-ai-fab::before {
+  content: "";
+  position: absolute;
+  inset: -45%;
+  background: linear-gradient(120deg, transparent 38%, rgba(255,255,255,.42), transparent 62%);
+  transform: translateX(-55%) rotate(15deg);
+  animation: mujaAiShine 3.2s ease-in-out infinite;
+}
+
+.muja-ai-fab svg {
+  width: 21px;
+  height: 21px;
+  z-index: 1;
+}
+
+.muja-ai-fab span {
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.muja-ai-fab:hover {
+  transform: translateY(-3px) scale(1.035);
+  box-shadow: 0 22px 58px rgba(245,158,11,.42), 0 12px 26px rgba(0,0,0,.24);
+}
+
+@keyframes mujaAiFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes mujaAiShine {
+  0%, 55% { transform: translateX(-65%) rotate(15deg); }
+  82%, 100% { transform: translateX(70%) rotate(15deg); }
+}
+
+.muja-ai-window {
+  position: absolute;
+  right: 0;
+  bottom: 68px;
+  width: min(372px, calc(100vw - 28px));
+  height: min(560px, calc(100vh - 118px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 28px;
+  border: 1px solid rgba(255,255,255,.16);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(251, 191, 36, .18), transparent 35%),
+    radial-gradient(circle at 92% 20%, rgba(249, 115, 22, .18), transparent 36%),
+    rgba(15, 23, 42, .92);
+  box-shadow: 0 28px 90px rgba(0,0,0,.48), inset 0 1px 0 rgba(255,255,255,.12);
+  backdrop-filter: blur(24px) saturate(155%);
+  -webkit-backdrop-filter: blur(24px) saturate(155%);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(20px) scale(.94);
+  transform-origin: bottom right;
+  transition: opacity .25s ease, transform .28s cubic-bezier(.2,.9,.2,1.18);
+}
+
+.muja-ai-chat.is-open .muja-ai-window {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) scale(1);
+}
+
+.muja-ai-chat.is-open .muja-ai-fab {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(8px) scale(.88);
+}
+
+.muja-ai-head {
+  padding: 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-bottom: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.045);
+}
+
+.muja-ai-avatar {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #111827;
+  background: linear-gradient(135deg, #facc15, #fb923c);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 12px 28px rgba(251,146,60,.24);
+}
+
+.muja-ai-avatar svg { width: 23px; height: 23px; }
+
+.muja-ai-head strong {
+  display: block;
+  font-size: 14px;
+  line-height: 1.15;
+  font-weight: 950;
+}
+
+.muja-ai-head small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: rgba(255,255,255,.68);
+}
+
+.muja-ai-close {
+  margin-left: auto;
+  width: 34px;
+  height: 34px;
+  border-radius: 13px;
+  border: 1px solid rgba(255,255,255,.10);
+  color: rgba(255,255,255,.86);
+  background: rgba(255,255,255,.065);
+  cursor: pointer;
+  font-size: 24px;
+  line-height: 1;
+  transition: transform .18s ease, background .18s ease;
+}
+
+.muja-ai-close:hover {
+  transform: rotate(6deg) scale(1.04);
+  background: rgba(255,255,255,.12);
+}
+
+.muja-ai-messages {
+  flex: 1;
+  overflow: auto;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scroll-behavior: smooth;
+}
+
+.muja-ai-msg {
+  max-width: 86%;
+  padding: 11px 13px;
+  border-radius: 18px;
+  font-size: 13px;
+  line-height: 1.48;
+  white-space: pre-wrap;
+  word-break: break-word;
+  animation: mujaAiMsgIn .22s ease both;
+}
+
+@keyframes mujaAiMsgIn {
+  from { opacity: 0; transform: translateY(8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.muja-ai-msg-bot {
+  align-self: flex-start;
+  color: rgba(255,255,255,.92);
+  background: rgba(255,255,255,.085);
+  border: 1px solid rgba(255,255,255,.10);
+  border-bottom-left-radius: 8px;
+}
+
+.muja-ai-msg-user {
+  align-self: flex-end;
+  color: #111827;
+  background: linear-gradient(135deg, #fde68a, #fb923c);
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 10px 24px rgba(251,146,60,.22);
+}
+
+.muja-ai-form {
+  padding: 12px;
+  display: flex;
+  align-items: flex-end;
+  gap: 9px;
+  border-top: 1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.045);
+}
+
+.muja-ai-form textarea {
+  flex: 1;
+  resize: none;
+  min-height: 42px;
+  max-height: 110px;
+  padding: 12px 13px;
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: 16px;
+  outline: none;
+  color: #fff;
+  background: rgba(255,255,255,.075);
+  font: inherit;
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.muja-ai-form textarea::placeholder {
+  color: rgba(255,255,255,.52);
+}
+
+.muja-ai-form textarea:focus {
+  border-color: rgba(251,191,36,.42);
+  box-shadow: 0 0 0 4px rgba(251,191,36,.10);
+}
+
+.muja-ai-form button {
+  width: 43px;
+  height: 43px;
+  border: 0;
+  border-radius: 16px;
+  color: #111827;
+  background: linear-gradient(135deg, #facc15, #fb923c);
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform .18s ease, opacity .18s ease;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.55), 0 12px 26px rgba(251,146,60,.22);
+}
+
+.muja-ai-form button:hover { transform: translateY(-2px) scale(1.03); }
+.muja-ai-form button:disabled { opacity: .55; cursor: wait; transform: none; }
+.muja-ai-form button svg { width: 20px; height: 20px; }
+
+
+
+.muja-ai-actions {
+  align-self: flex-start;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  max-width: 90%;
+  animation: mujaAiMsgIn .22s ease both;
+}
+
+.muja-ai-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: #111827;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
+  background: linear-gradient(135deg, #fde68a, #fb923c);
+  border: 1px solid rgba(255,255,255,.22);
+  box-shadow: 0 10px 24px rgba(251,146,60,.18);
+}
+
+.muja-ai-action.wa { background: linear-gradient(135deg, #86efac, #22c55e); }
+.muja-ai-action.yt { background: linear-gradient(135deg, #fecaca, #ef4444); color: #fff; }
+.muja-ai-action.group { background: linear-gradient(135deg, #bae6fd, #38bdf8); }
+.muja-ai-action.prime { background: linear-gradient(135deg, #fef3c7, #f59e0b); color: #111827; }
+.muja-ai-action:hover { transform: translateY(-1px) scale(1.02); }
+
+.muja-ai-online-note {
+  font-size: 10px;
+  opacity: .72;
+  margin-top: 2px;
+}
+
+body[data-muja-theme="light"] .muja-ai-window {
+  color: #111827;
+  border-color: rgba(15,23,42,.12);
+  background:
+    radial-gradient(circle at 20% 0%, rgba(251,191,36,.16), transparent 35%),
+    rgba(255,255,255,.94);
+  box-shadow: 0 28px 70px rgba(30,41,59,.19), inset 0 1px 0 rgba(255,255,255,.84);
+}
+
+body[data-muja-theme="light"] .muja-ai-head,
+body[data-muja-theme="light"] .muja-ai-form {
+  border-color: rgba(15,23,42,.09);
+  background: rgba(15,23,42,.035);
+}
+
+body[data-muja-theme="light"] .muja-ai-head small { color: rgba(15,23,42,.58); }
+body[data-muja-theme="light"] .muja-ai-close { color: #111827; border-color: rgba(15,23,42,.10); background: rgba(15,23,42,.055); }
+body[data-muja-theme="light"] .muja-ai-msg-bot { color: #111827; background: rgba(15,23,42,.055); border-color: rgba(15,23,42,.08); }
+body[data-muja-theme="light"] .muja-ai-form textarea { color: #111827; background: rgba(15,23,42,.045); border-color: rgba(15,23,42,.10); }
+body[data-muja-theme="light"] .muja-ai-form textarea::placeholder { color: rgba(15,23,42,.48); }
+
+body[data-muja-lang="ar"] .muja-ai-window,
+body[data-muja-lang="ar"] .muja-ai-msg,
+body[data-muja-lang="ar"] .muja-ai-form textarea {
+  direction: rtl;
+  text-align: right;
+}
+
+body[data-muja-lang="ar"] .muja-ai-window {
+  right: auto;
+  left: 0;
+  transform-origin: bottom left;
+}
+
+body[data-muja-lang="ar"] .muja-ai-chat {
+  right: auto;
+  left: 18px;
+}
+
+body[data-muja-lang="ar"] .muja-ai-close {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+@media (max-width: 560px) {
+  .muja-ai-chat { right: 12px; bottom: 12px; }
+  body[data-muja-lang="ar"] .muja-ai-chat { left: 12px; }
+  .muja-ai-fab { min-width: 104px; height: 48px; padding: 0 13px; font-size: 12px; }
+  .muja-ai-window { bottom: 62px; width: calc(100vw - 24px); height: min(540px, calc(100vh - 92px)); border-radius: 24px; }
+  .muja-lang-panel { position: fixed; top: 76px; right: 12px; left: auto; width: min(300px, calc(100vw - 24px)); }
+  body[data-muja-lang="ar"] .muja-lang-panel { left: 12px; right: auto; }
+}

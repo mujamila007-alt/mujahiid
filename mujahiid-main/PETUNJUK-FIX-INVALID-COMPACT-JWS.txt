@@ -1,0 +1,33 @@
+FIX ERROR: Invalid Compact JWS
+==============================
+
+PENYEBAB
+- sb_secret_... dan sb_publishable_... adalah API key Supabase baru dan BUKAN JWT.
+- Kode lama mengirim key tersebut sebagai Authorization: Bearer sehingga dibaca sebagai JWT.
+
+YANG SUDAH DIPERBAIKI
+1. api/supabase-storage.js memakai REST Storage dengan header apikey untuk secret key.
+2. admin-blk/index.html mengunggah ke signed URL tanpa Authorization Bearer Supabase.
+3. Login admin tetap Firebase.
+4. Environment Variables Vercel yang sudah dibuat TIDAK perlu diganti.
+
+UPLOAD / REPLACE KE ROOT GITHUB
+- api/supabase-storage.js
+- admin-blk/index.html
+- package.json
+
+admin-blk/supabase-config.js ikut disertakan sebagai cadangan. Kalau file Anda sudah benar, tidak wajib diganti.
+
+SETELAH COMMIT
+1. Tunggu Vercel deploy atau lakukan Redeploy.
+2. Buka /admin-blk/
+3. Ctrl+F5.
+4. Login admin.
+5. Tes 1 gambar JPG/PNG kecil.
+
+Environment Variables tetap:
+SUPABASE_URL=https://...supabase.co
+SUPABASE_SECRET_KEY=sb_secret_...
+SUPABASE_BUCKET=blk-assets (opsional, karena kode punya default)
+
+JANGAN taruh sb_secret_... di GitHub atau file HTML.
