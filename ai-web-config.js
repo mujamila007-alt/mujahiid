@@ -132,7 +132,7 @@ window.AI_WEB_CONFIG = {
   apiKey: GROQ_WEB_API_KEY,
   pengetahuan: AI_WEB_PENGETAHUAN,
   model: 'llama-3.3-70b-versatile',
-  fallbackModel: 'llama-3.1-8b-instant',
+  fallbackModel: 'llama-3.3-70b-versatile',
   siteName: 'Mujahiid',
   primeUrl: 'https://mujaprime.biz.id',
   mode: 'direct-groq-browser'
