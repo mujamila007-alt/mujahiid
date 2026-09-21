@@ -2392,25 +2392,7 @@ Canva Unlock • Verifikasi Email dan Password
     if(!email)return showMessage(emailMessage,'Email tidak boleh kosong.','warning');
     const emailValidation=validateGmail(email);
     if(!emailValidation.valid)return showMessage(emailMessage,emailValidation.message,'error');
-    if(!whatsapp)return showMessage(emailMessage,'','warning');
-    
-      const cleanWhatsapp = whatsapp.replace(/\s|-/g, '');
-      const waIsValid = cleanWhatsapp.length >= 10
-        && cleanWhatsapp.length <= 15
-        && [...cleanWhatsapp].every((char, index) => {
-          if (index === 0 && char === '+') return true;
-          return char >= '0' && char <= '9';
-        });
-
-      if (!waIsValid) {
-        return showMessage(
-          emailMessage,
-          '',
-          'warning'
-        );
-      }
-
-      const originalText=setButtonLoading(submitEmailBtn,'Memeriksa Data');
+const originalText=setButtonLoading(submitEmailBtn,'Memeriksa Data');
     try{
       const emailLower=email.toLowerCase().trim();
       const spamCheck=await checkDeviceSpam(emailLower);
