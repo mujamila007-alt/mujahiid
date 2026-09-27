@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+    <!-- MUJA CACHE FIX: selalu ambil versi terbaru dari server -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-chat-global-v3">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-chat-global-v3">
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Pembeli - Muja Prime</title>
+    
+    <!-- Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Favicon -->
+<link rel="icon" type="image/png" href="/muja.png?v=20260603-theme-chat-global-v3">
+<link rel="icon" type="image/svg+xml" href="/muja.svg?v=20260603-theme-chat-global-v3">
+<link rel="apple-touch-icon" href="/muja.png?v=20260603-theme-chat-global-v3">
+
+<!-- Web App -->
+    
+<link rel="stylesheet" href="/nav.css?v=20260603-theme-chat-global-v3">
+<meta name="theme-color" content="#0a0a0f">
+<meta name="application-name" content="Mujahid">
+    <style>
+        :root {
+            --brand-900: #0a0a0f;
+            --brand-800: #111118;
+            --brand-700: #1a1a24;
+            --surface-1: #16161f;
+            --surface-2: #1e1e2b;
+            --surface-3: #252535;
+            --ember-400: #ff8c55;
+            --ember-500: #ff6b2b;
+            --ember-600: #e55520;
+            --ember-glow: rgba(255,107,43,0.18);
+            --gold-400: #f7d46a;
+            --gold-500: #f5c842;
+            --gold-glow: rgba(245,200,66,0.15);
+            --jade-500: #00e5b4;
+            --jade-glow: rgba(0,229,180,0.12);
+            --text-primary: #f0f0f8;
+            --text-secondary: #9898b8;
+            --text-muted: #606078;
+            --border-subtle: rgba(255,255,255,0.06);
+            --border-medium: rgba(255,255,255,0.1);
+            --shadow-card: 0 8px 32px rgba(0,0,0,0.4);
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --radius-xl: 28px;
+            --radius-full: 999px;
+            --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: var(--brand-900);
+            color: var(--text-primary);
+            font-size: 14px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Noise texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        ::-webkit-scrollbar { width: 4px; }
+        ::-webkit-scrollbar-track { background: var(--brand-900); }
+        ::-webkit-scrollbar-thumb { background: var(--ember-600); border-radius: 2px; }
+
+        a { text-decoration: none; color: inherit; }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 16px;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Header */
+        .header {
+            background: rgba(17,17,24,0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 14px 0;
+            position: sticky;
+            top: 0;
+            z-index: 200;
+        }
+        .header-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+        .back-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: var(--surface-2);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-sm);
+            font-size: 18px;
+            cursor: pointer;
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+        .back-btn:hover {
+            color: var(--ember-400);
+            border-color: var(--ember-600);
+        }
+        .header-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: -0.3px;
+        }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, var(--surface-2) 0%, var(--brand-700) 100%);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 30px 20px;
+            margin: 20px 0 24px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-banner::before {
+            content: '';
+            position: absolute;
+            top: -40px;
+            right: -40px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--ember-glow) 0%, transparent 70%);
+        }
+        .hero-banner::after {
+            content: '';
+            position: absolute;
+            bottom: -30px;
+            left: -20px;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--gold-glow) 0%, transparent 70%);
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        .hero-icons {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 12px;
+            font-size: 32px;
+        }
+        .hero-title {
+            font-size: 28px;
+            font-weight: 800;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--ember-400) 0%, var(--gold-400) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.5px;
+        }
+        .hero-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+
+        /* Podium Top 3 */
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            gap: 12px;
+            margin-bottom: 24px;
+            flex-wrap: wrap;
+        }
+        .podium-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-md);
+            padding: 18px 10px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            min-width: 110px;
+            max-width: 130px;
+            transition: var(--transition);
+            position: relative;
+        }
+        .podium-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255,107,43,0.3);
+            box-shadow: 0 0 40px rgba(255,107,43,0.15), 0 8px 32px rgba(0,0,0,0.4);
+        }
+        .podium-1 { border-top: 3px solid #ffd700; }
+        .podium-2 { border-top: 3px solid #c0c0c0; }
+        .podium-3 { border-top: 3px solid #cd7f32; }
+
+        .podium-medal {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: -34px auto 8px;
+            font-size: 18px;
+            font-weight: 800;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.3);
+        }
+        .medal-1 { background: #ffd700; color: #7c5c00; }
+        .medal-2 { background: #c0c0c0; color: #5a5a5a; }
+        .medal-3 { background: #cd7f32; color: #5e3500; }
+
+        .podium-name {
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--text-primary);
+        }
+        .podium-wa {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+        .podium-count {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .podium-count .count-num {
+            font-size: 20px;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--ember-400), var(--gold-400));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        .podium-count .count-text {
+            color: var(--text-muted);
+            font-size: 10px;
+        }
+        .podium-vip {
+            margin-top: 8px;
+        }
+
+        /* Leaderboard Table */
+        .leaderboard-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 24px;
+        }
+        .leaderboard-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .leaderboard-title {
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .leaderboard-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 16px;
+            background: linear-gradient(180deg, var(--ember-400), var(--gold-500));
+            border-radius: 2px;
+            margin-right: 4px;
+            vertical-align: middle;
+        }
+        .update-badge {
+            background: var(--surface-2);
+            border: 1px solid var(--border-subtle);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .table-scroll {
+            max-height: 350px;
+            overflow-y: auto;
+            border-radius: var(--radius-sm);
+        }
+        .table-scroll::-webkit-scrollbar { width: 5px; }
+        .table-scroll::-webkit-scrollbar-track { background: var(--surface-2); border-radius: 10px; }
+        .table-scroll::-webkit-scrollbar-thumb { background: var(--surface-4); border-radius: 10px; }
+        .table-scroll::-webkit-scrollbar-thumb:hover { background: var(--text-muted); }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        thead {
+            position: sticky;
+            top: 0;
+            background: var(--surface-2);
+            z-index: 10;
+        }
+        thead th {
+            padding: 10px 8px;
+            text-align: left;
+            color: var(--text-muted);
+            font-weight: 600;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid var(--border-subtle);
+        }
+        tbody tr {
+            border-bottom: 1px solid var(--border-subtle);
+            transition: var(--transition);
+        }
+        tbody tr:hover {
+            background: var(--surface-2);
+        }
+        tbody td {
+            padding: 10px 8px;
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .rank-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 26px;
+            height: 22px;
+            background: var(--surface-3);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-xs);
+            font-weight: 700;
+            font-size: 11px;
+            color: var(--text-muted);
+            padding: 0 6px;
+        }
+        .rank-gold {
+            background: rgba(255,215,0,0.15);
+            border-color: rgba(255,215,0,0.3);
+            color: #ffd700;
+        }
+        .rank-silver {
+            background: rgba(192,192,192,0.15);
+            border-color: rgba(192,192,192,0.3);
+            color: #c0c0c0;
+        }
+        .rank-bronze {
+            background: rgba(205,127,50,0.15);
+            border-color: rgba(205,127,50,0.3);
+            color: #cd7f32;
+        }
+
+        .player-name {
+            font-weight: 600;
+            color: var(--text-primary);
+            font-size: 13px;
+        }
+        .player-wa {
+            font-size: 9px;
+            color: var(--text-muted);
+            margin-top: 2px;
+        }
+        .player-count {
+            font-weight: 700;
+            color: var(--ember-400);
+            font-size: 14px;
+        }
+
+        .status-club {
+            background: rgba(245,200,66,0.1);
+            border: 1px solid rgba(245,200,66,0.2);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 9px;
+            font-weight: 700;
+            color: var(--gold-500);
+            white-space: nowrap;
+        }
+        .status-completed {
+            background: rgba(0,229,180,0.1);
+            border: 1px solid rgba(0,229,180,0.2);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--jade-500);
+            white-space: nowrap;
+        }
+        .status-progress {
+            background: rgba(255,107,43,0.1);
+            border: 1px solid rgba(255,107,43,0.2);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            font-weight: 700;
+            color: var(--ember-400);
+            white-space: nowrap;
+        }
+        .status-new {
+            background: var(--surface-3);
+            border: 1px solid var(--border-subtle);
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            font-size: 10px;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .data-info {
+            margin-top: 12px;
+            text-align: right;
+            font-size: 10px;
+            color: var(--text-muted);
+        }
+
+        /* CTA */
+        .cta-card {
+            background: var(--surface-1);
+            border: 1px solid var(--border-subtle);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-card);
+            margin-bottom: 24px;
+        }
+        .cta-card p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+            font-size: 14px;
+        }
+        .cta-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--ember-500), var(--ember-600));
+            color: white;
+            padding: 12px 32px;
+            border-radius: var(--radius-full);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+        }
+        .cta-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(255,107,43,0.35);
+        }
+
+        /* Loading Spinner */
+        .loading-spinner {
+            width: 30px;
+            height: 30px;
+            border: 3px solid var(--border-subtle);
+            border-top-color: var(--ember-500);
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Footer */
+        .footer {
+            background: var(--surface-1);
+            border-top: 1px solid var(--border-subtle);
+            padding: 20px;
+            text-align: center;
+        }
+        .footer p {
+            color: var(--text-muted);
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+        }
+        .footer-links a {
+            color: var(--text-muted);
+            font-size: 12px;
+            transition: color 0.2s;
+        }
+        .footer-links a:hover {
+            color: var(--ember-400);
+        }
+
+        @media (max-width: 480px) {
+            .hero-title { font-size: 22px; }
+            .hero-icons { font-size: 24px; }
+            .podium-card { min-width: 95px; max-width: 105px; padding: 14px 6px; }
+            .podium-name { font-size: 11px; }
+            .podium-count .count-num { font-size: 18px; }
+            thead th { font-size: 10px; padding: 8px 4px; }
+            tbody td { font-size: 11px; padding: 8px 4px; }
+        }
+    </style>
+    <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
+    <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
+    <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
+    <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+  <!-- Hidden checkbox untuk sidebar -->
+<input class="hidden" id="sidebar-toggle" type="checkbox"/>
+<label class="sidebar-overlay" for="sidebar-toggle"></label>
+
+<!-- Sidebar Menu -->
+<aside class="muja-sidebar">
+    <div class="sidebar-header">
+        <h3>Muja Prime</h3>
+        <label class="sidebar-close" for="sidebar-toggle">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+            </svg>
+        </label>
+    </div>
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/semua-produk/">Semua Produk</a></li>
+            <li><a href="/tukar-point/">Tukar Poin</a></li>
+            <li><a href="/top-pembeli/">Top Pembeli</a></li>
+            <li><a href="/kontak/">Kontak</a></li>
+            <li><a href="/tentang/">Tentang</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+            <li><a href="/kebijakan-privasi/">Kebijakan Privasi</a></li>
+            <li><a href="/syarat-ketentuan/">Syarat &amp; Ketentuan</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer"></div>
+</aside>
+
+<!-- Header -->
+<!-- Header -->
+<header class="muja-header" id="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- KIRI: Logo & Menu Toggle -->
+            <div class="logo-section">
+                <label class="menu-toggle" for="sidebar-toggle">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <line x1="3" x2="21" y1="12" y2="12"/>
+                        <line x1="3" x2="15" y1="6" y2="6"/>
+                        <line x1="3" x2="18" y1="18" y2="18"/>
+                    </svg>
+                </label>
+                <a class="site-logo" href="/"><span class="site-title">MUJA PRIME</span></a>
+            </div>
+
+            <!-- KANAN: Theme Toggle + Cart -->
+            
+        </div>
+    </div>
+</header>
+
+    <!-- Main Content -->
+    <main class="container">
+        
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+            <div class="hero-content">
+                <div class="hero-icons">🏆 🥇 🎖️</div>
+                <h1 class="hero-title">Top Pembeli</h1>
+                <p class="hero-subtitle">Peringkat pembeli teraktif di Muja Prime bulan ini</p>
+            </div>
+        </div>
+
+        <!-- Podium Top 3 -->
+        <div class="podium-container" id="top3Podium">
+            <!-- Diisi JavaScript -->
+        </div>
+
+        <!-- Leaderboard Table -->
+        <div class="leaderboard-card">
+            <div class="leaderboard-header">
+                <h2 class="leaderboard-title">Daftar Lengkap Top 20</h2>
+                <span class="update-badge" id="updateInfo">🔄 Update real-time</span>
+            </div>
+            
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th style="width:15%;">No</th>
+                            <th style="width:40%;">Nama</th>
+                            <th style="width:20%; text-align:center;">Beli</th>
+                            <th style="width:25%; text-align:center;">Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="leaderboardTableBody">
+                        <tr>
+                            <td colspan="4" style="padding:40px; text-align:center;">
+                                <div class="loading-spinner"></div>
+                                <p style="margin-top:12px; color:var(--text-muted); font-size:13px;">Memuat data...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="data-info" id="dataCountInfo">
+                Menampilkan 0 dari 20 data
+            </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-card">
+            <p><strong style="color:var(--ember-400);">Daftar Sekarang</strong>?</p>
+            <a href="mujaprime.xo.je" class="cta-btn">Mulai Belanja Sekarang</a>
+        </div>
+
+    </main>
+
+<nav class="mobile-nav">
+    <div class="mobile-nav-menu">
+        <a class="mobile-nav-item active" href="/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Beranda</span>
+        </a>
+        <a class="mobile-nav-item" href="/semua-produk/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+            <span>Produk</span>
+        </a>
+        <div class="mobile-nav-item" id="themeToggleMobile" onclick="window.toggleTheme()">
+            <span></span>
+            <span>Tema</span>
+        </div>
+        <a class="mobile-nav-item" href="/akun-saya/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Akun</span>
+        </a>
+    </div>
+</nav>
+
+    <!-- Firebase SDK -->
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+    <script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+    <script>
+    (function() {
+        'use strict';
+
+        // Firebase Config
+       
+
+        if (window.initMujaFirebase) window.initMujaFirebase();
+        if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+        const db = window.db || firebase.firestore();
+
+        let leaderboardData = [];
+
+        // Mask nama untuk privasi
+        function maskName(name) {
+            if (!name) return 'User***';
+            if (name.length <= 2) return name[0] + '*';
+            if (name.length <= 4) return name[0] + '***';
+            if (name.length <= 6) return name[0] + '***' + name[name.length - 1];
+            return name.substring(0, 2) + '***' + name[name.length - 1];
+        }
+
+        // Format WhatsApp
+        function maskWA(wa) {
+            if (!wa) return '********';
+            if (wa.length <= 5) return wa + '***';
+            return wa.slice(0, 5) + '***' + wa.slice(-2);
+        }
+
+        // Load data dari Firestore
+        async function loadLeaderboard() {
+            const tbody = document.getElementById('leaderboardTableBody');
+            
+            try {
+                const snapshot = await db.collection('leaderboard')
+                    .orderBy('purchaseCount', 'desc')
+                    .limit(20)
+                    .get();
+                
+                leaderboardData = [];
+                snapshot.forEach(doc => {
+                    leaderboardData.push({ id: doc.id, ...doc.data() });
+                });
+                
+                leaderboardData.sort((a, b) => (b.purchaseCount || 0) - (a.purchaseCount || 0));
+                
+                renderTop3();
+                renderTable();
+                
+                const now = new Date();
+                document.getElementById('updateInfo').textContent = 
+                    '🔄 Update: ' + now.toLocaleTimeString('id-ID', {hour:'2-digit', minute:'2-digit'});
+                
+                document.getElementById('dataCountInfo').textContent = 
+                    'Menampilkan ' + leaderboardData.length + ' dari 20 data';
+                
+            } catch (error) {
+                console.error('Error loading leaderboard:', error);
+                tbody.innerHTML = '<tr><td colspan="4" style="padding:30px; text-align:center; color:#ef4444; font-size:13px;">❌ Gagal memuat data. Coba refresh halaman.</td></tr>';
+            }
+        }
+
+        // Render Top 3 Podium
+        function renderTop3() {
+            const podiumDiv = document.getElementById('top3Podium');
+            const top3 = leaderboardData.slice(0, 3);
+            
+            if (top3.length === 0) {
+                podiumDiv.innerHTML = '<p style="color:var(--text-muted); width:100%; text-align:center; font-size:13px;">Belum ada data pembeli</p>';
+                return;
+            }
+            
+            // Urutan: 2 - 1 - 3 (Posisi 1 di tengah)
+            const ordered = [];
+            if (top3[1]) ordered.push({ rank: 2, data: top3[1] });
+            if (top3[0]) ordered.push({ rank: 1, data: top3[0] });
+            if (top3[2]) ordered.push({ rank: 3, data: top3[2] });
+            
+            let html = '';
+            ordered.forEach(item => {
+                const rank = item.rank;
+                const data = item.data;
+                const medalClass = rank === 1 ? 'medal-1' : (rank === 2 ? 'medal-2' : 'medal-3');
+                const podiumClass = rank === 1 ? 'podium-1' : (rank === 2 ? 'podium-2' : 'podium-3');
+                const medalIcon = rank === 1 ? '🥇' : (rank === 2 ? '🥈' : '🥉');
+                
+                html += `
+                    <div class="podium-card ${podiumClass}">
+                        <div class="podium-medal ${medalClass}">${medalIcon}</div>
+                        <div class="podium-name">${maskName(data.userName)}</div>
+                        <div class="podium-wa">${maskWA(data.userWa)}</div>
+                        <div class="podium-count">
+                            <span class="count-num">${data.purchaseCount || 0}</span>
+                            <span class="count-text">beli</span>
+                        </div>
+                        <div class="podium-vip">
+                            ${data.isVIP ? '<span class="status-club">👑 VIP Club</span>' : ''}
+                        </div>
+                    </div>
+                `;
+            });
+            
+            podiumDiv.innerHTML = html;
+        }
+
+        // Render Tabel Leaderboard
+        function renderTable() {
+            const tbody = document.getElementById('leaderboardTableBody');
+            
+            if (leaderboardData.length === 0) {
+                tbody.innerHTML = '<tr><td colspan="4" style="padding:40px; text-align:center; color:var(--text-muted); font-size:13px;">📭 Belum ada data pembeli</td></tr>';
+                return;
+            }
+            
+            let html = '';
+            leaderboardData.forEach((item, index) => {
+                const rank = index + 1;
+                const count = item.purchaseCount || 0;
+                
+                // Status badge
+                let statusBadge = '';
+                if (count >= 2) {
+                    statusBadge = '<span class="status-completed">✔ Selesai</span>';
+                } else if (count === 1) {
+                    statusBadge = '<span class="status-progress">🔥 1/2</span>';
+                } else {
+                    statusBadge = '<span class="status-new">🆕 Baru</span>';
+                }
+                
+                const vipBadge = item.isVIP ? ' <span class="status-club">👑</span>' : '';
+                
+                // Rank badge
+                let rankBadge = '';
+                if (rank === 1) {
+                    rankBadge = '<span class="rank-badge rank-gold">🥇 1</span>';
+                } else if (rank === 2) {
+                    rankBadge = '<span class="rank-badge rank-silver">🥈 2</span>';
+                } else if (rank === 3) {
+                    rankBadge = '<span class="rank-badge rank-bronze">🥉 3</span>';
+                } else {
+                    rankBadge = '<span class="rank-badge">' + rank + '</span>';
+                }
+                
+                html += `
+                    <tr>
+                        <td>${rankBadge}</td>
+                        <td>
+                            <div class="player-name">${maskName(item.userName)}${vipBadge}</div>
+                            <div class="player-wa">${maskWA(item.userWa)}</div>
+                        </td>
+                        <td style="text-align:center;">
+                            <span class="player-count">${count}</span>
+                        </td>
+                        <td style="text-align:center;">${statusBadge}</td>
+                    </tr>
+                `;
+            });
+            
+            tbody.innerHTML = html;
+        }
+
+        // Real-time listener
+        db.collection('leaderboard')
+            .orderBy('purchaseCount', 'desc')
+            .limit(20)
+            .onSnapshot((snapshot) => {
+                leaderboardData = [];
+                snapshot.forEach(doc => {
+                    leaderboardData.push({ id: doc.id, ...doc.data() });
+                });
+                leaderboardData.sort((a, b) => (b.purchaseCount || 0) - (a.purchaseCount || 0));
+                
+                renderTop3();
+                renderTable();
+                
+                const now = new Date();
+                document.getElementById('updateInfo').textContent = 
+                    '🔄 Update: ' + now.toLocaleTimeString('id-ID', {hour:'2-digit', minute:'2-digit'});
+                
+                document.getElementById('dataCountInfo').textContent = 
+                    'Menampilkan ' + leaderboardData.length + ' dari 20 data';
+            }, (error) => {
+                console.error('Listener error:', error);
+            });
+
+        // Initial load
+        loadLeaderboard();
+
+        // Refresh setiap 30 detik
+        setInterval(loadLeaderboard, 30000);
+
+    })();
+    </script>
+
+    <script src="/liquid-icons.js?v=20260603-theme-chat-global-v3" defer></script>
+<script src="/ai-chat-global.js?v=20260603-theme-chat-global-v3"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+PANDUAN ADMIN BLK - LOGIN FIREBASE + FOTO SUPABASE
+=================================================
+
+VERSI INI TIDAK MEMINTA PASSWORD SUPABASE.
+
+LOGIN ADMIN
+- Halaman /admin-blk/ hanya login dengan Firebase Authentication.
+- Email dan password yang dimasukkan adalah akun Firebase.
+- Jika lupa password, klik "Lupa password Firebase? Kirim email reset" pada halaman login.
+- Supabase Authentication tidak dipakai oleh halaman admin.
+
+PENYIMPANAN
+- Firebase Authentication : login admin
+- Firestore               : data modul, catatan, URL/path, pengaturan
+- Supabase Storage        : contoh foto dan file materi upload
+- Vercel API              : membuat izin upload Supabase secara aman
+
+SUPABASE
+- Bucket: blk-assets
+- Project URL dan Publishable Key tetap berada di admin-blk/supabase-config.js
+- Secret key JANGAN dimasukkan ke GitHub/HTML.
+
+VERCEL
+Hanya satu Environment Variable yang WAJIB untuk project Supabase yang sekarang:
+
+SUPABASE_SECRET_KEY = sb_secret_...
+
+Ambil dari Supabase > Settings > API Keys > Secret keys.
+Masukkan hanya di Vercel > Project > Settings > Environment Variables.
+Setelah Save, lakukan Redeploy.
+
+Environment Variable berikut OPSIONAL:
+SUPABASE_URL    (sudah ada fallback ke project Anda sekarang)
+SUPABASE_BUCKET (default blk-assets)
+ADMIN_EMAILS    (jika ingin membatasi email Firebase tertentu)
+
+UPLOAD FOTO
+1. Login /admin-blk/ dengan akun Firebase.
+2. Modul Pelatihan > pilih modul > Kelola File & Catatan.
+3. Tab Contoh Foto > Tambah foto.
+4. Pilih JPG/PNG/WEBP, maksimal 8 MB.
+5. Klik Simpan foto.
+
+Tidak perlu akun atau password Supabase Authentication.

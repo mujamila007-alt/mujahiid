@@ -1,0 +1,1217 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+    <!-- MUJA CACHE FIX: selalu ambil versi terbaru dari server -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-chat-global-v3">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-chat-global-v3">
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Produk · Muja Prime</title>
+    <link rel="icon" type="image/png" href="/muja.png?v=20260603-theme-chat-global-v3">
+    <link rel="icon" type="image/svg+xml" href="/muja.svg?v=20260603-theme-chat-global-v3">
+    <link rel="apple-touch-icon" href="/muja.png?v=20260603-theme-chat-global-v3">
+<meta name="theme-color" content="#080810">
+    
+    <link rel="stylesheet" href="/nav.css?v=20260603-theme-chat-global-v3">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --bg-deep:     #080810;
+    --bg-base:     #0e0e1a;
+    --bg-card:     #13131f;
+    --bg-card2:    #181828;
+    --bg-card3:    #1e1e30;
+    --ember-300:   #ffb088;
+    --ember-400:   #ff8855;
+    --ember-500:   #ff6b2b;
+    --ember-600:   #e0521b;
+    --gold-300:    #fde89a;
+    --gold-400:    #f7d46a;
+    --gold-500:    #f5c528;
+    --jade-400:    #34e5b4;
+    --text-100:    #f4f4fc;
+    --text-200:    #c8c8e0;
+    --text-400:    #8888aa;
+    --text-600:    #44445a;
+    --border-1:    rgba(255,255,255,0.05);
+    --border-2:    rgba(255,255,255,0.09);
+    --border-3:    rgba(255,255,255,0.14);
+    --r-sm: 8px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-full: 999px;
+    --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.25);
+    --transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+    
+    /* Variabel tambahan yang dibutuhkan */
+    --line: rgba(255,255,255,0.07);
+    --line-mid: rgba(255,255,255,0.12);
+    --accent: #ff6b2b;
+    --accent-dim: rgba(255,107,43,0.15);
+    --accent-glow: rgba(255,107,43,0.35);
+    --gold: #f5c842;
+    --gold-dim: rgba(245,200,66,0.12);
+    --jade: #00e5b4;
+    --red: #ef4444;
+    --text-1: #f2f2f8;
+    --text-2: #8888aa;
+    --text-3: #55556e;
+    --bg-raised: #1a1a28;
+    --bg-hover: #20203a;
+    --ease: cubic-bezier(.4,0,.2,1);
+}
+
+body.light-mode {
+    --bg-deep:#f0eff8; --bg-base:#f7f6ff; --bg-card:#ffffff; --bg-card2:#f3f2fa; --bg-card3:#ece9f8;
+    --text-100:#1a1a2e; --text-200:#3a3a52; --text-400:#6a6a88; --text-600:#aaaacc;
+    --border-1:rgba(0,0,0,0.05); --border-2:rgba(0,0,0,0.08); --border-3:rgba(0,0,0,0.12);
+    --shadow-card:0 1px 3px rgba(0,0,0,0.06),0 8px 24px rgba(0,0,0,0.08);
+    
+    /* Variabel tambahan untuk light mode */
+    --line: rgba(0,0,0,0.08);
+    --line-mid: rgba(0,0,0,0.12);
+    --accent: #ff6b2b;
+    --accent-dim: rgba(255,107,43,0.1);
+    --accent-glow: rgba(255,107,43,0.2);
+    --gold: #d4a017;
+    --gold-dim: rgba(212,160,23,0.1);
+    --jade: #00a86b;
+    --red: #dc2626;
+    --text-1: #1a1a2e;
+    --text-2: #4a4a6a;
+    --text-3: #8888aa;
+    --bg-raised: #f3f2fa;
+    --bg-hover: #ece9f8;
+}
+        
+        body::before {
+    content:'';
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255,107,43,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 50% at 10% 80%, rgba(247,212,106,0.04) 0%, transparent 60%);
+    pointer-events:none;
+    z-index:0;
+}
+
+body.light-mode::before { 
+    background: radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255,107,43,0.05) 0%, transparent 60%); 
+}
+        *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg-deep);
+            color: var(--text-1);
+            font-size: 14px;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1,h2,h3,h4,.label-font { font-family: sans-serif; }
+
+        .container { max-width: 600px; margin: 0 auto; padding: 0 14px; }
+
+        /* ─── Loading / Error ───────────────────────── */
+        .loading-container { text-align:center; padding:100px 20px; }
+        .loading-ring {
+            width: 44px; height: 44px;
+            border: 2.5px solid var(--line-mid);
+            border-top-color: var(--accent);
+            border-radius: 50%;
+            animation: spin .85s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .error-container {
+            text-align:center; padding:60px 24px;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-xl);
+            margin-top: 20px;
+        }
+
+        /* ─── Image ─────────────────────────────────── */
+        .image-wrap {
+            margin: 12px 0;
+            border-radius: var(--r-xl);
+            overflow: hidden;
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            position: relative;
+        }
+        .image-wrap::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, transparent 60%, rgba(8,8,16,.8) 100%);
+            pointer-events: none;
+        }
+        .main-image { aspect-ratio: 1/1; overflow: hidden; }
+        .main-image img { width:100%; height:100%; object-fit:cover; display:block; }
+
+        /* ─── Price Card ────────────────────────────── */
+        .price-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .price-main { font-family: sans-serif; font-size: 30px; font-weight: 800; color: var(--text-1); letter-spacing: -.5px; }
+        .price-old { font-size: 13px; color: var(--text-3); text-decoration: line-through; margin-top: 2px; }
+        .badge-discount {
+            background: var(--accent-dim);
+            border: 1px solid rgba(255,107,43,.25);
+                color: #000000;
+    font-weight: 800;
+            font-family: sans-serif;
+            font-size: 11px; font-weight: 700;
+            padding: 4px 10px;
+            border-radius: var(--r-full);
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        /* ─── Point Banner ──────────────────────────── */
+        .poin-banner {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 18px 20px;
+            margin-bottom: 10px;
+        }
+        .poin-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 14px;
+        }
+        .poin-label {
+            display: flex; align-items: center; gap: 8px;
+            font-size: 12px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+            color: var(--text-2);
+        }
+        .poin-label svg { color: var(--gold); }
+        .poin-reward-badge {
+            background: var(--gold-dim);
+            border: 1px solid rgba(245,200,66,.2);
+            color: var(--gold);
+            font-family: sans-serif;
+            font-size: 14px; font-weight: 700;
+            padding: 5px 14px;
+            border-radius: var(--r-full);
+        }
+        .poin-track {
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            padding: 14px 16px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+        }
+        .poin-track-info { display: flex; flex-direction: column; gap: 4px; }
+        .poin-track-label { font-size: 11px; color: var(--text-3); text-transform: uppercase; letter-spacing: .05em; }
+        .poin-track-value { font-family: sans-serif; font-size: 20px; font-weight: 700; color: var(--text-1); }
+        .poin-arrow {
+            width: 32px; height: 32px;
+            background: var(--bg-hover); border: 1px solid var(--line);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-3);
+            flex-shrink: 0;
+        }
+        .poin-after-text {
+            font-size: 11px; color: var(--jade);
+            margin-top: 10px;
+            display: flex; align-items: center; gap: 6px;
+        }
+
+        /* ─── Login Warning ─────────────────────────── */
+        .login-bar {
+            background: rgba(239,68,68,.08);
+            border: 1px solid rgba(239,68,68,.2);
+            border-radius: var(--r-md);
+            padding: 12px 14px;
+            margin-top: 12px;
+            display: flex; align-items: center; gap: 10px;
+            font-size: 12px; color: var(--red);
+        }
+        .login-bar a { color: var(--accent); font-weight: 600; text-decoration: none; border-bottom: 1px solid currentColor; }
+
+        /* ─── Info Card ─────────────────────────────── */
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 20px;
+            margin-bottom: 10px;
+        }
+        .product-title {
+            font-family: sans-serif;
+            font-size: 16px; font-weight: 700;
+            color: var(--text-1);
+            margin-bottom: 16px;
+            line-height: 1.4;
+        }
+        .info-row {
+            display: flex; align-items: center;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--line);
+            gap: 12px;
+        }
+        .info-row:last-child { border-bottom: none; padding-bottom: 0; }
+        .info-row-icon {
+            width: 32px; height: 32px;
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            border-radius: var(--r-sm);
+            display: flex; align-items: center; justify-content: center;
+            color: var(--text-2);
+            flex-shrink: 0;
+        }
+        .info-row-label { font-size: 12px; color: #030304; width: 72px; flex-shrink: 0; }
+        .info-row-value { font-size: 13px; color: var(--text-1); flex: 1; }
+        .status-dot { display: inline-flex; align-items: center; gap: 6px; }
+        .dot { width: 7px; height: 7px; border-radius: 50%; }
+        .dot-green { background: var(--jade); box-shadow: 0 0 6px var(--jade); }
+        .dot-red { background: var(--red); }
+
+        /* ─── Buy Section ───────────────────────────── */
+        .buy-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 20px;
+            margin-bottom: 10px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .btn-buy {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--accent) 0%, #e55520 100%);
+            color: #fff;
+            border: none;
+            border-radius: var(--r-md);
+            font-family: sans-serif;
+            font-size: 15px; font-weight: 700;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 9px;
+            letter-spacing: .02em;
+            transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+            position: relative; overflow: hidden;
+        }
+        .btn-buy::before {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,.12) 0%, transparent 60%);
+            pointer-events: none;
+        }
+        .btn-buy:hover:not(.disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 28px var(--accent-glow);
+        }
+        .btn-buy.disabled {
+            background: var(--bg-raised);
+            color: var(--text-3);
+            cursor: not-allowed;
+        }
+        .btn-save {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            color: var(--text-2);
+            border: 1px solid var(--line-mid);
+            border-radius: var(--r-md);
+            font-family: 'DM Sans', sans-serif;
+            font-size: 14px; font-weight: 500;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            transition: background .2s var(--ease), color .2s var(--ease), border-color .2s var(--ease);
+        }
+        .btn-save:hover { background: var(--bg-raised); color: var(--text-1); border-color: var(--line-mid); }
+        
+         .btn-guide-detail1 {
+         display:none;    
+        }
+
+        .btn-guide-detail {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #f5c528 0%, #ff8855 100%);
+            color: #130c04;
+            border: none;
+            border-radius: var(--r-md);
+            font-family: sans-serif;
+            font-size: 14px;
+            font-weight: 800;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+            box-shadow: 0 10px 28px rgba(245, 197, 40, .16);
+        }
+        .btn-guide-detail:hover { transform: translateY(-2px); box-shadow: 0 14px 36px rgba(245, 197, 40, .24); }
+        .guide-detail-card {
+            background: linear-gradient(145deg, rgba(255,107,43,.12), rgba(245,197,40,.08));
+            border: 1px solid rgba(247,212,106,.22);
+            border-radius: var(--r-lg);
+            padding: 18px;
+            margin-bottom: 10px;
+            box-shadow: 0 18px 50px rgba(255,107,43,.07), inset 0 1px 0 rgba(255,255,255,.06);
+            animation: guideDetailIn .45s var(--ease) both;
+            position: relative;
+            overflow: hidden;
+        }
+        .guide-detail-card::before {
+            content: '';
+            position: absolute;
+            width: 190px;
+            height: 190px;
+            border-radius: 50%;
+            right: -90px;
+            top: -105px;
+            background: rgba(247,212,106,.15);
+            filter: blur(18px);
+        }
+        .guide-detail-content { position:relative; display:flex; gap:12px; align-items:flex-start; }
+        .guide-detail-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, #ff6b2b, #f5c528);
+            color: #130c04;
+            flex-shrink: 0;
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            box-shadow: 0 12px 26px rgba(255,107,43,.22);
+        }
+        .guide-detail-card h3 { font-family:sans-serif; font-size:15px; color:var(--text-1); margin-bottom:5px; }
+        .guide-detail-card p { color:var(--text-2); font-size:12px; line-height:1.65; margin:0 0 12px; }
+        .guide-mini-list { display:grid; gap:7px; margin-bottom:12px; }
+        .guide-mini-item { display:flex; gap:7px; align-items:flex-start; font-size:11px; line-height:1.45; color:var(--text-2); }
+        .guide-mini-item svg { color:#f5c528; flex-shrink:0; margin-top:1px; }
+        @keyframes guideDetailIn { from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:translateY(0);} }
+
+
+        /* ─── Description ───────────────────────────── */
+        .desc-card {
+            background: var(--bg-card);
+            border: 1px solid var(--line);
+            border-radius: var(--r-lg);
+            padding: 20px;
+            margin-bottom: 80px;
+        }
+        .section-heading {
+            font-family: sans-serif;
+            font-size: 13px; font-weight: 700;
+            letter-spacing: .08em; text-transform: uppercase;
+            color: var(--text-2);
+            display: flex; align-items: center; gap: 8px;
+            margin-bottom: 14px;
+        }
+        .desc-body { font-size: 13px; line-height: 1.8; color: var(--text-2); }
+
+        /* ─── Payment Overlay ───────────────────────── */
+        .pay-overlay {
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,.85);
+            backdrop-filter: blur(16px);
+            z-index: 1000;
+            display: none; align-items: flex-end; justify-content: center;
+        }
+        .pay-overlay.active { display: flex; }
+        .pay-sheet {
+            background: var(--bg-card);
+            border: 1px solid var(--line-mid);
+            border-radius: var(--r-xl) var(--r-xl) 0 0;
+            padding: 8px 24px 32px;
+            width: 100%; max-width: 600px;
+            animation: slideUp .35s var(--ease);
+        }
+        @keyframes slideUp { from { transform: translateY(60px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+        .pay-handle {
+            width: 40px; height: 4px;
+            background: var(--line-mid);
+            border-radius: 2px;
+            margin: 14px auto 24px;
+        }
+        .pay-title {
+            font-family: sans-serif;
+            font-size: 18px; font-weight: 800;
+            text-align: center; margin-bottom: 4px;
+        }
+        .pay-subtitle { font-size: 13px; color: var(--text-3); text-align: center; margin-bottom: 22px; }
+
+        .pay-method {
+            display: flex; align-items: center; gap: 14px;
+            padding: 14px;
+            background: var(--bg-raised);
+            border: 1.5px solid var(--line);
+            border-radius: var(--r-md);
+            cursor: pointer;
+            transition: border-color .2s var(--ease), background .2s var(--ease);
+            margin-bottom: 8px;
+        }
+        .pay-method:hover { background: var(--bg-hover); }
+        .pay-method.selected { border-color: var(--accent); background: var(--accent-dim); }
+        .pay-method-logo {
+            width: 40px; height: 40px;
+            border-radius: 10px;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--bg-card);
+            display: flex; align-items: center; justify-content: center;
+        }
+        .pay-method-logo img { width:100%; height:100%; object-fit:contain; }
+        .pay-method-name { font-family:'Syne',sans-serif; font-size:14px; font-weight:700; }
+        .pay-method-desc { font-size:11px; color:var(--text-3); margin-top:2px; }
+        .pay-radio {
+            margin-left: auto;
+            width: 20px; height: 20px;
+            border: 2px solid var(--line-mid);
+            border-radius: 50%;
+            flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color .2s;
+        }
+        .pay-method.selected .pay-radio { border-color: var(--accent); background: var(--accent); }
+        .pay-method.selected .pay-radio::after { content:''; width:7px; height:7px; background:#fff; border-radius:50%; }
+
+        .pay-summary {
+            background: var(--bg-raised);
+            border: 1px solid var(--line);
+            border-radius: var(--r-md);
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .pay-row {
+            display: flex; justify-content: space-between;
+            font-size: 13px; padding: 5px 0; color: var(--text-2);
+        }
+        .pay-row.total {
+            border-top: 1px solid var(--line);
+            margin-top: 8px; padding-top: 12px;
+            font-family: sans-serif;
+            font-size: 16px; font-weight: 700;
+            color: var(--text-1);
+        }
+        .pay-row.total span:last-child { color: var(--accent); }
+
+        .btn-pay {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, var(--jade) 0%, #00b894 100%);
+            color: #040f0a;
+            border: none;
+            border-radius: var(--r-md);
+            font-family: sans-serif;
+            font-size: 15px; font-weight: 800;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 9px;
+            transition: transform .2s var(--ease), box-shadow .2s var(--ease);
+        }
+        .btn-pay:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(0,229,180,.3); }
+        .btn-pay:disabled { opacity: .5; cursor: not-allowed; }
+        .btn-cancel {
+            display: block; width: 100%; text-align: center;
+            margin-top: 12px; font-size: 13px; color: var(--text-3);
+            cursor: pointer; padding: 8px;
+            transition: color .2s;
+        }
+        .pay-row{
+         margin-top: 8px;   
+        }
+        .btn-cancel:hover { color: var(--text-2); }
+        
+         /* ── HEADER ── */
+        .site-header {
+            background:rgba(8,8,16,0.85);
+            backdrop-filter:blur(24px);
+            -webkit-backdrop-filter:blur(24px);
+            border-bottom:1px solid var(--border-1);
+            position:sticky; top:0; z-index:200;
+            padding:0;
+        }
+        body.light-mode .site-header { background:rgba(247,246,255,0.88); }
+        .header-inner {
+            display:flex; align-items:center; justify-content:space-between;
+            height:54px;
+        }
+        .brand { text-decoration:none; display:flex; align-items:center; gap:8px; }
+        .brand-mark {
+            width:30px; height:30px; border-radius:8px;
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            display:flex; align-items:center; justify-content:center;
+        }
+        .brand-name {
+            font-family:sans-serif;
+            font-weight:800; font-size:15px; letter-spacing:2px;
+            background:linear-gradient(120deg,var(--ember-300),var(--gold-400));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .header-actions { display:flex; gap:8px; align-items:center; }
+
+        /* ─── Toast ─────────────────────────────────── */
+        .toast {
+            position: fixed; bottom: 90px; left: 50%;
+            transform: translateX(-50%);
+            background: var(--bg-raised);
+            border: 1px solid var(--line-mid);
+            color: var(--text-1);
+            padding: 11px 22px;
+            border-radius: var(--r-full);
+            z-index: 9999;
+            font-weight: 500; font-size: 13px;
+            animation: toastIn .3s var(--ease);
+            white-space: nowrap;
+            pointer-events: none;
+        }
+        @keyframes toastIn { from { opacity:0; transform:translate(-50%,12px) scale(.92); } to { opacity:1; transform:translate(-50%,0) scale(1); } }
+
+        /* ─── Divider Label ─────────────────────────── */
+        .section-spacer { height: 4px; }
+    </style>
+
+    <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
+    <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
+    <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
+    <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+<!-- Hidden checkbox untuk sidebar -->
+<input class="hidden" id="sidebar-toggle" type="checkbox"/>
+<label class="sidebar-overlay" for="sidebar-toggle"></label>
+
+<!-- Sidebar Menu -->
+<aside class="muja-sidebar">
+    <div class="sidebar-header">
+        <h3>Muja Prime</h3>
+        <label class="sidebar-close" for="sidebar-toggle">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+            </svg>
+        </label>
+    </div>
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/semua-produk/">Semua Produk</a></li>
+            <li><a href="/tukar-point/">Tukar Poin</a></li>
+            <li><a href="/top-pembeli/">Top Pembeli</a></li>
+            <li><a href="/kontak/">Kontak</a></li>
+            <li><a href="/tentang/">Tentang</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+            <li><a href="/kebijakan-privasi/">Kebijakan Privasi</a></li>
+            <li><a href="/syarat-ketentuan/">Syarat &amp; Ketentuan</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer"></div>
+</aside>
+
+<!-- Header -->
+<header class="muja-header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- KIRI: Menu Toggle + Logo -->
+            <div class="logo-section">
+                <label class="menu-toggle" for="sidebar-toggle">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <line x1="3" x2="21" y1="12" y2="12"/>
+                        <line x1="3" x2="15" y1="6" y2="6"/>
+                        <line x1="3" x2="18" y1="18" y2="18"/>
+                    </svg>
+                </label>
+                <a class="site-logo" href="/">
+                    <span class="site-title">MUJA PRIME</span>
+                </a>
+            </div>
+
+          
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div id="loadingState" class="loading-container">
+        <div class="loading-ring"></div>
+        <p style="color:var(--text-3);font-size:13px;">Memuat detail produk…</p>
+    </div>
+    <div id="contentState" style="display:none;"></div>
+    <div id="errorState" class="error-container" style="display:none;">
+        <svg width="48" height="48" viewBox="0 0 24 24" fill="none" style="margin:0 auto 16px;display:block;color:var(--text-3)"><path d="M12 9v4M12 17h.01M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3 style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:8px;">Produk Tidak Ditemukan</h3>
+        <p style="color:var(--text-3);font-size:13px;margin-bottom:20px;">Produk yang kamu cari tidak tersedia atau sudah dihapus.</p>
+        <a href="/" style="display:inline-flex;align-items:center;gap:8px;padding:12px 24px;background:var(--accent);color:#fff;border-radius:var(--r-full);text-decoration:none;font-family:'Syne',sans-serif;font-size:13px;font-weight:700;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><polyline points="9 22 9 12 15 12 15 22" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Kembali ke Beranda
+        </a>
+    </div>
+</main>
+
+<!-- ─── PAYMENT SHEET ─────────────────────────────── -->
+<div class="pay-overlay" id="paymentOverlay">
+    <div class="pay-sheet">
+        <div class="pay-handle"></div>
+        <div class="pay-title">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:-3px;margin-right:6px"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+            Pilih Pembayaran
+        </div>
+        <p class="pay-subtitle" id="paymentProductName">—</p>
+
+        <div id="paymentMethods">
+            <div class="pay-method selected" data-method="gopay" onclick="selectPayment('gopay')">
+                <div class="pay-method-logo">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjF9CKPPKvCqtiM8xIUWh0INNeLn8FJrLK5ow3mFxMFLXcMJpCQzX8o1ki2uyd00ygUBXTwWZi6DDbicr708CJHaVACwDBhuc6mfktzjytkv8QWzbW9X0zz2aKJgbh50QptYAA1Cxa72yhuVOzilVL0kdV86VuE3S3q2PsyUB_MNc5ySN6fn-5Y46NIR-g/s500/Desain%20tanpa%20judul%20%281%29.png" onerror="this.src='https://placehold.co/40x40/141420/666?text=GP'">
+                </div>
+                <div>
+                    <div class="pay-method-name">GoPay</div>
+                    <div class="pay-method-desc">Bayar via aplikasi Gojek</div>
+                </div>
+                <div class="pay-radio"></div>
+            </div>
+            <div class="pay-method" data-method="dana" onclick="selectPayment('dana')">
+                <div class="pay-method-logo">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiqiQ42Was703xRUW38qRGy4iyOPAvMBee4hWn9XwMF1OQRuPwFVFLt8d4Dkt7uhWBC_TUzOSj1sQLAiJhqiDvsHTZDQpYE2EGMvC5vilfhiALgGR5tryOlZFh2mEvrvly0lrUKTkTslNkNGXJOpThoycYcP-E3ZDXLIXcZTptu2D1P1xs6N9tuc5CeB_c/s500/Desain%20tanpa%20judul%20%282%29.png" onerror="this.src='https://placehold.co/40x40/141420/666?text=DANA'">
+                </div>
+                <div>
+                    <div class="pay-method-name">DANA</div>
+                    <div class="pay-method-desc">Dompet digital Indonesia</div>
+                </div>
+                <div class="pay-radio"></div>
+            </div>
+            <div class="pay-method" data-method="bsi" onclick="selectPayment('bsi')">
+                <div class="pay-method-logo">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxR0X9DFugEYMsVIw5XaV2sAHy9-6D2TUtQ3a5nKp46f1j5ClxqFC7UDCNJTzp0wiNkVS7oAW9x5uTl0BKglLw7C1dBXSdlrSnASt8rDo2BJFi2OctelPgt2eCSSq3ix8r2NY5N9VH2RCc5pU8EybkjKP1nb7ROX5x24R0Ct01xH9u3ksk13e_P-qghRw/s500/Desain%20tanpa%20judul%20%283%29.png" onerror="this.src='https://placehold.co/40x40/141420/666?text=BSI'">
+                </div>
+                <div>
+                    <div class="pay-method-name">Bank BSI</div>
+                    <div class="pay-method-desc">Transfer via Bank BSI</div>
+                </div>
+                <div class="pay-radio"></div>
+            </div>
+            <div class="pay-method" data-method="bca" onclick="selectPayment('bca')">
+                <div class="pay-method-logo">
+                    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhDhVzZma3F9eNcWWQjdV0gFI-MRhKgM2J0tySxA9XK1Pp4O3g3frGR4KmB26f3_FVCy7WMTlQeDR_8939eIX-azjwklCFyfntx5BobMfHujVfT6UWm-RbbwdRLgknOixtO8_-jAffipbdZi8YXjILeO8bGGsQcPwmHv986ckbbc-U0edmA3-E61Tbl41c/s500/Desain%20tanpa%20judul%20%284%29.png" onerror="this.src='https://placehold.co/40x40/141420/666?text=QRIS'">
+                </div>
+                <div>
+                    <div class="pay-method-name">QRIS</div>
+                    <div class="pay-method-desc">Scan QRIS dari semua e-wallet</div>
+                </div>
+                <div class="pay-radio"></div>
+            </div>
+        </div>
+
+        <div class="pay-summary">
+            <div class="pay-row"><span>Subtotal</span><span id="paymentSubtotal">Rp0</span></div>
+            <div class="pay-row"><span>Biaya Admin</span><span id="paymentFee">Rp0</span></div>
+            <div class="pay-row total"><span>Total Bayar</span><span id="paymentTotal">Rp0</span></div>
+        </div>
+
+        <button class="btn-pay" id="payBtn" onclick="processPayment()">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M22 8.5C22 12.09 19.09 15 15.5 15C15.33 15 15.15 14.99 14.98 14.98C14.73 11.81 12.19 9.26999 9.01999 9.01999C9.00999 8.84999 9 8.67 9 8.5C9 4.91 11.91 2 15.5 2C19.09 2 22 4.91 22 8.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M15 15.5C15 19.09 12.09 22 8.5 22C4.91 22 2 19.09 2 15.5C2 11.91 4.91 9 8.5 9C8.67 9 8.84999 9.00999 9.01999 9.01999C12.19 9.26999 14.73 11.81 14.98 14.98C14.99 15.15 15 15.33 15 15.5Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M7.62 14.62L8.5 13L9.38 14.62L11 15.5L9.38 16.38L8.5 18L7.62 16.38L6 15.5L7.62 14.62Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            Bayar Sekarang
+        </button>
+        <span class="btn-cancel" onclick="closePaymentDialog()">Batal</span>
+    </div>
+</div>
+
+<nav class="mobile-nav">
+    <div class="mobile-nav-menu">
+        <a class="mobile-nav-item active" href="/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Beranda</span>
+        </a>
+        <a class="mobile-nav-item" href="/semua-produk/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+            <span>Produk</span>
+        </a>
+        <div class="mobile-nav-item" id="themeToggleMobile" onclick="window.toggleTheme()">
+            <span></span>
+            <span>Tema</span>
+        </div>
+        <a class="mobile-nav-item" href="/akun-saya/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Akun</span>
+        </a>
+    </div>
+</nav>
+
+<script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+<script>
+const PRODUCT_ID = new URLSearchParams(window.location.search).get('id') || '';
+
+if (window.initMujaFirebase) window.initMujaFirebase();
+if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+const db = window.db || firebase.firestore();
+
+let currentProduct = null;
+let selectedPayment = 'gopay';
+let userPoin = 0;
+let isUserLoggedIn = false;
+
+function formatRupiah(a) { return 'Rp' + new Intl.NumberFormat('id-ID').format(a || 0); }
+function formatNumber(a) { return (a || 0).toLocaleString('id-ID'); }
+
+function showToast(msg, type) {
+    const t = document.createElement('div');
+    t.className = 'toast';
+    if (type === 'success') t.style.borderColor = 'rgba(0,229,180,.35)';
+    if (type === 'error')   t.style.borderColor = 'rgba(239,68,68,.35)';
+    t.textContent = msg;
+    document.body.appendChild(t);
+    setTimeout(() => t.remove(), 3000);
+}
+
+function selectPayment(method) {
+    selectedPayment = method;
+    document.querySelectorAll('.pay-method').forEach(el => {
+        el.classList.toggle('selected', el.dataset.method === method);
+    });
+}
+
+
+function isGuideProduct(product) {
+    return !!(product && (
+        product.productType === 'collection2' ||
+        product.parentProductType === 'collection2' ||
+        product.requireGuide === true ||
+        product.guideRequired === true
+    ));
+}
+
+function getProductGuideUrl(product) {
+    return (product && (product.guideUrl || product.panduanUrl || product.demoUrl || product.parentGuideUrl)) || '/panduan-backup-restore/';
+}
+
+function guideSeenKey(product) {
+    return 'muja_guide_seen_' + ((product && product.id) || 'produk');
+}
+
+function hasSeenGuide(product) {
+    try { return sessionStorage.getItem(guideSeenKey(product)) === 'true'; } catch(e) { return false; }
+}
+
+function openGuidePage() {
+    if (!currentProduct) return;
+    try { sessionStorage.setItem(guideSeenKey(currentProduct), 'true'); } catch(e) {}
+    window.open(getProductGuideUrl(currentProduct), '_blank', 'noopener');
+}
+
+function openPaymentDialog() {
+    // Langsung lanjut ke pembelian tanpa wajib membuka panduan terlebih dahulu.
+    if (!isUserLoggedIn) {
+        if (confirm('⚠️ Anda belum login!\n\nSilakan login atau daftar terlebih dahulu untuk melanjutkan pembelian.')) {
+            window.location.href = '/akun-saya';
+        }
+        return;
+    }
+    if (!currentProduct) return;
+
+    document.getElementById('paymentProductName').textContent = currentProduct.name;
+document.getElementById('paymentSubtotal').textContent = formatRupiah(currentProduct.price);
+const fee = 0; // Hapus biaya admin
+document.getElementById('paymentFee').textContent = formatRupiah(fee);
+document.getElementById('paymentTotal').textContent = formatRupiah(currentProduct.price); // Total = subtotal
+    document.getElementById('payBtn').disabled = false;
+
+    window.currentPaymentName = localStorage.getItem('muja_user_name') || '';
+    window.currentPaymentWa   = localStorage.getItem('muja_user_whatsapp') || '';
+
+    document.getElementById('paymentOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePaymentDialog() {
+    document.getElementById('paymentOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+}
+
+async function processPayment() {
+    const name = localStorage.getItem('muja_user_name') || '';
+    const wa   = localStorage.getItem('muja_user_whatsapp') || '';
+    const email = (localStorage.getItem('muja_user_email') || '').trim().toLowerCase();
+
+    if (!name) { showToast('⚠️ Data nama tidak ditemukan! Login ulang.', 'error'); setTimeout(() => { window.location.href = '/akun-saya'; }, 1500); return; }
+    if (!wa || wa.length < 10) { showToast('⚠️ Data WhatsApp tidak ditemukan! Login ulang.', 'error'); setTimeout(() => { window.location.href = '/akun-saya'; }, 1500); return; }
+
+    let waFormatted = wa;
+    if (waFormatted.startsWith('0')) waFormatted = '62' + waFormatted.substring(1);
+
+    const methodMap = { gopay:'gopay', dana:'dana', bsi:'bsi', bca:'qris' };
+    const method = methodMap[selectedPayment] || selectedPayment;
+
+    sessionStorage.setItem('payment_product_id',    currentProduct.id);
+    sessionStorage.setItem('payment_product_name',  currentProduct.name);
+    sessionStorage.setItem('payment_product_price', currentProduct.price);
+    sessionStorage.setItem('payment_method',        method);
+    sessionStorage.setItem('payment_customer_name', name);
+    sessionStorage.setItem('payment_customer_wa',   waFormatted);
+    sessionStorage.setItem('payment_customer_email', email);
+    sessionStorage.setItem('payment_poin',          currentProduct.poinReward || 0);
+    sessionStorage.setItem('payment_redirect_page', currentProduct.redirectPage || 'status-aktif');
+
+    window.location.href = '/payment/';
+}
+
+async function getUserCurrentPoin(wa) {
+    if (!wa) return 0;
+    try {
+        let snap = await db.collection('registrations').where('whatsapp', '==', wa).limit(1).get();
+        if (!snap.empty) return snap.docs[0].data().poin || 0;
+        const waClean = wa.replace(/\D/g, '');
+        if (waClean.startsWith('0')) {
+            snap = await db.collection('registrations').where('whatsapp', '==', '62' + waClean.substring(1)).limit(1).get();
+            if (!snap.empty) return snap.docs[0].data().poin || 0;
+        }
+        if (waClean.startsWith('62')) {
+            snap = await db.collection('registrations').where('whatsapp', '==', '0' + waClean.substring(2)).limit(1).get();
+            if (!snap.empty) return snap.docs[0].data().poin || 0;
+        }
+    } catch(e) {}
+    return 0;
+}
+
+async function loadProductDetail() {
+    if (!PRODUCT_ID) {
+        document.getElementById('errorState').style.display = 'block';
+        document.getElementById('loadingState').style.display = 'none';
+        return;
+    }
+    try {
+       // Cari di products dan collection_items secara paralel agar detail terbuka lebih cepat.
+const [productSnap, collectionItemSnap] = await Promise.all([
+    db.collection('products').doc(PRODUCT_ID).get(),
+    db.collection('collection_items').doc(PRODUCT_ID).get()
+]);
+let docSnap = productSnap.exists ? productSnap : collectionItemSnap;
+
+if (!docSnap.exists) {
+    document.getElementById('errorState').style.display = 'block';
+    document.getElementById('loadingState').style.display = 'none';
+    return;
+}
+
+currentProduct = { id: docSnap.id, ...docSnap.data() };
+        if (currentProduct.groupId) {
+            try {
+                const parentSnap = await db.collection('products').doc(currentProduct.groupId).get();
+                if (parentSnap.exists) {
+                    const parentData = parentSnap.data();
+                    currentProduct.parentProductType = parentData.productType || '';
+                    currentProduct.parentGuideUrl = parentData.guideUrl || parentData.panduanUrl || '';
+                    currentProduct.collectionName = parentData.name || '';
+                }
+            } catch(parentErr) { console.warn('Parent collection not loaded:', parentErr); }
+        }
+        document.title = currentProduct.name + ' · Muja Prime';
+
+        const poinReward = currentProduct.poinReward || 0;
+        const userWa     = localStorage.getItem('muja_user_whatsapp') || '';
+        const isReg      = localStorage.getItem('muja_user_registered') === 'true';
+
+        if (userWa && isReg) { isUserLoggedIn = true; userPoin = await getUserCurrentPoin(userWa); }
+        else                 { isUserLoggedIn = false; userPoin = 0; }
+
+        // Format sold
+        const sold = currentProduct.sold || 0;
+        const soldText = sold >= 1000 ? (sold/1000).toFixed(1).replace(/\.0$/,'') + 'rb' : sold;
+        const stock = currentProduct.stock || 1;
+
+        // Old price / discount
+        let priceRightHtml = '';
+        if (currentProduct.discount) {
+            priceRightHtml = `<span class="badge-discount">-${currentProduct.discount}%</span>`;
+        }
+        let oldPriceHtml = '';
+        if (currentProduct.oldPrice) {
+            oldPriceHtml = `<div class="price-old">${formatRupiah(currentProduct.oldPrice)}</div>`;
+        }
+
+        // Poin section
+        let poinHtml = '';
+        if (isUserLoggedIn) {
+            poinHtml = `
+            <div class="poin-banner">
+                <div class="poin-header">
+                    <div class="poin-label">
+                  <svg height="20px" width="20px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512"  xml:space="preserve">
+<style type="text/css">
+	.st0{fill:currentColor;}
+</style>
+<g>
+	<path class="st0" d="M485.911,271.966c-3.403-8.208-8.058-15.84-13.674-22.89c-5.617-7.042-12.186-13.517-19.496-19.471
+		l-0.449-0.363l0.433,0.363c-21.961-17.849-50.861-31.492-84.338-41.07h-0.008c-33.508-9.524-71.736-14.841-112.38-14.841
+		c-30.972,0-60.526,3.088-87.67,8.767c-27.144,5.68-51.877,13.95-73.208,24.49l-0.016,0.007
+		c-21.307,10.571-39.424,23.442-52.87,39.141l0.244-0.3l-0.252,0.3c-6.711,7.861-12.256,16.486-16.139,25.867
+		c-3.892,9.39-6.058,19.512-6.05,29.932v81.873c-0.008,10.43,2.158,20.56,6.05,29.948c3.402,8.208,8.058,15.832,13.674,22.882
+		c5.624,7.051,12.185,13.517,19.496,19.472l0.015,0.008c21.961,17.833,50.854,31.507,84.33,41.07l0.182,0.04
+		c33.469,9.491,71.632,14.8,112.214,14.808h0.008c30.964-0.008,60.518-3.096,87.662-8.775c27.144-5.68,51.878-13.958,73.208-24.489
+		l0.016-0.016c21.307-10.571,39.417-23.45,52.87-39.132l0.008-0.016c6.711-7.845,12.249-16.462,16.132-25.852l-0.244,0.575
+		l0.252-0.575c3.883-9.389,6.05-19.519,6.05-29.948v-81.873C491.961,291.478,489.794,281.356,485.911,271.966z M72.838,426.41
+		c-2.481-2.34-4.798-4.718-6.861-7.121c-4.892-5.735-8.562-11.603-11.012-17.51c-2.45-5.924-3.678-11.887-3.678-18.007v-37.116
+		c4.782,5.9,10.429,11.469,16.818,16.683c1.536,1.237,3.111,2.458,4.734,3.671V426.41z M118.083,454.932
+		c-3.111-1.355-6.176-2.741-9.113-4.206c-6.846-3.387-13.146-7.002-18.897-10.775v-61.676c8.578,4.923,17.952,9.436,28.01,13.501
+		V454.932z M174.111,472.505c-14.194-3.002-27.514-6.759-39.794-11.146h1.016v-63.291c3.947,1.307,7.995,2.544,12.122,3.726
+		c8.539,2.426,17.456,4.553,26.656,6.404V472.505z M247.374,480.658c-19.519-0.394-38.282-2.174-56.02-5.041v-64.402
+		c17.841,2.757,36.604,4.372,56.02,4.75V480.658z M322.804,475.23c-18.368,3.064-37.857,4.986-58.179,5.38v-64.607
+		c20.196-0.394,39.708-2.15,58.179-5.081V475.23z M378.833,460.966c-6.081,2.205-12.414,4.253-19.008,6.128
+		c-6.364,1.812-12.997,3.426-19.787,4.907v-64.228c13.651-2.82,26.632-6.332,38.794-10.436V460.966z M424.085,438.484
+		c-8.16,5.593-17.549,10.792-28.018,15.518v-63.126c5.041-2.088,9.933-4.278,14.604-6.585c4.671-2.324,9.137-4.758,13.414-7.279
+		V438.484z M460.713,383.771c0,6.12-1.229,12.084-3.687,18.007c-3.15,7.656-8.436,15.273-15.706,22.575v-58.242h-1.024
+		c7.152-5.459,13.494-11.28,18.826-17.51c0.544-0.638,1.063-1.284,1.592-1.93V383.771z M457.026,319.89
+		c-4.253,10.335-12.366,20.591-24.024,30.082c-17.448,14.241-42.756,26.593-73.177,35.234
+		c-30.413,8.664-65.922,13.666-103.825,13.666c-57.746,0.024-109.978-11.658-147.03-30.034
+		c-18.526-9.161-33.209-19.968-42.992-31.445c-4.892-5.726-8.562-11.595-11.012-17.502c-2.45-5.924-3.678-11.878-3.678-17.991
+		c0-6.112,1.228-12.066,3.678-17.99c4.269-10.342,12.368-20.598,24.033-30.074c17.455-14.25,42.756-26.609,73.177-35.25
+		c30.412-8.656,65.93-13.65,103.826-13.65c57.746-0.032,109.97,11.658,147.022,30.026c18.535,9.153,33.226,19.976,42.992,31.437
+		c4.899,5.726,8.57,11.595,11.012,17.51c2.458,5.924,3.687,11.878,3.687,17.99C460.713,308.012,459.484,313.966,457.026,319.89z"/>
+	<path class="st0" d="M326.27,86.016l57.667,15.305c1.504,0.306,2.726,1.536,3.072,3.048l15.202,57.667
+		c0.41,1.694,1.898,2.883,3.631,2.883c1.749,0,3.222-1.189,3.616-2.883l15.226-57.667c0.323-1.512,1.551-2.742,3.056-3.048
+		l57.675-15.305c1.685-0.316,2.883-1.82,2.883-3.552c0-1.749-1.198-3.222-2.883-3.56l-57.675-15.297
+		c-1.505-0.323-2.734-1.536-3.056-3.049L409.458,2.891C409.064,1.213,407.591,0,405.842,0c-1.733,0-3.222,1.213-3.631,2.891
+		l-15.202,57.667c-0.347,1.512-1.568,2.726-3.072,3.049L326.27,78.904c-1.701,0.339-2.883,1.812-2.883,3.56
+		C323.387,84.196,324.569,85.701,326.27,86.016z"/>
+	<path class="st0" d="M396.673,313.762l-26.175-6.94c-0.686-0.157-1.244-0.693-1.394-1.386l-6.9-26.175
+		c-0.182-0.764-0.851-1.308-1.646-1.308c-0.78,0-1.458,0.544-1.646,1.308l-6.9,26.175c-0.157,0.694-0.709,1.229-1.394,1.386
+		l-26.167,6.94c-0.772,0.149-1.316,0.827-1.316,1.614c0,0.788,0.544,1.466,1.316,1.623l26.167,6.932
+		c0.686,0.142,1.237,0.709,1.394,1.402l6.9,26.159c0.189,0.764,0.866,1.308,1.646,1.308c0.795,0,1.465-0.544,1.646-1.308l6.9-26.159
+		c0.15-0.693,0.709-1.26,1.394-1.402l26.175-6.932c0.757-0.157,1.308-0.835,1.308-1.623
+		C397.981,314.589,397.43,313.911,396.673,313.762z"/>
+	<path class="st0" d="M37.841,140.075l41.204,10.918c1.088,0.228,1.946,1.103,2.206,2.189l10.854,41.204
+		c0.299,1.221,1.363,2.064,2.6,2.064c1.244,0,2.3-0.843,2.592-2.064l10.862-41.204c0.228-1.086,1.118-1.961,2.197-2.189
+		l41.212-10.918c1.205-0.252,2.064-1.339,2.064-2.568c0-1.229-0.859-2.284-2.064-2.536l-41.212-10.933
+		c-1.079-0.236-1.969-1.087-2.197-2.174L97.296,80.636c-0.291-1.197-1.347-2.048-2.592-2.048c-1.237,0-2.3,0.851-2.6,2.048
+		L81.25,121.864c-0.26,1.087-1.118,1.938-2.206,2.174l-41.204,10.933c-1.228,0.252-2.071,1.307-2.071,2.536
+		C35.769,138.736,36.612,139.824,37.841,140.075z"/>
+	<path class="st0" d="M263.979,233.528c-21.992,0.709-33.02,0.646-55.02-0.236c-1.212-0.048-2.087,0.63-2.15,1.732
+		c-2.827,48.506-4.214,72.752-7.042,121.297c-0.063,1.111,0.866,1.883,2.324,1.946c15.139,0.614,22.717,0.772,37.864,0.756
+		c1.466,0.008,2.395-0.756,2.395-1.859c0.024-15.533,0.04-23.292,0.063-38.809c0-0.74,0.472-1.127,1.386-1.134
+		c9.176-0.04,13.745-0.127,22.906-0.418c37.809-1.213,55.65-21.543,52.933-45.308C316.857,247.352,297.55,232.425,263.979,233.528z
+		 M263.625,289.485c-7.94,0.236-11.902,0.283-19.842,0.339c-0.874,0.008-1.323-0.355-1.323-1.096
+		c0.016-10.516,0.024-15.769,0.032-26.292c0.007-0.725,0.41-1.103,1.26-1.119c7.609-0.032,11.421-0.102,19.023-0.331
+		c11.618-0.347,18.472,4.774,18.968,13.414C282.238,283.042,275.747,289.115,263.625,289.485z"/>
+</g>
+</svg>
+                        Poin Reward
+                    </div>
+                    <span class="poin-reward-badge">+${formatNumber(poinReward)} Poin</span>
+                </div>
+                <div class="poin-track">
+                    <div class="poin-track-info">
+                        <span class="poin-track-label">Poin Anda Saat Ini</span>
+                        <span class="poin-track-value">${formatNumber(userPoin)}</span>
+                    </div>
+                    <div class="poin-arrow">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </div>
+                    <div class="poin-track-info" style="text-align:right;">
+                        <span class="poin-track-label">Setelah Beli</span>
+                        <span class="poin-track-value" style="color:var(--jade);">${formatNumber(userPoin + poinReward)}</span>
+                    </div>
+                </div>
+                <div class="poin-after-text">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    Poin otomatis ditambahkan setelah pembayaran berhasil
+                </div>
+            </div>`;
+        } else {
+            poinHtml = `
+            <div class="poin-banner">
+                <div class="poin-header">
+                    <div class="poin-label">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        Poin Reward
+                    </div>
+                    <span class="poin-reward-badge">+${formatNumber(poinReward)} Poin</span>
+                </div>
+                <div class="login-bar">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" style="flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    <span><a href="/akun-saya/">Login atau Daftar</a> Dulu untuk Membeli Produk dan mengumpulkan poin dari setiap pembelian!</span>
+                </div>
+            </div>`;
+        }
+
+        // Stock badge
+        const stockBadge = stock > 0
+            ? `<span class="status-dot"><span class="dot dot-green"></span>Tersedia (${stock})</span>`
+            : `<span class="status-dot"><span class="dot dot-red"></span>Stok Habis</span>`;
+
+        // Buy button
+        const buyBtnHtml = isUserLoggedIn
+            ? `<button class="btn-buy" onclick="openPaymentDialog()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="1" y="4" width="22" height="16" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/><line x1="1" y1="10" x2="23" y2="10" stroke="currentColor" stroke-width="1.5"/></svg>
+                Beli Sekarang
+               </button>`
+            : `<button class="btn-buy disabled" onclick="openPaymentDialog()">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" stroke="currentColor" stroke-width="1.5"/><path d="M7 11V7a5 5 0 0 1 10 0v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Login untuk Beli
+               </button>`;
+
+        const guideRequired = isGuideProduct(currentProduct);
+        const guideButtonHtml = guideRequired ? `
+            <button class="btn-guide-detail1" type="button">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M4 4.5A2.5 2.5 0 0 1 6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5z"/><path d="M8 7h8"/><path d="M8 11h6"/></svg>
+                
+            </button>` : '';
+        
+        
+
+        const guideDetailHtml = guideRequired ? `
+        <div class="guide-detail-card">
+            <div class="guide-detail-content">
+                <div class="guide-detail-icon">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-5"/></svg>
+                </div>
+                <div>
+                    <h3>Panduan wajib sebelum membeli</h3>
+                    <p>Baca panduan agar memahami alur kerja, batasan layanan, dan garansi sebelum pembayaran.</p>
+                    <div class="guide-mini-list">
+                        <div class="guide-mini-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>Tugas Admin hanya Mem Backup data user.</span></div>
+                        <div class="guide-mini-item"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M20 6 9 17l-5-5"/></svg><span>Jika gagal atau memang tidak bisa backup/restore → <strong style="color:var(--gold)">UANG KEMBALI 100%</strong><br></span></div>
+                    </div>
+                    <button class="btn-guide-detail" type="button" onclick="openGuidePage()">Lihat Panduan Sekarang</button>
+                </div>
+            </div>
+        </div>` : '';
+
+        document.getElementById('contentState').innerHTML = `
+        <div class="image-wrap">
+            <div class="main-image">
+                <img src="${currentProduct.imageUrl || 'https://placehold.co/600x600/141420/333?text=No+Image'}" alt="${currentProduct.name}">
+            </div>
+        </div>
+
+        <div class="price-card">
+            <div>
+                <div class="price-main">${formatRupiah(currentProduct.price)}</div>
+                ${oldPriceHtml}
+            </div>
+            ${priceRightHtml}
+        </div>
+
+        ${poinHtml}
+
+        ${guideDetailHtml}
+
+        <div class="info-card">
+            <h1 class="product-title">${currentProduct.name}</h1>
+            <div class="info-row">
+                <div class="info-row-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="7" y1="7" x2="7.01" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <span class="info-row-label">Kategori</span>
+                <span class="info-row-value">${currentProduct.category || 'Umum'}</span>
+            </div>
+            <div class="info-row">
+                <div class="info-row-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M20 7l-8-4-8 4m16 0-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="info-row-label">Stok</span>
+                <span class="info-row-value">${stockBadge}</span>
+            </div>
+            <div class="info-row">
+                <div class="info-row-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M16 10a4 4 0 0 1-8 0" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="info-row-label">Terjual</span>
+                <span class="info-row-value">${soldText} produk</span>
+            </div>
+            <div class="info-row">
+                <div class="info-row-icon">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="22 4 12 14.01 9 11.01" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <span class="info-row-label">Status</span>
+                <span class="info-row-value" style="color:var(--jade);">Aktif</span>
+            </div>
+        </div>
+
+        <div class="buy-card">
+            ${guideButtonHtml}
+            ${buyBtnHtml}
+            <button class="btn-save" id="saveProductBtn" data-product-id="${currentProduct.id}" data-default-title="Simpan ke Keranjang" onclick="saveProduct()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                Simpan ke Keranjang
+            </button>
+        </div>
+
+        <div class="desc-card">
+            <div class="section-heading">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><polyline points="14 2 14 8 20 8" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><line x1="16" y1="13" x2="8" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="8" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><polyline points="10 9 9 9 8 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                Deskripsi Produk
+            </div>
+            <div class="desc-body">${(currentProduct.description || 'Tidak ada deskripsi.').replace(/\n/g,'<br>')}</div>
+        </div>`;
+
+        document.getElementById('loadingState').style.display = 'none';
+        document.getElementById('contentState').style.display = 'block';
+
+    } catch(e) {
+        console.error(e);
+        document.getElementById('errorState').style.display = 'block';
+        document.getElementById('loadingState').style.display = 'none';
+    }
+}
+
+function saveProduct() {
+    if (!currentProduct) return;
+    if (window.MujaCart && typeof window.MujaCart.add === 'function') {
+        window.MujaCart.add(currentProduct);
+        return;
+    }
+    const cart = JSON.parse(localStorage.getItem('mujaCart') || '[]');
+    if (cart.find(i => String(i.id) === String(currentProduct.id))) { showToast('Produk sudah ada di keranjang!'); return; }
+    cart.push({ id: currentProduct.id, name: currentProduct.name, price: currentProduct.price, imageUrl: currentProduct.imageUrl || '', quantity: 1 });
+    localStorage.setItem('mujaCart', JSON.stringify(cart));
+    if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
+    if (window.MujaCart && typeof window.MujaCart.markSaved === 'function') window.MujaCart.markSaved();
+    showToast('✓ Produk tersimpan ke keranjang', 'success');
+}
+
+document.addEventListener('DOMContentLoaded', loadProductDetail);
+document.getElementById('paymentOverlay')?.addEventListener('click', function(e) { if (e.target === this) closePaymentDialog(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closePaymentDialog(); });
+</script>
+    
+    
+    <script src="/liquid-icons.js?v=20260603-theme-chat-global-v3" defer></script>
+<script src="/ai-chat-global.js?v=20260603-theme-chat-global-v3"></script>
+</body>
+</html>

@@ -1,0 +1,320 @@
+/* header.css - Styling Header Muja Prime (untuk semua halaman) */
+
+/* ============================================================ */
+/* VARIABEL CSS (pastikan ada di halaman) */
+/* ============================================================ */
+:root {
+    --brand-900: #0a0a0f;
+    --brand-800: #111118;
+    --surface-1: #16161f;
+    --surface-2: #1e1e2b;
+    --surface-3: #252535;
+    --ember-400: #ff8c55;
+    --ember-500: #ff6b2b;
+    --ember-600: #e55520;
+    --gold-400: #f7d46a;
+    --gold-500: #f5c842;
+    --text-primary: #f0f0f8;
+    --text-secondary: #9898b8;
+    --text-muted: #606078;
+    --border-subtle: rgba(255,255,255,0.06);
+    --border-medium: rgba(255,255,255,0.1);
+    --radius-sm: 10px;
+    --radius-md: 14px;
+    --radius-full: 999px;
+    --transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+}
+
+body.light-mode {
+    --brand-900: #f5f5f5;
+    --brand-800: #ffffff;
+    --surface-1: #ffffff;
+    --surface-2: #f0f0f0;
+    --surface-3: #e5e5e5;
+    --text-primary: #1a1a24;
+    --text-secondary: #4a4a5a;
+    --text-muted: #888898;
+    --border-subtle: rgba(0,0,0,0.08);
+    --border-medium: rgba(0,0,0,0.12);
+}
+
+/* ============================================================ */
+/* MUJA HEADER */
+/* ============================================================ */
+.muja-header {
+    background: rgba(17, 17, 24, 0.92);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: 12px 0;
+    position: sticky;
+    top: 0;
+    z-index: 200;
+    transition: var(--transition);
+}
+
+body.light-mode .muja-header {
+    background: rgba(255, 255, 255, 0.92);
+}
+
+.muja-header.scrolled {
+    background: rgba(10, 10, 15, 0.97);
+    padding: 8px 0;
+}
+
+body.light-mode .muja-header.scrolled {
+    background: rgba(255, 255, 255, 0.97);
+}
+
+/* Header Container */
+.muja-header .container,
+.header-container {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 12px;
+}
+
+@media (min-width: 768px) {
+    .muja-header .container,
+    .header-container {
+        padding: 0 24px;
+    }
+}
+
+/* Header Wrapper (Flexbox) */
+.header-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    width: 100%;
+}
+
+/* Logo Section (Kiri) */
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+/* Menu Toggle (Hamburger) */
+.menu-toggle,
+.header-menu-toggle {
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    padding: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.menu-toggle:hover,
+.header-menu-toggle:hover {
+    background: var(--surface-3);
+    color: var(--ember-400);
+}
+
+.menu-toggle svg,
+.header-menu-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Site Logo */
+.site-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.site-title,
+.brand-name {
+    font-family: 'Outfit', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    background: linear-gradient(135deg, var(--ember-400) 0%, var(--gold-400) 50%, var(--ember-400) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+}
+
+@media (min-width: 768px) {
+    .site-title,
+    .brand-name {
+        font-size: 26px;
+        letter-spacing: 3px;
+    }
+}
+
+@media (max-width: 480px) {
+    .site-title,
+    .brand-name {
+        font-size: 16px;
+    }
+}
+
+/* Header Actions (Kanan) */
+.header-actions {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-shrink: 0;
+    margin-left: auto;
+}
+
+/* Action Button */
+.action-btn,
+.action-btn1,
+.cart-btn,
+.icon-btn {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    color: var(--text-secondary);
+    border-radius: var(--radius-sm);
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    transition: var(--transition);
+    cursor: pointer;
+    flex-shrink: 0;
+    text-decoration: none;
+}
+
+.action-btn:hover,
+.action-btn1:hover,
+.cart-btn:hover,
+.icon-btn:hover {
+    background: var(--surface-3);
+    color: var(--ember-400);
+}
+
+.action-btn svg,
+.action-btn1 svg,
+.cart-btn svg,
+.icon-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Cart Badge */
+.cart-badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: linear-gradient(135deg, var(--ember-500), var(--ember-600));
+    color: white;
+    font-size: 9px;
+    font-weight: 800;
+    padding: 2px 8px;
+    border-radius: var(--radius-full);
+    min-width: 16px;
+    text-align: center;
+    border: 2px solid var(--brand-900);
+    display: none;
+}
+
+body.light-mode .cart-badge {
+    border-color: var(--brand-800);
+}
+
+/* Theme Toggle di Header */
+.theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.theme-toggle:hover {
+    background: var(--surface-3);
+}
+
+.theme-toggle svg {
+    width: 20px;
+    height: 20px;
+}
+
+.theme-toggle svg path,
+.theme-toggle svg circle,
+.theme-toggle svg line {
+    stroke: var(--text-secondary);
+}
+
+.theme-toggle:hover svg path,
+.theme-toggle:hover svg circle,
+.theme-toggle:hover svg line {
+    stroke: var(--ember-400);
+}
+
+/* Sembunyikan theme toggle di header saat mobile */
+@media (max-width: 768px) {
+    .header-actions .theme-toggle {
+        display: none !important;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+    .header-wrapper {
+        gap: 8px;
+    }
+    
+    .logo-section {
+        gap: 6px;
+    }
+    
+    .menu-toggle,
+    .header-menu-toggle {
+        padding: 6px;
+    }
+    
+    .action-btn,
+    .action-btn1,
+    .cart-btn,
+    .icon-btn {
+        width: 36px;
+        height: 36px;
+    }
+}
+
+/* Responsive - Mobile Kecil */
+@media (max-width: 380px) {
+    .header-wrapper {
+        gap: 4px;
+    }
+    
+    .action-btn,
+    .action-btn1,
+    .cart-btn,
+    .icon-btn {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .action-btn svg,
+    .action-btn1 svg,
+    .cart-btn svg,
+    .icon-btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}

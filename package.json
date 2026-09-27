@@ -1,0 +1,16 @@
+{
+  "name": "muja-prime-firestore",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "migrate:to-firestore": "node scripts/migrate-to-firestore.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "^1.1.0",
+    "firebase-admin": "^13.0.0"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
