@@ -1,0 +1,26 @@
+{
+  "name": "Muja Prime",
+  "short_name": "MujaPrime",
+  "description": "Toko online resmi Mujahid",
+  "start_url": "/?pwa=1",
+  "id": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#0a0a0f",
+  "background_color": "#0a0a0f",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "/muja.png?v=20260916-firestore-v1",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/muja.png?v=20260916-firestore-v1",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

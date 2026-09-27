@@ -1,0 +1,17 @@
+MUJA PRIME Performance + Payment Fix
+Build 20260908-performance-payment-v1
+
+Perbaikan utama:
+1. Koneksi PostgreSQL tidak lagi dibuat dan ditutup ulang pada setiap request.
+2. CREATE TABLE/INDEX hanya dijalankan sekali per instance Vercel Function.
+3. Filter database == diproses di PostgreSQL, bukan mengambil seluruh collection lalu memfilter di JavaScript.
+4. Produk/koleksi/settings memakai cache session 45 detik dan request deduplication.
+5. Hasil query produk/item juga menyimpan cache per dokumen, jadi detail produk lebih cepat setelah dari halaman daftar.
+6. List koleksi menjalankan query secara paralel.
+7. Detail produk mencari products + collection_items paralel.
+8. Cache Storage tidak lagi dihapus pada setiap halaman.
+9. Service worker memakai stale-while-revalidate untuk asset statis, tetapi /api tetap network-only.
+10. Payment tidak menunggu query database jika redirectPage sudah dibawa dari detail produk.
+11. Order + access token disimpan atomik dalam satu batch/request.
+12. Bukti bayar dikompresi lebih kecil untuk mempercepat upload.
+13. Payment mencegah klik verifikasi ganda dan memberi error yang lebih jelas.

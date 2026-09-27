@@ -1,0 +1,182 @@
+============================================================
+PANDUAN SUPABASE GRATIS - PORTAL BLK
+============================================================
+
+TUJUAN
+------
+Supabase dipakai sebagai Storage untuk:
+1. Contoh Foto
+2. File Materi yang di-upload dari perangkat admin
+
+Firebase tetap dipakai untuk:
+1. Login admin Firebase
+2. Firestore: data modul, catatan, URL file, pengaturan tampil/sembunyi
+
+Dengan versi ini, Firebase Storage TIDAK digunakan lagi.
+
+============================================================
+A. BUAT PROJECT SUPABASE GRATIS
+============================================================
+
+1. Buka https://supabase.com
+2. Login / daftar.
+3. Klik New project.
+4. Pilih organisasi.
+5. Isi nama project, misalnya: blk-digital-marketing
+6. Buat database password yang kuat dan simpan sendiri.
+7. Pilih region yang paling dekat dengan pengguna.
+8. Pastikan menggunakan Free Plan / $0.
+9. Tunggu project aktif.
+
+Free Plan Supabase saat panduan ini dibuat menyediakan 1 GB File Storage,
+5 GB egress + 5 GB cached egress, dan batas file maksimal 50 MB.
+Project Free dapat dipause setelah 1 minggu tidak aktif.
+
+============================================================
+B. BUAT STORAGE DAN POLICY
+============================================================
+
+1. Di Supabase Dashboard buka SQL Editor.
+2. Klik New query.
+3. Buka file SUPABASE-SETUP.sql dari ZIP ini.
+4. Salin seluruh isinya.
+5. Tempel di SQL Editor.
+6. Klik Run.
+
+Script akan membuat bucket:
+
+blk-assets
+
+Bucket bersifat PUBLIC untuk melihat file/foto.
+Namun upload, update, dan delete hanya untuk akun Supabase Auth yang login.
+
+============================================================
+C. BUAT AKUN ADMIN SUPABASE AUTH
+============================================================
+
+Agar halaman admin tetap sederhana, gunakan EMAIL DAN PASSWORD YANG SAMA
+seperti akun admin Firebase yang sekarang.
+
+1. Buka Supabase Dashboard.
+2. Buka Authentication > Users.
+3. Tambahkan user admin.
+4. Isi email yang SAMA dengan admin Firebase.
+5. Isi password yang SAMA dengan admin Firebase.
+6. Pastikan user berhasil dibuat.
+
+Kenapa dibuat sama?
+Saat Anda login ke halaman admin BLK, kode akan melakukan login ke:
+- Firebase Authentication
+- Supabase Authentication
+
+secara bersamaan dengan satu form login.
+
+Peserta TIDAK dibuatkan akun Supabase.
+
+============================================================
+D. AMBIL PROJECT URL DAN PUBLISHABLE KEY
+============================================================
+
+1. Di Supabase Dashboard buka Project Settings / Settings.
+2. Buka bagian API / API Keys.
+3. Salin Project URL.
+4. Salin Publishable key.
+   Jika project masih menampilkan key lama, anon/public key juga dapat dipakai.
+5. JANGAN gunakan Secret key atau service_role key di website.
+
+Buka file:
+
+admin-blk/supabase-config.js
+
+Ubah:
+
+export const SUPABASE_URL = "PASTE_SUPABASE_PROJECT_URL_DI_SINI";
+export const SUPABASE_PUBLISHABLE_KEY = "PASTE_SUPABASE_PUBLISHABLE_KEY_DI_SINI";
+
+Contoh bentuk URL:
+https://xxxxxxxxxxxxxxxxxxxx.supabase.co
+
+Jangan mengubah:
+export const SUPABASE_BUCKET = "blk-assets";
+
+============================================================
+E. UPLOAD KE GITHUB / VERCEL
+============================================================
+
+File yang perlu diperbarui/ditambahkan:
+
+1. admin-blk/index.html
+2. admin-blk/supabase-config.js
+3. blk/index.html
+
+File SQL dan panduan tidak wajib diupload ke website.
+File tersebut hanya untuk setup.
+
+Setelah commit ke GitHub, Vercel biasanya melakukan deploy otomatis.
+
+============================================================
+F. LOGIN ADMIN SETELAH UPDATE
+============================================================
+
+1. Buka halaman admin BLK.
+2. Jika sebelumnya masih login, klik Logout terlebih dahulu.
+3. Login ulang dengan akun admin.
+4. Sistem membuat sesi Firebase + Supabase sekaligus.
+5. Buka salah satu Materi > Materi Lengkap.
+6. Pilih Contoh Foto > Tambah foto.
+7. Upload JPG/PNG/WEBP.
+
+File foto akan masuk ke:
+Supabase Storage > blk-assets > examples > ID-MODUL
+
+File materi dari perangkat akan masuk ke:
+Supabase Storage > blk-assets > materials > ID-MODUL
+
+Firestore hanya menyimpan URL/path dan metadata kecil.
+
+============================================================
+G. BATAS YANG DIPAKAI DI WEBSITE
+============================================================
+
+Contoh Foto : maksimal 8 MB per foto
+File Materi : maksimal 25 MB per file
+
+Keduanya masih di bawah batas file Free Plan Supabase 50 MB.
+
+============================================================
+H. JIKA MUNCUL ERROR
+============================================================
+
+"Supabase belum dikonfigurasi"
+- Periksa admin-blk/supabase-config.js.
+
+"Login Supabase gagal"
+- Pastikan user Supabase Auth sudah dibuat.
+- Email dan password harus sama dengan akun admin Firebase.
+- Logout lalu login ulang.
+
+"row-level security"
+- Jalankan SUPABASE-SETUP.sql kembali.
+
+"Bucket not found"
+- Pastikan SQL berhasil dijalankan dan bucket blk-assets tersedia.
+
+Foto berhasil upload tetapi tidak tampil
+- Pastikan bucket blk-assets berstatus PUBLIC.
+- Refresh halaman peserta.
+
+============================================================
+CATATAN KEAMANAN
+============================================================
+
+Publishable key / anon key memang boleh digunakan pada aplikasi browser jika
+RLS/policy sudah dikonfigurasi dengan benar.
+
+JANGAN masukkan Secret key atau service_role key ke HTML/JavaScript frontend.
+Key tersebut mempunyai hak tinggi dan hanya boleh dipakai di server.
+
+Walaupun tombol download dan klik kanan foto peserta diblokir, gambar yang
+ditampilkan browser secara teknis tetap dapat disalin oleh pengguna yang sangat
+paham developer tools. Tidak ada cara frontend yang dapat menjamin gambar
+100% tidak bisa disimpan setelah gambar dikirim ke browser.
+============================================================

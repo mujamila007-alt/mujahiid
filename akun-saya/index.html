@@ -1,0 +1,1509 @@
+<!DOCTYPE html>
+<html lang="id" class="notranslate" translate="no">
+<head>
+<meta charset="UTF-8">
+    <meta name="google" content="notranslate">
+    <!-- MUJA CACHE FIX: selalu ambil versi terbaru dari server -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+   
+<link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-persist-v4">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-persist-v4">
+<script src="/theme.js?v=20260603-theme-persist-v4"></script>
+
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Akun Saya — Muja Prime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+     <link rel="icon" type="image/png" href="/muja.png?v=20260603-theme-persist-v4">
+    <link rel="icon" type="image/svg+xml" href="/muja.svg?v=20260603-theme-persist-v4">
+    <link rel="apple-touch-icon" href="/muja.png?v=20260603-theme-persist-v4">
+    <style>
+        :root {
+            --bg-deep:     #080810;
+            --bg-base:     #0e0e1a;
+            --bg-card:     #13131f;
+            --bg-card2:    #181828;
+            --bg-card3:    #1e1e30;
+            --ember-300:   #ffb088;
+            --ember-400:   #ff8855;
+            --ember-500:   #ff6b2b;
+            --ember-600:   #e0521b;
+            --gold-400:    #f7d46a;
+            --gold-500:    #f5c528;
+            --jade-400:    #34e5b4;
+            --text-100:    #f4f4fc;
+            --text-200:    #c8c8e0;
+            --text-400:    #8888aa;
+            --text-600:    #44445a;
+            --border-1:    rgba(255,255,255,0.05);
+            --border-2:    rgba(255,255,255,0.09);
+            --border-3:    rgba(255,255,255,0.14);
+            --ember-glow:  rgba(255,107,43,0.15);
+            --gold-glow:   rgba(247,212,106,0.10);
+            --r-sm: 8px; --r-md: 14px; --r-lg: 20px; --r-xl: 28px; --r-full: 999px;
+            --shadow-card: 0 1px 3px rgba(0,0,0,0.4), 0 8px 32px rgba(0,0,0,0.25);
+            --shadow-glow: 0 0 40px rgba(255,107,43,0.12);
+            --transition: all 0.22s cubic-bezier(0.4,0,0.2,1);
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+
+        body {
+            font-family:'DM Sans',sans-serif;
+            background:var(--bg-deep);
+            color:var(--text-100);
+            font-size:14px;
+            line-height:1.6;
+            min-height:100vh;
+            padding-bottom:80px;
+            -webkit-font-smoothing:antialiased;
+        }
+
+        /* Ambient background */
+        body::before {
+            content:'';
+            position:fixed;
+            inset:0;
+            background:
+                radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255,107,43,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 50% at 10% 80%, rgba(247,212,106,0.04) 0%, transparent 60%);
+            pointer-events:none;
+            z-index:0;
+        }
+
+        body.light-mode {
+            --bg-deep:#f0eff8; --bg-base:#f7f6ff; --bg-card:#ffffff; --bg-card2:#f3f2fa; --bg-card3:#ece9f8;
+            --text-100:#1a1a2e; --text-200:#3a3a52; --text-400:#6a6a88; --text-600:#aaaacc;
+            --border-1:rgba(0,0,0,0.05); --border-2:rgba(0,0,0,0.08); --border-3:rgba(0,0,0,0.12);
+            --shadow-card:0 1px 3px rgba(0,0,0,0.06),0 8px 24px rgba(0,0,0,0.08);
+        }
+        body.light-mode::before { background: radial-gradient(ellipse 60% 40% at 80% 10%, rgba(255,107,43,0.05) 0%, transparent 60%); }
+
+        ::-webkit-scrollbar { width:3px; }
+        ::-webkit-scrollbar-track { background:transparent; }
+        ::-webkit-scrollbar-thumb { background:var(--ember-600); border-radius:3px; }
+
+        .container { max-width:480px; margin:0 auto; padding:0 16px; position:relative; z-index:1; }
+
+        /* ── HEADER ── */
+        .site-header {
+            background:rgba(8,8,16,0.85);
+            backdrop-filter:blur(24px);
+            -webkit-backdrop-filter:blur(24px);
+            border-bottom:1px solid var(--border-1);
+            position:sticky; top:0; z-index:200;
+            padding:0;
+        }
+        body.light-mode .site-header { background:rgba(247,246,255,0.88); }
+        .header-inner {
+            display:flex; align-items:center; justify-content:space-between;
+            height:54px;
+        }
+        .brand { text-decoration:none; display:flex; align-items:center; gap:8px; }
+        .brand-mark {
+            width:30px; height:30px; border-radius:8px;
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            display:flex; align-items:center; justify-content:center;
+        }
+        .brand-name {
+            font-family:sans-serif;
+            font-weight:800; font-size:15px; letter-spacing:2px;
+            background:linear-gradient(120deg,var(--ember-300),var(--gold-400));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .header-actions { display:flex; gap:8px; align-items:center; }
+        .icon-btn {
+            width:36px; height:36px; border-radius:var(--r-sm);
+            background:var(--bg-card2); border:1px solid var(--border-2);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; transition:var(--transition); color:var(--text-200);
+        }
+        .icon-btn:hover { border-color:var(--ember-500); color:var(--ember-400); background:var(--ember-glow); }
+
+        /* ── HERO PROFILE ── */
+        .hero-profile {
+            background:#4242440f;
+            border:1px solid var(--border-1);
+            border-radius:var(--r-xl);
+            padding:28px 20px 20px;
+            margin:16px 0 12px;
+            box-shadow:var(--shadow-card);
+            position:relative;
+            overflow:hidden;
+        }
+        .hero-profile::before {
+            content:'';
+            position:absolute; top:0; left:0; right:0; hepoin-stripight:3px;
+            background:linear-gradient(90deg,var(--ember-600),var(--ember-400),var(--gold-400));
+        }
+        .hero-top { display:flex; align-items:center; gap:14px; margin-bottom:16px; }
+        .avatar-wrap {
+            position:relative; flex-shrink:0;
+            width:64px; height:64px; border-radius:50%;
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; overflow:hidden;
+            box-shadow:0 0 0 3px rgba(255,107,43,0.25), 0 0 0 6px rgba(255,107,43,0.08);
+            transition:var(--transition);
+        }
+        .avatar-wrap:hover { box-shadow:0 0 0 3px rgba(255,107,43,0.45), 0 0 0 6px rgba(255,107,43,0.15); }
+        .avatar-wrap img { width:100%; height:100%; object-fit:cover; position:absolute; inset:0; }
+/* Hapus .avatar-initial dan ganti ke #profileInitial */
+#profileInitial {
+    z-index: 1;
+    flex-shrink: 0;
+    transition: var(--transition);
+}
+        .avatar-badge {
+            position:absolute; bottom:7px; border-radius: 20px;inset-x:0;
+            background:rgba(0,0,0,0.55); backdrop-filter:blur(4px);
+            font-size:9px; font-weight:600; letter-spacing:0.5px;
+            color:rgba(255,255,255,0.85); text-align:center;
+           transition:var(--transition);
+        }
+       
+        .profile-meta { flex:1; min-width:0; }
+        .profile-name {
+            font-family:sans-serif;
+            font-size:18px; font-weight:900;
+            background:linear-gradient(120deg,var(--text-100) 60%,var(--ember-300));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+        }
+        .profile-badge {
+            display:inline-flex; align-items:center; gap:5px; margin-top:4px;
+            background:rgba(255,107,43,0.08); border:1px solid rgba(255,107,43,0.2);
+            padding:3px 10px; border-radius:var(--r-full);
+            font-size:10px; font-weight:600; color:var(--ember-300);
+            letter-spacing:0.5px;
+        }
+
+        /* Poin strip */
+        .poin-strip {
+            display:flex; align-items:center; justify-content:space-between;
+            background:linear-gradient(135deg,rgba(255,107,43,0.12),rgba(247,196,40,0.08));
+            border:1px solid rgba(255,107,43,0.18);
+            border-radius:var(--r-md);
+            padding:12px 14px;
+        }
+        .poin-left { display:flex; align-items:center; gap:10px; }
+        .poin-icon {
+            width:36px; height:36px; border-radius:var(--r-sm);
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            display:flex; align-items:center; justify-content:center;
+            flex-shrink:0;
+        }
+        .poin-label { font-size:10px; font-weight:600; color:var(--text-100); letter-spacing:0.5px; text-transform:uppercase; margin-bottom:1px; }
+        .poin-value { font-family:sans-serif; font-size:20px; font-weight:800; color:var(--gold-400); letter-spacing:0.5px; }
+        .poin-cta {
+            background:linear-gradient(135deg, #e6dedb5c, #ff9450);
+            color:#fff; border:none; border-radius:10px;
+            padding:8px 14px; font-size:11px; font-weight:700;
+            font-family:'DM Sans',sans-serif; cursor:pointer;
+            text-decoration:none; display:inline-flex; align-items:center; gap:6px;
+            transition:var(--transition); letter-spacing:0.3px; white-space:nowrap;
+        }
+        .poin-cta:hover { transform:translateY(-2px); box-shadow:0 6px 20px rgba(255,107,43,0.4); }
+
+        /* ── SECTION CARDS ── */
+        .section-card {
+            background:var(--bg-card);
+            border:1px solid var(--border-1);
+            border-radius:var(--r-lg);
+            padding:16px;
+            margin-bottom:10px;
+            box-shadow:var(--shadow-card);
+            transition:var(--transition);
+        }
+        .section-title {
+            display:flex; align-items:center; gap:8px;
+            font-family:'Syne',sans-serif;
+            font-size:11px; font-weight:700;
+            letter-spacing:1.2px; text-transform:uppercase;
+            color:var(--text-400); margin-bottom:14px;
+        }
+        .section-title-dot {
+            width:6px; height:6px; border-radius:50%;
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            flex-shrink:0;
+        }
+
+        /* Info rows */
+        .info-row {
+            display:flex; align-items:center; gap:12px;
+            padding:10px 0;
+            border-bottom:1px solid var(--border-1);
+        }
+        .info-row:last-child { border-bottom:none; padding-bottom:0; }
+        .info-row:first-of-type { padding-top:0; }
+        .info-icon-wrap {
+            width:34px; height:34px; border-radius:var(--r-sm);
+          border:1px solid #ffffff4f;
+            display:flex; align-items:center; justify-content:center;
+            flex-shrink:0; color:var(--text-primary);
+        }
+        .info-content { flex:1; min-width:0; }
+        .info-label { font-size:10px; color:#b9b9b9; font-weight:500; letter-spacing:0.4px; text-transform:uppercase; margin-bottom:1px; }
+        .info-val { font-size:13px; font-weight:600; color:var(--text-100); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+
+        /* ── SAVED PRODUCTS ── */
+        .saved-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:12px; }
+        .badge-count {
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            color:#fff; padding:2px 9px; border-radius:var(--r-full);
+            font-size:10px; font-weight:700;
+        }
+        .saved-item {
+            display:flex; align-items:center; gap:10px;
+            padding:9px 10px; border-radius:var(--r-md);
+            background:var(--bg-card2); border:1px solid var(--border-1);
+            margin-bottom:7px; cursor:pointer; text-decoration:none; color:inherit;
+            transition:var(--transition);
+        }
+        .saved-item:hover { border-color:rgba(255,107,43,0.3); background:rgba(255,107,43,0.05); transform:translateX(3px); }
+        .saved-item:last-child { margin-bottom:0; }
+        .saved-thumb {
+            width:44px; height:44px; border-radius:var(--r-sm);
+            background:var(--bg-card3); overflow:hidden; flex-shrink:0;
+        }
+        .saved-thumb img { width:100%; height:100%; object-fit:cover; }
+        .saved-name { font-size:12px; font-weight:600; color:var(--text-200); margin-bottom:2px; }
+        .saved-price { font-size:13px; font-weight:700; background:linear-gradient(120deg,var(--ember-400),var(--gold-400)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+        /* ── ACTIONS ── */
+        .actions-row { display:flex; gap:8px; margin-bottom:10px; }
+        .btn {
+            flex:1; padding:11px 14px; border-radius:var(--r-sm);
+            font-family:'DM Sans',sans-serif; font-weight:600; font-size:13px;
+            display:flex; align-items:center; justify-content:center; gap:7px;
+            cursor:pointer; text-decoration:none; transition:var(--transition);
+            border:none; white-space:nowrap;
+        }
+        .btn-primary {
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            color:#fff; box-shadow:0 4px 16px rgba(255,107,43,0.3);
+        }
+        .btn-primary:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,107,43,0.45); }
+        .btn-outline {
+            background:var(--bg-card2); border:1px solid var(--border-2);
+            color:var(--text-200);
+        }
+        .btn-outline:hover { border-color:var(--border-3); color:var(--text-100); background:var(--bg-card3); }
+        .btn-danger {
+            width:100%; padding:11px; border-radius:var(--r-sm);
+            background:rgba(239,68,68,0.07); border:1px solid rgba(239,68,68,0.18);
+            color:#f87171; font-family:'DM Sans',sans-serif; font-weight:600; font-size:13px;
+            display:flex; align-items:center; justify-content:center; gap:7px;
+            cursor:pointer; transition:var(--transition);
+        }
+        .btn-danger:hover { background:rgba(239,68,68,0.12); border-color:rgba(239,68,68,0.3); }
+        .btn-logout {
+            width:100%; padding:11px; border-radius:var(--r-sm);
+            background:rgba(255,107,43,0.07); border:1px solid rgba(255,107,43,0.15);
+            color:var(--ember-300); font-family:'DM Sans',sans-serif; font-weight:600; font-size:13px;
+            display:flex; align-items:center; justify-content:center; gap:7px;
+            cursor:pointer; transition:var(--transition); margin-bottom:10px;
+        }
+        .btn-logout:hover { background:rgba(255,107,43,0.12); border-color:rgba(255,107,43,0.28); }
+
+
+
+        /* ── AKUN PROFESIONAL: tombol utama, riwayat, pengaturan ── */
+        .quick-actions-grid { display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:8px; margin:0 0 10px; }
+        .quick-action { min-height:78px; border-radius:var(--r-lg); border:1px solid var(--border-1); background:linear-gradient(180deg,rgba(255,255,255,.045),rgba(255,255,255,.018)); color:var(--text-100); text-decoration:none; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:7px; font-size:11px; font-weight:800; text-align:center; cursor:pointer; transition:var(--transition); box-shadow:var(--shadow-card); }
+        .quick-action svg { color:var(--ember-400); }
+        .quick-action:hover { transform:translateY(-2px); border-color:rgba(255,107,43,.35); background:linear-gradient(135deg,rgba(255,107,43,.12),rgba(247,212,106,.055)); }
+        .bottom-shop-wrap { margin:10px 0 18px; display:flex; flex-direction:column; gap:10px; }
+        .btn-shop-wide,
+        .btn-install-wide { width:100%; min-height:50px; border-radius:var(--r-lg); color:#fff; text-decoration:none; display:flex; align-items:center; justify-content:center; gap:9px; font-weight:900; letter-spacing:.2px; transition:var(--transition); }
+        .btn-shop-wide { background:linear-gradient(135deg,var(--ember-500),var(--gold-500)); box-shadow:0 12px 32px rgba(255,107,43,.26); }
+        .btn-install-wide { border:1px solid rgba(255,255,255,.18); background:linear-gradient(135deg,rgba(255,255,255,.11),rgba(255,255,255,.035)); box-shadow:0 12px 32px rgba(0,0,0,.22), inset 0 1px 0 rgba(255,255,255,.12); -webkit-backdrop-filter:blur(18px); backdrop-filter:blur(18px); }
+        .btn-shop-wide:hover,
+        .btn-install-wide:hover { transform:translateY(-2px); }
+        .btn-install-wide svg { color:var(--gold-400); }
+        .history-list { display:flex; flex-direction:column; gap:8px; }
+        .history-item { border:1px solid var(--border-1); background:var(--bg-card2); border-radius:var(--r-md); padding:11px 12px; display:flex; justify-content:space-between; align-items:flex-start; gap:10px; }
+        .history-main { min-width:0; flex:1; }
+        .history-title { font-size:13px; font-weight:800; color:var(--text-100); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+        .history-meta { font-size:11px; color:var(--text-400); margin-top:2px; }
+        .history-side { text-align:right; flex-shrink:0; }
+        .history-value { font-size:12px; font-weight:900; color:var(--gold-400); }
+        .history-status { display:inline-flex; margin-top:5px; padding:3px 8px; border-radius:999px; background:rgba(255,107,43,.12); color:var(--ember-300); font-size:10px; font-weight:800; }
+        .history-status.done { background:rgba(34,197,94,.13); color:#4ade80; }
+        .history-status.cancel { background:rgba(239,68,68,.13); color:#f87171; }
+        .empty-state-mini { color:var(--text-400); font-size:12px; background:var(--bg-card2); border:1px dashed var(--border-2); border-radius:var(--r-md); padding:12px; text-align:center; }
+        .settings-tabs { display:flex; flex-direction:column; gap:10px; overflow:visible; padding:0; margin:0 0 16px; }
+        .settings-tab { width:100%; min-height:52px; border:1px solid var(--border-1); background:var(--bg-card2); color:var(--text-200); padding:14px 16px; border-radius:18px; font-size:13px; font-weight:900; white-space:normal; cursor:pointer; display:flex; align-items:center; justify-content:flex-start; gap:10px; text-align:left; }
+        .settings-tab.active { background:linear-gradient(135deg,var(--ember-500),var(--gold-500)); color:#fff; border-color:transparent; }
+        .settings-panel { display:none; }
+        .settings-panel.active { display:block; animation:settingsIn .22s ease; }
+        .setting-card { border:1px solid var(--border-1); background:var(--bg-card2); border-radius:22px; padding:20px; margin-bottom:14px; }
+        .setting-title { font-size:17px; font-weight:900; margin-bottom:6px; color:var(--text-100); }
+        .setting-sub { font-size:13px; color:var(--text-400); margin-bottom:16px; line-height:1.55; }
+        .color-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:12px; }
+        .color-choice { min-height:58px; border:1px solid var(--border-1); background:var(--bg-card3); border-radius:18px; padding:12px; color:var(--text-200); font-size:13px; font-weight:900; cursor:pointer; text-align:left; transition:var(--transition); display:flex; align-items:center; gap:10px; }
+        .color-choice.active { border-color:var(--ember-400); box-shadow:0 0 0 2px rgba(255,107,43,.16); color:var(--text-100); }
+        .color-dot { display:inline-block; width:30px; height:30px; border-radius:50%; margin:0; box-shadow:inset 0 0 0 2px rgba(255,255,255,.25), 0 8px 18px rgba(0,0,0,.22); flex-shrink:0; }
+        .lang-grid { display:grid; grid-template-columns:1fr; gap:10px; }
+        .lang-choice { min-height:54px; border:1px solid var(--border-1); background:var(--bg-card3); border-radius:18px; padding:14px 16px; color:var(--text-200); font-size:13px; font-weight:900; cursor:pointer; text-align:left; }
+        .lang-choice.active { background:linear-gradient(135deg,var(--ember-500),var(--gold-500)); color:#fff; border-color:transparent; }
+        .settings-danger { background:rgba(239,68,68,.08); border-color:rgba(239,68,68,.18); color:#fca5a5; }
+        @keyframes settingsIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+        .settings-modal-lg{width:min(760px,94vw)!important;max-width:760px!important;max-height:86vh;overflow:auto;padding:18px!important;}
+        .settings-modal-body{display:grid;grid-template-columns:230px minmax(0,1fr);gap:18px;align-items:start;}
+        .settings-content{min-width:0;}
+        @media (max-width:640px){ .settings-modal-lg{width:94vw!important;max-height:88vh;} .settings-modal-body{grid-template-columns:1fr;} .quick-actions-grid{grid-template-columns:repeat(3, minmax(0,1fr));} .quick-action{min-height:56px; flex-direction:row;} .color-grid{grid-template-columns:1fr;} }
+
+        /* ── AUTH STATE ── */
+        .auth-hero {
+            background:var(--bg-card);
+            border:1px solid var(--border-1);
+            border-radius:var(--r-xl);
+            margin:16px 0;
+            overflow:hidden;
+            box-shadow:var(--shadow-card);
+        }
+        .auth-hero-top {
+            padding:28px 20px 24px;
+            text-align:center;
+            background:linear-gradient(135deg,rgba(255,107,43,0.06),rgba(247,196,40,0.03));
+            border-bottom:1px solid var(--border-1);
+        }
+        .auth-avatar-placeholder {
+            width:64px; height:64px; border-radius:50%;
+            background:var(--bg-card2); border:2px dashed var(--border-3);
+            display:flex; align-items:center; justify-content:center;
+            margin:0 auto 14px; color:var(--text-400);
+        }
+        .auth-title { font-family:'Syne',sans-serif; font-size:19px; font-weight:700; margin-bottom:6px; }
+        .auth-sub { color:var(--text-400); font-size:12px; }
+        .auth-body { padding:20px; }
+
+        /* Tabs */
+        .auth-tabs { display:flex; background:var(--bg-card2); border-radius:var(--r-sm); padding:3px; margin-bottom:20px; }
+        .auth-tab {
+            flex:1; padding:8px 12px; border-radius:6px;
+            font-family:'DM Sans',sans-serif; font-weight:600; font-size:12px;
+            border:none; background:none; cursor:pointer; color:var(--text-400);
+            transition:var(--transition); display:flex; align-items:center; justify-content:center; gap:6px;
+        }
+        .auth-tab.active { background:var(--bg-card); color:var(--ember-400); box-shadow:0 1px 4px rgba(0,0,0,0.3); border:1px solid var(--border-2); }
+
+        .auth-form { display:none; }
+        .auth-form.active { display:block; }
+
+        .field { margin-bottom:14px; }
+        .field label { display:block; font-size:10px; font-weight:700; color:var(--text-400); letter-spacing:0.8px; text-transform:uppercase; margin-bottom:6px; }
+        .field input {
+            width:100%; padding:11px 13px;
+            background:var(--bg-card2); border:1.5px solid var(--border-2);
+            border-radius:var(--r-sm); color:var(--text-100);
+            font-family:'DM Sans',sans-serif; font-size:14px; outline:none;
+            transition:var(--transition);
+        }
+        .field input:focus { border-color:var(--ember-500); background:var(--bg-card3); box-shadow:0 0 0 3px rgba(255,107,43,0.12); }
+        .field input::placeholder { color:var(--text-600); }
+
+        .photo-pick {
+            padding:12px; border:1.5px dashed var(--border-2);
+            border-radius:var(--r-sm); cursor:pointer; text-align:center;
+            transition:var(--transition); color:var(--text-400); font-size:12px;
+        }
+        .photo-pick:hover { border-color:var(--ember-400); color:var(--ember-400); background:var(--ember-glow); }
+        .photo-preview { display:none; width:44px; height:44px; border-radius:50%; object-fit:cover; margin:0 auto 6px; }
+
+        .auth-btn {
+            width:100%; padding:13px;
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            color:#fff; border:none; border-radius:20px;
+            font-family:'Syne',sans-serif; font-weight:700; font-size:14px;
+            letter-spacing:0.3px; cursor:pointer; transition:var(--transition);
+            box-shadow:0 4px 16px rgba(255,107,43,0.3);
+        }
+        .auth-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,107,43,0.45); }
+        .auth-btn:disabled { opacity:0.5; cursor:not-allowed; transform:none; box-shadow:none; }
+
+        .success-box { text-align:center; padding:24px 16px; display:none; }
+        .success-icon { font-size:40px; margin-bottom:10px; }
+        .success-title { font-family:'Syne',sans-serif; font-size:17px; font-weight:700; color:var(--jade-400); margin-bottom:6px; }
+        .success-sub { color:var(--text-400); font-size:12px; }
+
+        /* ── LOADING ── */
+        #loadingState {
+            text-align:center; padding:60px 20px; color:var(--text-400);
+            display:flex; flex-direction:column; align-items:center; gap:12px;
+        }
+        .spinner {
+            width:28px; height:28px; border:2px solid var(--border-2);
+            border-top-color:var(--ember-500);
+            border-radius:50%; animation:spin 0.8s linear infinite;
+        }
+        @keyframes spin { to { transform:rotate(360deg); } }
+
+        /* ── MODAL ── */
+        .modal-backdrop {
+            position:fixed; inset:0;
+            background:rgba(0,0,0,0.7); backdrop-filter:blur(12px);
+            z-index:1000; display:none; align-items:center; justify-content:center; padding:20px;
+        }
+        .modal-backdrop.open { display:flex; }
+        .modal {
+            background:var(--bg-card2); border:1px solid var(--border-2);
+            border-radius:var(--r-xl); padding:22px; width:100%; max-width:380px;
+            box-shadow:0 24px 80px rgba(0,0,0,0.5);
+        }
+        .modal-hd { display:flex; align-items:center; justify-content:space-between; margin-bottom:18px; }
+        .modal-hd h3 { font-family:'Syne',sans-serif; font-size:16px; font-weight:700; }
+        .modal-close-btn {
+            width:28px; height:28px; border-radius:var(--r-sm);
+            background:var(--bg-card3); border:1px solid var(--border-1);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; color:var(--text-400); transition:var(--transition);
+        }
+        .modal-close-btn:hover { color:var(--text-100); }
+        .modal-footer { display:flex; gap:8px; margin-top:18px; }
+        .modal-footer .btn { flex:1; }
+        .btn-confirm-del { background:#dc2626; color:#fff; border:none; border-radius:var(--r-sm); padding:11px; font-family:'DM Sans',sans-serif; font-weight:700; font-size:13px; cursor:pointer; flex:1; transition:var(--transition); }
+        .btn-confirm-del:disabled { opacity:0.4; cursor:not-allowed; }
+        .btn-confirm-del:not(:disabled):hover { background:#b91c1c; }
+
+        .check-row { display:flex; align-items:center; gap:8px; margin-top:14px; font-size:12px; color:var(--text-400); cursor:pointer; }
+        .check-row input { cursor:pointer; accent-color:var(--ember-500); }
+
+        /* ── BOTTOM NAV ── */
+        .bottom-nav {
+            position:fixed; bottom:0; left:0; right:0;
+            background:rgba(8,8,16,0.92); backdrop-filter:blur(20px);
+            border-top:1px solid var(--border-1); z-index:90; padding:6px 0;
+        }
+        body.light-mode .bottom-nav { background:rgba(247,246,255,0.94); }
+        .nav-inner { display:flex; justify-content:space-around; max-width:480px; margin:0 auto; }
+        .nav-item {
+            display:flex; flex-direction:column; align-items:center; gap:2px;
+            color:var(--text-600); font-size:9px; font-weight:600; letter-spacing:0.5px;
+            padding:5px 12px; border-radius:var(--r-sm); cursor:pointer;
+            text-decoration:none; transition:var(--transition); text-transform:uppercase;
+        }
+        .nav-item:hover, .nav-item.active { color:var(--ember-400); }
+        .nav-item svg { display:block; }
+
+        /* Animate in */
+        @keyframes fadeUp { from { opacity:0; transform:translateY(14px); } to { opacity:1; transform:translateY(0); } }
+        #registeredState > * { animation:fadeUp 0.4s ease both; }
+        #registeredState > *:nth-child(1) { animation-delay:0.05s; }
+        #registeredState > *:nth-child(2) { animation-delay:0.10s; }
+        #registeredState > *:nth-child(3) { animation-delay:0.15s; }
+        #registeredState > *:nth-child(4) { animation-delay:0.20s; }
+        #registeredState > *:nth-child(5) { animation-delay:0.25s; }
+        #registeredState > *:nth-child(6) { animation-delay:0.30s; }
+        #registeredState > *:nth-child(7) { animation-delay:0.35s; }
+
+        .empty-saved { text-align:center; padding:20px; color:var(--text-600); font-size:12px; }
+        
+        /* Join Section Styles - Kuning Orange Compact */
+/* Teks kiri - Tombol kanan di semua ukuran layar */
+.join-strip {
+    margin-bottom: 6px !important;
+    border-radius: 24px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 12px !important;
+    padding: 10px 20px !important;
+    border-bottom: 4px solid var(--border-1, rgba(255, 255, 255, .18)) !important;
+    background: linear-gradient(135deg, rgba(255, 255, 255, .13), rgba(255, 255, 255, .055)) !important;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .10), 0 8px 24px rgba(0, 0, 0, .08) !important;
+    overflow: hidden;
+    transition: transform .24s ease, background .24s ease, border-color .24s ease, box-shadow .24s ease;
+}
+
+.join-strip:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 20px rgba(245, 158, 11, 0.35);
+}
+
+/* Left content - TEKS SELALU DI KIRI */
+.join-left {
+    flex: 1;
+    text-align: left;
+    min-width: 0; /* Mencegah overflow teks */
+}
+
+.join-left > div {
+    max-width: 100%;
+}
+
+/* Label besar */
+.join-label-besar {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 4px;
+    line-height: 1.3;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+    word-break: break-word;
+}
+
+/* Label kecil */
+.join-label-kecil {
+    font-size: 0.75rem;
+    color: #ffedd5;
+    line-height: 1.4;
+    font-weight: 400;
+    word-break: break-word;
+}
+
+/* Tombol SELALU DI KANAN */
+.join-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 20px;
+    background: #ffffff;
+    color: #ea580c;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    border: none;
+    white-space: nowrap;
+    letter-spacing: 0.3px;
+    flex-shrink: 0;
+}
+
+.join-cta:hover {
+    background: #fffbeb;
+    color: #c2410c;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.join-cta:active {
+    transform: translateY(0);
+}
+
+/* ============================================ */
+/* HP & SEMUA UKURAN: TOMBOL TETAP DI KANAN */
+/* ============================================ */
+@media (max-width: 768px) {
+    .join-strip {
+        padding: 10px 14px;
+        gap: 10px;
+    }
+    
+.join-label-besar {         font-family: 'Syne', sans-serif;
+        font-size: 0.85rem;
+        margin-bottom: 3px;
+    }
+    
+    .join-label-kecil {
+        font-size: 0.65rem;
+        line-height: 1.3;
+    }
+    
+    .join-cta {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .join-strip {
+        padding: 8px 12px;
+        gap: 8px;
+    }
+    
+.join-label-besar { 
+        font-family: 'Syne', sans-serif;
+        font-size: 0.75rem;
+    }
+    
+    .join-label-kecil {
+        font-size: 0.6rem;
+    }
+    
+    .join-cta {
+        padding: 5px 12px;
+        font-size: 0.7rem;
+    }
+}
+
+/* Untuk HP layar sangat kecil (320px) */
+@media (max-width: 360px) {
+.join-label-besar {         font-family: 'Syne', sans-serif;
+        font-size: 0.7rem;
+    }
+    
+    .join-label-kecil {
+        font-size: 0.55rem;
+    }
+    
+    .join-cta {
+        padding: 4px 10px;
+        font-size: 0.65rem;
+    }
+}
+        
+    </style>
+    <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
+    <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
+    <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
+    <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+
+    <script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+<!-- Hidden checkbox untuk sidebar -->
+<input class="hidden" id="sidebar-toggle" type="checkbox"/>
+<label class="sidebar-overlay" for="sidebar-toggle"></label>
+
+<!-- Sidebar Menu -->
+<aside class="muja-sidebar">
+    <div class="sidebar-header">
+        <h3>Muja Prime</h3>
+        <label class="sidebar-close" for="sidebar-toggle">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+            </svg>
+        </label>
+    </div>
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/semua-produk/">Semua Produk</a></li>
+            <li><a href="/tukar-point/">Tukar Poin</a></li>
+            <li><a href="/top-pembeli/">Top Pembeli</a></li>
+            <li><a href="/kontak/">Kontak</a></li>
+            <li><a href="/tentang/">Tentang</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+            <li><a href="/kebijakan-privasi/">Kebijakan Privasi</a></li>
+            <li><a href="/syarat-ketentuan/">Syarat &amp; Ketentuan</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer"></div>
+</aside>
+
+<!-- Header -->
+<!-- Header -->
+<header class="muja-header" id="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- KIRI: Logo & Menu Toggle -->
+            <div class="logo-section">
+                <label class="menu-toggle" for="sidebar-toggle">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <line x1="3" x2="21" y1="12" y2="12"/>
+                        <line x1="3" x2="15" y1="6" y2="6"/>
+                        <line x1="3" x2="18" y1="18" y2="18"/>
+                    </svg>
+                </label>
+                <a class="site-logo" href="/"><span class="site-title">MUJA PRIME</span></a>
+            </div>
+
+            <!-- KANAN: Theme Toggle + Cart -->
+            
+        </div>
+    </div>
+</header>
+<!-- Cart Overlay -->
+<div class="cart-overlay" id="cartOverlay" onclick="window.closeCart()"></div>
+
+<!-- Cart Sidebar -->
+<div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header">
+        <h3>🛒 Produk Tersimpan</h3>
+        <button class="cart-close" onclick="window.closeCart()">✕</button>
+    </div>
+    <div class="cart-items" id="cartItems">
+        <div class="cart-empty"><p>Belum ada produk tersimpan</p></div>
+    </div>
+</div>
+<main class="container">
+    <!-- LOADING -->
+    <div id="loadingState">
+        <div class="spinner"></div>
+        <span>Memuat data akun...</span>
+    </div>
+
+    <!-- REGISTERED -->
+    <div id="registeredState" style="display:none;">
+
+        <!-- Hero Profile -->
+        <div class="hero-profile">
+            <div class="hero-top">
+               <div class="avatar-wrap" id="profileAvatar" onclick="document.getElementById('avatarInput').click()" title="Ganti foto">
+    <!-- GANTI span jadi SVG -->
+    <svg id="profileInitial" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--bg-deep)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+        <circle cx="12" cy="7" r="4"/>
+    </svg>
+    <div class="avatar-badge">Ganti Foto</div>
+</div>
+                <input type="file" id="avatarInput" accept="image/*" style="display:none;" onchange="handleAvatarChange(event)">
+                <div class="profile-meta">
+                    <div class="profile-name" id="profileName">Nama Pengguna</div>
+                    <div class="profile-badge">
+                        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <span id="memberSinceText">Member aktif</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Poin -->
+            <div class="poin-strip">
+                <div class="poin-left">
+                    <div class="poin-icon">
+                       <svg height="20px" width="20px" version="1.1" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	 viewBox="0 0 512 512"  xml:space="preserve">
+<style type="text/css">
+	.st0{fill:currentColor;}
+</style>
+<g>
+	<path class="st0" d="M485.911,271.966c-3.403-8.208-8.058-15.84-13.674-22.89c-5.617-7.042-12.186-13.517-19.496-19.471
+		l-0.449-0.363l0.433,0.363c-21.961-17.849-50.861-31.492-84.338-41.07h-0.008c-33.508-9.524-71.736-14.841-112.38-14.841
+		c-30.972,0-60.526,3.088-87.67,8.767c-27.144,5.68-51.877,13.95-73.208,24.49l-0.016,0.007
+		c-21.307,10.571-39.424,23.442-52.87,39.141l0.244-0.3l-0.252,0.3c-6.711,7.861-12.256,16.486-16.139,25.867
+		c-3.892,9.39-6.058,19.512-6.05,29.932v81.873c-0.008,10.43,2.158,20.56,6.05,29.948c3.402,8.208,8.058,15.832,13.674,22.882
+		c5.624,7.051,12.185,13.517,19.496,19.472l0.015,0.008c21.961,17.833,50.854,31.507,84.33,41.07l0.182,0.04
+		c33.469,9.491,71.632,14.8,112.214,14.808h0.008c30.964-0.008,60.518-3.096,87.662-8.775c27.144-5.68,51.878-13.958,73.208-24.489
+		l0.016-0.016c21.307-10.571,39.417-23.45,52.87-39.132l0.008-0.016c6.711-7.845,12.249-16.462,16.132-25.852l-0.244,0.575
+		l0.252-0.575c3.883-9.389,6.05-19.519,6.05-29.948v-81.873C491.961,291.478,489.794,281.356,485.911,271.966z M72.838,426.41
+		c-2.481-2.34-4.798-4.718-6.861-7.121c-4.892-5.735-8.562-11.603-11.012-17.51c-2.45-5.924-3.678-11.887-3.678-18.007v-37.116
+		c4.782,5.9,10.429,11.469,16.818,16.683c1.536,1.237,3.111,2.458,4.734,3.671V426.41z M118.083,454.932
+		c-3.111-1.355-6.176-2.741-9.113-4.206c-6.846-3.387-13.146-7.002-18.897-10.775v-61.676c8.578,4.923,17.952,9.436,28.01,13.501
+		V454.932z M174.111,472.505c-14.194-3.002-27.514-6.759-39.794-11.146h1.016v-63.291c3.947,1.307,7.995,2.544,12.122,3.726
+		c8.539,2.426,17.456,4.553,26.656,6.404V472.505z M247.374,480.658c-19.519-0.394-38.282-2.174-56.02-5.041v-64.402
+		c17.841,2.757,36.604,4.372,56.02,4.75V480.658z M322.804,475.23c-18.368,3.064-37.857,4.986-58.179,5.38v-64.607
+		c20.196-0.394,39.708-2.15,58.179-5.081V475.23z M378.833,460.966c-6.081,2.205-12.414,4.253-19.008,6.128
+		c-6.364,1.812-12.997,3.426-19.787,4.907v-64.228c13.651-2.82,26.632-6.332,38.794-10.436V460.966z M424.085,438.484
+		c-8.16,5.593-17.549,10.792-28.018,15.518v-63.126c5.041-2.088,9.933-4.278,14.604-6.585c4.671-2.324,9.137-4.758,13.414-7.279
+		V438.484z M460.713,383.771c0,6.12-1.229,12.084-3.687,18.007c-3.15,7.656-8.436,15.273-15.706,22.575v-58.242h-1.024
+		c7.152-5.459,13.494-11.28,18.826-17.51c0.544-0.638,1.063-1.284,1.592-1.93V383.771z M457.026,319.89
+		c-4.253,10.335-12.366,20.591-24.024,30.082c-17.448,14.241-42.756,26.593-73.177,35.234
+		c-30.413,8.664-65.922,13.666-103.825,13.666c-57.746,0.024-109.978-11.658-147.03-30.034
+		c-18.526-9.161-33.209-19.968-42.992-31.445c-4.892-5.726-8.562-11.595-11.012-17.502c-2.45-5.924-3.678-11.878-3.678-17.991
+		c0-6.112,1.228-12.066,3.678-17.99c4.269-10.342,12.368-20.598,24.033-30.074c17.455-14.25,42.756-26.609,73.177-35.25
+		c30.412-8.656,65.93-13.65,103.826-13.65c57.746-0.032,109.97,11.658,147.022,30.026c18.535,9.153,33.226,19.976,42.992,31.437
+		c4.899,5.726,8.57,11.595,11.012,17.51c2.458,5.924,3.687,11.878,3.687,17.99C460.713,308.012,459.484,313.966,457.026,319.89z"/>
+	<path class="st0" d="M326.27,86.016l57.667,15.305c1.504,0.306,2.726,1.536,3.072,3.048l15.202,57.667
+		c0.41,1.694,1.898,2.883,3.631,2.883c1.749,0,3.222-1.189,3.616-2.883l15.226-57.667c0.323-1.512,1.551-2.742,3.056-3.048
+		l57.675-15.305c1.685-0.316,2.883-1.82,2.883-3.552c0-1.749-1.198-3.222-2.883-3.56l-57.675-15.297
+		c-1.505-0.323-2.734-1.536-3.056-3.049L409.458,2.891C409.064,1.213,407.591,0,405.842,0c-1.733,0-3.222,1.213-3.631,2.891
+		l-15.202,57.667c-0.347,1.512-1.568,2.726-3.072,3.049L326.27,78.904c-1.701,0.339-2.883,1.812-2.883,3.56
+		C323.387,84.196,324.569,85.701,326.27,86.016z"/>
+	<path class="st0" d="M396.673,313.762l-26.175-6.94c-0.686-0.157-1.244-0.693-1.394-1.386l-6.9-26.175
+		c-0.182-0.764-0.851-1.308-1.646-1.308c-0.78,0-1.458,0.544-1.646,1.308l-6.9,26.175c-0.157,0.694-0.709,1.229-1.394,1.386
+		l-26.167,6.94c-0.772,0.149-1.316,0.827-1.316,1.614c0,0.788,0.544,1.466,1.316,1.623l26.167,6.932
+		c0.686,0.142,1.237,0.709,1.394,1.402l6.9,26.159c0.189,0.764,0.866,1.308,1.646,1.308c0.795,0,1.465-0.544,1.646-1.308l6.9-26.159
+		c0.15-0.693,0.709-1.26,1.394-1.402l26.175-6.932c0.757-0.157,1.308-0.835,1.308-1.623
+		C397.981,314.589,397.43,313.911,396.673,313.762z"/>
+	<path class="st0" d="M37.841,140.075l41.204,10.918c1.088,0.228,1.946,1.103,2.206,2.189l10.854,41.204
+		c0.299,1.221,1.363,2.064,2.6,2.064c1.244,0,2.3-0.843,2.592-2.064l10.862-41.204c0.228-1.086,1.118-1.961,2.197-2.189
+		l41.212-10.918c1.205-0.252,2.064-1.339,2.064-2.568c0-1.229-0.859-2.284-2.064-2.536l-41.212-10.933
+		c-1.079-0.236-1.969-1.087-2.197-2.174L97.296,80.636c-0.291-1.197-1.347-2.048-2.592-2.048c-1.237,0-2.3,0.851-2.6,2.048
+		L81.25,121.864c-0.26,1.087-1.118,1.938-2.206,2.174l-41.204,10.933c-1.228,0.252-2.071,1.307-2.071,2.536
+		C35.769,138.736,36.612,139.824,37.841,140.075z"/>
+	<path class="st0" d="M263.979,233.528c-21.992,0.709-33.02,0.646-55.02-0.236c-1.212-0.048-2.087,0.63-2.15,1.732
+		c-2.827,48.506-4.214,72.752-7.042,121.297c-0.063,1.111,0.866,1.883,2.324,1.946c15.139,0.614,22.717,0.772,37.864,0.756
+		c1.466,0.008,2.395-0.756,2.395-1.859c0.024-15.533,0.04-23.292,0.063-38.809c0-0.74,0.472-1.127,1.386-1.134
+		c9.176-0.04,13.745-0.127,22.906-0.418c37.809-1.213,55.65-21.543,52.933-45.308C316.857,247.352,297.55,232.425,263.979,233.528z
+		 M263.625,289.485c-7.94,0.236-11.902,0.283-19.842,0.339c-0.874,0.008-1.323-0.355-1.323-1.096
+		c0.016-10.516,0.024-15.769,0.032-26.292c0.007-0.725,0.41-1.103,1.26-1.119c7.609-0.032,11.421-0.102,19.023-0.331
+		c11.618-0.347,18.472,4.774,18.968,13.414C282.238,283.042,275.747,289.115,263.625,289.485z"/>
+</g>
+</svg>
+                    </div>
+                    <div>
+                        <div class="poin-label">Poin Loyalitas</div>
+                        <div class="poin-value" id="userPoin">0</div>
+                    </div>
+                </div>
+</div>
+        </div>
+
+
+        <!-- Tombol utama di bawah profil -->
+        <div class="quick-actions-grid">
+            <a href="/tukar-point/" class="quick-action" data-i18n="quickRedeem">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12v10H4V12"/><path d="M2 7h20v5H2z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+                Tukar Poin
+            </a>
+			   <a href="/user-join/" class="quick-action" data-i18n="quickJoin">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="4"/><path d="M8 10h8"/><path d="M8 14h5"/><circle cx="17" cy="14" r="2"/><path d="M17 16v2"/><path d="M7 20v-2a3 3 0 0 1 3-3h2"/></svg>
+                Join User
+            </a>
+            <button type="button" class="quick-action" onclick="openSettingsModal()" data-i18n="quickSettings">
+                <svg width="20px" height="20px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="12" cy="12" r="3" stroke="currentColor" stroke-width="1.5"/>
+<path d="M13.7654 2.15224C13.3978 2 12.9319 2 12 2C11.0681 2 10.6022 2 10.2346 2.15224C9.74457 2.35523 9.35522 2.74458 9.15223 3.23463C9.05957 3.45834 9.0233 3.7185 9.00911 4.09799C8.98826 4.65568 8.70226 5.17189 8.21894 5.45093C7.73564 5.72996 7.14559 5.71954 6.65219 5.45876C6.31645 5.2813 6.07301 5.18262 5.83294 5.15102C5.30704 5.08178 4.77518 5.22429 4.35436 5.5472C4.03874 5.78938 3.80577 6.1929 3.33983 6.99993C2.87389 7.80697 2.64092 8.21048 2.58899 8.60491C2.51976 9.1308 2.66227 9.66266 2.98518 10.0835C3.13256 10.2756 3.3397 10.437 3.66119 10.639C4.1338 10.936 4.43789 11.4419 4.43786 12C4.43783 12.5581 4.13375 13.0639 3.66118 13.3608C3.33965 13.5629 3.13248 13.7244 2.98508 13.9165C2.66217 14.3373 2.51966 14.8691 2.5889 15.395C2.64082 15.7894 2.87379 16.193 3.33973 17C3.80568 17.807 4.03865 18.2106 4.35426 18.4527C4.77508 18.7756 5.30694 18.9181 5.83284 18.8489C6.07289 18.8173 6.31632 18.7186 6.65204 18.5412C7.14547 18.2804 7.73556 18.27 8.2189 18.549C8.70224 18.8281 8.98826 19.3443 9.00911 19.9021C9.02331 20.2815 9.05957 20.5417 9.15223 20.7654C9.35522 21.2554 9.74457 21.6448 10.2346 21.8478C10.6022 22 11.0681 22 12 22C12.9319 22 13.3978 22 13.7654 21.8478C14.2554 21.6448 14.6448 21.2554 14.8477 20.7654C14.9404 20.5417 14.9767 20.2815 14.9909 19.902C15.0117 19.3443 15.2977 18.8281 15.781 18.549C16.2643 18.2699 16.8544 18.2804 17.3479 18.5412C17.6836 18.7186 17.927 18.8172 18.167 18.8488C18.6929 18.9181 19.2248 18.7756 19.6456 18.4527C19.9612 18.2105 20.1942 17.807 20.6601 16.9999C21.1261 16.1929 21.3591 15.7894 21.411 15.395C21.4802 14.8691 21.3377 14.3372 21.0148 13.9164C20.8674 13.7243 20.6602 13.5628 20.3387 13.3608C19.8662 13.0639 19.5621 12.558 19.5621 11.9999C19.5621 11.4418 19.8662 10.9361 20.3387 10.6392C20.6603 10.4371 20.8675 10.2757 21.0149 10.0835C21.3378 9.66273 21.4803 9.13087 21.4111 8.60497C21.3592 8.21055 21.1262 7.80703 20.6602 7C20.1943 6.19297 19.9613 5.78945 19.6457 5.54727C19.2249 5.22436 18.693 5.08185 18.1671 5.15109C17.9271 5.18269 17.6837 5.28136 17.3479 5.4588C16.8545 5.71959 16.2644 5.73002 15.7811 5.45096C15.2977 5.17191 15.0117 4.65566 14.9909 4.09794C14.9767 3.71848 14.9404 3.45833 14.8477 3.23463C14.6448 2.74458 14.2554 2.35523 13.7654 2.15224Z" stroke="currentColor" stroke-width="1.5"/>
+</svg>
+                Pengaturan
+            </button>
+       </div>
+        <!-- Info Pribadi -->
+        <div class="section-card">
+            <div class="section-title"><span class="section-title-dot"></span><span data-i18n="personalInfo">Informasi Pribadi</span></div>
+            <div class="info-row"><div class="info-icon-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div><div class="info-content"><div class="info-label" data-i18n="fullName">Nama Lengkap</div><div class="info-val" id="infoName">—</div></div></div>
+            <div class="info-row"><div class="info-icon-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></div><div class="info-content"><div class="info-label">WhatsApp</div><div class="info-val" id="infoWa">—</div></div></div>
+            <div class="info-row"><div class="info-icon-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="info-content"><div class="info-label">Email</div><div class="info-val" id="infoEmail">—</div></div></div>
+            <div class="info-row"><div class="info-icon-wrap"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div class="info-content"><div class="info-label" data-i18n="joinedSince">Bergabung Sejak</div><div class="info-val" id="infoDate">—</div></div></div>
+        </div>
+
+        <!-- Riwayat Tukar Poin -->
+        <div class="section-card">
+            <div class="saved-header"><div class="section-title" style="margin-bottom:0;"><span class="section-title-dot"></span><span data-i18n="redeemHistory">Riwayat Tukar Poin</span></div><span class="badge-count" id="redeemHistoryCount">0</span></div>
+            <div class="history-list" id="redeemHistoryList"><div class="empty-state-mini">Memuat riwayat tukar poin...</div></div>
+        </div>
+
+        <!-- Riwayat Pesanan -->
+        <div class="section-card">
+            <div class="saved-header"><div class="section-title" style="margin-bottom:0;"><span class="section-title-dot"></span><span data-i18n="orderHistory">Riwayat Pesanan</span></div><span class="badge-count" id="orderHistoryCount">0</span></div>
+            <div class="history-list" id="orderHistoryList"><div class="empty-state-mini">Memuat riwayat pesanan...</div></div>
+        </div>
+
+        <!-- Tombol bawah akun -->
+        <div class="bottom-shop-wrap">
+            <a href="/semua-produk/" class="btn-shop-wide" data-i18n="shopButton">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                Belanja
+            </a>
+            <a href="https://github.com/mujamila007-alt/mujaprime_biz_id/blob/main/update-and-apk/Muja%20Prime_2.2-Edition.apk?raw=true" class="btn-install-wide" data-muja-install-apk data-i18n="installButton" aria-label="Install aplikasi MujaPrime">
+                <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/><rect x="4" y="3" width="16" height="18" rx="4" opacity=".28"/></svg>
+                Install Aplikasi MujaPrime
+            </a>
+        </div>
+    </div>
+
+    <!-- NOT REGISTERED -->
+    <div id="notRegisteredState" style="display:none;">
+        <div class="auth-hero">
+            <div class="auth-hero-top">
+                <div class="auth-avatar-placeholder">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </div>
+                <div class="auth-title">Selamat Datang</div>
+                <div class="auth-sub">Daftar atau login untuk pengalaman belanja lebih baik</div>
+            </div>
+            <div class="auth-body">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" id="tabReg" onclick="switchTab('register')">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><line x1="19" y1="8" x2="19" y2="14"/><line x1="22" y1="11" x2="16" y2="11"/></svg>
+                        Daftar
+                    </button>
+                    <button class="auth-tab" id="tabLogin" onclick="switchTab('login')">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"/><polyline points="10 17 15 12 10 7"/><line x1="15" y1="12" x2="3" y2="12"/></svg>
+                        Login
+                    </button>
+                </div>
+
+                <!-- Register form -->
+                <div class="auth-form active" id="formRegister">
+                    <form onsubmit="doRegister(event)">
+                        <div class="field"><label>Nama Lengkap *</label><input id="regName" type="text" placeholder="Nama lengkap Anda" required></div>
+                        <div class="field"><label>WhatsApp *</label><input id="regWa" type="text" placeholder="08123456789" pattern="[0-9]+" required></div>
+                        <div class="field"><label>Email *</label><input id="regEmail" type="email" placeholder="email@contoh.com" required></div>
+                        <div class="field">
+                            <label>Foto Profil <span style="color:var(--text-600);">(opsional)</span></label>
+                            <div class="photo-pick" onclick="document.getElementById('regPhoto').click()">
+                                <img id="regPhotoPreview" class="photo-preview">
+                                <div id="regPhotoText">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 4px;display:block;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+                                    <div style="font-size:11px;">Klik untuk pilih foto</div>
+                                </div>
+                                <input type="file" id="regPhoto" accept="image/*" style="display:none;" onchange="handleRegPhoto(event)">
+                            </div>
+                        </div>
+                        <button class="auth-btn" id="regBtn" type="submit">Buat Akun Sekarang</button>
+                    </form>
+                </div>
+
+                <!-- Login form -->
+                <div class="auth-form" id="formLogin">
+                    <div class="field"><label>Alamat Email *</label><input id="loginEmail" type="email" placeholder="email@contoh.com"></div>
+                    <button class="auth-btn" id="loginBtn" onclick="doLogin()">Masuk ke Akun</button>
+                </div>
+
+                <!-- Success -->
+                <div class="success-box" id="successBox">
+                    <div class="success-icon">✅</div>
+                    <div class="success-title">Berhasil!</div>
+                    <div class="success-sub" id="successMsg"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<nav class="mobile-nav">
+    <div class="mobile-nav-menu">
+        <a class="mobile-nav-item active" href="/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Beranda</span>
+        </a>
+        <a class="mobile-nav-item" href="/semua-produk/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+            <span>Produk</span>
+        </a>
+        <div class="mobile-nav-item" id="themeToggleMobile" onclick="window.toggleTheme()">
+            <span></span>
+            <span>Tema</span>
+        </div>
+        <a class="mobile-nav-item" href="/akun-saya/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Akun</span>
+        </a>
+    </div>
+</nav>
+
+<!-- MODAL EDIT -->
+<div class="modal-backdrop" id="editModal">
+    <div class="modal">
+        <div class="modal-hd">
+            <h3>Edit Profil</h3>
+            <button class="modal-close-btn" onclick="closeEditModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="field"><label>Nama Lengkap</label><input id="editName" type="text" placeholder="Nama Anda"></div>
+        <div class="field"><label>WhatsApp</label><input id="editWa" type="text" placeholder="Nomor WhatsApp"></div>
+        <div class="field"><label>Email</label><input id="editEmailInput" type="email" placeholder="Email Anda"></div>
+        <div class="modal-footer">
+            <button class="btn btn-outline" onclick="closeEditModal()">Batal</button>
+            <button class="btn btn-primary" onclick="saveEdit()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/><polyline points="17 21 17 13 7 13 7 21"/><polyline points="7 3 7 8 15 8"/></svg>
+                Simpan
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<!-- MODAL PENGATURAN -->
+<div class="modal-backdrop" id="settingsModal">
+    <div class="modal settings-modal-lg">
+        <div class="modal-hd">
+            <h3 data-i18n="settingsTitle">Pengaturan Akun</h3>
+            <button class="modal-close-btn" onclick="closeSettingsModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+        </div>
+        <div class="settings-modal-body">
+        <div class="settings-tabs">
+            <button class="settings-tab active" data-settings-tab="profile" onclick="switchSettingsTab('profile')">Profil</button>
+            <button class="settings-tab" data-settings-tab="theme" onclick="switchSettingsTab('theme')">Tema Warna</button>
+            <button class="settings-tab" data-settings-tab="language" onclick="switchSettingsTab('language')">Bahasa</button>
+            <button class="settings-tab" data-settings-tab="orders" onclick="switchSettingsTab('orders')">Pesanan</button>
+            <button class="settings-tab" data-settings-tab="redeems" onclick="switchSettingsTab('redeems')">Tukar Poin</button>
+        </div>
+
+        <div class="settings-content">
+
+        <div class="settings-panel active" id="settingsPanelProfile">
+            <div class="setting-card">
+                <div class="setting-title">Edit Profil</div>
+                <div class="setting-sub">Ubah nama, WhatsApp, email, dan foto profil akun.</div>
+                <button class="btn btn-primary" onclick="closeSettingsModal(); openEditModal();">Edit Profil</button>
+            </div>
+            <button class="btn-logout" onclick="doLogout()">Keluar dari Akun</button>
+        </div>
+
+        <div class="settings-panel" id="settingsPanelTheme">
+            <div class="setting-card">
+                <div class="setting-title">Rubah Thema Warna</div>
+                <div class="setting-sub">Pilih warna utama situs/aplikasi tanpa memakai Google Translate.</div>
+                <div class="color-grid" id="colorGrid">
+                    <button class="color-choice" data-color="orange" onclick="selectColorTheme('orange')"><span class="color-dot" style="background:linear-gradient(135deg,#ff6b2b,#f7d46a)"></span>Orange</button>
+                    <button class="color-choice" data-color="yellow" onclick="selectColorTheme('yellow')"><span class="color-dot" style="background:linear-gradient(135deg,#eab308,#fef08a)"></span>Kuning</button>
+                    <button class="color-choice" data-color="red" onclick="selectColorTheme('red')"><span class="color-dot" style="background:linear-gradient(135deg,#ef4444,#fecaca)"></span>Merah</button>
+                    <button class="color-choice" data-color="green" onclick="selectColorTheme('green')"><span class="color-dot" style="background:linear-gradient(135deg,#22c55e,#bbf7d0)"></span>Hijau</button>
+                    <button class="color-choice" data-color="blue" onclick="selectColorTheme('blue')"><span class="color-dot" style="background:linear-gradient(135deg,#3b82f6,#bfdbfe)"></span>Biru</button>
+                    <button class="color-choice" data-color="purple" onclick="selectColorTheme('purple')"><span class="color-dot" style="background:linear-gradient(135deg,#a855f7,#e9d5ff)"></span>Ungu</button>
+                    <button class="color-choice" data-color="pink" onclick="selectColorTheme('pink')"><span class="color-dot" style="background:linear-gradient(135deg,#ec4899,#fbcfe8)"></span>Pink</button>
+                    <button class="color-choice" data-color="cyan" onclick="selectColorTheme('cyan')"><span class="color-dot" style="background:linear-gradient(135deg,#06b6d4,#a5f3fc)"></span>Cyan</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-panel" id="settingsPanelLanguage">
+            <div class="setting-card">
+                <div class="setting-title">Rubah Bahasa Manual</div>
+                <div class="setting-sub">Bahasa disimpan manual di browser. Tidak memakai deteksi otomatis Google.</div>
+                <div class="lang-grid">
+                    <button class="lang-choice" data-lang="id" onclick="selectLanguage('id')">Indonesia</button>
+                    <button class="lang-choice" data-lang="en" onclick="selectLanguage('en')">English</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings-panel" id="settingsPanelOrders">
+            <div class="setting-card">
+                <div class="setting-title">Riwayat Pesanan</div>
+                <div class="setting-sub">Pesanan yang terhubung dengan email/WhatsApp akun ini.</div>
+                <div class="history-list" id="settingsOrderHistoryList"><div class="empty-state-mini">Memuat...</div></div>
+            </div>
+        </div>
+
+        <div class="settings-panel" id="settingsPanelRedeems">
+            <div class="setting-card">
+                <div class="setting-title">Riwayat Tukar Poin</div>
+                <div class="setting-sub">Hadiah poin yang pernah ditukar oleh akun ini.</div>
+                <div class="history-list" id="settingsRedeemHistoryList"><div class="empty-state-mini">Memuat...</div></div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </div>
+</div>
+<script src="firebase-akun.js?v=20260603-theme-persist-v4"></script>
+    
+    <script>
+    (function(){
+    'use strict';
+
+    var tempRegPhoto = null;
+
+    function ls(k,d){ try{var v=localStorage.getItem(k);return v!==null?v:d;}catch(e){return d;} }
+    function lss(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+    function lsr(k){ try{localStorage.removeItem(k);}catch(e){} }
+    function qs(id){ return document.getElementById(id); }
+    function setText(id,t){ var el=qs(id);if(el)el.textContent=t; }
+    function getInitial(n){ if(!n)return 'MP';var w=n.trim().split(/\s+/);return w.length>=2?(w[0][0]+w[1][0]).toUpperCase():n.substring(0,2).toUpperCase(); }
+    function formatRp(a){ return 'Rp'+new Intl.NumberFormat('id-ID').format(a||0); }
+
+    // Pengaturan akun: warna, bahasa manual, riwayat pesanan, riwayat tukar poin
+    var ACCOUNT_COLORS = {
+        orange:{ember300:'#ffb088',ember400:'#ff8855',ember500:'#ff6b2b',ember600:'#e0521b',gold400:'#f7d46a',gold500:'#f5c528'},
+        yellow:{ember300:'#fde68a',ember400:'#facc15',ember500:'#eab308',ember600:'#ca8a04',gold400:'#fef08a',gold500:'#facc15'},
+        red:{ember300:'#fca5a5',ember400:'#f87171',ember500:'#ef4444',ember600:'#dc2626',gold400:'#fecaca',gold500:'#f87171'},
+        green:{ember300:'#86efac',ember400:'#4ade80',ember500:'#22c55e',ember600:'#16a34a',gold400:'#bbf7d0',gold500:'#4ade80'},
+        blue:{ember300:'#93c5fd',ember400:'#60a5fa',ember500:'#3b82f6',ember600:'#2563eb',gold400:'#bfdbfe',gold500:'#60a5fa'},
+        purple:{ember300:'#d8b4fe',ember400:'#c084fc',ember500:'#a855f7',ember600:'#9333ea',gold400:'#e9d5ff',gold500:'#c084fc'},
+        pink:{ember300:'#f9a8d4',ember400:'#f472b6',ember500:'#ec4899',ember600:'#db2777',gold400:'#fbcfe8',gold500:'#f472b6'},
+        cyan:{ember300:'#67e8f9',ember400:'#22d3ee',ember500:'#06b6d4',ember600:'#0891b2',gold400:'#a5f3fc',gold500:'#22d3ee'}
+    };
+    var I18N = {
+        id:{quickRedeem:'Tukar Poin',quickSettings:'Pengaturan',quickJoin:'USER JOIN',personalInfo:'Informasi Pribadi',fullName:'Nama Lengkap',joinedSince:'Bergabung Sejak',redeemHistory:'Riwayat Tukar Poin',orderHistory:'Riwayat Pesanan',shopButton:'Belanja',installButton:'Install Aplikasi MujaPrime',settingsTitle:'Pengaturan Akun'},
+        en:{quickRedeem:'Redeem Points',quickSettings:'Settings',quickJoin:'User Join Login',personalInfo:'Personal Information',fullName:'Full Name',joinedSince:'Joined Since',redeemHistory:'Point Redeem History',orderHistory:'Order History',shopButton:'Shop',installButton:'Install MujaPrime App',settingsTitle:'Account Settings'}
+    };
+    function applyAccountColor(name){
+        var key = ACCOUNT_COLORS[name] ? name : 'orange';
+        lss('muja_account_color_theme', key); lss('muja_accent_color', key); lss('muja_color_theme', key);
+        var c = ACCOUNT_COLORS[key];
+        var r = document.documentElement;
+        r.style.setProperty('--ember-300',c.ember300); r.style.setProperty('--ember-400',c.ember400); r.style.setProperty('--ember-500',c.ember500); r.style.setProperty('--ember-600',c.ember600); r.style.setProperty('--gold-400',c.gold400); r.style.setProperty('--gold-500',c.gold500);
+        document.body.setAttribute('data-muja-accent', key);
+        document.querySelectorAll('.color-choice').forEach(function(btn){ btn.classList.toggle('active', btn.getAttribute('data-color')===key); });
+        if (window.MujaApplyAccentColor) window.MujaApplyAccentColor(key);
+    }
+    window.selectColorTheme = function(name){ lss('muja_account_color_theme', name); lss('muja_accent_color', name); lss('muja_color_theme', name); applyAccountColor(name); if (window.MujaApplyAccentColor) window.MujaApplyAccentColor(name); };  
+    function applyLanguage(lang){
+        var key = I18N[lang] ? lang : 'id';
+        document.documentElement.lang = key;
+        document.querySelectorAll('[data-i18n]').forEach(function(el){ var k=el.getAttribute('data-i18n'); if(I18N[key][k]) el.lastChild && el.childNodes.length>1 ? (el.childNodes[el.childNodes.length-1].nodeValue=' '+I18N[key][k]) : (el.textContent=I18N[key][k]); });
+        document.querySelectorAll('.lang-choice').forEach(function(btn){ btn.classList.toggle('active', btn.getAttribute('data-lang')===key); });
+    }
+    window.selectLanguage = function(lang){ lss('muja_lang', lang); applyLanguage(lang); };
+    function initAccountPrefs(){ applyAccountColor(ls('muja_account_color_theme', ls('muja_accent_color','orange'))); applyLanguage(ls('muja_lang','id')); }
+    window.openSettingsModal = function(){ initAccountPrefs(); var m=qs('settingsModal'); if(m) m.classList.add('open'); loadAccountHistories(ls('muja_user_email',''), ls('muja_user_whatsapp','')); };
+    window.closeSettingsModal = function(){ var m=qs('settingsModal'); if(m) m.classList.remove('open'); };
+    window.switchSettingsTab = function(tab){
+        document.querySelectorAll('.settings-tab').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-settings-tab')===tab); });
+        document.querySelectorAll('.settings-panel').forEach(function(p){ p.classList.remove('active'); });
+        var panel=qs('settingsPanel'+tab.charAt(0).toUpperCase()+tab.slice(1)); if(panel) panel.classList.add('active');
+    };
+    function tsToDate(v){
+        try{ if(!v) return '-'; if(v.toDate) return v.toDate().toLocaleString('id-ID'); if(v.seconds) return new Date(v.seconds*1000).toLocaleString('id-ID'); return new Date(v).toLocaleString('id-ID'); }catch(e){ return '-'; }
+    }
+    function statusClass(status){ status=(status||'').toLowerCase(); if(['selesai','done','completed','success','berhasil'].indexOf(status)>=0) return 'done'; if(['batal','cancel','cancelled','ditolak'].indexOf(status)>=0) return 'cancel'; return ''; }
+    function renderOrderHistory(items, targetId){
+        var el=qs(targetId); if(!el) return;
+        if(!items.length){ el.innerHTML='<div class="empty-state-mini">Belum ada riwayat pesanan.</div>'; return; }
+        el.innerHTML=items.slice(0,12).map(function(o){ return '<div class="history-item"><div class="history-main"><div class="history-title">'+escapeLocal(o.productName||o.product||'Produk')+'</div><div class="history-meta">'+tsToDate(o.createdAt||o.updatedAt)+' • '+escapeLocal(o.paymentMethod||o.method||'-')+'</div></div><div class="history-side"><div class="history-value">'+formatRp(o.price||o.total||0)+'</div><span class="history-status '+statusClass(o.status)+'">'+escapeLocal(o.status||'success')+'</span></div></div>'; }).join('');
+    }
+    function renderRedeemHistory(items, targetId){
+        var el=qs(targetId); if(!el) return;
+        if(!items.length){ el.innerHTML='<div class="empty-state-mini">Belum ada riwayat tukar poin.</div>'; return; }
+        el.innerHTML=items.slice(0,12).map(function(r){ var cost=Number(r.cost||r.poinCost||r.points||0); return '<div class="history-item"><div class="history-main"><div class="history-title">'+escapeLocal(r.productName||r.hadiah||'Hadiah Poin')+'</div><div class="history-meta">'+tsToDate(r.createdAt||r.redeemedAt||r.updatedAt)+'</div></div><div class="history-side"><div class="history-value">-'+cost.toLocaleString('id-ID')+' pts</div><span class="history-status '+statusClass(r.status)+'">'+escapeLocal(r.status||'menunggu')+'</span></div></div>'; }).join('');
+    }
+    function escapeLocal(v){ return String(v==null?'':v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];}); }
+    async function queryMany(collection, pairs){
+        var map={};
+        for(var i=0;i<pairs.length;i++){
+            var f=pairs[i][0], val=pairs[i][1]; if(!val) continue;
+            try{ var snap=await db.collection(collection).where(f,'==',val).limit(80).get(); snap.forEach(function(d){ map[d.id]={id:d.id,...d.data()}; }); }catch(e){ console.warn('Gagal membaca '+collection+' '+f, e); }
+        }
+        return Object.keys(map).map(function(k){return map[k];}).sort(function(a,b){
+            var av=(a.createdAt&&a.createdAt.seconds)||0, bv=(b.createdAt&&b.createdAt.seconds)||0; return bv-av;
+        });
+    }
+    async function loadAccountHistories(email, wa){
+        email=(email||'').trim().toLowerCase(); wa=(wa||'').trim();
+        var oMain=qs('orderHistoryList'), rMain=qs('redeemHistoryList');
+        if(oMain) oMain.innerHTML='<div class="empty-state-mini">Memuat riwayat pesanan...</div>';
+        if(rMain) rMain.innerHTML='<div class="empty-state-mini">Memuat riwayat tukar poin...</div>';
+        var orders=await queryMany('orders', [['customerEmail',email],['email',email],['customerWa',wa],['whatsapp',wa]]);
+        var redeems=await queryMany('poin_redeems', [['userEmail',email],['email',email],['userWa',wa],['whatsapp',wa]]);
+        setText('orderHistoryCount', orders.length); setText('redeemHistoryCount', redeems.length);
+        renderOrderHistory(orders,'orderHistoryList'); renderOrderHistory(orders,'settingsOrderHistoryList');
+        renderRedeemHistory(redeems,'redeemHistoryList'); renderRedeemHistory(redeems,'settingsRedeemHistoryList');
+    }
+
+
+    // Theme
+    var moonSVG='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    var sunSVG='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    function applyTheme(light){
+        document.body.classList.toggle('light-mode',light);
+        var btn=qs('themeToggleBtn');
+        if(btn) btn.innerHTML=light?sunSVG:moonSVG;
+    }
+    function toggleTheme(){
+        var isLight=document.body.classList.contains('light-mode');
+        lss('muja_theme',isLight?'dark':'light');
+        applyTheme(!isLight);
+    }
+    (function(){
+        var t=ls('muja_theme','dark');
+        applyTheme(t==='light');
+        var b=qs('themeToggleBtn'),n=qs('themeNavBtn');
+        if(b) b.onclick=toggleTheme;
+        if(n) n.onclick=toggleTheme;
+    })();
+
+    // Avatar
+ // Avatar
+function setAvatar(photo, name){
+    var wrap = qs('profileAvatar');
+    var initialSvg = qs('profileInitial');
+    if(!wrap) return;
+    var img = wrap.querySelector('img');
+    
+    if(photo){
+        if(!img){ 
+            img = document.createElement('img'); 
+            img.alt = 'Foto'; 
+            wrap.insertBefore(img, wrap.firstChild);
+        }
+        img.src = photo; 
+        img.style.display = 'block';
+        if(initialSvg) initialSvg.style.display = 'none';
+    } else {
+        if(img) img.style.display = 'none';
+        if(initialSvg){ 
+            initialSvg.style.display = 'block';
+            // Tidak perlu ubah textContent, biarkan SVG user icon tetap
+        }
+    }
+}
+
+    window.handleAvatarChange = async function(e){
+        var file=e.target.files[0]; if(!file) return;
+        if(file.size>1*1024*1024){ alert('Maks 1MB'); return; }
+        var r=new FileReader();
+        r.onload=async function(ev){
+            var d=ev.target.result;
+            lss('muja_user_photo',d);
+            setAvatar(d,ls('muja_user_name',''));
+            var email=ls('muja_user_email','');
+            if(email){
+                try{
+                    var snap=await db.collection('registrations').where('email','==',email).limit(1).get();
+                    if(!snap.empty) await db.collection('registrations').doc(snap.docs[0].id).update({photo:d});
+                }catch(er){}
+            }
+        };
+        r.readAsDataURL(file);
+    };
+
+    window.handleRegPhoto = function(e){
+        var file=e.target.files[0]; if(!file) return;
+        if(file.size>500*1024){ alert('Maks 500KB'); e.target.value=''; return; }
+        var r=new FileReader();
+        r.onload=function(ev){
+            tempRegPhoto=ev.target.result;
+            var prev=qs('regPhotoPreview');
+            prev.src=tempRegPhoto; prev.style.display='block';
+            qs('regPhotoText').style.display='none';
+        };
+        r.readAsDataURL(file);
+    };
+
+    // Tabs
+    window.switchTab = function(tab){
+        var isReg=tab==='register';
+        qs('tabReg').classList.toggle('active',isReg);
+        qs('tabLogin').classList.toggle('active',!isReg);
+        qs('formRegister').classList.toggle('active',isReg);
+        qs('formLogin').classList.toggle('active',!isReg);
+        qs('successBox').style.display='none';
+    };
+
+    function showSuccess(msg){
+        qs('formRegister').classList.remove('active');
+        qs('formLogin').classList.remove('active');
+        var box=qs('successBox');
+        box.style.display='block';
+        setText('successMsg',msg);
+    }
+
+    // Register
+    window.doRegister = async function(e){
+        e.preventDefault();
+        var name=qs('regName').value.trim();
+        var wa=qs('regWa').value.trim();
+        var email=qs('regEmail').value.trim().toLowerCase();
+        if(!name||!wa||!email){ alert('Semua field wajib diisi!'); return; }
+        if(!/^[0-9]+$/.test(wa)||wa.length<10){ alert('WhatsApp tidak valid!'); return; }
+        var btn=qs('regBtn');
+        btn.disabled=true; btn.textContent='Mendaftarkan...';
+        try{
+            var se=await db.collection('registrations').where('email','==',email.toLowerCase()).limit(1).get();
+            var sw=await db.collection('registrations').where('whatsapp','==',wa).limit(1).get();
+            var docId=null;
+            if(!se.empty||!sw.empty){
+                docId=!se.empty?se.docs[0].id:sw.docs[0].id;
+                var upd={name,email,whatsapp:wa,updatedAt:firebase.firestore.FieldValue.serverTimestamp()};
+                if(tempRegPhoto) upd.photo=tempRegPhoto;
+                await db.collection('registrations').doc(docId).update(upd);
+            } else {
+                var ud={name,whatsapp:wa,email,poin:0,registeredAt:firebase.firestore.FieldValue.serverTimestamp()};
+                if(tempRegPhoto) ud.photo=tempRegPhoto;
+                await db.collection('registrations').add(ud);
+            }
+            lss('muja_user_registered','true');
+            lss('muja_user_name',name);
+            lss('muja_user_email',email);
+            lss('muja_user_whatsapp',wa);
+            if(tempRegPhoto) lss('muja_user_photo',tempRegPhoto);
+            lss('muja_user_poin','0');
+            lss('muja_user_registered_date',new Date().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'}));
+            lsr('muja_deleted_by_admin');
+            lsr('muja_deleted_wa');
+lsr('muja_deleted_email');
+            showSuccess('Selamat '+name+'! Akun berhasil dibuat.');
+            setTimeout(function(){ window.location.reload(); },1600);
+        }catch(er){ alert('Gagal: '+er.message); }
+        finally{ btn.disabled=false; btn.textContent='Buat Akun Sekarang'; }
+    };
+
+    // Login
+    window.doLogin = async function(){
+        var email=qs('loginEmail').value.trim().toLowerCase();
+        if(!email||!email.includes('@')){ alert('Masukkan email yang valid!'); return; }
+        var btn=qs('loginBtn');
+        btn.disabled=true; btn.textContent='Memeriksa...';
+        try{
+            // ✅ PERBAIKAN: jangan blokir login dari collection deleted_accounts lama.
+            // Data lama/flag hapus bisa tertinggal, jadi selalu izinkan login jika email ada di registrations.
+            lsr('muja_deleted_by_admin');
+            lsr('muja_deleted_wa');
+            lsr('muja_deleted_email');
+            lsr('muja_deleted_email_' + email);
+            var snap=await db.collection('registrations').where('email','==',email).limit(1).get();
+            if(snap.empty){ alert('Akun tidak ditemukan! Silakan daftar.'); switchTab('register'); btn.disabled=false; btn.textContent='Masuk ke Akun'; return; }
+            var ud=snap.docs[0].data();
+            lss('muja_user_registered','true');
+            lss('muja_user_name',ud.name||'');
+            lss('muja_user_email',ud.email||email);
+            lss('muja_user_whatsapp',ud.whatsapp||'');
+            if(ud.photo) lss('muja_user_photo',ud.photo);
+            lss('muja_user_poin',(ud.poin||0).toString());
+            lsr('muja_deleted_by_admin');
+lsr('muja_deleted_wa');
+lsr('muja_deleted_email');
+            showSuccess('Selamat datang kembali, '+(ud.name||'Pengguna')+'!');
+            setTimeout(function(){ window.location.reload(); },1600);
+        }catch(er){ alert('Gagal: '+er.message); }
+        finally{ btn.disabled=false; btn.textContent='Masuk ke Akun'; }
+    };
+
+    // Logout
+    window.doLogout = function(){
+        if(!confirm('Keluar dari akun ini?')) return;
+        ['muja_user_registered','muja_user_name','muja_user_email','muja_user_whatsapp',
+         'muja_user_registered_date','muja_user_photo','muja_user_poin','mujaCart','muja_active_package']
+            .forEach(function(k){ lsr(k); });
+        window.location.href='/akun-saya/?out='+Date.now();
+    };
+
+    // Modals
+    window.openEditModal = function(){
+        qs('editName').value=ls('muja_user_name','');
+        qs('editWa').value=ls('muja_user_whatsapp','');
+        qs('editEmailInput').value=ls('muja_user_email','');
+        qs('editModal').classList.add('open');
+    };
+    window.closeEditModal = function(){ qs('editModal').classList.remove('open'); };
+    window.saveEdit = async function(){
+        var name=qs('editName').value.trim();
+        var wa=qs('editWa').value.trim();
+        var email=qs('editEmailInput').value.trim().toLowerCase();
+        var oldEmail=ls('muja_user_email','').trim().toLowerCase();
+        var oldWa=ls('muja_user_whatsapp','').trim();
+        if(!name||!wa||!email){ alert('Semua field harus diisi!'); return; }
+        try{
+            var found=null;
+            if(oldEmail){ var se=await db.collection('registrations').where('email','==',oldEmail).limit(1).get(); if(!se.empty) found=se.docs[0]; }
+            if(!found && oldWa){ var sw=await db.collection('registrations').where('whatsapp','==',oldWa).limit(1).get(); if(!sw.empty) found=sw.docs[0]; }
+            if(found){ await db.collection('registrations').doc(found.id).update({name:name, whatsapp:wa, email:email, updatedAt:firebase.firestore.FieldValue.serverTimestamp()}); }
+            lss('muja_user_name',name); lss('muja_user_whatsapp',wa); lss('muja_user_email',email);
+            closeEditModal(); await loadPage(); alert('Profil diperbarui!');
+        }catch(er){
+            lss('muja_user_name',name); lss('muja_user_whatsapp',wa); lss('muja_user_email',email);
+            closeEditModal(); await loadPage(); alert('Profil tersimpan di perangkat, tapi gagal update server: '+er.message);
+        }
+    };
+
+    // Fitur hapus akun sengaja dimatikan sesuai permintaan. Hanya logout yang tersedia di Pengaturan.
+    window.openDeleteModal = function(){ alert('Fitur hapus akun sudah dinonaktifkan. Silakan gunakan tombol Logout di Pengaturan.'); };
+    window.doDeleteAccount = function(){ alert('Fitur hapus akun sudah dinonaktifkan.'); };
+    
+    
+    function getMoonIconInner() {
+    return '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+}
+
+function getSunIconInner() {
+    return '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+}
+    
+    function applyTheme(light){
+    document.body.classList.toggle('light-mode',light);
+    var b=document.getElementById('themeBtn');
+    if(b) b.innerHTML=light?sunSVG:moonSVG;
+    
+    // TAMBAHKAN: Update ikon di navbar bagian bawah
+    var themeNavSvg = document.querySelector('#themeNavBtn svg');
+    if(themeNavSvg) {
+        themeNavSvg.innerHTML = light ? getSunIconInner() : getMoonIconInner();
+    }
+}
+
+    // Load
+   // ========== CEK AKUN DIHAPUS ==========
+async function checkIfDeleted(email, wa) {
+    // ✅ PERBAIKAN: pendeteksi akun terhapus dinonaktifkan.
+    // Sebelumnya halaman ini membaca deleted_accounts dan flag muja_deleted_* di localStorage.
+    // Jika record/flag lama tertinggal, email yang sudah didaftarkan ulang tetap dianggap terhapus.
+    // Sekarang sumber kebenaran hanya collection registrations.
+    try {
+        lsr('muja_deleted_by_admin');
+        lsr('muja_deleted_wa');
+        lsr('muja_deleted_email');
+        if (email) lsr('muja_deleted_email_' + String(email).toLowerCase());
+    } catch(e) {}
+    return false;
+}
+
+// Load
+async function loadPage(){
+    var isReg = ls('muja_user_registered','false') === 'true';
+    var email = ls('muja_user_email','');
+    var wa = ls('muja_user_whatsapp','');
+    var cart = JSON.parse(ls('mujaCart','[]'));
+    qs('loadingState').style.display = 'none';
+
+    // ✅ CEK APAKAH AKUN DIHAPUS
+    if (isReg && email) {
+        var deleted = await checkIfDeleted(email, wa);
+        
+        if (deleted) {
+            alert('⚠️ Akun Anda telah dihapus oleh admin.');
+            
+            // Hapus semua data akun
+            ['muja_user_registered','muja_user_name','muja_user_email','muja_user_whatsapp',
+             'muja_user_registered_date','muja_user_photo','muja_user_poin','mujaCart',
+             'muja_active_package','muja_deleted_by_admin','muja_deleted_wa','muja_deleted_email']
+                .forEach(function(k){ lsr(k); });
+            
+            window.location.href = '/akun-saya/?deleted=' + Date.now();
+            return;
+        }
+    }
+
+    if(isReg && email){
+        try{
+            var snap = await db.collection('registrations').where('email','==',email).limit(1).get();
+            if(!snap.empty){
+                var ud = snap.docs[0].data();
+                if(ud.name) lss('muja_user_name',ud.name);
+                if(ud.email) lss('muja_user_email',ud.email);
+                if(ud.whatsapp) lss('muja_user_whatsapp',ud.whatsapp);
+                if(ud.photo) lss('muja_user_photo',ud.photo);
+                if(ud.poin !== undefined) lss('muja_user_poin',ud.poin.toString());
+                if(ud.registeredAt) lss('muja_user_registered_date',ud.registeredAt.toDate().toLocaleDateString('id-ID',{day:'numeric',month:'long',year:'numeric'}));
+            } else {
+                // User tidak ditemukan di Firestore
+                alert('⚠️ Akun tidak ditemukan. Mungkin telah dihapus.');
+                ['muja_user_registered','muja_user_name','muja_user_email','muja_user_whatsapp',
+                 'muja_user_registered_date','muja_user_photo','muja_user_poin','mujaCart','muja_active_package']
+                    .forEach(function(k){ lsr(k); });
+                window.location.href = '/akun-saya/?notfound=' + Date.now();
+                return;
+            }
+        } catch(er) {
+            console.error('Error:', er);
+        }
+
+        var name = ls('muja_user_name','');
+        var photo = ls('muja_user_photo','');
+        var poin = parseInt(ls('muja_user_poin','0')) || 0;
+        var regDate = ls('muja_user_registered_date','');
+
+        qs('registeredState').style.display = 'block';
+        setText('userPoin', poin.toLocaleString('id-ID'));
+        setAvatar(photo||null, name);
+        setText('profileName', name||'Pengguna');
+        setText('memberSinceText', regDate?'Sejak '+regDate:'Member aktif');
+        setText('infoName', name||'—');
+        setText('infoWa', ls('muja_user_whatsapp','—')||'—');
+        setText('infoEmail', email||'—');
+        setText('infoDate', regDate||'—');
+        await loadAccountHistories(email, ls('muja_user_whatsapp',''));
+        initAccountPrefs();
+    } else {
+        qs('notRegisteredState').style.display = 'block';
+    }
+}
+
+    document.addEventListener('DOMContentLoaded',function(){
+        if(!sessionStorage.getItem('muja_akun_loaded')){
+            sessionStorage.setItem('muja_akun_loaded','1');
+            window.location.reload(true); return;
+        }
+        sessionStorage.removeItem('muja_akun_loaded');
+        initAccountPrefs();
+        loadPage();
+    });
+})();
+    </script>
+    <script src="/liquid-icons.js?v=20260603-theme-persist-v4" defer></script>
+<script src="/ai-chat-global.js?v=20260603-theme-persist-v4"></script>
+</body>
+</html>

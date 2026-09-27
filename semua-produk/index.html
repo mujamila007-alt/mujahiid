@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+    <!-- MUJA CACHE FIX: selalu ambil versi terbaru dari server -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-chat-global-v3">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-chat-global-v3">
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Semua Produk — Muja Prime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep:    #080810;
+            --bg-base:    #0e0e1a;
+            --bg-card:    #13131f;
+            --bg-card2:   #181828;
+            --bg-card3:   #1e1e30;
+            --ember-300:  #ffb088;
+            --ember-400:  #ff8855;
+            --ember-500:  #ff6b2b;
+            --ember-600:  #e0521b;
+            --gold-400:   #f7d46a;
+            --gold-500:   #f5c528;
+            --jade-400:   #34e5b4;
+            --text-100:   #f4f4fc;
+            --text-200:   #c8c8e0;
+            --text-400:   #8888aa;
+            --text-600:   #44445a;
+            --border-1:   rgba(255,255,255,0.05);
+            --border-2:   rgba(255,255,255,0.09);
+            --border-3:   rgba(255,255,255,0.14);
+            --r-sm:8px; --r-md:12px; --r-lg:18px; --r-xl:24px; --r-full:999px;
+            --shadow-card:0 2px 8px rgba(0,0,0,0.35),0 1px 2px rgba(0,0,0,0.3);
+            --transition:all 0.22s cubic-bezier(0.4,0,0.2,1);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'DM Sans',sans-serif;
+            background:var(--bg-deep); color:var(--text-100);
+            font-size:14px; line-height:1.6; min-height:100vh;
+            padding-bottom:80px; -webkit-font-smoothing:antialiased;
+        }
+        body::before {
+            content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+            background:
+                radial-gradient(ellipse 60% 35% at 90% 0%, rgba(255,107,43,0.07) 0%, transparent 55%),
+                radial-gradient(ellipse 40% 50% at 0% 100%, rgba(247,212,106,0.04) 0%, transparent 55%);
+        }
+        body.light-mode {
+            --bg-deep:#f0eff8; --bg-base:#f7f6ff; --bg-card:#ffffff; --bg-card2:#f3f2fa; --bg-card3:#ece9f8;
+            --text-100:#1a1a2e; --text-200:#3a3a52; --text-400:#6a6a88; --text-600:#aaaacc;
+            --border-1:rgba(0,0,0,0.05); --border-2:rgba(0,0,0,0.08); --border-3:rgba(0,0,0,0.12);
+            --shadow-card:0 1px 4px rgba(0,0,0,0.06),0 4px 16px rgba(0,0,0,0.06);
+        }
+        body.light-mode::before { background:radial-gradient(ellipse 60% 35% at 90% 0%, rgba(255,107,43,0.05) 0%, transparent 55%); }
+
+        ::-webkit-scrollbar { width:3px; }
+        ::-webkit-scrollbar-track { background:transparent; }
+        ::-webkit-scrollbar-thumb { background:var(--ember-600); border-radius:3px; }
+        a { text-decoration:none; color:inherit; }
+
+        .container { max-width:1400px; margin:0 auto; padding:0 12px; position:relative; z-index:1; }
+
+        /* ── HEADER ── */
+        .site-header {
+            background:rgba(8,8,16,0.88); backdrop-filter:blur(24px);
+            border-bottom:1px solid var(--border-1);
+            position:sticky; top:0; z-index:200;
+        }
+        body.light-mode .site-header { background:rgba(247,246,255,0.92); }
+        .header-inner { display:flex; align-items:center; justify-content:space-between; height:54px; }
+        .brand { text-decoration:none; display:flex; align-items:center; gap:8px; }
+        .brand-mark {
+            width:30px; height:30px; border-radius:8px;
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            display:flex; align-items:center; justify-content:center;
+        }
+        .brand-name {
+            font-family:sans-serif; font-weight:800; font-size:15px; letter-spacing:2px;
+            background:linear-gradient(120deg,var(--ember-300),var(--gold-400));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .header-right { display:flex; align-items:center; gap:8px; }
+        .icon-btn {
+            width:36px; height:36px; border-radius:var(--r-sm);
+            background:var(--bg-card2); border:1px solid var(--border-2);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; transition:var(--transition); color:var(--text-200);
+        }
+        .icon-btn:hover { border-color:var(--ember-500); color:var(--ember-400); background:rgba(255,107,43,0.1); }
+        .cart-btn { position:relative; }
+        .cart-dot {
+            position:absolute; top:-4px; right:-4px;
+            width:16px; height:16px; border-radius:50%;
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            font-size:9px; font-weight:800; color:#fff;
+            display:flex; align-items:center; justify-content:center;
+            border:2px solid var(--bg-deep); display:none;
+        }
+
+        /* ── PAGE HEADER ── */
+        .page-head {
+            display:flex; align-items:center; justify-content:space-between;
+            padding:18px 0 14px;
+        }
+        .page-title-row { display:flex; align-items:center; gap:8px; }
+        .page-title-accent { width:4px; height:22px; border-radius:2px; background:linear-gradient(180deg,var(--ember-400),var(--gold-500)); flex-shrink:0; }
+        .page-title { font-family:sans-serif; font-size:16px; font-weight:800; letter-spacing:0.5px; }
+        .product-count { font-size:11px; color:var(--text-400); background:var(--bg-card2); border:1px solid var(--border-1); padding:3px 10px; border-radius:var(--r-full); }
+
+        /* ── PRODUCT GRID ── */
+        .product-grid {
+            display:grid;
+            grid-template-columns:repeat(6,1fr);
+            gap:10px; margin-bottom:16px;
+        }
+        @media(max-width:1100px){ .product-grid{ grid-template-columns:repeat(5,1fr); } }
+        @media(max-width:860px) { .product-grid{ grid-template-columns:repeat(4,1fr); } }
+        @media(max-width:600px) { .product-grid{ grid-template-columns:repeat(3,1fr); gap:8px; } }
+        @media(max-width:400px) { .product-grid{ grid-template-columns:repeat(2,1fr); } }
+
+        /* ── PRODUCT CARD ── */
+        .product-card {
+            background:var(--bg-card); border:1px solid var(--border-1);
+            border-radius:var(--r-md); overflow:hidden;
+            box-shadow:var(--shadow-card); transition:var(--transition);
+            position:relative; display:flex; flex-direction:column;
+        }
+        .product-card:hover {
+            transform:translateY(-4px);
+            border-color:rgba(255,107,43,0.28);
+            box-shadow:0 0 0 1px rgba(255,107,43,0.1),0 12px 32px rgba(255,107,43,0.1),0 4px 16px rgba(0,0,0,0.4);
+        }
+
+        /* Image */
+        .product-img-wrap { position:relative; padding-top:100%; background:var(--bg-card2); overflow:hidden; }
+        .product-img {
+            position:absolute; inset:0; width:100%; height:100%;
+            object-fit:cover; transition:transform 0.4s ease;
+            display:block;
+        }
+        .product-card:hover .product-img { transform:scale(1.05); }
+
+        /* Badges on image */
+        .badge-discount {
+            position:absolute; top:6px; left:6px; z-index:2;
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            color:#fff; font-family:sans-serif;
+            font-size:9px; font-weight:800; padding:2px 7px; border-radius:var(--r-full);
+        }
+        .badge-ship {
+            position:absolute; bottom:6px; left:6px; z-index:2;
+            background:rgba(8,8,16,0.7); backdrop-filter:blur(6px);
+            border:1px solid rgba(52,229,180,0.3);
+            color:var(--jade-400); font-size:8px; font-weight:700;
+            padding:2px 7px; border-radius:var(--r-full);
+            display:flex; align-items:center; gap:3px;
+        }
+        .badge-poin {
+            position:absolute; bottom:6px; right:6px; z-index:2;
+            background:linear-gradient(135deg,var(--gold-500),var(--ember-400));
+            color:var(--bg-deep); font-size:8px; font-weight:800;
+            padding:2px 6px; border-radius:var(--r-full);
+            display:flex; align-items:center; gap:2px;
+        }
+
+        /* Card body */
+        .product-body { padding:8px 8px 34px; flex:1; display:flex; flex-direction:column; }
+        .product-name {
+            font-size:11px; font-weight:500; color:var(--text-200);
+            display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical;
+            overflow:hidden; line-height:1.4; min-height:30px; margin-bottom:5px;
+        }
+        .product-price {
+            font-family:sans-serif; font-size:13px; font-weight:800;
+            background:linear-gradient(120deg,var(--ember-400),var(--gold-400));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .product-old-price { font-size:9px; color:#000000; text-decoration:line-through; margin-top:1px; }
+        .product-meta { display:flex; align-items:center; gap:5px; margin-top:5px; flex-wrap:wrap; }
+        .meta-sold { font-size:9px; color:var(--text-400); }
+        .meta-stock { font-size:9px; color:#000000; }
+        .meta-sep { width:2px; height:2px; border-radius:50%; background:#000000; }
+
+        /* Add to cart button */
+        .btn-add {
+            position:absolute; bottom:8px; right:8px;
+            width:26px; height:26px; border-radius:var(--r-sm);
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            display:none; align-items:center; justify-content:center;
+            color:#fff; cursor:pointer; z-index:3;
+            border:none; transition:var(--transition);
+            box-shadow:0 2px 8px rgba(255,107,43,0.4);
+        }
+        .btn-add:hover { transform:scale(1.15) rotate(5deg); box-shadow:0 4px 14px rgba(255,107,43,0.6); }
+        .btn-add:active { transform:scale(0.95); }
+
+        /* ── LOADING / EMPTY ── */
+        .grid-placeholder { grid-column:1/-1; text-align:center; padding:60px 20px; color:var(--text-400); }
+        .spinner { width:30px; height:30px; border:2px solid var(--border-2); border-top-color:var(--ember-500); border-radius:50%; animation:spin 0.8s linear infinite; margin:0 auto 12px; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+        .empty-icon { width:50px; height:50px; border-radius:50%; background:var(--bg-card2); border:1px solid var(--border-2); display:flex; align-items:center; justify-content:center; margin:0 auto 12px; color:var(--text-400); }
+
+        /* ── TOAST ── */
+        .toast {
+            position:fixed; bottom:88px; left:50%; transform:translateX(-50%) translateY(10px);
+            padding:9px 16px; border-radius:var(--r-full);
+            font-size:12px; font-weight:600; z-index:9999; white-space:nowrap;
+            opacity:0; pointer-events:none; transition:all 0.28s ease;
+            display:flex; align-items:center; gap:7px;
+        }
+        .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+        .toast.success { background:rgba(52,229,180,0.12); border:1px solid rgba(52,229,180,0.25); color:var(--jade-400); }
+        .toast.warn { background:var(--bg-card2); border:1px solid var(--border-2); color:var(--text-200); }
+
+        /* ── BOTTOM NAV ── */
+        .bottom-nav { position:fixed; bottom:0; left:0; right:0; background:rgba(8,8,16,0.92); backdrop-filter:blur(20px); border-top:1px solid var(--border-1); z-index:90; padding:6px 0; }
+        body.light-mode .bottom-nav { background:rgba(247,246,255,0.94); }
+        .nav-inner { display:flex; justify-content:space-around; max-width:1400px; margin:0 auto; }
+        .nav-item { display:flex; flex-direction:column; align-items:center; gap:2px; color:#000000; font-size:9px; font-weight:600; letter-spacing:0.5px; padding:5px 12px; border-radius:var(--r-sm); cursor:pointer; text-decoration:none; transition:var(--transition); text-transform:uppercase; }
+        .nav-item:hover, .nav-item.active { color:var(--ember-400); }
+
+        /* Card animate in */
+        @keyframes cardIn { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:translateY(0); } }
+        .product-card { animation:cardIn 0.35s ease both; }
+    </style>
+ 
+    <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
+    <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
+    <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
+    <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+<!-- Hidden checkbox untuk sidebar -->
+<input class="hidden" id="sidebar-toggle" type="checkbox"/>
+<label class="sidebar-overlay" for="sidebar-toggle"></label>
+
+<!-- Sidebar Menu -->
+<aside class="muja-sidebar">
+    <div class="sidebar-header">
+        <h3>Muja Prime</h3>
+        <label class="sidebar-close" for="sidebar-toggle">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+            </svg>
+        </label>
+    </div>
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/semua-produk/">Semua Produk</a></li>
+            <li><a href="/tukar-point/">Tukar Poin</a></li>
+            <li><a href="/top-pembeli/">Top Pembeli</a></li>
+            <li><a href="/kontak/">Kontak</a></li>
+            <li><a href="/tentang/">Tentang</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+            <li><a href="/kebijakan-privasi/">Kebijakan Privasi</a></li>
+            <li><a href="/syarat-ketentuan/">Syarat &amp; Ketentuan</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer"></div>
+</aside>
+
+<!-- Header -->
+<header class="muja-header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- KIRI: Menu Toggle + Logo -->
+            <div class="logo-section">
+                <label class="menu-toggle" for="sidebar-toggle">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <line x1="3" x2="21" y1="12" y2="12"/>
+                        <line x1="3" x2="15" y1="6" y2="6"/>
+                        <line x1="3" x2="18" y1="18" y2="18"/>
+                    </svg>
+                </label>
+                <a class="site-logo" href="/">
+                    <span class="site-title">MUJA PRIME</span>
+                </a>
+            </div>
+
+           
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <div class="page-head">
+        <div class="page-title-row">
+            <div class="page-title-accent"></div>
+            <span class="page-title">Semua Produk</span>
+        </div>
+        <span class="product-count" id="productCount">Memuat...</span>
+    </div>
+
+    <div class="product-grid" id="productGrid">
+        <div class="grid-placeholder">
+            <div class="spinner"></div>
+            <p>Memuat produk...</p>
+        </div>
+    </div>
+</main>
+
+<nav class="mobile-nav">
+    <div class="mobile-nav-menu">
+        <a class="mobile-nav-item active" href="/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Beranda</span>
+        </a>
+        <a class="mobile-nav-item" href="/semua-produk/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+            <span>Produk</span>
+        </a>
+        <div class="mobile-nav-item" id="themeToggleMobile" onclick="window.toggleTheme()">
+            <span></span>
+            <span>Tema</span>
+        </div>
+        <a class="mobile-nav-item" href="/akun-saya/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Akun</span>
+        </a>
+    </div>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <svg id="toastIcon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+    <span id="toastMsg"></span>
+</div>
+    <script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+<script>
+(function(){
+    'use strict';
+
+  
+
+    // ── THEME ──
+    var moonSVG='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    var sunSVG='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    function applyTheme(light){
+        document.body.classList.toggle('light-mode',light);
+        var b=document.getElementById('themeBtn');
+        if(b) b.innerHTML=light?sunSVG:moonSVG;
+    }
+    function toggleTheme(){
+        var l=document.body.classList.contains('light-mode');
+        try{localStorage.setItem('muja_theme',l?'dark':'light');}catch(e){}
+        applyTheme(!l);
+    }
+    (function(){
+        var t='dark'; try{t=localStorage.getItem('muja_theme')||'dark';}catch(e){}
+        applyTheme(t==='light');
+        var b=document.getElementById('themeBtn'), n=document.getElementById('themeNavBtn');
+        if(b) b.onclick=toggleTheme;
+        if(n) n.onclick=toggleTheme;
+    })();
+
+    // ── TOAST ──
+    var toastTimer=null;
+    function showToast(msg,type){
+        var t=document.getElementById('toast');
+        var ic=document.getElementById('toastIcon');
+        var m=document.getElementById('toastMsg');
+        t.className='toast '+(type||'warn');
+        m.textContent=msg;
+        ic.innerHTML=type==='success'
+            ?'<polyline points="20 6 9 17 4 12"/>'
+            :'<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer=setTimeout(function(){ t.classList.remove('show'); },3000);
+    }
+    
+    function applyTheme(light){
+    document.body.classList.toggle('light-mode',light);
+    var b=document.getElementById('themeBtn');
+    if(b) b.innerHTML=light?sunSVG:moonSVG;
+    
+    // TAMBAHKAN: Update ikon di navbar bagian bawah
+    var themeNavSvg = document.querySelector('#themeNavBtn svg');
+    if(themeNavSvg) {
+        themeNavSvg.innerHTML = light ? getMoonIconInner() : getSunIconInner();
+    }
+}
+    
+    function getMoonIconInner() {
+    return '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+}
+
+function getSunIconInner() {
+    return '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+}
+
+    // ── HELPERS ──
+    function fmtRp(a){ return 'Rp'+new Intl.NumberFormat('id-ID').format(a||0); }
+    function fmtSold(n){ if(!n)return'0'; return n>=1000?(n/1000).toFixed(1).replace(/\.0$/,'')+'rb':n.toString(); }
+    function esc(s){ if(!s)return''; var d=document.createElement('div');d.textContent=s;return d.innerHTML; }
+
+    // ── CART ──
+    function addToCart(p){
+        if (window.MujaCart && typeof window.MujaCart.add === 'function') {
+            window.MujaCart.add(p);
+            return;
+        }
+        var cart=[]; try{cart=JSON.parse(localStorage.getItem('mujaCart')||'[]');}catch(e){}
+        if(cart.find(function(i){return String(i.id)===String(p.id);})){
+            showToast('Produk sudah tersimpan!','warn');
+            return;
+        }
+        cart.push({id:p.id,name:p.name,price:p.price,imageUrl:p.imageUrl,quantity:1});
+        try{localStorage.setItem('mujaCart',JSON.stringify(cart));}catch(e){}
+        if (typeof window.updateCartBadge === 'function') window.updateCartBadge();
+        if (window.MujaCart && typeof window.MujaCart.markSaved === 'function') window.MujaCart.markSaved();
+        showToast('Produk berhasil tersimpan!','success');
+    }
+    window.addToCart=addToCart;
+
+    // ── RENDER ──
+    function renderProducts(products){
+        var grid=document.getElementById('productGrid');
+        var count=document.getElementById('productCount');
+
+        if(!products.length){
+            count.textContent='0 Produk';
+            grid.innerHTML='<div class="grid-placeholder"><div class="empty-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/></svg></div><p style="font-family:Syne,sans-serif;font-weight:700;margin-bottom:4px;">Belum ada produk</p><p style="font-size:12px;">Produk akan segera hadir.</p></div>';
+            return;
+        }
+
+        count.textContent = products.length + ' Produk';
+
+        grid.innerHTML = products.map(function(p, i){
+            var delay = Math.min(i * 0.04, 0.6).toFixed(2);
+            var pStr = JSON.stringify(p).replace(/"/g,'&quot;').replace(/'/g,'&#39;');
+            var poin = p.poinReward || 0;
+
+            var linkHref = (p.productType === 'collection2')
+    ? '/list-produk-2.html?group=' + encodeURIComponent(p.id)
+    : ((p.productType === 'collection')
+        ? '/list-produk.html?group=' + encodeURIComponent(p.id)
+        : '/detail-produk.html?id=' + p.id);
+
+return '<article class="product-card" style="animation-delay:'+delay+'s">'+
+    '<a href="'+linkHref+'">'+
+                '<div class="product-img-wrap">'+
+                '<img class="product-img" src="'+(p.imageUrl||'https://placehold.co/400x400/1e1e30/555')+'" loading="lazy" alt="'+esc(p.name)+'" onerror="this.src=\'https://placehold.co/400x400/1e1e30/555\'">'+
+                (p.discount?'<div class="badge-discount">-'+p.discount+'%</div>':'')+
+                '<div class="badge-ship">'+
+                '<svg width="8" height="8" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13" rx="1"/><path d="M16 8h4l3 5v3h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>'+
+                'Murah</div>'+
+                (poin>0 && p.productType !== 'collection' && p.productType !== 'collection2' ? '<div class="badge-poin"><svg width="8" height="8" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>+'+poin.toLocaleString('id-ID')+'</div>':'')+
+                '</div>'+
+                '<div class="product-body">'+
+                '<p class="product-name">'+esc(p.name)+'</p>'+
+               ((p.productType === 'collection' || p.productType === 'collection2') ? '' : 
+    '<div class="product-price">'+fmtRp(p.price)+'</div>'+
+    (p.oldPrice?'<div class="product-old-price">'+fmtRp(p.oldPrice)+'</div>':'')+
+    '<div class="product-meta">'+
+    '<span class="meta-sold">Terjual '+fmtSold(p.sold)+'</span>'+
+    '<span class="meta-sep"></span>'+
+    '<span class="meta-stock">Stok '+(p.stock||1)+'</span>'+
+    '</div>'
+               )+
+                '</div>'+
+                '</a>'+
+                '<button class="btn-add" data-product-id="'+esc(p.id)+'" data-default-title="Simpan" onclick="event.preventDefault();event.stopPropagation();addToCart('+pStr+')" aria-label="Simpan produk" title="Simpan">'+
+                '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>'+
+                '</button>'+
+                '</article>';
+        }).join('');
+    }
+
+    // ── LOAD ──
+    async function loadProducts(){
+        var grid=document.getElementById('productGrid');
+        var count=document.getElementById('productCount');
+        grid.innerHTML='<div class="grid-placeholder"><div class="spinner"></div><p>Memuat produk...</p></div>';
+        count.textContent='Memuat...';
+        try{
+            var snap=await db.collection('products').where('status','==','active').get();
+            var prods=[];
+            snap.forEach(function(doc){ prods.push({id:doc.id,...doc.data()}); });
+            prods.sort(function(a,b){ return (a.order||0)-(b.order||0); });
+            renderProducts(prods);
+        }catch(e){
+            grid.innerHTML='<div class="grid-placeholder" style="color:#f87171;"><p>Gagal memuat: '+esc(e.message)+'</p></div>';
+            count.textContent='Error';
+        }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadProducts);
+})();
+</script>
+    <script src="/liquid-icons.js?v=20260603-theme-chat-global-v3" defer></script>
+<script src="/ai-chat-global.js?v=20260603-theme-chat-global-v3"></script>
+</body>
+</html>
