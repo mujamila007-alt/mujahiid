@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+    <!-- MUJA CACHE FIX: selalu ambil versi terbaru dari server -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-chat-global-v3">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-chat-global-v3">
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Tukar Poin — Muja Prime</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="icon" type="image/png" href="/muja.png?v=20260603-theme-chat-global-v3">
+    <link rel="icon" type="image/svg+xml" href="/muja.svg?v=20260603-theme-chat-global-v3">
+    <link rel="apple-touch-icon" href="/muja.png?v=20260603-theme-chat-global-v3">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-deep:    #080810;
+            --bg-base:    #0e0e1a;
+            --bg-card:    #13131f;
+            --bg-card2:   #181828;
+            --bg-card3:   #1e1e30;
+            --ember-300:  #ffb088;
+            --ember-400:  #ff8855;
+            --ember-500:  #ff6b2b;
+            --ember-600:  #e0521b;
+            --gold-300:   #fde89a;
+            --gold-400:   #f7d46a;
+            --gold-500:   #f5c528;
+            --jade-400:   #34e5b4;
+            --text-100:   #f4f4fc;
+            --text-200:   #c8c8e0;
+            --text-400:   #8888aa;
+            --text-600:   #44445a;
+            --border-1:   rgba(255,255,255,0.05);
+            --border-2:   rgba(255,255,255,0.09);
+            --border-3:   rgba(255,255,255,0.14);
+            --r-sm:8px; --r-md:14px; --r-lg:20px; --r-xl:28px; --r-full:999px;
+            --shadow-card:0 1px 3px rgba(0,0,0,0.4),0 8px 32px rgba(0,0,0,0.25);
+            --transition:all 0.22s cubic-bezier(0.4,0,0.2,1);
+        }
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family:'DM Sans',sans-serif;
+            background:var(--bg-deep); color:var(--text-100);
+            font-size:14px; line-height:1.6; min-height:100vh;
+            padding-bottom:80px; -webkit-font-smoothing:antialiased;
+        }
+        body::before {
+            content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+            background:
+                radial-gradient(ellipse 70% 40% at 85% 0%, rgba(255,107,43,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 60% at 5% 90%, rgba(247,212,106,0.05) 0%, transparent 60%);
+        }
+        body.light-mode {
+            --bg-deep:#f0eff8; --bg-base:#f7f6ff; --bg-card:#ffffff; --bg-card2:#f3f2fa; --bg-card3:#ece9f8;
+            --text-100:#1a1a2e; --text-200:#3a3a52; --text-400:#6a6a88; --text-600:#aaaacc;
+            --border-1:rgba(0,0,0,0.05); --border-2:rgba(0,0,0,0.08); --border-3:rgba(0,0,0,0.12);
+            --shadow-card:0 1px 3px rgba(0,0,0,0.06),0 8px 24px rgba(0,0,0,0.08);
+        }
+        body.light-mode::before { background:radial-gradient(ellipse 70% 40% at 85% 0%, rgba(255,107,43,0.06) 0%, transparent 60%); }
+
+        ::-webkit-scrollbar { width:3px; }
+        ::-webkit-scrollbar-track { background:transparent; }
+        ::-webkit-scrollbar-thumb { background:var(--ember-600); border-radius:3px; }
+
+        .container { max-width:520px; margin:0 auto; padding:0 16px; position:relative; z-index:1; }
+
+        /* ── HEADER ── */
+        .site-header {
+            background:rgba(8,8,16,0.88); backdrop-filter:blur(24px);
+            border-bottom:1px solid var(--border-1);
+            position:sticky; top:0; z-index:200;
+        }
+        body.light-mode .site-header { background:rgba(247,246,255,0.90); }
+        .header-inner { display:flex; align-items:center; justify-content:space-between; height:54px; }
+        .brand { text-decoration:none; display:flex; align-items:center; gap:8px; }
+        .brand-mark {
+            width:30px; height:30px; border-radius:8px;
+            background:linear-gradient(135deg,var(--ember-500),var(--gold-400));
+            display:flex; align-items:center; justify-content:center;
+        }
+        .brand-name {
+            font-family:sans-serif; font-weight:800; font-size:15px; letter-spacing:2px;
+            background:linear-gradient(120deg,var(--ember-300),var(--gold-400));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+        }
+        .icon-btn {
+            width:36px; height:36px; border-radius:var(--r-sm);
+            background:var(--bg-card2); border:1px solid var(--border-2);
+            display:flex; align-items:center; justify-content:center;
+            cursor:pointer; transition:var(--transition); color:var(--text-200);
+        }
+        .icon-btn:hover { border-color:var(--ember-500); color:var(--ember-400); background:rgba(255,107,43,0.1); }
+
+        /* ── POIN HERO ── */
+        .poin-hero {
+            position:relative; overflow:hidden;
+            background:#3d3d3e03;
+            border:1px solid var(--border-1);
+            border-radius:var(--r-xl);
+            padding:28px 20px 22px;
+            margin:16px 0 14px;
+            box-shadow:var(--shadow-card);
+            text-align:center;
+        }
+        .poin-hero::before {
+            content:''; position:absolute; top:0; left:0; right:0; height:3px;
+            background:linear-gradient(90deg,var(--gold-500),var(--ember-400),var(--ember-600));
+        }
+        /* Decorative ring */
+        .poin-hero::after {
+            content:''; position:absolute;
+            width:220px; height:220px; border-radius:50%;
+            border:1px solid rgba(255,107,43,0.08);
+            top:50%; left:50%; transform:translate(-50%,-50%);
+            pointer-events:none;
+        }
+        .poin-icon-wrap {
+            width:60px; height:60px; border-radius:50%;
+            background:linear-gradient(135deg,rgba(255,107,43,0.15),rgba(247,212,106,0.1));
+            border:1px solid rgba(255,107,43,0.25);
+            display:flex; align-items:center; justify-content:center;
+            margin:0 auto 14px; position:relative; z-index:1;
+        }
+        .poin-hero-label {
+            font-family:sans-serif; font-size:11px; font-weight:700;
+            letter-spacing:2px; text-transform:uppercase;
+            color:var(--text-400); margin-bottom:6px; position:relative; z-index:1;
+        }
+        .poin-big {
+            font-family:sans-serif; font-size:48px; font-weight:800;
+            background:linear-gradient(120deg,var(--gold-300),var(--gold-500),var(--ember-400));
+            -webkit-background-clip:text; -webkit-text-fill-color:transparent;
+            line-height:1; position:relative; z-index:1;
+        }
+        .poin-unit {
+            font-family:'DM Sans',sans-serif; font-size:14px; font-weight:500;
+            color:var(--text-400); margin-top:4px; margin-bottom:14px; position:relative; z-index:1;
+        }
+        .poin-desc {
+            font-size:12px; color:var(--text-400); position:relative; z-index:1;
+            background:rgba(255,255,255,0.03); border:1px solid var(--border-1);
+            border-radius:var(--r-full); display:inline-block; padding:5px 14px;
+        }
+
+        /* ── SECTION HEAD ── */
+        .section-head {
+            display:flex; align-items:center; gap:8px;
+            font-family:sans-serif; font-size:11px; font-weight:700;
+            letter-spacing:1.2px; text-transform:uppercase; color:var(--text-400);
+            margin-bottom:12px;
+        }
+        .section-dot { width:6px; height:6px; border-radius:50%; background:linear-gradient(135deg,var(--ember-500),var(--gold-400)); flex-shrink:0; }
+
+        /* ── PRODUCT GRID ── */
+        .product-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; }
+
+        .product-card {
+            background:var(--bg-card); border:1px solid var(--border-1);
+            border-radius:var(--r-lg); overflow:hidden;
+            box-shadow:var(--shadow-card); transition:var(--transition);
+            display:flex; flex-direction:column;
+        }
+        .product-card:hover:not(.locked) { transform:translateY(-3px); border-color:rgba(255,107,43,0.3); box-shadow:0 8px 32px rgba(255,107,43,0.12); }
+        .product-card.locked { opacity:0.55; }
+
+        .product-img-wrap { position:relative; aspect-ratio:1/1; overflow:hidden; background:var(--bg-card2); }
+        .product-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform 0.4s ease; display:block; }
+        .product-card:hover:not(.locked) .product-img-wrap img { transform:scale(1.04); }
+
+        .poin-badge {
+            position:absolute; top:8px; left:8px;
+            background:linear-gradient(135deg,var(--gold-500),var(--ember-500));
+            color:var(--bg-deep); font-family:sans-serif;
+            font-size:9px; font-weight:800; letter-spacing:0.5px;
+            padding:3px 8px; border-radius:var(--r-full);
+            display:flex; align-items:center; gap:3px;
+        }
+        .stock-badge {
+            position:absolute; top:8px; right:8px;
+            background:rgba(0,0,0,0.55); backdrop-filter:blur(6px);
+            border:1px solid rgba(255,255,255,0.1);
+            color:var(--text-200); font-size:9px; font-weight:600;
+            padding:3px 7px; border-radius:var(--r-full);
+        }
+        .stock-badge.out { color:#f87171; border-color:rgba(248,113,113,0.3); background:rgba(239,68,68,0.2); }
+
+        .product-body { padding:12px; flex:1; display:flex; flex-direction:column; }
+        .product-name { font-family:sans-serif; font-size:12px; font-weight:700; color:var(--text-100); margin-bottom:4px; line-height:1.3; }
+        .product-cost-row { display:flex; align-items:center; gap:5px; margin-bottom:10px; margin-top:auto; padding-top:8px; }
+        .star-icon { color:var(--gold-400); flex-shrink:0; }
+        .product-cost-val { font-family:,sans-serif; font-size:13px; font-weight:800; color:var(--gold-400); }
+        .product-cost-lbl { font-size:10px; color:var(--text-400); }
+
+        .need-more {
+            font-size:9px; color:var(--ember-400);
+            background:rgba(255,107,43,0.08); border:1px solid rgba(255,107,43,0.15);
+            border-radius:var(--r-full); padding:2px 8px; margin-bottom:8px;
+            display:inline-block;
+        }
+
+        .btn-redeem {
+            width:100%; padding:9px 12px;
+            background:linear-gradient(135deg,var(--ember-500),var(--ember-600));
+            color:#fff; border:none; border-radius:var(--r-sm);
+            font-family:sans-serif; font-weight:700; font-size:11px; letter-spacing:0.3px;
+            cursor:pointer; transition:var(--transition);
+            display:flex; align-items:center; justify-content:center; gap:6px;
+        }
+        .btn-redeem:hover:not(:disabled) { transform:translateY(-1px); box-shadow:0 6px 20px rgba(255,107,43,0.4); }
+        .btn-redeem:disabled { background:var(--bg-card3); color:var(--text-600); cursor:not-allowed; box-shadow:none; border:1px solid var(--border-1); }
+
+        /* ── LOADING ── */
+        #productsContainer .loading-wrap { text-align:center; padding:50px 20px; color:var(--text-400); display:flex; flex-direction:column; align-items:center; gap:12px; }
+        .spinner { width:28px; height:28px; border:2px solid var(--border-2); border-top-color:var(--ember-500); border-radius:50%; animation:spin 0.8s linear infinite; }
+        @keyframes spin { to { transform:rotate(360deg); } }
+
+        .empty-state { text-align:center; padding:50px 20px; color:var(--text-400); }
+        .empty-icon { margin:0 auto 14px; width:48px; height:48px; border-radius:50%; background:var(--bg-card2); border:1px solid var(--border-2); display:flex; align-items:center; justify-content:center; }
+
+        /* ── TOAST ── */
+        .toast {
+            position:fixed; bottom:88px; left:50%; transform:translateX(-50%) translateY(10px);
+            padding:10px 18px; border-radius:var(--r-full);
+            font-size:12px; font-weight:600; z-index:9999; white-space:nowrap;
+            opacity:0; pointer-events:none; transition:all 0.3s ease;
+            display:flex; align-items:center; gap:8px;
+        }
+        .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+        .toast.success { background:rgba(52,229,180,0.15); border:1px solid rgba(52,229,180,0.3); color:var(--jade-400); }
+        .toast.error { background:rgba(239,68,68,0.12); border:1px solid rgba(239,68,68,0.25); color:#f87171; }
+        .toast.info { background:var(--bg-card2); border:1px solid var(--border-2); color:var(--text-200); }
+
+        /* ── MODAL CONFIRM ── */
+        .modal-backdrop { position:fixed; inset:0; background:rgba(0,0,0,0.7); backdrop-filter:blur(12px); z-index:1000; display:none; align-items:center; justify-content:center; padding:20px; }
+        .modal-backdrop.open { display:flex; }
+        .modal { background:var(--bg-card2); border:1px solid var(--border-2); border-radius:var(--r-xl); padding:24px; width:100%; max-width:340px; box-shadow:0 24px 80px rgba(0,0,0,0.5); }
+        .modal-icon { width:52px; height:52px; border-radius:50%; background:linear-gradient(135deg,rgba(255,107,43,0.15),rgba(247,212,106,0.1)); border:1px solid rgba(255,107,43,0.2); display:flex; align-items:center; justify-content:center; margin:0 auto 14px; }
+        .modal-title { font-family:sans-serif; font-size:16px; font-weight:700; text-align:center; margin-bottom:6px; }
+        .modal-sub { font-size:12px; color:var(--text-400); text-align:center; margin-bottom:18px; line-height:1.6; }
+        .modal-info { background:var(--bg-card3); border:1px solid var(--border-1); border-radius:var(--r-md); padding:12px; margin-bottom:18px; }
+        .modal-info-row { display:flex; justify-content:space-between; align-items:center; padding:5px 0; font-size:12px; }
+        .modal-info-row:not(:last-child) { border-bottom:1px solid var(--border-1); }
+        .modal-info-lbl { color:var(--text-400); }
+        .modal-info-val { font-weight:700; color:var(--text-100); }
+        .modal-info-val.danger { color:#f87171; }
+        .modal-info-val.gold { color:var(--gold-400); }
+        .modal-footer { display:flex; gap:8px; }
+        .btn-cancel { flex:1; padding:11px; border-radius:var(--r-sm); background:var(--bg-card3); border:1px solid var(--border-2); color:var(--text-200); font-family:'DM Sans',sans-serif; font-weight:600; font-size:13px; cursor:pointer; transition:var(--transition); }
+        .btn-cancel:hover { border-color:var(--border-3); }
+        .btn-go { flex:1; padding:11px; border-radius:var(--r-sm); background:linear-gradient(135deg,var(--ember-500),var(--ember-600)); color:#fff; border:none; font-family:sans-serif; font-weight:700; font-size:13px; cursor:pointer; transition:var(--transition); box-shadow:0 4px 16px rgba(255,107,43,0.3); }
+        .btn-go:hover { transform:translateY(-1px); box-shadow:0 8px 24px rgba(255,107,43,0.4); }
+        .btn-go:disabled { opacity:0.5; cursor:not-allowed; transform:none; }
+
+        /* ── BOTTOM NAV ── */
+        .bottom-nav { position:fixed; bottom:0; left:0; right:0; background:rgba(8,8,16,0.92); backdrop-filter:blur(20px); border-top:1px solid var(--border-1); z-index:90; padding:6px 0; }
+        body.light-mode .bottom-nav { background:rgba(247,246,255,0.94); }
+        .nav-inner { display:flex; justify-content:space-around; max-width:520px; margin:0 auto; }
+        .nav-item { display:flex; flex-direction:column; align-items:center; gap:2px; color:var(--text-600); font-size:9px; font-weight:600; letter-spacing:0.5px; padding:5px 12px; border-radius:var(--r-sm); cursor:pointer; text-decoration:none; transition:var(--transition); text-transform:uppercase; }
+        .nav-item:hover, .nav-item.active { color:var(--ember-400); }
+
+        @keyframes fadeUp { from { opacity:0; transform:translateY(12px); } to { opacity:1; transform:translateY(0); } }
+        .product-card { animation:fadeUp 0.4s ease both; }
+    </style>
+    <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
+    <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
+    <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
+    <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+<!-- Hidden checkbox untuk sidebar -->
+<input class="hidden" id="sidebar-toggle" type="checkbox"/>
+<label class="sidebar-overlay" for="sidebar-toggle"></label>
+
+<!-- Sidebar Menu -->
+<aside class="muja-sidebar">
+    <div class="sidebar-header">
+        <h3>Muja Prime</h3>
+        <label class="sidebar-close" for="sidebar-toggle">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <line x1="18" x2="6" y1="6" y2="18"/><line x1="6" x2="18" y1="6" y2="18"/>
+            </svg>
+        </label>
+    </div>
+    <div class="sidebar-content">
+        <ul class="sidebar-menu">
+            <li><a href="/">Beranda</a></li>
+            <li><a href="/semua-produk/">Semua Produk</a></li>
+            <li><a href="/tukar-point/">Tukar Poin</a></li>
+            <li><a href="/top-pembeli/">Top Pembeli</a></li>
+            <li><a href="/kontak/">Kontak</a></li>
+            <li><a href="/tentang/">Tentang</a></li>
+            <li><a href="/disclaimer/">Disclaimer</a></li>
+            <li><a href="/kebijakan-privasi/">Kebijakan Privasi</a></li>
+            <li><a href="/syarat-ketentuan/">Syarat &amp; Ketentuan</a></li>
+        </ul>
+    </div>
+    <div class="sidebar-footer"></div>
+</aside>
+
+<!-- Header -->
+<!-- Header -->
+<header class="muja-header" id="header">
+    <div class="container">
+        <div class="header-wrapper">
+            <!-- KIRI: Logo & Menu Toggle -->
+            <div class="logo-section">
+                <label class="menu-toggle" for="sidebar-toggle">
+                    <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                        <line x1="3" x2="21" y1="12" y2="12"/>
+                        <line x1="3" x2="15" y1="6" y2="6"/>
+                        <line x1="3" x2="18" y1="18" y2="18"/>
+                    </svg>
+                </label>
+                <a class="site-logo" href="/"><span class="site-title">MUJA PRIME</span></a>
+            </div>
+
+            <!-- KANAN: Theme Toggle + Cart -->
+            
+        </div>
+    </div>
+</header>
+
+<main class="container">
+
+    <!-- Poin Hero -->
+    <div class="poin-hero">
+        <div class="poin-icon-wrap">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="url(#pg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <defs><linearGradient id="pg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f5c528"/><stop offset="100%" stop-color="#ff6b2b"/></linearGradient></defs>
+                <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+        </div>
+        <div class="poin-hero-label">Saldo Poin Anda</div>
+        <div class="poin-big" id="poinDisplay">0</div>
+        <div class="poin-unit">Poin Loyalitas</div>
+        <div class="poin-desc">Tukarkan dengan hadiah eksklusif di bawah</div>
+    </div>
+
+    <!-- Products -->
+    <div class="section-head">
+        <span class="section-dot"></span>
+        Katalog Hadiah
+    </div>
+    <div id="productsContainer">
+        <div class="loading-wrap">
+            <div class="spinner"></div>
+            <span>Memuat katalog...</span>
+        </div>
+    </div>
+
+</main>
+
+<nav class="mobile-nav">
+    <div class="mobile-nav-menu">
+        <a class="mobile-nav-item active" href="/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                <polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Beranda</span>
+        </a>
+        <a class="mobile-nav-item" href="/semua-produk/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/>
+            </svg>
+            <span>Produk</span>
+        </a>
+        <div class="mobile-nav-item" id="themeToggleMobile" onclick="window.toggleTheme()">
+            <span></span>
+            <span>Tema</span>
+        </div>
+        <a class="mobile-nav-item" href="/akun-saya/">
+            <svg fill="none" height="20" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="20">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Akun</span>
+        </a>
+    </div>
+</nav>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+    <svg id="toastIcon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></svg>
+    <span id="toastMsg"></span>
+</div>
+
+<!-- CONFIRM MODAL -->
+<div class="modal-backdrop" id="confirmModal">
+    <div class="modal">
+        <div class="modal-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="url(#mg)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#f5c528"/><stop offset="100%" stop-color="#ff6b2b"/></linearGradient></defs>
+                <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/>
+                <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+            </svg>
+        </div>
+        <div class="modal-title">Konfirmasi Penukaran</div>
+        <div class="modal-sub">Pastikan data penukaran sudah benar sebelum melanjutkan.</div>
+        <div class="modal-info">
+            <div class="modal-info-row">
+                <span class="modal-info-lbl">Hadiah</span>
+                <span class="modal-info-val" id="mProductName">—</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-lbl">Biaya</span>
+                <span class="modal-info-val danger" id="mCost">—</span>
+            </div>
+            <div class="modal-info-row">
+                <span class="modal-info-lbl">Sisa Poin</span>
+                <span class="modal-info-val gold" id="mRemaining">—</span>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn-cancel" onclick="closeModal()">Batal</button>
+            <button class="btn-go" id="btnConfirm" onclick="executeRedeem()">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Tukar Sekarang
+            </button>
+        </div>
+    </div>
+</div>
+<script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+    
+<script>
+(function(){
+    'use strict';
+  
+
+   
+
+    let userPoin = 0;
+    let userData = null;
+    let pendingRedeem = null;
+
+    function ls(k,d){ try{var v=localStorage.getItem(k);return v!==null?v:d;}catch(e){return d;} }
+    function lss(k,v){ try{localStorage.setItem(k,v);}catch(e){} }
+    function fmtNum(n){ return Number(n).toLocaleString('id-ID'); }
+    function esc(t){ if(!t)return''; var d=document.createElement('div');d.textContent=t;return d.innerHTML; }
+
+    // ── THEME ──
+    var moonSVG='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>';
+    var sunSVG='<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>';
+    function applyTheme(light){
+        document.body.classList.toggle('light-mode',light);
+        var b=document.getElementById('themeBtn');
+        if(b) b.innerHTML=light?sunSVG:moonSVG;
+    }
+    function toggleTheme(){
+        var l=document.body.classList.contains('light-mode');
+        lss('muja_theme',l?'dark':'light'); applyTheme(!l);
+    }
+    (function(){
+        applyTheme(ls('muja_theme','dark')==='light');
+        var b=document.getElementById('themeBtn'), n=document.getElementById('themeNavBtn');
+        if(b) b.onclick=toggleTheme;
+        if(n) n.onclick=toggleTheme;
+    })();
+
+    // ── TOAST ──
+    var toastTimer = null;
+    function showToast(msg, type){
+        var t=document.getElementById('toast');
+        var ic=document.getElementById('toastIcon');
+        var m=document.getElementById('toastMsg');
+        t.className='toast '+(type||'info');
+        m.textContent=msg;
+        if(type==='success') ic.innerHTML='<polyline points="20 6 9 17 4 12"/>';
+        else if(type==='error') ic.innerHTML='<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+        else ic.innerHTML='<circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>';
+        t.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer=setTimeout(function(){ t.classList.remove('show'); },3200);
+    }
+
+    // ── MODAL ──
+    window.closeModal = function(){ document.getElementById('confirmModal').classList.remove('open'); pendingRedeem=null; };
+ const TELEGRAM_TOKEN = '8633776754:AAH6slFfluXFQVdTihavrYXnoxCaSqmCr_4';
+    const TELEGRAM_CHAT_ID = '8245689064';
+    function openConfirmModal(productId, productName, cost){
+        var remaining = userPoin - cost;
+        document.getElementById('mProductName').textContent = productName;
+        document.getElementById('mCost').textContent = fmtNum(cost) + ' Poin';
+        document.getElementById('mRemaining').textContent = fmtNum(remaining) + ' Poin';
+        pendingRedeem = { productId, productName, cost };
+        document.getElementById('confirmModal').classList.add('open');
+    }
+
+    window.executeRedeem = async function(){
+        if(!pendingRedeem) return;
+        var btn=document.getElementById('btnConfirm');
+        btn.disabled=true; btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg> Memproses...';
+
+        const {productId,productName,cost} = pendingRedeem;
+
+        try {
+            var pSnap = await db.collection('poin_products').doc(productId).get();
+            if(!pSnap.exists){ showToast('Produk tidak ditemukan!','error'); closeModal(); return; }
+            var stock = pSnap.data().stock||1;
+            if(stock<=0){ showToast('Stok habis!','error'); closeModal(); loadProducts(); return; }
+
+            var newPoin = userPoin - cost;
+            var batch = db.batch();
+            batch.update(db.collection('poin_products').doc(productId),{
+                stock: stock-1, updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            if(userData && userData.id && !String(userData.id).startsWith('local_')){
+                batch.update(db.collection('registrations').doc(userData.id),{
+                    poin: newPoin, lastPoinUpdate: firebase.firestore.FieldValue.serverTimestamp()
+                });
+            } else if(userData){
+                var wa=userData.whatsapp||ls('muja_user_whatsapp','');
+                var em=userData.email||ls('muja_user_email','');
+                var sn=null;
+                if(wa) sn=await db.collection('registrations').where('whatsapp','==',wa).limit(1).get();
+                if((!sn||sn.empty)&&em) sn=await db.collection('registrations').where('email','==',em.toLowerCase()).limit(1).get();
+                if(sn&&!sn.empty){ var did=sn.docs[0].id; batch.update(db.collection('registrations').doc(did),{ poin:newPoin, lastPoinUpdate:firebase.firestore.FieldValue.serverTimestamp() }); userData.id=did; }
+            }
+
+            var rRef = db.collection('poin_redeems').doc();
+            var redeemUserId = (userData && userData.id) ? userData.id : 'local';
+            var redeemName = (userData && (userData.name || userData.userName)) ? (userData.name || userData.userName) : ls('muja_user_name','-');
+            var redeemWa = (userData && (userData.whatsapp || userData.userWa)) ? (userData.whatsapp || userData.userWa) : ls('muja_user_whatsapp','-');
+            var redeemEmail = (userData && (userData.email || userData.userEmail)) ? (userData.email || userData.userEmail) : ls('muja_user_email','-');
+            batch.set(rRef,{
+                userId: redeemUserId,
+                userName: redeemName || '-',
+                userWa: redeemWa || '-',
+                userEmail: redeemEmail || '-',
+                whatsapp: redeemWa || '-',
+                email: redeemEmail || '-',
+                productId: productId,
+                productName: productName,
+                cost: Number(cost || 0),
+                poinCost: Number(cost || 0),
+                previousPoin: Number(userPoin || 0),
+                remainingPoin: Number(newPoin || 0),
+                sisaPoin: Number(newPoin || 0),
+                stockBefore: Number(stock || 0),
+                stockAfter: Number((stock || 0) - 1),
+                status:'pending',
+                statusText:'Menunggu',
+                source:'tukar-point-page',
+                userAgent: navigator.userAgent || '',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+
+            await batch.commit();
+            userPoin = newPoin;
+            lss('muja_user_poin', newPoin.toString());
+            if(userData) userData.poin=newPoin;
+            document.getElementById('poinDisplay').textContent = fmtNum(userPoin);
+            closeModal();
+            await loadProducts();
+            showToast('Berhasil! Sisa poin: '+fmtNum(newPoin),'success');
+
+            sendTelegram(
+                '🎁 *TUKAR POIN BARU!*\n\n'+
+                '👤 *Nama:* '+(userData?.name||ls('muja_user_name','-'))+'\n'+
+                '📱 *WA:* '+(userData?.whatsapp||ls('muja_user_whatsapp','-'))+'\n'+
+                '📧 *Email:* '+(userData?.email||ls('muja_user_email','-'))+'\n'+
+                '📦 *Produk:* '+productName+'\n'+
+                '⭐ *Poin Ditukar:* '+fmtNum(cost)+'\n'+
+                '💰 *Sisa Poin:* '+fmtNum(newPoin)+'\n\n'+
+                '📅 *Waktu:* '+new Date().toLocaleString('id-ID')
+            );
+        } catch(e){
+            showToast('Gagal: '+e.message,'error');
+        } finally {
+            btn.disabled=false;
+            btn.innerHTML='<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Tukar Sekarang';
+        }
+    };
+
+    async function sendTelegram(msg){
+        try{
+            await fetch('https://api.telegram.org/bot'+TELEGRAM_TOKEN+'/sendMessage',{
+                method:'POST',headers:{'Content-Type':'application/json'},
+                body:JSON.stringify({chat_id:TELEGRAM_CHAT_ID,text:msg,parse_mode:'Markdown'})
+            });
+        }catch(e){}
+    }
+
+    async function loadUserData(){
+        var localPoin=parseInt(ls('muja_user_poin','0'))||0;
+        var isReg=ls('muja_user_registered','false')==='true';
+        var wa=ls('muja_user_whatsapp','');
+        var em=ls('muja_user_email','');
+        userPoin=localPoin;
+
+        if(!isReg&&!wa&&!em){
+            showToast('Silakan login terlebih dahulu','error');
+            setTimeout(function(){ window.location.href='/akun-saya/'; },2000);
+            return null;
+        }
+
+        userData={ id:'local_'+Date.now(), name:ls('muja_user_name',''), whatsapp:wa, email:em, poin:localPoin };
+
+        if(isReg&&(wa||em)){
+            try{
+                var sn=null;
+                if(wa) sn=await db.collection('registrations').where('whatsapp','==',wa).limit(1).get();
+                if((!sn||sn.empty)&&em) sn=await db.collection('registrations').where('email','==',em.toLowerCase()).limit(1).get();
+                if(sn&&!sn.empty){
+                    var doc=sn.docs[0]; userData={id:doc.id,...doc.data()};
+                    var fp=Number(userData.poin||0);
+                    if(fp>=localPoin){ userPoin=fp; lss('muja_user_poin',fp.toString()); }
+                    else {
+                        try{ await db.collection('registrations').doc(doc.id).update({poin:localPoin,lastPoinUpdate:firebase.firestore.FieldValue.serverTimestamp()}); userData.poin=localPoin; }catch(e){}
+                    }
+                    if(userData.name) lss('muja_user_name',userData.name);
+                }
+            }catch(e){}
+        }
+
+        document.getElementById('poinDisplay').textContent = fmtNum(userPoin);
+        return userData;
+    }
+    
+    function getMoonIconInner() {
+    return '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+}
+
+function getSunIconInner() {
+    return '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+}
+    
+    function applyTheme(light){
+    document.body.classList.toggle('light-mode',light);
+    var b=document.getElementById('themeBtn');
+    if(b) b.innerHTML=light?sunSVG:moonSVG;
+    
+    // TAMBAHKAN: Update ikon di navbar bagian bawah
+    var themeNavSvg = document.querySelector('#themeNavBtn svg');
+    if(themeNavSvg) {
+        themeNavSvg.innerHTML = light ? getSunIconInner() : getMoonIconInner();
+    }
+}
+
+    async function loadProducts(){
+        var container=document.getElementById('productsContainer');
+        container.innerHTML='<div class="loading-wrap"><div class="spinner"></div><span>Memuat katalog...</span></div>';
+        try{
+            var snap=await db.collection('poin_products').where('status','==','active').get();
+            var products=[];
+            snap.forEach(function(doc){ products.push({id:doc.id,...doc.data()}); });
+            products.sort(function(a,b){ return (a.cost||0)-(b.cost||0); });
+
+            if(!products.length){
+                container.innerHTML='<div class="empty-state"><div class="empty-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg></div><p style="font-family:Syne,sans-serif;font-weight:700;margin-bottom:4px;">Belum ada hadiah</p><p style="font-size:12px;">Katalog hadiah akan segera hadir.</p></div>';
+                return;
+            }
+
+            var grid='<div class="product-grid">';
+            products.forEach(function(p,i){
+                var canRedeem=(userPoin>=(p.cost||0))&&((p.stock||1)>0);
+                var outOfStock=(p.stock||1)<=0;
+                var needMore=!outOfStock&&!canRedeem? (p.cost-userPoin):0;
+                var delay=(i*0.07).toFixed(2);
+                var safeName=esc(p.name);
+
+                grid+='<div class="product-card'+(canRedeem?'':' locked')+'" style="animation-delay:'+delay+'s">'+
+                    '<div class="product-img-wrap">'+
+                    '<img src="'+(p.imageUrl||'https://placehold.co/400x400/1e1e30/555')+'" alt="'+safeName+'" loading="lazy" onerror="this.src=\'https://placehold.co/400x400/1e1e30/555\'">'+
+                    '<div class="poin-badge"><svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'+fmtNum(p.cost||0)+'</div>'+
+                    '<div class="stock-badge'+(outOfStock?' out':'')+'">'+
+                    (outOfStock
+                        ? '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Habis'
+                        : '<svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> '+p.stock+' Sisa')+'</div>'+
+                    '</div>'+
+                    '<div class="product-body">'+
+                    '<div class="product-name">'+safeName+'</div>'+
+                    (needMore>0?'<div class="need-more">Butuh '+fmtNum(needMore)+' poin lagi</div>':'')+
+                    '<div class="product-cost-row">'+
+                    '<svg class="star-icon" width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>'+
+                    '<span class="product-cost-val">'+fmtNum(p.cost||0)+'</span>'+
+                    '<span class="product-cost-lbl">poin</span></div>'+
+                    '<button class="btn-redeem" '+(!canRedeem?'disabled':'')+' onclick="openRedeem(\''+p.id+'\',\''+safeName.replace(/'/g,"\\'").replace(/"/g,'&quot;')+'\','+( p.cost||0)+')">'+
+                    (outOfStock
+                        ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg> Stok Habis'
+                        : canRedeem
+                            ? '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/></svg> Tukar Sekarang'
+                            : '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Poin Kurang')+
+                    '</button>'+
+                    '</div></div>';
+            });
+            grid+='</div>';
+            container.innerHTML=grid;
+        } catch(e){
+            container.innerHTML='<div class="empty-state" style="color:#f87171;"><p>Gagal memuat: '+esc(e.message)+'</p></div>';
+        }
+    }
+
+    window.openRedeem = function(id, name, cost){
+        if(userPoin<cost){ showToast('Poin tidak cukup! Butuh '+fmtNum(cost),'error'); return; }
+        openConfirmModal(id, name, cost);
+    };
+
+    document.addEventListener('DOMContentLoaded', async function(){
+        var user = await loadUserData();
+        if(user) await loadProducts();
+        document.addEventListener('visibilitychange', async function(){
+            if(!document.hidden){ await loadUserData(); await loadProducts(); }
+        });
+    });
+})();
+</script>
+    <script src="/liquid-icons.js?v=20260603-theme-chat-global-v3" defer></script>
+<script src="/ai-chat-global.js?v=20260603-theme-chat-global-v3"></script>
+</body>
+</html>

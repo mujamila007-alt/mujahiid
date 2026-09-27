@@ -1,0 +1,14 @@
+MUJAPRIME SMART INSTALL BANNER V3
+
+Perilaku:
+- Android browser: banner menawarkan MujaPrime Android APK.
+- Desktop/laptop browser: banner menawarkan MujaPrime Desktop Windows EXE.
+- iPhone/iPad: banner install tidak ditampilkan karena paket yang tersedia saat ini adalah Android APK dan Windows EXE.
+- PWA/standalone/Tauri shell terdeteksi: banner tidak ditampilkan jika lingkungan native terdeteksi.
+- Tombol X menutup banner hanya untuk tampilan halaman saat itu. Refresh akan menampilkannya lagi.
+- Banner tidak memakai localStorage.
+- Halaman admin, payment, status teknis, reset cache, dan panduan backup tetap dikecualikan.
+
+Installer:
+/update-and-apk/MujaPrime_2.2_Android.apk
+/update-and-apk/MujaPrime_2.2.exe

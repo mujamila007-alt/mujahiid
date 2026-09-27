@@ -1,15 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE html>
 <html lang="id" dir="ltr">
 <head>
-    <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-QT83YFH6D8"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-QT83YFH6D8');
-</script>
 <meta charset="utf-8"/>
     <!-- MUJA CACHE FIX AMAN: bersihkan cache tanpa auto-refresh berulang -->
     <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
@@ -29,17 +21,16 @@
     <meta http-equiv="Expires" content="0">
     <title>MUJA PRIME — Ultra Premium Store</title>
     
-    <link rel="icon" type="image/png" href="muja.png?v=20260603-theme-persist-v4">
-    <link rel="icon" type="image/svg+xml" href="muja.svg?v=20260603-theme-persist-v4">
-    <link rel="apple-touch-icon" href="muja.png?v=20260603-theme-persist-v4">
+    <link rel="icon" type="image/png" href="/muja.png?v=20260603-theme-chat-global-v3">
+    <link rel="icon" type="image/svg+xml" href="/muja.svg?v=20260603-theme-chat-global-v3">
+    <link rel="apple-touch-icon" href="/muja.png?v=20260603-theme-chat-global-v3">
     <meta name="theme-color" content="#0a0a0f">
     <meta name="application-name" content="Mujahid">
-        <script src="/firebase-config.js?v=20260911-performance-v4"></script>
-    <script src="/theme.js?v=20260603-theme-persist-v4" defer></script>
+        <script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
     <script>
         // Simpan versi build tanpa memaksa refresh halaman.
         (function() {
-            try { localStorage.setItem('muja_build_seen', '20260603-theme-persist-v4'); } catch(e) {}
+            try { localStorage.setItem('muja_build_seen', '20260603-theme-chat-global-v3'); } catch(e) {}
         })();
     </script>
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -68,7 +59,7 @@
     }
     * { margin:0; padding:0; box-sizing:border-box; }
     html { scroll-behavior:smooth; }
-    body { padding-top: 83px !important; font-family:'Outfit',sans-serif; background:var(--brand-900); color:var(--text-primary); font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+    body { font-family:'Outfit',sans-serif; background:var(--brand-900); color:var(--text-primary); font-size:14px; line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
     body::before { content:''; position:fixed; inset:0; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E"); pointer-events:none; z-index:0; opacity:0.4; }
     ::-webkit-scrollbar { width:4px; } ::-webkit-scrollbar-track { background:var(--brand-900); } ::-webkit-scrollbar-thumb { background:var(--ember-600); border-radius:2px; }
     a { text-decoration:none; color:inherit; }
@@ -99,7 +90,7 @@
     .theme-toggle:hover svg path { stroke: var(--ember-400); }
 
     /* TOP BAR */
-    .top-bar { display: none; background:linear-gradient(90deg,var(--ember-600) 0%,var(--ember-500) 50%,var(--gold-500) 100%); padding:7px 0; position:relative; overflow:hidden; }
+    .top-bar { background:linear-gradient(90deg,var(--ember-600) 0%,var(--ember-500) 50%,var(--gold-500) 100%); padding:7px 0; position:relative; overflow:hidden; }
     .top-bar::before { content:''; position:absolute; inset:0; background:linear-gradient(90deg,transparent 0%,rgba(255,255,255,0.08) 50%,transparent 100%); }
     .top-bar-content { display:flex; justify-content:space-between; align-items:center; position:relative; z-index:1; }
     .top-bar-left { display:flex; gap:14px; }
@@ -109,18 +100,16 @@
 
     /* HEADER */
    /* HEADER */
-.muja-header {
-    margin-top: 6px !important;
-    padding: 12px 0 !important;
-    position: fixed !important;
-    top: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
-    width: 100% !important;
-    z-index: 200 !important;
-    backdrop-filter: blur(6px) !important;
-    -webkit-backdrop-filter: blur(20px) !important;
-    border-bottom: 1px solid rgba(255,255,255,0.08) !important;
+.muja-header { 
+    background:rgba(17,17,24,0.92); 
+    backdrop-filter:blur(20px); 
+    -webkit-backdrop-filter:blur(20px); 
+    border-bottom:1px solid var(--border-subtle); 
+    padding:12px 0; 
+    position:sticky; 
+    top:0; 
+    z-index:200; 
+    transition:var(--transition); 
 }
 .muja-header.scrolled { 
     background:rgba(10,10,15,0.97); 
@@ -169,7 +158,8 @@
 
 /* Menu Toggle (Hamburger) */
 .menu-toggle { 
-    border:2px solid rgb(255 255 255 / 50%); 
+    background:var(--surface-2); 
+    border:1px solid var(--border-subtle); 
     border-radius:var(--radius-sm); 
     padding:8px; 
     cursor:pointer; 
@@ -240,7 +230,7 @@
     }
     
     .menu-toggle {
-        padding: 8px;
+        padding: 6px;
     }
     
     .action-btn, .action-btn1 {
@@ -279,17 +269,17 @@
     #searchBarDesktop form { display: flex; background: var(--surface-2); border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--border-medium); transform: translateY(0); }
     #searchBarDesktop form:focus-within { border-color: var(--ember-500); }
     #searchBarDesktop input { flex: 1; border: none; background: transparent; padding: 10px 16px; font-size: 13px; font-family: 'Outfit', sans-serif; outline: none; color: var(--text-primary); }
-    #searchBarDesktop input::placeholder { color: #242433; }
+    #searchBarDesktop input::placeholder { color: var(--text-muted); }
     #searchBarDesktop button { background: linear-gradient(135deg, var(--ember-500), var(--ember-600)); color: white; border: none; padding: 10px 20px; font-weight: 600; font-family: 'Outfit', sans-serif; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
 
     /* SEARCH BAR - MOBILE */
     #searchBarMobile { margin: 0 8px 6px; max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; }
     #searchBarMobile.active { max-height: 60px; opacity: 1; padding-top: 6px; }
-    #searchBarMobile form { display: flex; background: #ffffff; border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--border-medium); transform: translateY(-8px); transition: transform 0.3s ease; }
+    #searchBarMobile form { display: flex; background: var(--surface-2); border-radius: var(--radius-full); overflow: hidden; border: 1px solid var(--border-medium); transform: translateY(-8px); transition: transform 0.3s ease; }
     #searchBarMobile.active form { transform: translateY(0); }
     #searchBarMobile form:focus-within { border-color: var(--ember-500); }
     #searchBarMobile input { flex: 1; border: none; background: transparent; padding: 10px 16px; font-size: 13px; font-family: 'Outfit', sans-serif; outline: none; color: var(--text-primary); }
-    #searchBarMobile input::placeholder { color: #242433; }
+    #searchBarMobile input::placeholder { color: var(--text-muted); }
     #searchBarMobile button { background: linear-gradient(135deg, var(--ember-500), var(--ember-600)); color: white; border: none; padding: 10px 20px; font-weight: 600; font-family: 'Outfit', sans-serif; font-size: 12px; cursor: pointer; display: flex; align-items: center; gap: 6px; }
 
     /* RESPONSIVE SEARCH */
@@ -298,28 +288,11 @@
 
     /* HEADER ACTIONS */
     .header-actions { display:flex; align-items:center; gap:4px; }
-    .action-btn, .action-btn1 { position:relative; display:flex; align-items:center; justify-content:center; width:36px; height:36px; color:#ffffff; border-radius:var(--radius-sm); background:#e8e8e800; border:2px solid rgb(255 255 255 / 38%); transition:var(--transition); cursor:pointer; }
+    .action-btn, .action-btn1 { position:relative; display:flex; align-items:center; justify-content:center; width:40px; height:40px; color:var(--text-secondary); border-radius:var(--radius-sm); background:var(--surface-2); border:1px solid var(--border-subtle); transition:var(--transition); cursor:pointer; }
     .action-btn:hover, .action-btn1:hover { background:var(--surface-3); color:var(--ember-400); }
-    .cart-badge { position:fixed; top:6px; right:44px; background:linear-gradient(135deg,var(--ember-500),var(--ember-600)); color:white; font-size:9px; font-weight:800; padding:2px 8px; border-radius:var(--radius-full); min-width:16px; text-align:center; border:1px solid #dedede; display:none; }
+    .cart-badge { position:absolute; top:-8px; right:-8px; background:linear-gradient(135deg,var(--ember-500),var(--ember-600)); color:white; font-size:9px; font-weight:800; padding:2px 8px; border-radius:var(--radius-full); min-width:16px; text-align:center; border:2px solid var(--brand-900); display:none; }
     .action-btn .user-avatar, .action-btn1 .user-avatar { width:35px; height:35px; background:linear-gradient(135deg,var(--ember-500),var(--gold-500)); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:var(--brand-900); font-size:11px; font-weight:800; }
     .action-btn.has-avatar svg, .action-btn1.has-avatar svg { display:none; }
-    .action-btn .user-avatar { 
-    width: 36px; 
-    height: 36px; 
-    background: linear-gradient(135deg, var(--ember-500), var(--gold-500)); 
-    border-radius: var(--radius-sm); 
-    display: none; 
-    align-items: center; 
-    justify-content: center; 
-    color: var(--brand-900);
-}
-
-/* SVG di dalam user-avatar */
-.action-btn .user-avatar svg {
-    width: 18px;
-    height: 18px;
-    stroke: var(--brand-900);
-}
 
     /* ================================================================ */
     /* SIDEBAR - DESKTOP (HORIZONTAL TABLE STYLE) */
@@ -344,7 +317,7 @@
     /* Container menu */
     .sidebar-content {
         max-width: 1280px;
-        margin: 6px auto;
+        margin: 0 auto;
         padding: 0 24px;
     }
 
@@ -468,7 +441,7 @@
             justify-content: center;
         }
 
-        .sidebar-content { max-width: none; margin: 6px; padding: 0; }
+        .sidebar-content { max-width: none; margin: 0; padding: 0; }
 
         .sidebar-menu {
             flex-direction: column;
@@ -520,127 +493,6 @@
     .hero-dot.active { width:20px; border-radius:var(--radius-full); background:var(--ember-400); }
     @media (min-width:768px) { .hero-content { min-height:140px; } .hero-content h2 { font-size:24px; } .hero-banner { padding:36px 32px; } }
 
-    /* MAIN CATEGORY SHORTCUTS */
-    .main-category-shortcuts {
-        border-radius: var(--radius-lg);
-        position: relative;
-        overflow: hidden;
-    }
-    .main-category-shortcuts::before {
-        content: '';
-        position: absolute;
-        inset: -60px auto auto -40px;
-        width: 140px;
-        height: 140px;
-        border-radius: 50%;
-        background: radial-gradient(circle, var(--ember-glow) 0%, transparent 70%);
-        pointer-events: none;
-    }
-    .main-category-head {
-        position: relative;
-        z-index: 1;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 10px;
-        margin-bottom: 12px;
-    }
-    .main-category-title {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        font-size: 14px;
-        font-weight: 900;
-        letter-spacing: .45px;
-        color: var(--text-primary);
-        text-transform: uppercase;
-    }
-    .main-category-title svg {
-        width: 18px;
-        height: 18px;
-        color: var(--ember-400);
-        flex: 0 0 auto;
-    }
-    .main-category-subtitle {
-        margin: 0;
-        color: var(--text-secondary);
-        font-size: 11px;
-        font-weight: 600;
-    }
-    .main-category-list {
-        position: relative;
-        z-index: 1;
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 9px;
-    }
-    .main-category-btn {
-        border: 1px solid var(--border-subtle);
-        border-radius: 15px;
-        padding: 1px 11px;
-        background: rgb(56 56 56 / 45%);
-        color: var(--text-primary);
-        text-decoration: none;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        gap: 8px;
-        min-height: 46px;
-        font-size: 12px;
-        font-weight: 800;
-        line-height: 1.25;
-        box-shadow: inset 0 1px 0 rgba(255,255,255,0.08);
-        transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease, background .25s ease;
-        cursor: pointer;
-    }
-    .main-category-btn:hover,
-    .main-category-btn:focus {
-        transform: translateY(-2px);
-        border-color: rgba(255,107,43,0.45);
-        background: linear-gradient(135deg, rgba(255,107,43,0.20), rgba(245,200,66,0.13));
-        box-shadow: 0 10px 24px rgba(255,107,43,0.12);
-        outline: none;
-    }
-    .main-category-name {
-        font-size: 10px;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        -webkit-box-orient: vertical;
-    }
-    .main-category-count {
-        border: 1px solid rgb(255 255 255 / 55%);
-        flex: 0 0 auto;
-        min-width: 25px;
-        height: 25px;
-        padding: 0 7px;
-        border-radius: var(--radius-full);
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        color: var(--text-primary);
-        font-size: 11px;
-        font-weight: 900;
-    }
-    .main-category-empty {
-        grid-column: 1 / -1;
-        color: var(--text-secondary);
-        font-size: 12px;
-        padding: 12px;
-        text-align: center;
-    }
-    .product-section {
-        scroll-margin-top: 96px;
-    }
-    @media (min-width:640px) {
-        .main-category-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-    }
-    @media (min-width:1024px) {
-        .main-category-list { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-        .main-category-title { font-size: 15px; }
-    }
-
     /* SECTION HEADER */
     .section-header { display:flex; align-items:center; justify-content:space-between; margin:20px 0 14px; }
     .section-title h2 { font-size:20px; font-weight:700; color:var(--text-primary); text-transform:uppercase; letter-spacing:0.8px; }
@@ -650,7 +502,7 @@
     .product-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:10px; margin:14px 0; }
     @media (min-width:640px) { .product-grid { grid-template-columns:repeat(3,1fr); } }
     @media (min-width:768px) { .product-grid { grid-template-columns:repeat(4,1fr); gap:14px; } }
-    @media (min-width:1024px) { .product-grid { grid-template-columns:repeat(2,1fr); gap:16px; } }
+    @media (min-width:1024px) { .product-grid { grid-template-columns:repeat(5,1fr); gap:16px; } }
 
     /* LIVE ACTIVITY TRACKER */
     @keyframes slideInLeft { from { opacity:0; transform:translateX(-16px); } to { opacity:1; transform:translateX(0); } }
@@ -672,10 +524,10 @@
     .product-info12 { gap: 14px; flex:1; display:flex; flex-direction:row; }
     .product-title { font-size:12px; font-weight:800; color:var(--text-primary); display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; line-height:1.45; min-height:35px; }
     .current-price { font-size:18px; font-weight:800; background:linear-gradient(135deg,var(--ember-400),var(--gold-400)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .old-price { font-size:13px; color:var(--text-primary); text-decoration:line-through; }
+    .old-price { font-size:13px; color:var(--text-muted); text-decoration:line-through; }
     .product-stats { display:flex; align-items:center; gap:4px; margin-bottom:4px; font-size:10px; }
-    .sold-count { color:var(--text-primary); }
-    .product-location { font-size:10px; color:var(--text-primary); display:flex; align-items:center; gap:3px; }
+    .sold-count { color:var(--text-muted); }
+    .product-location { font-size:10px; color:var(--text-muted); display:flex; align-items:center; gap:3px; }
     .product-add-cart { position:absolute; bottom:8px; right:8px; width:30px; height:30px; background:linear-gradient(135deg,var(--ember-500),var(--ember-600)); border-radius:var(--radius-sm); display:flex; align-items:center; justify-content:center; color:white; box-shadow:0 4px 16px rgba(255,107,43,0.35); transition:all 0.4s cubic-bezier(0.34,1.56,0.64,1); cursor:pointer; z-index:2; }
     .product-add-cart:hover { transform:scale(1.15); }
 
@@ -696,7 +548,7 @@
     .reg-form-group input:focus { border-color:var(--ember-500); }
     .reg-btn { width:100%; padding:14px; background:linear-gradient(135deg,var(--ember-500),var(--ember-600)); color:white; border:none; border-radius:var(--radius-sm); font-weight:700; font-size:15px; font-family:'Outfit',sans-serif; cursor:pointer; margin-top:8px; transition:var(--transition); }
     .reg-btn:hover { transform:translateY(-2px); box-shadow:0 8px 24px rgba(255,107,43,0.35); }
-    .reg-skip { margin-top:16px; font-size:12px; color:#242433; cursor:pointer; }
+    .reg-skip { margin-top:16px; font-size:12px; color:var(--text-muted); cursor:pointer; }
     .reg-success { text-align:center; padding:16px 0; }
     .reg-success h3 { font-size:20px; font-weight:800; color:var(--jade-500); margin-bottom:8px; }
 
@@ -717,32 +569,32 @@
     .cart-item-name { font-size:12.5px; font-weight:600; color:var(--text-primary); margin-bottom:4px; }
     .cart-item-price { font-size:14px; font-weight:800; background:linear-gradient(135deg,var(--ember-400),var(--gold-400)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
     .cart-remove { color:#ef4444; background:rgba(239,68,68,0.08); border:1px solid rgba(239,68,68,0.15); border-radius:6px; cursor:pointer; font-size:11px; padding:3px 8px; font-family:'Outfit',sans-serif; }
-    .cart-empty { text-align:center; padding:48px 20px; color:#242433; }
+    .cart-empty { text-align:center; padding:48px 20px; color:var(--text-muted); }
 
     /* FOOTER */
     .muja-footer { background:var(--surface-1); padding:40px 0 24px; margin-top:40px; border-top:1px solid var(--border-subtle); }
     .footer-main { display:grid; grid-template-columns:1fr; gap:24px; margin-bottom:28px; }
     @media (min-width:768px) { .footer-main { grid-template-columns:2fr 1fr 1fr 1.5fr; gap:32px; } }
     .footer-about h4 { font-size:18px; font-weight:800; background:linear-gradient(135deg,var(--ember-400),var(--gold-400)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
-    .footer-about p { color:var(--text-primary); margin:12px 0; font-size:13px; }
+    .footer-about p { color:var(--text-muted); margin:12px 0; font-size:13px; }
     .footer-social { display:flex; gap:8px; margin-top:14px; }
-    .footer-social a { display:flex; align-items:center; justify-content:center; width:36px; height:36px; background:var(--surface-2); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); color:#242433; transition:var(--transition); }
+    .footer-social a { display:flex; align-items:center; justify-content:center; width:36px; height:36px; background:var(--surface-2); border:1px solid var(--border-subtle); border-radius:var(--radius-sm); color:var(--text-muted); transition:var(--transition); }
     .footer-social a:hover { background:var(--ember-glow); color:var(--ember-400); }
     .footer-widget h4 { font-size:12px; font-weight:700; color:var(--text-secondary); margin-bottom:14px; text-transform:uppercase; }
     .footer-links { list-style:none; }
     .footer-links li { margin-bottom:9px; }
-    .footer-links li a { color:var(--text-primary); font-size:13px; transition:color 0.2s; }
+    .footer-links li a { color:var(--text-muted); font-size:13px; transition:color 0.2s; }
     .footer-links li a:hover { color:var(--ember-400); }
-    .footer-contact p { display:flex; align-items:center; gap:8px; color:var(--text-primary); margin-bottom:10px; font-size:13px; }
+    .footer-contact p { display:flex; align-items:center; gap:8px; color:var(--text-muted); margin-bottom:10px; font-size:13px; }
     .payment-methods { display:flex; gap:6px; margin-top:12px; flex-wrap:wrap; }
     .payment-icon { background:var(--surface-2); border:1px solid var(--border-subtle); padding:4px 10px; border-radius:6px; font-size:11px; font-weight:700; color:var(--text-secondary); }
-    .footer-bottom { display:flex; flex-direction:column; align-items:center; gap:10px; padding-top:20px; border-top:1px solid var(--border-subtle); color:#242433; font-size:12px; text-align:center; }
+    .footer-bottom { display:flex; flex-direction:column; align-items:center; gap:10px; padding-top:20px; border-top:1px solid var(--border-subtle); color:var(--text-muted); font-size:12px; text-align:center; }
     @media (min-width:768px) { .footer-bottom { flex-direction:row; justify-content:space-between; } }
 
     /* MOBILE NAV */
-    .mobile-nav { margin: 4px;display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(17,17,24,0.95); backdrop-filter:blur(20px); box-shadow:0 -1px 0 var(--border-subtle),0 -10px 30px rgba(0,0,0,0.4); z-index:90; padding:6px 12px; border-top:1px solid var(--border-subtle); }
+    .mobile-nav { display:flex; position:fixed; bottom:0; left:0; right:0; background:rgba(17,17,24,0.95); backdrop-filter:blur(20px); box-shadow:0 -1px 0 var(--border-subtle),0 -10px 30px rgba(0,0,0,0.4); z-index:90; padding:6px 12px; border-top:1px solid var(--border-subtle); }
     .mobile-nav-menu { display:flex; justify-content:space-around; width:100%; }
-    .mobile-nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:var(--text-primary); font-size:9.5px; font-weight:600; padding:4px 10px; border-radius:var(--radius-sm); transition:var(--transition); text-transform:uppercase; cursor:pointer; }
+    .mobile-nav-item { display:flex; flex-direction:column; align-items:center; gap:3px; color:var(--text-muted); font-size:9.5px; font-weight:600; padding:4px 10px; border-radius:var(--radius-sm); transition:var(--transition); text-transform:uppercase; cursor:pointer; }
     .mobile-nav-item.active, .mobile-nav-item:hover { color:var(--ember-400); }
     .mobile-nav-item svg { width:18px; height:18px; }
 
@@ -768,7 +620,7 @@
     .photo-upload-area:hover { background: var(--surface-3); }
 
     .product-poin-badge { margin-top: 8px; display: inline-block; background: linear-gradient(135deg, var(--gold-500), var(--ember-500)); color: var(--brand-900); padding: 4px 10px; border-radius: var(--radius-full); font-size: 10px; font-weight: 700; letter-spacing: 0.3px; width: 60px; }
-    .product-poin-badge span { display: flex; align-items: center; gap: 4px; border-radius: 20px;}
+    .product-poin-badge span { display: flex; align-items: center; gap: 4px; }
 
     .stock-badge { display: inline-block; background: var(--surface-2); border: 1px solid var(--border-subtle); padding: 4px 12px; border-radius: var(--radius-full); font-size: 12px; color: var(--text-secondary); margin-top: 8px; }
     .stock-available { color: var(--jade-500); }
@@ -778,13 +630,14 @@
     .cart-item-link:hover .cart-item-name { color: var(--ember-400); }
     .cart-item-link:hover { opacity: 0.8; }
 </style>
-    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-persist-v4">
-<link rel="stylesheet" href="/theme.css?v=20260603-theme-persist-v4">
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-chat-global-v3">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-chat-global-v3">
 
     <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
     <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
     <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
     <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
 
     <!-- MUJA PRIME Professional Responsive Upgrade -->
     <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
@@ -880,20 +733,13 @@
                     <span class="cart-badge" id="cartBadge">0</span>
                 </a>
                 <!-- Akun -->
-               <a class="action-btn" href="akun-saya/" id="userAvatarBtn">
-    <!-- SVG bawaan (belum daftar) -->
-    <svg class="user-icon-default" fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
-        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-        <circle cx="12" cy="7" r="4"/>
-    </svg>
-    <!-- Avatar setelah daftar (background gradien + SVG) -->
-    <span class="user-avatar" id="userAvatar" style="display:none;">
-        <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
-            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
-            <circle cx="12" cy="7" r="4"/>
-        </svg>
-    </span>
-</a>
+                <a class="action-btn" href="akun-saya/" id="userAvatarBtn">
+                    <svg fill="none" height="18" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" width="18">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span class="user-avatar" id="userAvatar" style="display:none;"></span>
+                </a>
             </div>
         </div>
     </div>
@@ -925,26 +771,17 @@
             <div class="hero-slides" id="heroSlides">
                 <div class="hero-slide"><div class="hero-banner"><div class="hero-content">
                     <div class="hero-badge">✦ Resmi Mujahid Store</div>
-                    <h2>BELANJA AMAN & TERPERCAYA</h2>
+                    <h2>BELANJA AMAN & TERPERCAYAS</h2>
                     <p>Produk berkualitas langsung dari Mujahid Official Store</p>
                 </div></div></div>
                 <div class="hero-slide"><div class="hero-banner" style="background:linear-gradient(135deg,var(--surface-2) 0%,#1a1030 100%);"><div class="hero-content">
                     <div class="hero-badge" style="background:linear-gradient(135deg,#00e5b4,#f5c842);color:#0a0a0f;">🚀 Free Shipping</div>
-                    <h2>SUPER MURAH CUYY!</h2>
+                    <h2>SUPER MURAH!</h2>
                     <p>Semua Produk Yang Disediakan Mujahiid Pastinya Murah</p>
                 </div></div></div>
             </div>
             <div class="hero-dots" id="heroDots"><span class="hero-dot active" data-index="0"></span><span class="hero-dot" data-index="1"></span></div>
         </div>
-
-        <section class="main-category-shortcuts" id="mainCategoryShortcuts" aria-label="Group dan Kategori Utama">
-            <div class="main-category-head">
-               
-            </div>
-            <div class="main-category-list" id="mainCategoryList">
-                <div class="main-category-empty">Memuat Produk...</div>
-            </div>
-        </section>
     </div></main>
 
     <!-- Footer -->
@@ -991,8 +828,6 @@
     
     <div class="muja-activity-tracker" id="mujaTracker"></div>
     <script>
-        // Cache statis dan session data dipertahankan agar navigasi dan katalog lebih cepat.
-
 (function(){"use strict";
 
 if(window.initMujaFirebase)window.initMujaFirebase();
@@ -1010,37 +845,17 @@ window.toggleSearchBar=toggleSearchBar;
 
 function getInitials(n){if(!n)return'?';var w=n.trim().split(/\s+/);return w.length>=2?(w[0][0]+w[1][0]).toUpperCase():n.substring(0,2).toUpperCase();}
 
-function updateUserAvatar() {
-    var btn = document.getElementById('userAvatarBtn');
-    var span = document.getElementById('userAvatar');
-    var defaultIcon = btn ? btn.querySelector('.user-icon-default') : null;
-    var isReg = localStorage.getItem(USER_REGISTERED) === 'true';
-    var photo = localStorage.getItem('muja_user_photo') || '';
-
-    if (isReg && span) {
-        // User sudah daftar
-        if (photo) {
-            // Ada foto → tampilkan foto di span
-            span.style.backgroundImage = 'url(' + photo + ')';
-            span.style.backgroundSize = 'cover';
-            span.style.backgroundPosition = 'center';
-            span.querySelector('svg').style.display = 'none';
-        } else {
-            // Tidak ada foto → tampilkan SVG + background gradien
-            span.style.backgroundImage = '';
-            span.style.backgroundColor = ''; // biarkan CSS background gradien bekerja
-            var svgInSpan = span.querySelector('svg');
-            if (svgInSpan) svgInSpan.style.display = 'block';
-        }
-        span.style.display = 'flex';
-        if (defaultIcon) defaultIcon.style.display = 'none';
-        if (btn) btn.classList.add('has-avatar');
-    } else {
-        // User belum daftar → tampilkan SVG default
-        if (span) span.style.display = 'none';
-        if (defaultIcon) defaultIcon.style.display = 'block';
-        if (btn) btn.classList.remove('has-avatar');
-    }
+function updateUserAvatar(){
+    var btn=document.getElementById('userAvatarBtn'),span=document.getElementById('userAvatar'),icon=btn?.querySelector('svg');
+    var isReg=localStorage.getItem(USER_REGISTERED)==='true';
+    var whatsapp=localStorage.getItem('muja_user_whatsapp')||'';
+    var name=localStorage.getItem('muja_user_name')||whatsapp||'WA';
+    var photo=localStorage.getItem('muja_user_photo')||'';
+    if(isReg&&span){
+        if(photo){span.textContent='';span.style.backgroundImage='url('+photo+')';span.style.backgroundSize='cover';span.style.backgroundPosition='center';span.style.display='flex';}
+        else {span.style.backgroundImage='';span.textContent=getInitials(name);span.style.display='flex';}
+        if(icon)icon.style.display='none';btn.classList.add('has-avatar');
+    }else if(span){span.style.display='none';span.style.backgroundImage='';if(icon)icon.style.display='block';btn?.classList.remove('has-avatar');}
 }
 
 function updateCartUI(){
@@ -1048,7 +863,7 @@ function updateCartUI(){
     if(!ci) return;
     cart = JSON.parse(localStorage.getItem('mujaCart') || '[]');
     if(!cart.length){
-        ci.innerHTML = '<div class="cart-empty"><p style="color:#242433;">Belum ada produk tersimpan</p></div>';
+        ci.innerHTML = '<div class="cart-empty"><p style="color:var(--text-muted);">Belum ada produk tersimpan</p></div>';
         return;
     }
     ci.innerHTML = cart.map(function(item){
@@ -1069,7 +884,7 @@ function updateCartUI(){
         `;
     }).join('');
 }
-function updateCartBadge(){var b=document.getElementById('cartBadge');if(b){var n=cart.length;b.textContent=n;b.style.setProperty('display',n>0?'flex':'none','important');}}
+function updateCartBadge(){var b=document.getElementById('cartBadge');if(b){var n=cart.length;b.textContent=n;b.style.display=n>0?'flex':'none';}}
 function addToCart(p){
     if(cart.find(function(i){ return i.id === p.id; })){
         showToast('Produk sudah tersimpan!');
@@ -1093,49 +908,6 @@ window.addToCart=addToCart;window.removeFromCart=removeFromCart;window.toggleCar
 
 
 
-function makeCategorySlug(value) {
-    return String(value || 'umum')
-        .toLowerCase()
-        .trim()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '') || 'umum';
-}
-
-function renderMainCategoryShortcuts(groupedProducts, sectionIds) {
-    const list = document.getElementById('mainCategoryList');
-    if (!list) return;
-
-    const groups = Object.keys(groupedProducts || {});
-    if (!groups.length) {
-        list.innerHTML = '<div class="main-category-empty">Belum ada kategori utama</div>';
-        return;
-    }
-
-    list.innerHTML = groups.map(function(groupName) {
-        const id = sectionIds[groupName];
-        const total = (groupedProducts[groupName] || []).length;
-        return `
-            <a class="main-category-btn" href="#${id}" data-target="${id}" title="Menuju ${escapeHtml(groupName)}">
-                <span class="main-category-name">${escapeHtml(groupName)}</span>
-                <span class="main-category-count">${total}</span>
-            </a>
-        `;
-    }).join('');
-}
-
-document.addEventListener('click', function(e) {
-    const btn = e.target.closest('.main-category-btn');
-    if (!btn) return;
-
-    const targetId = btn.getAttribute('data-target');
-    const target = targetId ? document.getElementById(targetId) : null;
-    if (!target) return;
-
-    e.preventDefault();
-    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    history.replaceState(null, '', '#' + targetId);
-});
-
 async function loadAllProducts() {
     const container = document.querySelector('.main-content .container');
     if (!container) return;
@@ -1149,24 +921,23 @@ async function loadAllProducts() {
         // Urutkan berdasarkan order
         products.sort((a, b) => (a.order || 0) - (b.order || 0));
         
-        // Hapus section produk lama, tombol kategori tetap dipakai ulang
-        const existingSections = container.querySelectorAll('.product-section, .empty-products');
+        // Hapus semua section produk yang sudah ada (tapi jangan hapus hero slider)
+        const existingSections = container.querySelectorAll('.product-section');
         existingSections.forEach(section => section.remove());
         
         // Jika tidak ada produk
         if (products.length === 0) {
-            renderMainCategoryShortcuts({}, {});
-            container.insertAdjacentHTML('beforeend', `
-                <div class="empty-products" style="text-align:center; padding:60px 20px; color:#242433;">
+            container.innerHTML += `
+                <div class="empty-products" style="text-align:center; padding:60px 20px; color:var(--text-muted);">
                     <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1">
                         <path d="M20 7h-4.18A3 3 0 0 0 13 5h-2a3 3 0 0 0-2.82 2H4a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/>
                         <circle cx="12" cy="13" r="3"/>
                         <path d="M4 9h16"/>
                     </svg>
-                    <p style="margin-top:16px;">📭 Refresh Halaman</p>
-                    <p style="font-size:12px;">Untuk memunculkan Produk</p>
+                    <p style="margin-top:16px;">📭 Belum ada produk</p>
+                    <p style="font-size:12px;">Silakan cek kembali nanti</p>
                 </div>
-            `);
+            `;
             return;
         }
         
@@ -1177,27 +948,11 @@ async function loadAllProducts() {
             if (!groupedProducts[group]) groupedProducts[group] = [];
             groupedProducts[group].push(product);
         });
-
-        const sectionIds = {};
-        const usedSectionIds = {};
-        Object.keys(groupedProducts).forEach(function(groupName) {
-            const baseSlug = 'kategori-' + makeCategorySlug(groupName);
-            let sectionId = baseSlug;
-            let counter = 2;
-            while (usedSectionIds[sectionId]) {
-                sectionId = baseSlug + '-' + counter;
-                counter++;
-            }
-            usedSectionIds[sectionId] = true;
-            sectionIds[groupName] = sectionId;
-        });
-
-        renderMainCategoryShortcuts(groupedProducts, sectionIds);
         
         // Buat section untuk setiap group
         for (const [groupName, groupProducts] of Object.entries(groupedProducts)) {
             const sectionHtml = `
-                <div class="product-section" id="${sectionIds[groupName]}">
+                <div class="product-section">
                     <div class="section-header">
                         <div class="section-title">
                             <h2><svg width="20px" height="20px" viewBox="0 0 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -1212,7 +967,7 @@ async function loadAllProducts() {
 </svg> ${escapeHtml(groupName)}</h2>
                         </div>
                     </div>
-                    <div class="product-grid" id="product-grid-${sectionIds[groupName]}">
+                    <div class="product-grid" id="product-grid-${groupName.replace(/\s/g, '-')}">
                         ${renderProductCardsHTML(groupProducts)}
                     </div>
                 </div>
@@ -1222,9 +977,7 @@ async function loadAllProducts() {
         
     } catch(e) {
         console.error('Error:', e);
-        const categoryList = document.getElementById('mainCategoryList');
-        if (categoryList) categoryList.innerHTML = '<div class="main-category-empty">Gagal memuat kategori</div>';
-        container.insertAdjacentHTML('beforeend', '<div class="empty-products" style="text-align:center;padding:60px;">❌ Gagal memuat produk</div>');
+        container.innerHTML += '<div style="text-align:center;padding:60px;">❌ Gagal memuat produk</div>';
     }
 }
 
@@ -1310,7 +1063,7 @@ function renderProductCardsHTML(products) {
         
         return `
             <article class="product-card fade-in">
-                <a href="${(p.productType === 'collection2') ? '/list-produk-2.html?group=' + encodeURIComponent(p.id) : ((p.productType === 'collection') ? '/list-produk.html?group=' + encodeURIComponent(p.id) : '/detail-produk.html?id=' + p.id)}">
+                <a href="/detail-produk.html?id=${p.id}">
                     <div class="product-image-wrapper">
                         <img class="product-image" src="${p.imageUrl || 'https://placehold.co/400x400/1e1e2b/ff6b2b?text=Muja'}" loading="lazy">
                         <span class="product-shipping-badge">✦ Super Murah</span>
@@ -1318,27 +1071,24 @@ function renderProductCardsHTML(products) {
                     </div>
                     <div class="product-info">
                         <h3 class="product-title">${escapeHtml(p.name)}</h3>
-                      ${(p.productType === 'collection' || p.productType === 'collection2') ? '' : `<div class="current-price">${formatRupiah(p.price)}</div>`}
-${(p.productType === 'collection' || p.productType === 'collection2') ? '' : (p.oldPrice ? '<span class="old-price">' + formatRupiah(p.oldPrice) + '</span>' : '')}
-                       ${(p.productType === 'collection' || p.productType === 'collection2') ? '' : `
-<div class="product-stats">
-    <div class="product-info12">
-        <span class="sold-count">${terjualSvg} Terjual ${soldText}</span>
-    </div>
-    <div class="product-location">${stokSvg} Stok: ${p.stock || 1}</div>
-</div>
-`}
-${(p.productType === 'collection' || p.productType === 'collection2') ? '' : poinHtml}
+                        <div class="current-price">${formatRupiah(p.price)}</div>
+                        ${p.oldPrice ? '<span class="old-price">' + formatRupiah(p.oldPrice) + '</span>' : ''}
+                        <div class="product-stats">
+                            <div class="product-info12">
+                                <span class="sold-count">${terjualSvg} Terjual ${soldText}</span>
+                            </div>
+                            <div class="product-location">${stokSvg} Stok: ${p.stock || 1}</div>
+                        </div>
+                        ${poinHtml}
                     </div>
                 </a>
-                ${(p.productType === 'collection' || p.productType === 'collection2') ? '' : `
-                <span class="product-add-cart" data-product-id="${escapeHtml(p.id)}" data-default-title="Simpan" title="Simpan" role="button" aria-label="Simpan produk" onclick="event.preventDefault();event.stopPropagation();addToCart(${pj})">
+                <span class="product-add-cart" onclick="event.preventDefault();event.stopPropagation();addToCart(${pj})">
                     <svg width="15" height="15" viewBox="0 0 24 24" fill="none">
                         <path d="M4 4h1.6L7 13h10l4-8H5.4" stroke="white" stroke-width="2" stroke-linecap="round"/>
                         <circle cx="9" cy="20" r="1" fill="white"/>
                         <circle cx="17" cy="20" r="1" fill="white"/>
                     </svg>
-                </span>`}
+                </span>
             </article>
         `;
     }).join('');
@@ -1373,24 +1123,22 @@ async function searchProducts(event){
         });
         
         if(filtered.length === 0) {
-            cc.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#242433;">🔍 Tidak ada produk dengan kata "' + escapeHtml(query) + '"</div>';
+            cc.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);">🔍 Tidak ada produk dengan kata "' + escapeHtml(query) + '"</div>';
         } else {
             cc.innerHTML = renderProductCardsHTML(filtered);
         }
     } catch(e) {
         console.error(e);
-        cc.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:#242433;">❌ Gagal mencari produk</div>';
+        cc.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--text-muted);">❌ Gagal mencari produk</div>';
     }
 }
             
 function escapeHtml(str) {
-    if (str === null || str === undefined) return '';
-    return String(str).replace(/[&<>"']/g, function(m) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
         if (m === '&') return '&amp;';
         if (m === '<') return '&lt;';
         if (m === '>') return '&gt;';
-        if (m === '"') return '&quot;';
-        if (m === "'") return '&#39;';
         return m;
     });
 } 
@@ -1404,11 +1152,23 @@ async function refreshUserDataFromFirestore() {
     if (!isReg || !email) return;
     
     try {
-        // ✅ PERBAIKAN: jangan cek deleted_accounts lama.
-        // Sumber kebenaran akun aktif hanya collection registrations agar email bisa daftar ulang.
-        ['muja_deleted_by_admin','muja_deleted_wa','muja_deleted_email','muja_deleted_email_' + email.toLowerCase()].forEach(function(k){
-            try { localStorage.removeItem(k); } catch(e) {}
-        });
+        // ✅ Cek apakah akun dihapus
+        var deletedSnap = await db.collection('deleted_accounts')
+            .where('email', '==', email.toLowerCase())
+            .limit(1)
+            .get();
+        
+        if (!deletedSnap.empty) {
+            console.warn('⚠️ Akun dihapus admin, membersihkan data...');
+            ['muja_user_registered','muja_user_name','muja_user_email','muja_user_whatsapp',
+             'muja_user_registered_date','muja_user_photo','muja_user_poin','mujaCart',
+             'muja_active_package'].forEach(function(k){
+                try { localStorage.removeItem(k); } catch(e) {}
+            });
+            updateUserAvatar();
+            return;
+        }
+        
         // Lanjutkan refresh normal...
         var snap = await db.collection('registrations').where('email', '==', email).limit(1).get();
         
@@ -1507,14 +1267,14 @@ function switchAuthTab(tab) {
         loginForm.style.display = 'none';
         registerBtn.style.color = 'var(--text-primary)';
         registerBtn.style.borderBottom = '2px solid var(--ember-500)';
-        loginBtn.style.color = '#242433';
+        loginBtn.style.color = 'var(--text-muted)';
         loginBtn.style.borderBottom = 'none';
     } else {
         registerForm.style.display = 'none';
         loginForm.style.display = 'block';
         loginBtn.style.color = 'var(--text-primary)';
         loginBtn.style.borderBottom = '2px solid var(--ember-500)';
-        registerBtn.style.color = '#242433';
+        registerBtn.style.color = 'var(--text-muted)';
         registerBtn.style.borderBottom = 'none';
     }
 }
@@ -1522,7 +1282,7 @@ function switchAuthTab(tab) {
 // Fungsi LOGIN
 async function submitLogin() {
     var emailInput = document.getElementById('loginEmail');
-    var email = emailInput.value.trim().toLowerCase();
+    var email = emailInput.value.trim();
     
     if(!email || !email.includes('@')) {
         alert('⚠️ Masukkan email yang valid!');
@@ -1534,10 +1294,18 @@ async function submitLogin() {
     btn.innerHTML = '⏳ Memeriksa...';
     
     try {
-        // ✅ PERBAIKAN: jangan blokir login karena record deleted_accounts lama.
-        ['muja_deleted_by_admin','muja_deleted_wa','muja_deleted_email','muja_deleted_email_' + email.toLowerCase()].forEach(function(k){
-            try { localStorage.removeItem(k); } catch(e) {}
-        });
+        // ✅ Cek apakah akun dihapus
+        var deletedSnap = await db.collection('deleted_accounts')
+            .where('email', '==', email.toLowerCase())
+            .limit(1)
+            .get();
+        
+        if (!deletedSnap.empty) {
+            alert('⚠️ Akun ini telah dihapus oleh admin dan tidak bisa digunakan lagi.');
+            btn.disabled = false;
+            btn.innerHTML = 'Login →';
+            return;
+        }
         
         var snap = await db.collection('registrations').where('email', '==', email).limit(1).get();
         
@@ -1605,7 +1373,7 @@ window.submitRegistration = async function(event) {
     var ei = document.getElementById('regEmail');
     var name = ni.value.trim();
     var whatsapp = wi.value.trim();
-    var email = ei.value.trim().toLowerCase();
+    var email = ei.value.trim();
     
     // Validasi
     if(!name){ alert('⚠️ Nama lengkap harus diisi!'); ni.focus(); return; }
@@ -1768,11 +1536,10 @@ function loadTheme() {
 document.addEventListener('DOMContentLoaded', async function() {
     loadTheme();
     
-    // Produk adalah konten utama. Jangan menahannya hanya karena sinkronisasi akun lambat.
-    // Katalog dan sinkronisasi akun berjalan paralel agar first paint jauh lebih cepat.
-    loadAllProducts();
-    refreshUserDataFromFirestore().catch(function(e){ console.warn('Sinkron akun:', e); });
+    // ✅ Refresh data user dari Firestore dulu
+    await refreshUserDataFromFirestore();
     
+    loadAllProducts();
     checkRegistrationDialog();
     updateCartUI();
     updateCartBadge();
@@ -1825,21 +1592,21 @@ window.loadTheme = loadTheme;
 </script>
     
 <!-- ====== LIVE CHAT AI WEB - MUJA PRIME ====== -->
-<script src="/ai-web-config.js?v=20260603-theme-persist-v4"></script>
+<script src="/ai-web-config.js?v=20260603-theme-chat-global-v3"></script>
 
 <style>
 .ai-chat-widget{position:fixed;bottom:80px;right:16px;z-index:9998}
-.ai-chat-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,var(--ember-500,#ff6b2b),var(--gold-500,#f5c842));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,107,43,0.35);transition:transform 0.2s}
+.ai-chat-btn{width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#ff6b2b,#f5c842);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(255,107,43,0.35);transition:transform 0.2s}
 .ai-chat-btn:hover{transform:scale(1.08)}
 .ai-chat-btn svg{width:24px;height:24px;fill:white}
 .ai-chat-popup{display:none;position:fixed;bottom:144px;right:16px;width:360px;max-width:90vw;height:460px;max-height:60vh;background:var(--surface-1,#16161f);border:1px solid var(--border-subtle,rgba(255,255,255,0.08));border-radius:16px;box-shadow:0 8px 32px rgba(0,0,0,0.4);z-index:9999;overflow:hidden;flex-direction:column}
 .ai-chat-popup.open{display:flex}
-.ai-chat-header{background:linear-gradient(135deg,var(--ember-500,#ff6b2b),var(--gold-500,#f5c842));padding:12px 14px;display:flex;align-items:center;justify-content:space-between;color:#0a0a0f;flex-shrink:0}
+.ai-chat-header{background:linear-gradient(135deg,#ff6b2b,#f5c842);padding:12px 14px;display:flex;align-items:center;justify-content:space-between;color:#0a0a0f;flex-shrink:0}
 .ai-chat-header h3{font-size:13px;font-weight:700;margin:0;display:flex;align-items:center;gap:6px}
 .ai-chat-close{background:rgba(0,0,0,0.2);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
 .ai-chat-body{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;background:var(--surface-2,#1e1e2b)}
 .ai-msg{max-width:88%;padding:10px 12px;border-radius:14px;font-size:12px;line-height:1.5;word-break:break-word;animation:aiIn 0.25s ease}
-.ai-msg.user{background:linear-gradient(135deg,var(--ember-500,#ff6b2b),var(--ember-600,#e55520));color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.ai-msg.user{background:linear-gradient(135deg,#ff6b2b,#e55520);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
 .ai-msg.bot{background:var(--surface-3,#252535);color:var(--text-primary,#f0f0f8);align-self:flex-start;border-bottom-left-radius:4px}
 .ai-msg.bot-buttons{background:transparent;padding:4px 0;display:flex;flex-wrap:wrap;gap:6px}
 .ai-quick-btn{display:inline-flex;align-items:center;gap:5px;padding:8px 14px;border-radius:20px;border:none;cursor:pointer;font-size:11px;font-weight:600;font-family:'Outfit',sans-serif;text-decoration:none;transition:all 0.2s;white-space:nowrap}
@@ -1852,8 +1619,8 @@ window.loadTheme = loadTheme;
 .ai-typing.show{display:block}
 .ai-input-wrap{display:flex;gap:6px;padding:8px 10px;background:var(--surface-1,#16161f);border-top:1px solid var(--border-subtle,rgba(255,255,255,0.06));flex-shrink:0}
 .ai-input{flex:1;padding:8px 12px;background:var(--surface-3,#252535);border:1px solid var(--border-medium,rgba(255,255,255,0.1));border-radius:20px;color:var(--text-primary,#f0f0f8);font-family:'Outfit',sans-serif;font-size:12px;outline:none}
-.ai-input:focus{border-color:var(--ember-500,#ff6b2b)}
-.ai-send{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,var(--ember-500,#ff6b2b),var(--ember-600,#e55520));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.15s}
+.ai-input:focus{border-color:#ff6b2b}
+.ai-send{width:34px;height:34px;border-radius:50%;background:linear-gradient(135deg,#ff6b2b,#e55520);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform 0.15s}
 .ai-send:hover{transform:scale(1.05)}
 .ai-send svg{width:14px;height:14px;fill:white}
 @keyframes aiIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
@@ -2018,14 +1785,14 @@ window.sendChat = sendChat;
 
 <script>
 if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js?v=20260603-theme-persist-v4', { updateViaCache: 'none' })
+    navigator.serviceWorker.register('/sw.js?v=20260603-theme-chat-global-v3', { updateViaCache: 'none' })
         .then(reg => { console.log('Service Worker fresh mode active!', reg); try { reg.update(); } catch(e) {} })
         .catch(err => console.log('Service Worker failed:', err));
 }
 </script>
 
 <!-- Install APK mengambang dihapus. Tombol install dipindahkan ke halaman akun-saya. -->
-    <script src="/liquid-icons.js?v=20260603-theme-persist-v4" defer></script>
-    <script src="/ai-chat-global.js?v=20260603-theme-persist-v4"></script>
+    <script src="/liquid-icons.js?v=20260603-theme-chat-global-v3" defer></script>
+    <script src="/ai-chat-global.js?v=20260603-theme-chat-global-v3"></script>
 </body>
 </html>

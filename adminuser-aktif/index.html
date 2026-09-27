@@ -1,0 +1,2700 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+    <!-- MUJA CACHE FIX AMAN: bersihkan cache tanpa auto-refresh berulang -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canva Pro Admin — Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      
+      .post-inner-area {
+            background: rgba(15, 20, 40, 0.9);
+        }
+        
+        #center-container {
+            background: rgba(15, 20, 40, 0.9);
+        }
+        
+        #outer-wrapper {
+            background: rgba(15, 20, 40, 0.9);
+        }
+        
+        .item-post h1.entry-title {
+            display: none;
+        }
+        
+        .mega-outer {
+            display: none;
+        }
+        
+        .admin-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        .stat-card{
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.08) 48%, rgba(255,255,255,.16)),
+    radial-gradient(circle at 0 0, rgba(255,216,107,.16), transparent 35%),
+    radial-gradient(circle at 100% 0, rgba(47,243,255,.14), transparent 34%) !important;
+  border-color: rgba(255,255,255,.29) !important;
+  border-radius: var(--lg-radius) !important;
+  box-shadow: var(--lg-shadow) !important;
+}
+        
+        :root {
+            --bg: #06070d;
+            --bg-surface: #0d0f1a;
+            --bg-card: #111320;
+            --bg-elevated: #161929;
+            --border: rgba(255,255,255,0.06);
+            --border-hover: rgba(255,255,255,0.12);
+            --border-accent: rgba(99,102,241,0.4);
+            --text-primary: #f0f0f8;
+            --text-secondary: #8b8fa8;
+            --text-muted: #525672;
+            --accent: #6366f1;
+            --accent-glow: rgba(99,102,241,0.15);
+            --accent-hover: #818cf8;
+            --success: #10b981;
+            --success-bg: rgba(16,185,129,0.1);
+            --warning: #f59e0b;
+            --warning-bg: rgba(245,158,11,0.1);
+            --danger: #ef4444;
+            --danger-bg: rgba(239,68,68,0.1);
+            --info: #3b82f6;
+            --info-bg: rgba(59,130,246,0.1);
+            --wa: #25D366;
+            --wa-bg: rgba(37,211,102,0.1);
+            --sidebar-w: 260px;
+            --header-h: 64px;
+            --radius: 10px;
+            --radius-lg: 14px;
+            --radius-xl: 18px;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text-primary);
+            min-height: 100vh;
+            font-size: 14px;
+            line-height: 1.5;
+            overflow-x: hidden;
+        }
+
+        h1,h2,h3,h4 { font-family: 'Syne', sans-serif; }
+
+        /* ── SCROLLBAR ── */
+        ::-webkit-scrollbar { width: 4px; height: 4px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: var(--border-hover); border-radius: 4px; }
+
+        /* ── HAMBURGER MENU ── */
+        .hamburger-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 20px;
+            cursor: pointer;
+            padding: 8px 12px;
+            margin-right: 10px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+
+        .hamburger-btn:hover {
+            background: var(--bg-elevated);
+        }
+
+        /* ── SIDEBAR OVERLAY ── */
+        .sidebar-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 99;
+            backdrop-filter: blur(2px);
+        }
+
+        .sidebar-overlay.active {
+            display: block;
+        }
+
+        /* ── LOGIN ── */
+        #loginScreen {
+            display: none;
+            position: fixed; inset: 0;
+            background: var(--bg);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .login-wrap {
+            width: 420px;
+            padding: 48px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .login-wrap::before {
+            content: '';
+            position: absolute;
+            top: -80px; left: 50%; transform: translateX(-50%);
+            width: 300px; height: 200px;
+            background: var(--accent-glow);
+            filter: blur(60px);
+            pointer-events: none;
+        }
+
+       .login-logo {
+    width: 44px; height: 44px;
+    background: transparent;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 20px;
+    margin-bottom: 28px;
+    overflow: hidden;
+}
+
+        .login-wrap h2 {
+            font-size: 22px; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 6px;
+        }
+
+        .login-wrap p {
+            color: var(--text-secondary);
+            font-size: 13px;
+            margin-bottom: 32px;
+        }
+
+        .field { margin-bottom: 16px; }
+        .field label {
+            display: block;
+            font-size: 12px; font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+
+        .field input {
+            width: 100%;
+            padding: 11px 14px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 14px;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .field input:focus { border-color: var(--accent); }
+
+        .btn-primary {
+            width: 100%;
+            padding: 12px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            font-size: 14px; font-weight: 600;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.15s;
+            margin-top: 8px;
+        }
+        .btn-primary:hover { opacity: 0.9; }
+        .btn-primary:active { transform: scale(0.98); }
+        .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        /* ── LAYOUT ── */
+        #adminPanel {
+            display: none;
+            min-height: 100vh;
+        }
+
+        /* ── SIDEBAR ── */
+        .sidebar {
+            position: fixed;
+            top: 0; left: 0; bottom: 0;
+            width: var(--sidebar-w);
+            background: var(--bg-surface);
+            border-right: 1px solid var(--border);
+            display: flex; flex-direction: column;
+            z-index: 100;
+            transition: width 0.3s ease;
+        }
+
+        .sidebar.open-mobile {
+            width: var(--sidebar-w) !important;
+            z-index: 101;
+        }
+
+        .sidebar-brand {
+            padding: 0 20px;
+            height: var(--header-h);
+            display: flex; align-items: center; gap: 12px;
+            border-bottom: 1px solid var(--border);
+        }
+
+.brand-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.brand-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+        .brand-text { font-family: 'Syne', sans-serif; font-size: 15px; font-weight: 700; }
+        .brand-sub { font-size: 10px; color: var(--text-muted); letter-spacing: 0.05em; }
+
+        .sidebar-nav {
+            padding: 12px 8px;
+            flex: 1;
+            overflow-y: auto;
+        }
+
+        .nav-section-label {
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            padding: 12px 12px 6px;
+        }
+
+        .nav-item {
+            display: flex; align-items: center; gap: 10px;
+            padding: 9px 12px;
+            border-radius: var(--radius);
+            color: var(--text-secondary);
+            cursor: pointer;
+            transition: all 0.15s;
+            font-size: 13.5px;
+            font-weight: 400;
+            position: relative;
+            border: none; background: none;
+            width: 100%; text-align: left;
+        }
+
+        .nav-item:hover { background: var(--bg-elevated); color: var(--text-primary); }
+
+        .nav-item.active {
+            background: var(--accent-glow);
+            color: var(--accent-hover);
+            border: 1px solid var(--border-accent);
+        }
+
+        .nav-item i { width: 18px; text-align: center; font-size: 15px; }
+
+        .nav-badge {
+            margin-left: auto;
+            background: var(--danger);
+            color: white;
+            font-size: 10px; font-weight: 700;
+            padding: 2px 7px;
+            border-radius: 50px;
+            animation: pulse-badge 2s infinite;
+        }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.65; }
+        }
+
+        .sidebar-footer {
+            padding: 12px 8px;
+            border-top: 1px solid var(--border);
+        }
+
+        .user-row {
+            display: flex; align-items: center; gap: 10px;
+            padding: 8px 12px;
+            border-radius: var(--radius);
+        }
+
+        .user-avatar {
+            width: 30px; height: 30px;
+            background: var(--accent-glow);
+            border: 1px solid var(--border-accent);
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 11px; color: var(--accent-hover);
+            font-weight: 600; flex-shrink: 0;
+        }
+
+        .user-info-text { flex: 1; min-width: 0; }
+        .user-email {
+            font-size: 11.5px; color: var(--text-secondary);
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+        }
+        .user-role { font-size: 10px; color: var(--text-muted); }
+
+        .btn-logout {
+            background: none; border: none; cursor: pointer;
+            color: var(--text-muted); font-size: 15px;
+            padding: 4px; border-radius: 6px;
+            transition: color 0.15s;
+        }
+        .btn-logout:hover { color: var(--danger); }
+
+        /* ── MAIN ── */
+        .main {
+            margin-left: var(--sidebar-w);
+            min-height: 100vh;
+            display: flex; flex-direction: column;
+        }
+
+        /* ── TOPBAR ── */
+        .topbar {
+              border-radius: 20px;
+            height: var(--header-h);
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center;
+            padding: 0 28px;
+            gap: 16px;
+            position: sticky; top: 0;
+            background: var(--bg); z-index: 50;
+        }
+
+        .topbar-title { font-family: 'Syne', sans-serif; font-size: 16px; font-weight: 600; }
+        .topbar-sub { font-size: 12px; color: var(--text-muted); margin-left: 2px; }
+        .topbar-spacer { flex: 1; }
+
+        .topbar-search {
+            position: relative;
+            display: flex; align-items: center;
+        }
+
+        .topbar-search i {
+            position: absolute; left: 10px;
+            color: var(--text-muted); font-size: 13px;
+        }
+
+        .topbar-search input {
+            padding: 7px 12px 7px 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            width: 220px;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+        .topbar-search input:focus { border-color: var(--accent); }
+        .topbar-search input::placeholder { color: var(--text-muted); }
+
+        /* ── PAGE CONTENT ── */
+        .page { display: none; }
+        .page.active { display: block; }
+
+        /* ── STATS GRID ── */
+        .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-bottom: 24px;
+}
+
+        .stat-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .stat-card:hover { border-color: var(--border-hover); }
+
+        .stat-card-icon {
+            width: 36px; height: 36px;
+            border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 16px;
+            margin-bottom: 16px;
+        }
+
+        .stat-card-icon.accent { background: var(--accent-glow); color: var(--accent-hover); }
+        .stat-card-icon.success { background: var(--success-bg); color: var(--success); }
+        .stat-card-icon.warning { background: var(--warning-bg); color: var(--warning); }
+        .stat-card-icon.danger { background: var(--danger-bg); color: var(--danger); }
+
+        .stat-value {
+            font-family: 'Syne', sans-serif;
+            font-size: 28px; font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .stat-label { font-size: 12px; color: var(--text-secondary); }
+        .stat-change { font-size: 11px; color: var(--text-muted); margin-top: 8px; }
+
+        .stat-glow {
+            position: absolute;
+            top: -20px; right: -20px;
+            width: 80px; height: 80px;
+            border-radius: 50%;
+            filter: blur(30px);
+            opacity: 0.15;
+        }
+
+        .stat-glow.accent { background: var(--accent); }
+        .stat-glow.success { background: var(--success); }
+        .stat-glow.warning { background: var(--warning); }
+        .stat-glow.danger { background: var(--danger); }
+
+        /* ── CARD ── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-lg);
+            margin: 20px;
+        }
+
+        .card-header {
+            padding: 18px 22px;
+            border-bottom: 1px solid var(--border);
+            display: flex; align-items: center; gap: 10px;
+        }
+
+        .card-header h3 {
+            font-size: 14px; font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .card-header-icon {
+            width: 28px; height: 28px;
+            border-radius: 7px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 12px;
+        }
+
+        .card-header-icon.accent { background: var(--accent-glow); color: var(--accent-hover); }
+        .card-header-icon.success { background: var(--success-bg); color: var(--success); }
+        .card-header-icon.warning { background: var(--warning-bg); color: var(--warning); }
+        .card-header-icon.danger { background: var(--danger-bg); color: var(--danger); }
+
+        .card-header-actions { margin-left: auto; display: flex; gap: 8px; }
+
+        .card-body { padding: 22px; }
+
+        /* ── TABLE ── */
+        .table-container {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 900px;
+        }
+
+        th {
+            padding: 10px 14px;
+            text-align: left;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            color: var(--text-muted);
+            border-bottom: 1px solid var(--border);
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 13px 14px;
+            font-size: 13px;
+            color: var(--text-secondary);
+            border-bottom: 1px solid var(--border);
+            vertical-align: middle;
+        }
+
+        tr:last-child td { border-bottom: none; }
+
+        tbody tr {
+            transition: background 0.12s;
+        }
+
+        tbody tr:hover td { background: var(--bg-elevated); color: var(--text-primary); }
+
+        .td-email { font-size: 13px; color: var(--text-primary); font-weight: 500; }
+        .td-wa { color: var(--wa); font-size: 12.5px; }
+        .td-mono { font-family: monospace; font-size: 11.5px; color: var(--text-muted); }
+
+        /* ── BADGES ── */
+        .badge {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 3px 9px;
+            border-radius: 50px;
+            font-size: 11.5px; font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .badge-dot {
+            width: 6px; height: 6px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .badge-active {
+            background: var(--success-bg);
+            color: var(--success);
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+        .badge-active .badge-dot { background: var(--success); }
+
+        .badge-expired {
+            background: var(--danger-bg);
+            color: var(--danger);
+            border: 1px solid rgba(239,68,68,0.2);
+        }
+        .badge-expired .badge-dot { background: var(--danger); }
+
+        .badge-expiring {
+            background: var(--warning-bg);
+            color: var(--warning);
+            border: 1px solid rgba(245,158,11,0.2);
+            animation: badge-blink 1.5s infinite;
+        }
+        .badge-expiring .badge-dot { background: var(--warning); }
+
+        @keyframes badge-blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.6; }
+        }
+
+        .badge-pending {
+            background: rgba(99,102,241,0.1);
+            color: var(--accent-hover);
+            border: 1px solid rgba(99,102,241,0.2);
+        }
+
+
+        .badge-contacted {
+            background: var(--info-bg);
+            color: var(--info);
+            border: 1px solid rgba(59,130,246,0.25);
+        }
+        .badge-contacted .badge-dot { background: var(--info); }
+
+        /* ── BUTTONS ── */
+        .btn {
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 7px 13px;
+            border-radius: var(--radius);
+            font-size: 12.5px; font-weight: 500;
+            font-family: 'DM Sans', sans-serif;
+            cursor: pointer;
+            border: 1px solid transparent;
+            transition: all 0.15s;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+
+        .btn:active { transform: scale(0.97); }
+
+        .btn-sm {
+            padding: 5px 10px;
+            font-size: 12px;
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: white;
+            border-color: var(--accent);
+        }
+        .btn-accent:hover { opacity: 0.85; }
+
+        .btn-ghost {
+            background: transparent;
+            color: var(--text-secondary);
+            border-color: var(--border);
+        }
+        .btn-ghost:hover {
+            background: var(--bg-elevated);
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+        }
+
+        .btn-success {
+            background: var(--success-bg);
+            color: var(--success);
+            border-color: rgba(16,185,129,0.3);
+        }
+        .btn-success:hover { background: rgba(16,185,129,0.18); }
+
+        .btn-danger {
+            background: var(--danger-bg);
+            color: var(--danger);
+            border-color: rgba(239,68,68,0.3);
+        }
+        .btn-danger:hover { background: rgba(239,68,68,0.18); }
+
+        .btn-warning {
+            background: var(--warning-bg);
+            color: var(--warning);
+            border-color: rgba(245,158,11,0.3);
+        }
+        .btn-warning:hover { background: rgba(245,158,11,0.18); }
+
+        .btn-wa {
+            background: var(--wa-bg);
+            color: var(--wa);
+            border-color: rgba(37,211,102,0.3);
+        }
+        .btn-wa:hover { background: rgba(37,211,102,0.18); }
+
+        .btn-info {
+            background: var(--info-bg);
+            color: var(--info);
+            border-color: rgba(59,130,246,0.3);
+        }
+        .btn-info:hover { background: rgba(59,130,246,0.18); }
+
+        .btn-block {
+            width: 100%;
+            justify-content: center;
+            padding: 12px;
+            font-size: 14px;
+        }
+
+        .actions-wrap {
+            display: flex; gap: 6px; flex-wrap: wrap;
+        }
+
+        /* ── FORM ── */
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+        @media (max-width: 680px) { .form-grid { grid-template-columns: 1fr; } }
+
+        .form-group { margin-bottom: 16px; }
+
+        .form-group label {
+            display: block;
+            font-size: 11.5px; font-weight: 600;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px 13px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 13.5px;
+            font-family: 'DM Sans', sans-serif;
+            transition: border-color 0.2s;
+            outline: none;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent);
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-group select {
+            -webkit-appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238b8fa8' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 12px center;
+            padding-right: 36px;
+        }
+
+        .form-hint {
+            font-size: 11.5px; color: var(--text-muted);
+            margin-top: 5px;
+            display: flex; align-items: center; gap: 5px;
+        }
+
+        /* ── SEARCH BAR ── */
+        .search-bar {
+            position: relative;
+            margin-bottom: 16px;
+        }
+
+        .search-bar i {
+            position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+            color: var(--text-muted); font-size: 13px;
+        }
+
+        .search-bar input {
+            width: 100%;
+            padding: 10px 14px 10px 36px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            color: var(--text-primary);
+            font-size: 13px;
+            font-family: 'DM Sans', sans-serif;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-bar input:focus { border-color: var(--accent); }
+        .search-bar input::placeholder { color: var(--text-muted); }
+
+        /* ── DAY PROGRESS ── */
+        .day-progress {
+            font-size: 12px; color: var(--text-secondary);
+        }
+
+        .progress-bar {
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: 5px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .progress-fill.warning { background: var(--warning); }
+        .progress-fill.danger { background: var(--danger); }
+
+        /* ── DEVICE CHIP ── */
+        .device-chip {
+            display: inline-flex; align-items: center; gap: 5px;
+            padding: 4px 9px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            font-family: monospace;
+            font-size: 11px; color: var(--text-muted);
+            cursor: pointer;
+            transition: border-color 0.15s;
+        }
+        .device-chip:hover { border-color: var(--accent); color: var(--accent-hover); }
+
+        /* ── PAGE HEADER ── */
+        .page-header {
+            margin-bottom: 24px;
+            display: flex; align-items: flex-start; gap: 12px;
+        }
+        .page-header-text h2 {
+            font-size: 20px; font-weight: 700;
+            color: var(--text-primary);
+            margin-bottom: 2px;
+        }
+        .page-header-text p { font-size: 13px; color: var(--text-secondary); }
+        .page-header-actions { margin-left: auto; display: flex; gap: 8px; align-items: center; }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            display: none;
+            position: fixed; inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 200;
+            align-items: center; justify-content: center;
+            backdrop-filter: blur(4px);
+        }
+
+        .modal-box {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-xl);
+            padding: 32px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+        }
+
+        .modal-box.wide { max-width: 640px; }
+
+        .modal-header {
+            display: flex; align-items: center; gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .modal-icon {
+            width: 38px; height: 38px;
+            border-radius: 9px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 17px;
+            flex-shrink: 0;
+        }
+
+        .modal-title { font-size: 16px; font-weight: 700; }
+        .modal-sub { font-size: 12.5px; color: var(--text-secondary); margin-top: 2px; }
+
+        .modal-footer {
+            display: flex; gap: 10px; justify-content: flex-end;
+            margin-top: 24px;
+        }
+
+        /* ── WA PREVIEW ── */
+        .wa-bubble {
+            background: var(--bg-elevated);
+            border-radius: var(--radius);
+            padding: 14px;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            max-height: 280px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            margin: 16px 0;
+            border: 1px solid var(--border);
+        }
+
+        /* ── SETTINGS ── */
+        .code-display {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 12px 14px;
+            font-family: monospace;
+            font-size: 12px; color: var(--accent-hover);
+            word-break: break-all;
+            margin-bottom: 12px;
+        }
+
+        .settings-label {
+            font-size: 11px; color: var(--text-muted);
+            font-weight: 500; letter-spacing: 0.04em;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        /* ── EMPTY STATE ── */
+        .empty-state {
+            text-align: center; padding: 48px 20px;
+        }
+
+        .empty-state i { font-size: 32px; color: var(--text-muted); margin-bottom: 12px; display: block; }
+        .empty-state h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+        .empty-state p { font-size: 12.5px; color: var(--text-secondary); }
+
+        /* ── EMAIL PREVIEW ── */
+        .email-preview-box {
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 16px;
+            margin-top: 8px;
+            font-size: 13px;
+            line-height: 1.6;
+        }
+
+        .email-subject-tag {
+            display: inline-flex; align-items: center; gap: 6px;
+            background: var(--info-bg);
+            color: var(--info);
+            padding: 4px 10px;
+            border-radius: var(--radius);
+            font-size: 12px; font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        /* ── LINK DISPLAY ── */
+        .link-display {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--bg-elevated);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 10px 14px;
+            margin-top: 16px;
+        }
+
+        .link-text {
+            flex: 1;
+            font-family: monospace;
+            font-size: 12.5px; color: var(--accent-hover);
+            word-break: break-all;
+        }
+
+        /* ── LOADING ── */
+        .loading-row td {
+            text-align: center; padding: 40px;
+            color: var(--text-muted);
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .fa-spin { animation: spin 0.8s linear infinite; }
+
+        /* ── DIVIDER ── */
+        .divider { height: 1px; background: var(--border); margin: 20px 0; }
+
+        /* ── SECTION HEADER ── */
+        .section-header {
+            display: flex; align-items: center; justify-content: space-between;
+            margin-bottom: 16px;
+        }
+        .section-title { font-size: 13px; font-weight: 600; color: var(--text-primary); }
+
+        /* ── ALERT ── */
+        .alert {
+            display: flex; align-items: flex-start; gap: 10px;
+            padding: 12px 14px;
+            border-radius: var(--radius);
+            font-size: 12.5px;
+            margin-bottom: 16px;
+        }
+
+        .alert-warning { background: var(--warning-bg); color: var(--warning); border: 1px solid rgba(245,158,11,0.25); }
+        .alert-info { background: var(--info-bg); color: #7db8f7; border: 1px solid rgba(59,130,246,0.25); }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            .sidebar {
+                width: 0;
+                overflow: hidden;
+                z-index: 101;
+                transition: width 0.3s ease;
+            }
+            
+            .sidebar.open-mobile {
+                width: var(--sidebar-w) !important;
+            }
+            
+            .hamburger-btn {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            .main {
+                margin-left: 0;
+            }
+            
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            table {
+                min-width: 700px;
+            }
+            
+            .topbar {
+                padding: 0 16px;
+            }
+            
+            .topbar-search input {
+                width: 140px;
+            }
+            
+            .page-header {
+                flex-direction: column;
+            }
+            
+            .page-header-actions {
+                margin-left: 0;
+                margin-top: 12px;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 480px) {
+          
+            .login-wrap {
+                width: 90%;
+                padding: 32px 24px;
+            }
+            
+            .modal-box {
+                padding: 24px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260603-theme-chat-global-v3">
+<link rel="stylesheet" href="/theme.css?v=20260603-theme-chat-global-v3">
+
+<script src="/theme.js?v=20260603-theme-chat-global-v3"></script>
+
+    <script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="loginScreen">
+    <div class="login-wrap">
+        <div class="login-logo">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhekcIVmNU9dKjOXDwDfb7ehV3gOBwcy3Jcz_8SLXKihRzyMKXsVk242pVsFCRezu_teHB6hLdfdWuDOKFTAeNGogzLik71EvdDcbSOYYNNWgIxRodEJU81_40nrVrarmRCPl_ppyjFE8t7PMhATtjm2Alzwza20Vh_RWs0_4vtvXymSIpaCVc3nUrTS6M/s2000/Desain%20tanpa%20judul%20%281%29.png" alt="Logo" style="width:100%;height:100%;object-fit:cover;">
+</div>
+        <h2>Admin Dashboard</h2>
+        <p>Masuk untuk mengelola akses Canva Pro VIP</p>
+        <div class="field">
+            <label>Email</label>
+            <input type="email" id="loginEmail" placeholder="admin@example.com" autocomplete="email">
+        </div>
+        <div class="field">
+            <label>Password</label>
+            <input type="password" id="loginPassword" placeholder="••••••••" autocomplete="current-password">
+        </div>
+        <button class="btn-primary" onclick="login()">
+            Masuk ke Dashboard
+        </button>
+    </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div id="adminPanel">
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+           <div class="brand-icon">
+    <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhekcIVmNU9dKjOXDwDfb7ehV3gOBwcy3Jcz_8SLXKihRzyMKXsVk242pVsFCRezu_teHB6hLdfdWuDOKFTAeNGogzLik71EvdDcbSOYYNNWgIxRodEJU81_40nrVrarmRCPl_ppyjFE8t7PMhATtjm2Alzwza20Vh_RWs0_4vtvXymSIpaCVc3nUrTS6M/s2000/Desain%20tanpa%20judul%20%281%29.png" alt="Logo">
+</div>
+            <div>
+                <div class="brand-text">Canva VIP</div>
+                <div class="brand-sub">ADMIN PANEL</div>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="nav-section-label">Overview</div>
+            <button class="nav-item active" onclick="switchPage('dashboard')">
+                <i class="fas fa-chart-line"></i> Dashboard
+            </button>
+            <button class="nav-item" onclick="switchPage('emails')">
+                <i class="fas fa-envelope"></i> Semua Email
+            </button>
+            <button class="nav-item" onclick="switchPage('expiring')">
+                <i class="fas fa-clock"></i> Akan Kadaluarsa
+                <span class="nav-badge" id="sidebarBadge" style="display:none;">0</span>
+            </button>
+            <button class="nav-item" onclick="switchPage('contacted')">
+                <i class="fas fa-user-check"></i> Sudah Dihubungi
+            </button>
+
+            <div class="nav-section-label" style="margin-top: 8px;">Manajemen</div>
+            <button class="nav-item" onclick="switchPage('add')">
+                <i class="fas fa-user-plus"></i> Tambah Email
+            </button>
+            <button class="nav-item" onclick="switchPage('generate')">
+                <i class="fas fa-key"></i> Generate Link
+            </button>
+            <button class="nav-item" onclick="switchPage('emailsend')">
+                <i class="fas fa-paper-plane"></i> Kirim Email
+            </button>
+
+            <div class="nav-section-label" style="margin-top: 8px;">Sistem</div>
+            <button class="nav-item" onclick="switchPage('settings')">
+                <i class="fas fa-cog"></i> Pengaturan
+            </button>
+        </nav>
+        <div class="sidebar-footer">
+            <div class="user-row">
+                <div class="user-avatar" id="sidebarAvatar">A</div>
+                <div class="user-info-text">
+                    <div class="user-email" id="sidebarEmail">admin@...</div>
+                    <div class="user-role">Super Admin</div>
+                </div>
+                <button class="btn-logout" onclick="logout()" title="Logout">
+                    <i class="fas fa-sign-out-alt"></i>
+                </button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- MAIN -->
+    <div class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+            <!-- Hamburger Button untuk Mobile -->
+            <button class="hamburger-btn" id="hamburgerBtn" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <div>
+                <div class="topbar-title" id="topbarTitle">Dashboard</div>
+            </div>
+            <div class="topbar-spacer"></div>
+            <div class="topbar-search" id="topbarSearchWrap" style="display:none;">
+                <i class="fas fa-search"></i>
+                <input type="text" id="globalSearch" placeholder="Cari email atau WA..." oninput="handleGlobalSearch()">
+            </div>
+        </header>
+
+        <!-- PAGE: DASHBOARD -->
+        <div class="page active" id="page-dashboard">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Selamat datang kembali</h2>
+                    <p>Ringkasan status email VIP Canva Pro</p>
+                </div>
+                <div class="page-header-actions">
+                    <button class="btn btn-ghost btn-sm" onclick="loadEmails()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button class="btn btn-accent btn-sm" onclick="switchPage('add')">
+                        <i class="fas fa-plus"></i> Tambah Email
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-glow accent"></div>
+                    <div class="stat-card-icon accent"><i class="fas fa-envelope"></i></div>
+                    <div class="stat-value" id="dashTotal">—</div>
+                    <div class="stat-label">Total Email VIP</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-glow success"></div>
+                    <div class="stat-card-icon success"><i class="fas fa-check-circle"></i></div>
+                    <div class="stat-value" id="dashActive">—</div>
+                    <div class="stat-label">Email Aktif</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-glow warning"></div>
+                    <div class="stat-card-icon warning"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="stat-value" id="dashExpiring">—</div>
+                    <div class="stat-label">Butuh Perhatian</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-glow danger"></div>
+                    <div class="stat-card-icon danger"><i class="fas fa-times-circle"></i></div>
+                    <div class="stat-value" id="dashExpired">—</div>
+                    <div class="stat-label">Sudah Kadaluarsa</div>
+                </div>
+            </div>
+
+            <!-- Recent Activity Table -->
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-icon accent"><i class="fas fa-history"></i></div>
+                    <h3>Email Terbaru</h3>
+                    <div class="card-header-actions">
+                        <button class="btn btn-ghost btn-sm" onclick="switchPage('emails')">Lihat Semua</button>
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Email</th>
+                                <th>WhatsApp</th>
+                                <th>Kadaluarsa</th>
+                                <th>Status</th>
+                                <th>Sisa Hari</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dashRecentBody">
+                            <tr class="loading-row"><td colspan="5"><i class="fas fa-spinner fa-spin"></i> Memuat...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: EMAILS -->
+        <div class="page" id="page-emails">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Semua Email VIP</h2>
+                    <p>Kelola seluruh akses email Canva Pro</p>
+                </div>
+                <div class="page-header-actions">
+                    <button class="btn btn-ghost btn-sm" onclick="loadEmails()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                    <button class="btn btn-accent btn-sm" onclick="switchPage('add')">
+                        <i class="fas fa-plus"></i> Tambah
+                    </button>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-icon accent"><i class="fas fa-list"></i></div>
+                    <h3>Daftar Email (<span id="emailCount">0</span>)</h3>
+                </div>
+                <div style="padding: 16px 22px 0;">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchAll" placeholder="Cari email, nomor WA, atau device ID..." oninput="filterAllEmails()">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Email</th>
+                                <th>WhatsApp</th>
+                                <th>Kadaluarsa</th>
+                                <th>Status</th>
+                                <th>Device</th>
+                                <th>Progress</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="allEmailBody">
+                            <tr class="loading-row"><td colspan="8"><i class="fas fa-spinner fa-spin"></i> Memuat data...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: EXPIRING -->
+        <div class="page" id="page-expiring">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Akan Kadaluarsa</h2>
+                    <p>Email yang butuh perhatian segera</p>
+                </div>
+                <div class="page-header-actions">
+                    <button class="btn btn-wa btn-sm" onclick="contactAllExpiring()">
+                        <i class="fab fa-whatsapp"></i> Hubungi Semua
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="stat-card">
+                    <div class="stat-card-icon warning"><i class="fas fa-clock"></i></div>
+                    <div class="stat-value" id="exp2Days">0</div>
+                    <div class="stat-label">Sisa 2 Hari</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon danger"><i class="fas fa-exclamation-circle"></i></div>
+                    <div class="stat-value" id="exp1Day">0</div>
+                    <div class="stat-label">Sisa 1 Hari</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-glow danger"></div>
+                    <div class="stat-card-icon danger"><i class="fas fa-times-circle"></i></div>
+                    <div class="stat-value" id="expTotal">0</div>
+                    <div class="stat-label">Sudah Kadaluarsa</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-icon warning"><i class="fas fa-exclamation-triangle"></i></div>
+                    <h3>Daftar Mendesak</h3>
+                </div>
+                <div style="padding: 16px 22px 0;">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchExp" placeholder="Cari email atau WA..." oninput="filterExpiringEmails()">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Email</th>
+                                <th>WhatsApp</th>
+                                <th>Kadaluarsa</th>
+                                <th>Status</th>
+                                <th>Sisa/Telat</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="expiringBody">
+                            <tr class="loading-row"><td colspan="7"><i class="fas fa-spinner fa-spin"></i> Memuat...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: CONTACTED USERS -->
+        <div class="page" id="page-contacted">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Sudah Dihubungi</h2>
+                    <p>User dari daftar kadaluarsa yang sudah Anda hubungi</p>
+                </div>
+                <div class="page-header-actions">
+                    <button class="btn btn-ghost btn-sm" onclick="loadEmails()">
+                        <i class="fas fa-sync-alt"></i> Refresh
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+                <div class="stat-card">
+                    <div class="stat-card-icon" style="background:var(--info-bg);color:var(--info);"><i class="fas fa-user-check"></i></div>
+                    <div class="stat-value" id="contactedTotal">0</div>
+                    <div class="stat-label">Total Sudah Dihubungi</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon success"><i class="fas fa-calendar-day"></i></div>
+                    <div class="stat-value" id="contactedToday">0</div>
+                    <div class="stat-label">Dipindahkan Hari Ini</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-card-icon danger"><i class="fas fa-times-circle"></i></div>
+                    <div class="stat-value" id="contactedExpired">0</div>
+                    <div class="stat-label">Sudah Kadaluarsa</div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-header-icon" style="background:var(--info-bg);color:var(--info);"><i class="fas fa-check-double"></i></div>
+                    <h3>Daftar User Sudah Dihubungi (<span id="contactedCount">0</span>)</h3>
+                </div>
+                <div style="padding: 16px 22px 0;">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="searchContacted" placeholder="Cari email atau WA..." oninput="filterContactedEmails()">
+                    </div>
+                </div>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Email</th>
+                                <th>WhatsApp</th>
+                                <th>Kadaluarsa</th>
+                                <th>Status</th>
+                                <th>Dipindahkan</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactedBody">
+                            <tr class="loading-row"><td colspan="7"><i class="fas fa-spinner fa-spin"></i> Memuat...</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: ADD EMAIL -->
+        <div class="page" id="page-add">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Tambah Email VIP</h2>
+                    <p>Daftarkan email baru ke sistem Canva Pro</p>
+                </div>
+            </div>
+
+            <div class="card" style="max-width: 600px;">
+                <div class="card-header">
+                    <div class="card-header-icon accent"><i class="fas fa-user-plus"></i></div>
+                    <h3>Data Email Baru</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Alamat Email</label>
+                        <input type="email" id="newEmail" placeholder="user@domain.com">
+                    </div>
+                    <div class="form-group">
+                        <label>Nomor WhatsApp</label>
+                        <input type="tel" id="userName" placeholder="628123456789">
+                        <div class="form-hint"><i class="fas fa-info-circle"></i> Format internasional tanpa tanda + (contoh: 628123456789)</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Masa Aktif</label>
+                        <select id="daysActive">
+                            <option value="7">7 Hari</option>
+                            <option value="14">14 Hari</option>
+                            <option value="30" selected>30 Hari</option>
+                            <option value="60">60 Hari</option>
+                            <option value="90">90 Hari</option>
+                            <option value="120">120 Hari (4 Bulan)</option>
+                            <option value="365">1 Tahun</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-accent btn-block" onclick="addEmail()" id="addButton">
+                        <i class="fas fa-user-plus"></i> Tambahkan Email VIP
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: GENERATE LINK -->
+        <div class="page" id="page-generate">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Generate One-Time Link</h2>
+                    <p>Buat link akses sekali pakai untuk pengguna baru</p>
+                </div>
+            </div>
+
+            <div class="card" style="max-width: 600px;">
+                <div class="card-header">
+                    <div class="card-header-icon" style="background:rgba(0,191,255,0.1);color:#00BFFF;"><i class="fas fa-key"></i></div>
+                    <h3>Konfigurasi Link</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Durasi Akses</label>
+                        <select id="tokenDuration">
+                            <option value="1">1 Bulan (30 Hari)</option>
+                            <option value="2">2 Bulan (60 Hari)</option>
+                            <option value="3">3 Bulan (90 Hari)</option>
+                            <option value="4">4 Bulan (120 Hari)</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-block" onclick="generateToken()" id="generateTokenBtn"
+                        style="background:rgba(0,191,255,0.1);color:#00BFFF;border-color:rgba(0,191,255,0.3);padding:12px;font-size:14px;">
+                        <i class="fas fa-key"></i> Generate Link
+                    </button>
+
+                    <div id="generatedLinkContainer" style="display:none; margin-top:20px;">
+                        <div class="settings-label" style="margin-top:16px;">Link siap pakai</div>
+                        <div class="link-display">
+                            <span class="link-text" id="generatedLink"></span>
+                            <button class="btn btn-ghost btn-sm" onclick="copyGeneratedLink()">
+                                <i class="fas fa-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: EMAIL SENDER -->
+        <div class="page" id="page-emailsend">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Kirim Email</h2>
+                    <p>Broadcast pesan ke pengguna terdaftar</p>
+                </div>
+            </div>
+
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-icon danger"><i class="fas fa-paper-plane"></i></div>
+                        <h3>Komposisi Email</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="form-group">
+                            <label>Penerima</label>
+                            <select id="targetEmail" onchange="onTargetChange()">
+                                <option value="single">Email Tertentu</option>
+                                <option value="all">Semua Email</option>
+                                <option value="active">Email Aktif</option>
+                                <option value="expiring">Akan Kadaluarsa</option>
+                                <option value="expired">Sudah Kadaluarsa</option>
+                            </select>
+                        </div>
+                        <div class="form-group" id="singleEmailGroup">
+                            <label>Pilih Email</label>
+                            <select id="singleEmailSelect" onchange="updateEmailPreview()">
+                                <option value="">— Pilih Email —</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Subjek</label>
+                            <input type="text" id="emailSubject" placeholder="Subjek email..." oninput="updateEmailPreview()">
+                        </div>
+                        <div class="form-group">
+                            <label>Pesan</label>
+                            <textarea id="emailMessage" placeholder="Tulis pesan...&#10;&#10;Gunakan variabel:&#10;{email}, {name}, {expiry_date}&#10;{days_left}, {days_passed}" oninput="updateEmailPreview()"></textarea>
+                            <div class="form-hint"><i class="fas fa-code"></i> Variabel: {email} {name} {expiry_date} {days_left} {days_passed}</div>
+                        </div>
+                        <button class="btn btn-accent btn-block" onclick="sendEmail()" id="sendEmailBtn">
+                            <i class="fas fa-paper-plane"></i> Kirim Email
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                        <div class="card-header-icon info"><i class="fas fa-eye"></i></div>
+                        <h3>Preview</h3>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-label">Subjek</div>
+                        <div class="email-preview-box" style="padding:10px 14px; margin-bottom:12px;">
+                            <div class="email-subject-tag" id="previewSubject">—</div>
+                        </div>
+                        <div class="settings-label">Isi Pesan</div>
+                        <div class="email-preview-box" id="previewBody" style="min-height:200px; color:var(--text-secondary); font-size:12.5px; white-space:pre-wrap;">Preview muncul di sini...</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- PAGE: SETTINGS -->
+        <div class="page" id="page-settings">
+            <div class="page-header">
+                <div class="page-header-text">
+                    <h2>Pengaturan Sistem</h2>
+                    <p>Konfigurasi link dan akun admin</p>
+                </div>
+            </div>
+
+            <div class="card" style="max-width: 640px;">
+                <div class="card-header">
+                    <div class="card-header-icon warning"><i class="fas fa-link"></i></div>
+                    <h3>Konfigurasi Link</h3>
+                </div>
+                <div class="card-body">
+                    <div class="form-group">
+                        <label>Link Join Canva Pro</label>
+                        <textarea id="joinLinkInput" rows="3" placeholder="https://www.canva.com/brand/join?..."></textarea>
+                        <div class="form-hint"><i class="fas fa-info-circle"></i> Digunakan saat user klik "Join Sekarang"</div>
+                    </div>
+                    <div class="form-group">
+                        <label>Link Redirect Kembali</label>
+                        <input type="text" id="redirectLinkInput" placeholder="https://mujaprime.biz.id...">
+                    </div>
+                    <div class="form-group">
+                        <label>Email Admin (Pengirim)</label>
+                        <input type="email" id="adminEmailSettings" placeholder="admin@example.com">
+                    </div>
+
+                    <div class="divider"></div>
+
+                    <div class="settings-label">Konfigurasi Aktif</div>
+                    <div style="margin-bottom:8px;">
+                        <div class="settings-label" style="margin-bottom:3px; font-size:10px;">Join Link</div>
+                        <div class="code-display" id="currentJoinLink">Memuat...</div>
+                    </div>
+                    <div style="margin-bottom:8px;">
+                        <div class="settings-label" style="margin-bottom:3px; font-size:10px;">Redirect Link</div>
+                        <div class="code-display" id="currentRedirectLink">Memuat...</div>
+                    </div>
+                    <div style="margin-bottom:16px;">
+                        <div class="settings-label" style="margin-bottom:3px; font-size:10px;">Email Admin</div>
+                        <div class="code-display" id="currentAdminEmail">Memuat...</div>
+                    </div>
+
+                    <button class="btn btn-warning btn-block" onclick="saveSettings()" id="saveSettingsBtn">
+                        <i class="fas fa-save"></i> Simpan Pengaturan
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </div><!-- /main -->
+</div><!-- /adminPanel -->
+
+<!-- ═══════════════════════════════════════════ MODALS ═══════════════════════════════════════════ -->
+
+<!-- CONFIRM MODAL -->
+<div class="modal-overlay" id="confirmModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-icon" style="background:var(--danger-bg);color:var(--danger);">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div>
+                <div class="modal-title">Konfirmasi Tindakan</div>
+            </div>
+        </div>
+        <p style="font-size:13.5px; color:var(--text-secondary); line-height:1.6;" id="confirmMessage">
+            Apakah Anda yakin?
+        </p>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('confirmModal')">Batal</button>
+            <button class="btn btn-danger" id="confirmActionBtn">
+                <i class="fas fa-check"></i> Lanjutkan
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- EXTEND MODAL -->
+<div class="modal-overlay" id="extendModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-icon" style="background:var(--success-bg);color:var(--success);">
+                <i class="fas fa-calendar-plus"></i>
+            </div>
+            <div>
+                <div class="modal-title">Perpanjang Masa Aktif</div>
+                <div class="modal-sub" id="extendEmailText">—</div>
+            </div>
+        </div>
+        <div style="background:var(--bg-elevated);border:1px solid var(--border);border-radius:var(--radius);padding:12px;margin-bottom:16px;font-size:12.5px;color:var(--text-secondary);" id="extendStatusText"></div>
+        <div class="form-group">
+            <label>Tambah Masa Aktif</label>
+            <select id="extendDays">
+                <option value="7">7 Hari</option>
+                <option value="14">14 Hari</option>
+                <option value="30" selected>30 Hari</option>
+                <option value="60">60 Hari</option>
+                <option value="90">90 Hari</option>
+                <option value="120">120 Hari</option>
+                <option value="365">1 Tahun</option>
+            </select>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('extendModal')">Batal</button>
+            <button class="btn btn-success" onclick="extendConfirmed()">
+                <i class="fas fa-check"></i> Perpanjang
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- END NOW MODAL -->
+<div class="modal-overlay" id="endNowModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-icon" style="background:var(--warning-bg);color:var(--warning);">
+                <i class="fas fa-calendar-times"></i>
+            </div>
+            <div>
+                <div class="modal-title">Akhiri Masa Aktif</div>
+                <div class="modal-sub" id="endNowEmailText">—</div>
+            </div>
+        </div>
+        <div class="alert alert-warning" style="margin-bottom:16px;">
+            <i class="fas fa-exclamation-triangle"></i>
+            <span>Email akan langsung kadaluarsa dan tidak bisa login!</span>
+        </div>
+        <div class="form-group">
+            <label>Alasan (Opsional)</label>
+            <input type="text" id="endNowReason" placeholder="Contoh: Pelanggaran, permintaan user...">
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('endNowModal')">Batal</button>
+            <button class="btn btn-warning" onclick="endNowConfirmed()">
+                <i class="fas fa-check"></i> Akhiri Sekarang
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="modal-overlay" id="editModal">
+    <div class="modal-box wide">
+        <div class="modal-header">
+            <div class="modal-icon" style="background:var(--info-bg);color:var(--info);">
+                <i class="fas fa-edit"></i>
+            </div>
+            <div>
+                <div class="modal-title">Edit Data Email</div>
+                <div class="modal-sub">Perbarui informasi akses VIP</div>
+            </div>
+        </div>
+        <div class="form-grid">
+            <div class="form-group">
+                <label>Email</label>
+                <input type="email" id="editEmailInput" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <label>WhatsApp</label>
+                <input type="tel" id="editWaInput" placeholder="628...">
+            </div>
+            <div class="form-group">
+                <label>Tanggal Kadaluarsa</label>
+                <input type="date" id="editExpiryInput">
+            </div>
+            <div class="form-group">
+                <label>Total Masa Aktif (hari)</label>
+                <input type="number" id="editDaysActiveInput" placeholder="30" min="1">
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('editModal')">Batal</button>
+            <button class="btn btn-accent" onclick="saveEdit()">
+                <i class="fas fa-save"></i> Simpan
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- WHATSAPP MODAL -->
+<div class="modal-overlay" id="chatModal">
+    <div class="modal-box">
+        <div class="modal-header">
+            <div class="modal-icon" style="background:var(--wa-bg);color:var(--wa);">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <div>
+                <div class="modal-title">Kirim Pesan WhatsApp</div>
+                <div class="modal-sub">Preview pesan sebelum dikirim</div>
+            </div>
+        </div>
+        <div class="wa-bubble" id="waBubble"></div>
+        <div class="alert alert-info">
+            <i class="fas fa-info-circle"></i>
+            <span>Pesan akan terbuka di WhatsApp dan dapat diedit sebelum dikirim.</span>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-ghost" onclick="closeModal('chatModal')">Batal</button>
+            <button class="btn btn-wa" onclick="sendWhatsAppMessage()">
+                <i class="fab fa-whatsapp"></i> Buka WhatsApp
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- EMAIL NOTIFICATION MODAL -->
+<div class="modal-overlay" id="emailNotifModal">
+    <div class="modal-box" style="text-align:center;">
+        <div style="font-size:40px;margin-bottom:16px;">✅</div>
+        <div class="modal-title" style="margin-bottom:8px;">Pengiriman Selesai</div>
+        <p style="font-size:13px;color:var(--text-secondary);margin-bottom:24px;" id="emailNotifMessage">—</p>
+        <button class="btn btn-accent" onclick="closeModal('emailNotifModal')">Tutup</button>
+    </div>
+</div>
+
+<!-- DEVICE DETAILS MODAL (dynamic) -->
+<div class="modal-overlay" id="deviceModal">
+    <div class="modal-box" id="deviceModalContent"></div>
+</div>
+
+<script>
+    // ==================== FIREBASE CONFIG ====================
+   // ✅ GUNAKAN PROJECT YANG SAMA DENGAN payment-config.js
+    const firebaseConfig = { projectId: 'muja-prime-firestore' };
+firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+    const auth = firebase.auth();
+
+    let emails = [];
+    let emailToAction = null;
+    let actionType = null;
+    let currentChatData = null;
+    let currentEditData = null;
+    let currentUser = null;
+    let currentPage = 'dashboard';
+
+    // ==================== SIDEBAR TOGGLE ====================
+    function toggleSidebar() {
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebarOverlay');
+        
+        sidebar.classList.toggle('open-mobile');
+        overlay.classList.toggle('active');
+        
+        // Prevent body scrolling when sidebar is open on mobile
+        if (sidebar.classList.contains('open-mobile')) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    // ==================== AUTH ====================
+    auth.onAuthStateChanged(async (user) => {
+        if (user) {
+            currentUser = user;
+            document.getElementById('loginScreen').style.display = 'none';
+            document.getElementById('adminPanel').style.display = 'block';
+            document.getElementById('sidebarEmail').textContent = user.email;
+            document.getElementById('sidebarAvatar').textContent = user.email[0].toUpperCase();
+            document.getElementById('adminEmailSettings').value = user.email;
+            await loadSettings();
+            await loadEmails();
+            populateSingleEmailSelector();
+        } else {
+            document.getElementById('loginScreen').style.display = 'flex';
+            document.getElementById('adminPanel').style.display = 'none';
+        }
+    });
+
+    async function login() {
+        const email = document.getElementById('loginEmail').value.trim();
+        const pw = document.getElementById('loginPassword').value;
+        if (!email || !pw) { alert('Isi email dan password'); return; }
+        try {
+            await auth.signInWithEmailAndPassword(email, pw);
+        } catch (e) {
+            alert('Login gagal: ' + (e.message || 'Periksa email & password'));
+        }
+    }
+
+    async function logout() {
+        if (confirm('Yakin ingin keluar?')) {
+            // Tutup sidebar mobile jika terbuka
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.remove('open-mobile');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+            
+            await auth.signOut();
+        }
+    }
+
+    // ==================== PAGE SWITCHING ====================
+    function switchPage(name) {
+        currentPage = name;
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.querySelectorAll('.nav-item').forEach(b => b.classList.remove('active'));
+        document.getElementById('page-' + name).classList.add('active');
+
+        const titles = {
+            dashboard: 'Dashboard', emails: 'Semua Email', expiring: 'Akan Kadaluarsa',
+            contacted: 'Sudah Dihubungi', add: 'Tambah Email', generate: 'Generate Link',
+            emailsend: 'Kirim Email', settings: 'Pengaturan'
+        };
+        document.getElementById('topbarTitle').textContent = titles[name] || name;
+
+        const searchPages = ['emails', 'expiring', 'contacted'];
+        document.getElementById('topbarSearchWrap').style.display = searchPages.includes(name) ? 'flex' : 'none';
+
+        document.querySelectorAll('.nav-item').forEach(btn => {
+            const btnText = btn.textContent.toLowerCase().trim();
+            if ((name === 'dashboard' && btnText.includes('dashboard')) ||
+                (name === 'emails' && btnText.includes('semua email')) ||
+                (name === 'expiring' && btnText.includes('akan kadaluarsa')) ||
+                (name === 'contacted' && btnText.includes('sudah dihubungi')) ||
+                (name === 'add' && btnText.includes('tambah')) ||
+                (name === 'generate' && btnText.includes('generate')) ||
+                (name === 'emailsend' && btnText.includes('kirim')) ||
+                (name === 'settings' && btnText.includes('pengaturan'))) {
+                btn.classList.add('active');
+            }
+        });
+
+        if (name === 'expiring') renderExpiringPage();
+        if (name === 'contacted') renderContactedPage();
+        if (name === 'emailsend') updateEmailPreview();
+        
+        // Tutup sidebar mobile setelah klik menu
+        if (window.innerWidth <= 768) {
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('sidebarOverlay');
+            sidebar.classList.remove('open-mobile');
+            overlay.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+
+    function handleGlobalSearch() {
+        const q = document.getElementById('globalSearch').value;
+        if (currentPage === 'emails') {
+            document.getElementById('searchAll').value = q;
+            filterAllEmails();
+        } else if (currentPage === 'expiring') {
+            document.getElementById('searchExp').value = q;
+            filterExpiringEmails();
+        } else if (currentPage === 'contacted') {
+            document.getElementById('searchContacted').value = q;
+            filterContactedEmails();
+        }
+    }
+
+    // ==================== MODAL HELPERS ====================
+    function openModal(id) { document.getElementById(id).style.display = 'flex'; }
+    function closeModal(id) { document.getElementById(id).style.display = 'none'; }
+
+    window.onclick = function(e) {
+        document.querySelectorAll('.modal-overlay').forEach(m => {
+            if (e.target === m) m.style.display = 'none';
+        });
+    };
+
+    // ==================== DATE UTILS ====================
+    function calcStatus(exp) {
+        if (!exp) return 'active';
+        return new Date() <= new Date(exp) ? 'active' : 'expired';
+    }
+    function calcDaysLeft(exp) {
+        if (!exp) return Infinity;
+        const d = Math.ceil((new Date(exp) - new Date()) / 86400000);
+        return d > 0 ? d : 0;
+    }
+    function calcDaysPassed(start) {
+        if (!start) return 0;
+        return Math.max(0, Math.floor((new Date() - new Date(start)) / 86400000));
+    }
+    function calcTotalDays(start, exp) {
+        if (!start || !exp) return 0;
+        return Math.max(0, Math.ceil((new Date(exp) - new Date(start)) / 86400000));
+    }
+    function calcOverdue(exp) {
+        if (!exp || calcStatus(exp) === 'active') return 0;
+        return Math.max(0, Math.floor((new Date() - new Date(exp)) / 86400000));
+    }
+    function formatDate(d) {
+        if (!d) return '—';
+        return new Date(d).toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' });
+    }
+
+    function formatDateTime(d) {
+        if (!d) return '—';
+        return new Date(d).toLocaleString('id-ID', {
+            day: 'numeric', month: 'short', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+        });
+    }
+
+    function isSameLocalDay(dateValue, compareDate = new Date()) {
+        if (!dateValue) return false;
+        const d = new Date(dateValue);
+        return d.getFullYear() === compareDate.getFullYear() &&
+               d.getMonth() === compareDate.getMonth() &&
+               d.getDate() === compareDate.getDate();
+    }
+
+    // ==================== LOAD DATA ====================
+    async function loadEmails() {
+        try {
+            const snap = await db.collection('registered_emails').orderBy('created_at', 'desc').get();
+            emails = snap.docs.map(doc => ({
+                id: doc.id, ...doc.data(),
+                status: calcStatus(doc.data().expiry_date)
+            }));
+            renderDashboard();
+            renderAllTable(emails);
+            renderContactedPage();
+            updateBadge();
+            populateSingleEmailSelector();
+        } catch (e) {
+            console.error(e);
+        }
+    }
+
+    // ==================== DASHBOARD ====================
+    function renderDashboard() {
+        const active = emails.filter(e => e.status === 'active').length;
+        const expiring = emails.filter(e => {
+            const d = calcDaysLeft(e.expiry_date);
+            return !e.contacted && (d <= 2 || e.status === 'expired');
+        }).length;
+        const expired = emails.filter(e => e.status === 'expired').length;
+
+        document.getElementById('dashTotal').textContent = emails.length;
+        document.getElementById('dashActive').textContent = active;
+        document.getElementById('dashExpiring').textContent = expiring;
+        document.getElementById('dashExpired').textContent = expired;
+
+        // Recent 10
+        const recent = emails.slice(0, 10);
+        const tbody = document.getElementById('dashRecentBody');
+        if (recent.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:30px;color:var(--text-muted);">Belum ada data</td></tr>';
+            return;
+        }
+        tbody.innerHTML = recent.map(e => {
+            const dl = calcDaysLeft(e.expiry_date);
+            const badge = getBadge(e);
+            return `<tr>
+                <td class="td-email">${e.email}</td>
+                <td class="td-wa">${e.whatsapp ? '<i class="fab fa-whatsapp"></i> ' + e.whatsapp : '<span style="color:var(--text-muted)">—</span>'}</td>
+                <td>${formatDate(e.expiry_date)}</td>
+                <td>${badge}</td>
+                <td style="color:${dl <= 2 ? 'var(--danger)' : 'var(--text-secondary)'}; font-weight:${dl <= 2 ? '600' : '400'}">
+                    ${e.status === 'expired' ? '<span style="color:var(--danger)">Kadaluarsa</span>' : (dl === Infinity ? '∞' : dl + ' hari')}
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function getBadge(e) {
+        const dl = calcDaysLeft(e.expiry_date);
+        if (e.status === 'expired') return `<span class="badge badge-expired"><span class="badge-dot"></span>Kadaluarsa</span>`;
+        if (dl <= 1) return `<span class="badge badge-expiring"><span class="badge-dot"></span>Kritis</span>`;
+        if (dl <= 2) return `<span class="badge badge-expiring"><span class="badge-dot"></span>Segera</span>`;
+        return `<span class="badge badge-active"><span class="badge-dot"></span>Aktif</span>`;
+    }
+
+    function updateBadge() {
+        const count = emails.filter(e => {
+            const d = calcDaysLeft(e.expiry_date);
+            return !e.contacted && (d <= 2 || e.status === 'expired');
+        }).length;
+        const badge = document.getElementById('sidebarBadge');
+        if (count > 0) { badge.textContent = count; badge.style.display = 'inline-flex'; }
+        else badge.style.display = 'none';
+    }
+
+    // ==================== ALL EMAIL TABLE ====================
+    function renderAllTable(list) {
+        document.getElementById('emailCount').textContent = list.length;
+        const tbody = document.getElementById('allEmailBody');
+        if (list.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="8"><div class="empty-state"><i class="fas fa-inbox"></i><h4>Tidak ada email</h4><p>Belum ada email yang cocok dengan pencarian</p></div></td></tr>`;
+            return;
+        }
+        tbody.innerHTML = list.map((e, i) => {
+            const dl = calcDaysLeft(e.expiry_date);
+            const dp = calcDaysPassed(e.created_at);
+            const total = calcTotalDays(e.created_at, e.expiry_date);
+            const pct = total > 0 ? Math.min(100, Math.round((dp / total) * 100)) : 0;
+            const badge = getBadge(e);
+            const device = e.device_id
+                ? `<span class="device-chip" onclick="showDeviceModal('${e.id}','${e.email}','${e.device_id || ''}','${(e.device_info||'').replace(/'/g,"\\'")}')"><i class="fas fa-mobile-alt"></i>${e.device_id.substring(0,8)}…</span>`
+                : `<span class="badge badge-pending"><i class="fas fa-user-clock"></i> Pending</span>`;
+            const waNum = (e.whatsapp || e.name || '').replace(/\D/g,'');
+            const progressColor = dl <= 1 ? 'danger' : dl <= 5 ? 'warning' : '';
+
+            return `<tr>
+                <td style="color:var(--text-muted)">${i+1}</td>
+                <td class="td-email">${e.email}</td>
+                <td>${e.whatsapp ? `<span class="td-wa"><i class="fab fa-whatsapp"></i> ${e.whatsapp}</span>` : '<span style="color:var(--text-muted)">—</span>'}</td>
+                <td style="color:var(--text-secondary)">${formatDate(e.expiry_date)}</td>
+                <td>${badge}</td>
+                <td>${device}</td>
+                <td style="min-width:100px;">
+                    <div class="day-progress">
+                        ${e.status === 'expired' ? `<span style="color:var(--danger)">+${calcOverdue(e.expiry_date)}h terlambat</span>` : `${dp}/${total}h (${pct}%)`}
+                    </div>
+                    <div class="progress-bar"><div class="progress-fill ${progressColor}" style="width:${pct}%"></div></div>
+                </td>
+                <td>
+                    <div class="actions-wrap">
+    <button class="btn btn-info btn-sm" onclick="openEditModal('${e.id}')"><i class="fas fa-edit"></i></button>
+    ${e.status === 'active' ? `
+        <button class="btn btn-success btn-sm" onclick="confirmExtend('${e.id}','${e.email}','${formatDate(e.expiry_date)}',${dp},${dl})"><i class="fas fa-calendar-plus"></i></button>
+        <button class="btn btn-warning btn-sm" onclick="confirmEndNow('${e.id}','${e.email}','${formatDate(e.expiry_date)}')"><i class="fas fa-stop-circle"></i></button>
+    ` : `
+        <button class="btn btn-success btn-sm" onclick="confirmExtend('${e.id}','${e.email}','${formatDate(e.expiry_date)}',${dp},0)"><i class="fas fa-calendar-plus"></i> Perpanjang</button>
+    `}
+    ${e.device_id ? `<button class="btn btn-info btn-sm" onclick="resetDeviceDirect('${e.id}','${e.email}')" title="Reset Device" style="background:rgba(255,165,0,0.15);color:#ffa500;border-color:rgba(255,165,0,0.3);"><i class="fas fa-mobile-alt"></i></button>` : ''}
+    ${waNum ? `<button class="btn btn-wa btn-sm" onclick="openChat('${e.id}')"><i class="fab fa-whatsapp"></i></button>` : ''}
+    <button class="btn btn-danger btn-sm" onclick="confirmDelete('${e.id}','${e.email}')"><i class="fas fa-trash"></i></button>
+</div>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function filterAllEmails() {
+        const q = document.getElementById('searchAll').value.toLowerCase();
+        const f = emails.filter(e =>
+            e.email.toLowerCase().includes(q) ||
+            (e.whatsapp || '').toLowerCase().includes(q) ||
+            (e.device_id || '').toLowerCase().includes(q)
+        );
+        renderAllTable(f);
+    }
+
+    // ==================== EXPIRING PAGE ====================
+    function renderExpiringPage() {
+        const list = emails.filter(e => {
+            const d = calcDaysLeft(e.expiry_date);
+            return !e.contacted && (d <= 2 || e.status === 'expired');
+        });
+        const sorted = [...list].sort((a,b) => {
+            if (a.status === 'expired' && b.status !== 'expired') return -1;
+            if (a.status !== 'expired' && b.status === 'expired') return 1;
+            return calcDaysLeft(a.expiry_date) - calcDaysLeft(b.expiry_date);
+        });
+
+        document.getElementById('exp2Days').textContent = list.filter(e => calcDaysLeft(e.expiry_date) === 2 && e.status === 'active').length;
+        document.getElementById('exp1Day').textContent = list.filter(e => calcDaysLeft(e.expiry_date) <= 1 && e.status === 'active').length;
+        document.getElementById('expTotal').textContent = list.filter(e => e.status === 'expired').length;
+
+        renderExpiringTable(sorted);
+    }
+
+    function renderExpiringTable(list) {
+        const tbody = document.getElementById('expiringBody');
+        if (list.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fas fa-check-circle" style="color:var(--success)"></i><h4>Semua aman!</h4><p>Tidak ada email yang butuh perhatian</p></div></td></tr>`;
+            return;
+        }
+        tbody.innerHTML = list.map((e, i) => {
+            const dl = calcDaysLeft(e.expiry_date);
+            const ov = calcOverdue(e.expiry_date);
+            const badge = getBadge(e);
+            const waNum = (e.whatsapp || '').replace(/\D/g,'');
+            let urgency = '';
+            if (e.status === 'expired') urgency = `<span style="color:var(--danger);font-weight:600">⏰ +${ov} hari</span>`;
+            else if (dl <= 1) urgency = `<span style="color:var(--danger);font-weight:700;animation:badge-blink 1s infinite">🔴 Sisa ${dl}h!</span>`;
+            else urgency = `<span style="color:var(--warning);font-weight:600">🟡 Sisa ${dl} hari</span>`;
+
+            return `<tr>
+                <td style="color:var(--text-muted)">${i+1}</td>
+                <td class="td-email">${e.email}</td>
+                <td>${e.whatsapp ? `<span class="td-wa"><i class="fab fa-whatsapp"></i> ${e.whatsapp}</span>` : '—'}</td>
+                <td>${formatDate(e.expiry_date)}</td>
+                <td>${badge}</td>
+                <td>${urgency}</td>
+                <td>
+                    <div class="actions-wrap">
+                        <button class="btn btn-success btn-sm" onclick="confirmExtend('${e.id}','${e.email}','${formatDate(e.expiry_date)}',0,${dl})"><i class="fas fa-calendar-plus"></i></button>
+                        ${waNum ? `<button class="btn btn-wa btn-sm" onclick="openChat('${e.id}')" title="Buka WhatsApp"><i class="fab fa-whatsapp"></i></button>` : ''}
+                        <button class="btn btn-accent btn-sm" onclick="moveToContacted('${e.id}','${e.email}')" title="Pindahkan ke Sudah Dihubungi"><i class="fas fa-arrow-right"></i> Pindahkan</button>
+                        <button class="btn btn-info btn-sm" onclick="openEditModal('${e.id}')"><i class="fas fa-edit"></i></button>
+                    </div>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function filterExpiringEmails() {
+        const q = document.getElementById('searchExp').value.toLowerCase();
+        const list = emails.filter(e => {
+            const d = calcDaysLeft(e.expiry_date);
+            return !e.contacted && (d <= 2 || e.status === 'expired') && (
+                e.email.toLowerCase().includes(q) ||
+                (e.whatsapp || '').toLowerCase().includes(q)
+            );
+        });
+        renderExpiringTable(list);
+    }
+
+
+    // ==================== CONTACTED USERS ====================
+    function getContactedUsers() {
+        return emails
+            .filter(e => e.contacted === true)
+            .sort((a, b) => new Date(b.contacted_at || 0) - new Date(a.contacted_at || 0));
+    }
+
+    function renderContactedPage() {
+        const body = document.getElementById('contactedBody');
+        if (!body) return;
+
+        const list = getContactedUsers();
+        document.getElementById('contactedTotal').textContent = list.length;
+        document.getElementById('contactedToday').textContent = list.filter(e => isSameLocalDay(e.contacted_at)).length;
+        document.getElementById('contactedExpired').textContent = list.filter(e => e.status === 'expired').length;
+        renderContactedTable(list);
+    }
+
+    function renderContactedTable(list) {
+        const tbody = document.getElementById('contactedBody');
+        if (!tbody) return;
+        document.getElementById('contactedCount').textContent = list.length;
+
+        if (list.length === 0) {
+            tbody.innerHTML = `<tr><td colspan="7"><div class="empty-state"><i class="fas fa-user-check" style="color:var(--info)"></i><h4>Belum ada user dipindahkan</h4><p>User yang sudah dihubungi akan tampil di sini</p></div></td></tr>`;
+            return;
+        }
+
+        tbody.innerHTML = list.map((e, i) => {
+            const dl = calcDaysLeft(e.expiry_date);
+            const waNum = (e.whatsapp || '').replace(/\D/g,'');
+            let statusText = getBadge(e);
+            if (e.status === 'active' && dl <= 2) {
+                statusText += ` <span class="badge badge-contacted"><span class="badge-dot"></span>Sudah dihubungi</span>`;
+            } else {
+                statusText += ` <span class="badge badge-contacted"><span class="badge-dot"></span>Dihubungi</span>`;
+            }
+
+            return `<tr>
+                <td style="color:var(--text-muted)">${i + 1}</td>
+                <td class="td-email">${e.email}</td>
+                <td>${e.whatsapp ? `<span class="td-wa"><i class="fab fa-whatsapp"></i> ${e.whatsapp}</span>` : '—'}</td>
+                <td>${formatDate(e.expiry_date)}</td>
+                <td>${statusText}</td>
+                <td>
+                    <div>${formatDateTime(e.contacted_at)}</div>
+                    <div style="font-size:11px;color:var(--text-muted);margin-top:2px;">${e.contacted_by || 'Admin'}</div>
+                </td>
+                <td>
+                    <div class="actions-wrap">
+                        ${waNum ? `<button class="btn btn-wa btn-sm" onclick="openChat('${e.id}')" title="Hubungi lagi"><i class="fab fa-whatsapp"></i></button>` : ''}
+                        <button class="btn btn-success btn-sm" onclick="confirmExtend('${e.id}','${e.email}','${formatDate(e.expiry_date)}',0,${dl})" title="Perpanjang"><i class="fas fa-calendar-plus"></i></button>
+                        <button class="btn btn-info btn-sm" onclick="openEditModal('${e.id}')" title="Edit"><i class="fas fa-edit"></i></button>
+                        <button class="btn btn-ghost btn-sm" onclick="restoreFromContacted('${e.id}','${e.email}')" title="Kembalikan ke daftar Akan Kadaluarsa"><i class="fas fa-undo"></i> Kembalikan</button>
+                    </div>
+                </td>
+            </tr>`;
+        }).join('');
+    }
+
+    function filterContactedEmails() {
+        const q = document.getElementById('searchContacted').value.toLowerCase();
+        const list = getContactedUsers().filter(e =>
+            e.email.toLowerCase().includes(q) ||
+            (e.whatsapp || '').toLowerCase().includes(q)
+        );
+        renderContactedTable(list);
+    }
+
+    async function moveToContacted(id, email) {
+        if (!confirm(`Pindahkan ${email} ke daftar "Sudah Dihubungi"?`)) return;
+        try {
+            await db.collection('registered_emails').doc(id).update({
+                contacted: true,
+                contacted_at: new Date().toISOString(),
+                contacted_by: currentUser?.email || 'admin'
+            });
+            await loadEmails();
+            if (currentPage === 'expiring') renderExpiringPage();
+            alert('✅ User dipindahkan ke daftar Sudah Dihubungi');
+        } catch (e) {
+            console.error(e);
+            alert('Gagal memindahkan user');
+        }
+    }
+
+    async function restoreFromContacted(id, email) {
+        if (!confirm(`Kembalikan ${email} dari daftar "Sudah Dihubungi"?`)) return;
+        try {
+            await db.collection('registered_emails').doc(id).update({
+                contacted: false,
+                contacted_at: null,
+                contacted_by: null,
+                contacted_restored_at: new Date().toISOString(),
+                contacted_restored_by: currentUser?.email || 'admin'
+            });
+            await loadEmails();
+            if (currentPage === 'contacted') renderContactedPage();
+            alert('✅ User dikembalikan');
+        } catch (e) {
+            console.error(e);
+            alert('Gagal mengembalikan user');
+        }
+    }
+
+    // ==================== ADD EMAIL ====================
+    async function addEmail() {
+        const email = document.getElementById('newEmail').value.trim();
+        const wa = document.getElementById('userName').value.trim();
+        const days = parseInt(document.getElementById('daysActive').value);
+        const btn = document.getElementById('addButton');
+
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) { alert('Format email tidak valid'); return; }
+
+        const originalHTML = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menambahkan...';
+        btn.disabled = true;
+
+        try {
+            const expiry = new Date();
+            expiry.setDate(expiry.getDate() + days);
+            const ref = await db.collection('registered_emails').add({
+                email: email.toLowerCase(),
+                whatsapp: formatWa(wa),
+                device_id: null, device_info: null,
+                created_at: new Date().toISOString(),
+                expiry_date: expiry.toISOString(),
+                status: 'active', days_active: days,
+                login_history: [{ action: 'created_by_admin', created_time: new Date().toISOString() }]
+            });
+            document.getElementById('newEmail').value = '';
+            document.getElementById('userName').value = '';
+            await loadEmails();
+            const wantWa = confirm(`✅ Email berhasil ditambahkan!\n📧 ${email}\n⏰ Masa aktif: ${days} hari\n\nKirim pesan WhatsApp?`);
+            if (wantWa && wa) openChat(ref.id);
+            switchPage('emails');
+        } catch (e) {
+            console.error(e); alert('Gagal menambahkan email');
+        } finally { btn.innerHTML = originalHTML; btn.disabled = false; }
+    }
+
+    function formatWa(p) {
+        if (!p) return '';
+        let c = p.replace(/\D/g,'');
+        if (c.startsWith('0')) c = '62' + c.slice(1);
+        if (!c.startsWith('62')) c = '62' + c;
+        return c;
+    }
+
+    // ==================== CHAT ====================
+    function openChat(emailId) {
+        const e = emails.find(x => x.id === emailId);
+        if (!e) return;
+        currentChatData = e;
+        document.getElementById('waBubble').textContent = generateWaMsg(e);
+        openModal('chatModal');
+    }
+
+    function generateWaMsg(e) {
+        const dl = calcDaysLeft(e.expiry_date);
+        const exp = formatDate(e.expiry_date);
+        const total = e.days_active || calcTotalDays(e.created_at, e.expiry_date);
+        const wa = e.whatsapp || e.name || '-';
+        let msg = '';
+        if (dl <= 2 && e.status === 'active') {
+            msg = `*⚠️ MASA AKTIF CANVA PRO SEGERA BERAKHIR*\n\nHalo Pelanggan,\n\nMasa aktif Canva Pro Anda tersisa *${dl} hari lagi*!\n\n*DETAIL AKSES:*\n📧 Email: ${e.email}\n📅 Berakhir: ${exp}\n⏰ Sisa: ${dl} hari\n\nSegera perpanjang sebelum terlambat!\n\n*PERPANJANG DI:*\nhttps://mujaprime.biz.id\n\n*JOIN GRUP PREMIUM UNTUK MELIHAT PROMO LAINNYA*\nhttps://chat.whatsapp.com/FrDTIXYYzHU0V8oDvWr824\n\nTerima kasih,\n*Tim Mujahiid*`;
+        } else if (e.status === 'expired') {
+            msg = `*MASA AKTIF CANVA PRO TELAH BERAKHIR*\n\nHalo Pelanggan,\n\nMasa aktif Canva Pro Anda *telah kadaluarsa*.\n\n Email: ${e.email}\n Berakhir: ${exp}\n\nJangan khawatir! Perpanjang sekarang:\nhttps://mujaprime.biz.id\n\nTerima kasih,\n*Tim Mujahiid*`;
+               } else if (total > 30) {
+        // Untuk durasi 2-4 bulan (lebih dari 30 hari)
+        msg = `*CANVA PRO VIP - INFORMASI AKSES*\n\nHalo Kak,\n\nTerima kasih sudah berlangganan Canva Pro di platform kami!\n\n*DETAIL AKSES ANDA:*\nEmail : ${e.email}\nNo. WA : ${wa}\nMasa Aktif : ${total} hari\nBerakhir : ${exp}\nStatus : AKTIF (Sisa ${dl} hari)\n\n*TIPS:*\n- Apabila Canva nya Tidak Pro Lagi Maka Anda bisa Join Lagi disini\nhttps://mujaprime.xo.je/user-join\n\n-----------------------------------------\n*BUTUH PERPANJANGAN?*\nJika masa aktif Canva Pro Anda sudah habis, silakan kunjungi link berikut:\n\nhttps://mujaprime.biz.id\n\n-----------------------------------------\n*BUTUH BANTUAN?*\nBalas chat ini atau hubungi admin kami.\n\n*JOIN GRUP PREMIUM UNTUK MELIHAT PROMO LAINNYA*\nhttps://chat.whatsapp.com/FrDTIXYYzHU0V8oDvWr824\n\nTerima kasih telah menggunakan layanan kami!\nSalam,\n*Tim Canva Pro VIP Mujahiid*`;
+    } else {
+        // Untuk durasi 1 bulan (30 hari atau kurang)
+        msg = `*CANVA PRO VIP - INFORMASI AKSES*\n\nHalo Kak,\n\nTerima kasih sudah berlangganan Canva Pro di platform kami!\n\n*DETAIL AKSES ANDA:*\nEmail : ${e.email}\nNo. WA : ${wa}\nMasa Aktif : ${total} hari\nBerakhir : ${exp}\nStatus : AKTIF (Sisa ${dl} hari)\n-----------------------------------------\n*BUTUH PERPANJANGAN?*\nJika masa Aktif Canva Pro Anda sudah habis, silakan kunjungi link berikut:\nhttps://mujaprime.biz.id\n-----------------------------------------\n*BUTUH BANTUAN?*\nBalas chat ini.\n\nTerima kasih telah menggunakan layanan kami!\nSalam,\n*Tim Mujahiid*`;
+    }
+        return msg;
+    }
+
+    function sendWhatsAppMessage() {
+        if (!currentChatData) return;
+        const wa = (currentChatData.whatsapp || '').replace(/\D/g,'');
+        if (!wa) { alert('Nomor WA tidak tersedia'); return; }
+        window.open('https://wa.me/' + wa + '?text=' + encodeURIComponent(generateWaMsg(currentChatData)), '_blank');
+        closeModal('chatModal');
+    }
+
+    function contactAllExpiring() {
+        const list = emails.filter(e => !e.contacted && (calcDaysLeft(e.expiry_date) <= 2 || e.status === 'expired'));
+        if (!list.length) { alert('Tidak ada email yang butuh perhatian'); return; }
+        const first = list.find(e => e.whatsapp);
+        if (first) openChat(first.id);
+        else alert('Tidak ada nomor WA tersedia');
+    }
+
+    // ==================== EDIT ====================
+    function openEditModal(id) {
+        const e = emails.find(x => x.id === id);
+        if (!e) return;
+        currentEditData = e;
+        document.getElementById('editEmailInput').value = e.email || '';
+        document.getElementById('editWaInput').value = e.whatsapp || '';
+        document.getElementById('editExpiryInput').value = e.expiry_date ? new Date(e.expiry_date).toISOString().split('T')[0] : '';
+        document.getElementById('editDaysActiveInput').value = e.days_active || '';
+        openModal('editModal');
+    }
+
+    async function saveEdit() {
+        if (!currentEditData) return;
+        const email = document.getElementById('editEmailInput').value.trim();
+        const wa = document.getElementById('editWaInput').value.trim();
+        const expiry = document.getElementById('editExpiryInput').value;
+        const days = parseInt(document.getElementById('editDaysActiveInput').value) || 0;
+        if (!email) { alert('Email wajib diisi'); return; }
+        try {
+            const upd = { email: email.toLowerCase(), whatsapp: formatWa(wa), last_edited: new Date().toISOString() };
+            if (expiry) upd.expiry_date = new Date(expiry).toISOString();
+            if (days > 0) upd.days_active = days;
+            await db.collection('registered_emails').doc(currentEditData.id).update(upd);
+            closeModal('editModal');
+            await loadEmails();
+            if (currentPage === 'expiring') renderExpiringPage();
+            alert('✅ Data berhasil diperbarui!');
+        } catch(e) { console.error(e); alert('Gagal menyimpan'); }
+    }
+
+    // ==================== EXTEND ====================
+    function confirmExtend(id, email, exp, dp, dl) {
+        emailToAction = id; actionType = 'extend';
+        document.getElementById('extendEmailText').textContent = email;
+        document.getElementById('extendStatusText').innerHTML =
+            `<b style="color:var(--text-primary)">${exp}</b><br>` +
+            (dl > 0 ? `Sisa ${dl} hari` : `Sudah kadaluarsa — ${dp} hari lalu`);
+        openModal('extendModal');
+    }
+
+    async function extendConfirmed() {
+        if (!emailToAction) return;
+        const addDays = parseInt(document.getElementById('extendDays').value);
+        try {
+            const snap = await db.collection('registered_emails').doc(emailToAction).get();
+            const data = snap.data();
+            let newExp = (data.expiry_date && calcStatus(data.expiry_date) === 'active') ? new Date(data.expiry_date) : new Date();
+            newExp.setDate(newExp.getDate() + addDays);
+            const newTotal = calcStatus(data.expiry_date) === 'active' ? (data.days_active || 0) + addDays : addDays;
+            await db.collection('registered_emails').doc(emailToAction).update({
+                expiry_date: newExp.toISOString(), status: 'active',
+                days_active: newTotal, manual_end_reason: null,
+                last_extended: new Date().toISOString(), extended_by: currentUser?.email,
+                contacted: false, contacted_at: null, contacted_by: null
+            });
+            closeModal('extendModal');
+            await loadEmails();
+            if (currentPage === 'expiring') renderExpiringPage();
+            alert(`✅ Diperpanjang ${addDays} hari!`);
+        } catch(e) { console.error(e); alert('Gagal perpanjang'); }
+    }
+
+    // ==================== END NOW ====================
+    function confirmEndNow(id, email, exp) {
+        emailToAction = id; actionType = 'endNow';
+        document.getElementById('endNowEmailText').textContent = email;
+        document.getElementById('endNowReason').value = '';
+        openModal('endNowModal');
+    }
+
+    async function endNowConfirmed() {
+        if (!emailToAction) return;
+        const reason = document.getElementById('endNowReason').value.trim();
+        try {
+            await db.collection('registered_emails').doc(emailToAction).update({
+                expiry_date: new Date().toISOString(), status: 'expired',
+                manual_end_reason: reason || 'Diakhiri admin', manual_ended_by: currentUser?.email
+            });
+            closeModal('endNowModal');
+            await loadEmails();
+            alert('✅ Masa aktif berhasil diakhiri');
+        } catch(e) { alert('Gagal'); }
+    }
+
+    // ==================== DELETE ====================
+    function confirmDelete(id, email) {
+        emailToAction = id; actionType = 'delete';
+        document.getElementById('confirmMessage').innerHTML =
+            `Hapus <b style="color:var(--accent-hover)">${email}</b>?<br><small style="color:var(--text-muted)">Tindakan ini tidak dapat dibatalkan.</small>`;
+        document.getElementById('confirmActionBtn').innerHTML = '<i class="fas fa-trash"></i> Hapus';
+        document.getElementById('confirmActionBtn').onclick = executeDelete;
+        openModal('confirmModal');
+    }
+
+    async function executeDelete() {
+        if (!emailToAction) return;
+        try {
+            await db.collection('registered_emails').doc(emailToAction).delete();
+            closeModal('confirmModal');
+            await loadEmails();
+            alert('✅ Email dihapus');
+        } catch(e) { alert('Gagal menghapus'); }
+    }
+
+    // ==================== DEVICE MODAL ====================
+    function showDeviceModal(id, email, deviceId, deviceInfo) {
+        const content = document.getElementById('deviceModalContent');
+        content.innerHTML = `
+            <div class="modal-header">
+                <div class="modal-icon" style="background:rgba(99,102,241,0.1);color:var(--accent-hover);"><i class="fas fa-mobile-alt"></i></div>
+                <div><div class="modal-title">Detail Device</div><div class="modal-sub">${email}</div></div>
+            </div>
+            ${deviceId ? `
+                <div class="settings-label">Device ID</div>
+                <div class="code-display">${deviceId}</div>
+                <div class="settings-label">Info Device</div>
+                <div class="code-display">${deviceInfo || 'Tidak ada info'}</div>
+                <div class="modal-footer" style="margin-top:16px;">
+                    <button class="btn btn-ghost" onclick="closeModal('deviceModal')">Tutup</button>
+                    <button class="btn btn-danger" onclick="resetDevice('${id}','${email}')"><i class="fas fa-redo"></i> Reset Device</button>
+                </div>
+            ` : `
+                <div class="alert alert-info"><i class="fas fa-info-circle"></i><span>Belum ada device terdaftar. Device ID otomatis dibuat saat user pertama login.</span></div>
+                <div class="modal-footer"><button class="btn btn-ghost" onclick="closeModal('deviceModal')">Tutup</button></div>
+            `}
+        `;
+        openModal('deviceModal');
+    }
+
+    async function resetDevice(id, email) {
+        if (!confirm(`Reset device untuk ${email}?`)) return;
+        try {
+            await db.collection('registered_emails').doc(id).update({ device_id: null, device_info: null });
+            closeModal('deviceModal');
+            await loadEmails();
+            alert('✅ Device direset');
+        } catch(e) { alert('Gagal'); }
+    }
+  
+  async function resetDeviceDirect(id, email) {
+    if (!confirm(`⚠️ Reset device untuk email:\n\n${email}\n\nUser harus login ulang dari perangkat baru. Lanjutkan?`)) return;
+    
+    try {
+        await db.collection('registered_emails').doc(id).update({
+            device_id: null,
+            device_info: null,
+            device_reset_at: new Date().toISOString(),
+            device_reset_by: currentUser?.email || 'admin'
+        });
+        await loadEmails();
+        if (currentPage === 'expiring') renderExpiringPage();
+        alert('✅ Device berhasil direset! User dapat login dari perangkat baru.');
+    } catch(e) {
+        console.error(e);
+        alert('❌ Gagal mereset device.');
+    }
+}
+
+    // ==================== GENERATE TOKEN ====================
+  async function generateToken() {
+    const dur = parseInt(document.getElementById('tokenDuration').value);
+    const btn = document.getElementById('generateTokenBtn');
+    const orig = btn.innerHTML;
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating...';
+    btn.disabled = true;
+    try {
+        const tokenId = 'token_' + dur + 'bln_' + Date.now() + '_' + Math.random().toString(36).substr(2,8);
+        await db.collection('access_tokens').add({
+            token: tokenId, duration: dur, status: 'unused',
+            created_at: new Date().toISOString(), created_by: currentUser?.email
+        });
+        // ✅ KIRIM PARAMETER duration & type KE URL
+        const link = `https://mujaprime.xo.je/status-aktif?token=${tokenId}&duration=${dur}&type=tim`;
+        document.getElementById('generatedLink').textContent = link;
+        document.getElementById('generatedLinkContainer').style.display = 'block';
+    } catch(e) { alert('Gagal generate'); }
+    finally { btn.innerHTML = orig; btn.disabled = false; }
+}
+    function copyGeneratedLink() {
+        const link = document.getElementById('generatedLink').textContent;
+        navigator.clipboard.writeText(link).then(() => alert('✅ Link disalin!')).catch(() => alert('Gagal menyalin'));
+    }
+
+    // ==================== EMAIL SENDER ====================
+    function populateSingleEmailSelector() {
+        const sel = document.getElementById('singleEmailSelect');
+        sel.innerHTML = '<option value="">— Pilih Email —</option>';
+        emails.forEach(e => {
+            const opt = document.createElement('option');
+            opt.value = e.id;
+            opt.textContent = `${e.email} (${e.status === 'active' ? 'Aktif' : 'Kadaluarsa'})`;
+            sel.appendChild(opt);
+        });
+    }
+
+    function onTargetChange() {
+        const t = document.getElementById('targetEmail').value;
+        document.getElementById('singleEmailGroup').style.display = t === 'single' ? 'block' : 'none';
+        updateEmailPreview();
+    }
+
+    function replaceVars(text, e) {
+        const dl = calcDaysLeft(e.expiry_date);
+        const dp = calcDaysPassed(e.created_at);
+        const total = calcTotalDays(e.created_at, e.expiry_date);
+        return text
+            .replace(/{email}/g, e.email || '')
+            .replace(/{name}/g, e.whatsapp || 'Pengguna')
+            .replace(/{expiry_date}/g, formatDate(e.expiry_date))
+            .replace(/{days_left}/g, dl === Infinity ? '∞' : dl)
+            .replace(/{days_passed}/g, dp)
+            .replace(/{total_days}/g, total);
+    }
+
+    function updateEmailPreview() {
+        const subj = document.getElementById('emailSubject').value;
+        const msg = document.getElementById('emailMessage').value;
+        const target = document.getElementById('targetEmail').value;
+
+        let sample = { email: 'user@example.com', whatsapp: 'Pengguna', expiry_date: new Date(Date.now() + 15*86400000).toISOString(), created_at: new Date().toISOString() };
+        if (target === 'single') {
+            const sel = document.getElementById('singleEmailSelect').value;
+            const found = emails.find(e => e.id === sel);
+            if (found) sample = found;
+        }
+
+        document.getElementById('previewSubject').innerHTML = `<i class="fas fa-tag"></i> ${subj || '(Tanpa subjek)'}`;
+        document.getElementById('previewBody').textContent = msg ? replaceVars(msg, sample) : 'Preview muncul di sini...';
+    }
+
+    async function sendEmail() {
+        const target = document.getElementById('targetEmail').value;
+        const subj = document.getElementById('emailSubject').value.trim();
+        const msg = document.getElementById('emailMessage').value;
+        if (!subj || !msg) { alert('Isi subjek dan pesan'); return; }
+
+        let targets = [];
+        const dl3 = e => { const d = calcDaysLeft(e.expiry_date); return d <= 3 && d > 0; };
+        if (target === 'single') {
+            const id = document.getElementById('singleEmailSelect').value;
+            if (!id) { alert('Pilih email'); return; }
+            const found = emails.find(e => e.id === id);
+            if (found) targets = [found];
+        } else if (target === 'all') targets = [...emails];
+        else if (target === 'active') targets = emails.filter(e => e.status === 'active');
+        else if (target === 'expiring') targets = emails.filter(dl3);
+        else if (target === 'expired') targets = emails.filter(e => e.status === 'expired');
+
+        if (!targets.length) { alert('Tidak ada email yang dipilih'); return; }
+
+        const btn = document.getElementById('sendEmailBtn');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+        btn.disabled = true;
+
+        let ok = 0, fail = 0;
+        for (const e of targets) {
+            try {
+                await db.collection('email_logs').add({
+                    to: e.email, subject: replaceVars(subj,e), message: replaceVars(msg,e),
+                    sent_by: currentUser?.email, sent_at: new Date().toISOString(),
+                    recipient_id: e.id, status: 'sent'
+                });
+                ok++;
+            } catch { fail++; }
+        }
+
+        btn.innerHTML = orig; btn.disabled = false;
+        document.getElementById('emailNotifMessage').innerHTML = `✅ Berhasil: ${ok}<br>❌ Gagal: ${fail}`;
+        openModal('emailNotifModal');
+    }
+
+    // ==================== SETTINGS ====================
+    async function loadSettings() {
+        try {
+            const snap = await db.collection('settings').doc('canva_config').get();
+            const data = snap.exists ? snap.data() : {};
+            const joinLink = data.joinLink || 'https://www.canva.com/brand/join?token=bRUFhMP3yGuOEMqEOeU5vw&referrer=team-invite';
+            const redirLink = data.redirectBackLink || 'https://mujaprime.biz.id';
+            const adminEmail = data.adminEmail || currentUser?.email || '';
+            document.getElementById('joinLinkInput').value = joinLink;
+            document.getElementById('redirectLinkInput').value = redirLink;
+            document.getElementById('adminEmailSettings').value = adminEmail;
+            document.getElementById('currentJoinLink').textContent = joinLink;
+            document.getElementById('currentRedirectLink').textContent = redirLink;
+            document.getElementById('currentAdminEmail').textContent = adminEmail || '—';
+        } catch(e) { console.error(e); }
+    }
+
+    async function saveSettings() {
+        const joinLink = document.getElementById('joinLinkInput').value.trim();
+        const redirLink = document.getElementById('redirectLinkInput').value.trim();
+        const adminEmail = document.getElementById('adminEmailSettings').value.trim();
+        if (!joinLink || !redirLink) { alert('Isi semua link'); return; }
+        const btn = document.getElementById('saveSettingsBtn');
+        const orig = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Menyimpan...';
+        btn.disabled = true;
+        try {
+            await db.collection('settings').doc('canva_config').set({ joinLink, redirectBackLink: redirLink, adminEmail, updatedAt: new Date().toISOString() }, { merge: true });
+            document.getElementById('currentJoinLink').textContent = joinLink;
+            document.getElementById('currentRedirectLink').textContent = redirLink;
+            document.getElementById('currentAdminEmail').textContent = adminEmail || '—';
+            alert('✅ Pengaturan disimpan!');
+        } catch(e) { alert('Gagal menyimpan'); }
+        finally { btn.innerHTML = orig; btn.disabled = false; }
+    }
+
+    // Expose globals
+   Object.assign(window, {
+    login, logout, toggleSidebar, switchPage, addEmail, confirmDelete, confirmExtend, confirmEndNow,
+    extendConfirmed, endNowConfirmed, openEditModal, saveEdit, openChat,
+    sendWhatsAppMessage, contactAllExpiring, generateToken, copyGeneratedLink,
+    sendEmail, saveSettings, showDeviceModal, resetDevice, resetDeviceDirect, filterAllEmails,
+    filterExpiringEmails, filterContactedEmails, renderContactedPage,
+    moveToContacted, restoreFromContacted, handleGlobalSearch, updateEmailPreview, onTargetChange,
+    closeModal, loadEmails
+});
+</script>
+    <script src="/liquid-icons.js?v=20260603-theme-chat-global-v3" defer></script>
+    <script src="/ai-chat-global.js?v=20260603-theme-chat-global-v3"></script>
+</body>
+</html>

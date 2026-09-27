@@ -1,0 +1,13 @@
+MUJAPRIME INSTALL MINI BANNER - 08 September 2026
+
+Perubahan:
+- Mini banner install aplikasi muncul di halaman storefront.
+- Banner tipis dan memanjang, diletakkan setelah header sehingga tidak menutupi produk/konten.
+- Tombol Install mengarah ke APK MujaPrime resmi.
+- Tombol X menutup banner untuk tampilan halaman saat ini saja.
+- Refresh/reload akan menampilkan banner kembali.
+- Tidak memakai localStorage untuk menyimpan status tutup.
+- Tidak muncul pada halaman payment, admin, status teknis, reset-cache, dan panduan.
+- Responsif untuk desktop dan HP.
+- Mendukung dark/light mode.
+- Asset install-popup.css/js memakai versi query baru agar cache browser tidak mempertahankan versi lama.

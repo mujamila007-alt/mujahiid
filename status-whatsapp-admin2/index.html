@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8" />
+    <!-- MUJA CACHE FIX AMAN: bersihkan cache tanpa auto-refresh berulang -->
+    <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <script>
+    // Cache tidak lagi dihapus pada setiap halaman. Static assets boleh memakai cache browser/SW.
+    (function() {
+        var MUJA_BUILD = '20260908-performance-payment-v1';
+        window.MUJA_BUILD = MUJA_BUILD;
+    })();
+    </script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>WhatsApp Admin 2 — Muja Prime</title>
+    <link rel="icon" type="image/png" href="/muja.png?v=20260604-status-wa-admin2-v1" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    
+    <style>
+        :root {
+            --bg:        #07080f;
+            --surface:   #0d0f1c;
+            --surface2:  #13162a;
+            --border:    rgba(255,255,255,0.07);
+            --accent:    #25D366;
+            --accent2:   #128C7E;
+            --gold:      #f0c060;
+            --text:      #eceaf8;
+            --muted:     #7a7d9c;
+            --green:     #34e57a;
+            --red:       #f05b5b;
+            --radius:    18px;
+        }
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 16px;
+            overflow-x: hidden;
+        }
+        body::before {
+            content: '';
+            position: fixed; inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 20% 10%, rgba(37,211,102,0.15) 0%, transparent 70%), radial-gradient(ellipse 50% 40% at 80% 80%, rgba(18,140,126,0.10) 0%, transparent 70%);
+            pointer-events: none; z-index: 0;
+        }
+        .page-wrap { position: relative; z-index: 1; width: 100%; max-width: 440px; animation: riseIn .7s cubic-bezier(.22,1,.36,1) both; }
+        @keyframes riseIn { from { opacity:0; transform:translateY(28px); } to { opacity:1; transform:translateY(0); } }
+        
+        .payment-strip {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            background: linear-gradient(90deg, rgba(52,229,122,0.12), rgba(52,229,122,0.06));
+            border: 1px solid rgba(52,229,122,0.25); border-radius: 50px;
+            padding: 10px 22px; margin-bottom: 32px;
+            font-size: .875rem; font-weight: 500; color: var(--green); letter-spacing: .04em;
+            text-align: center;
+        }
+        .payment-strip .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 8px var(--green); animation: pulse 2s ease-in-out infinite; }
+        @keyframes pulse { 0%,100%{ opacity:1; transform:scale(1); } 50%{ opacity:.5; transform:scale(1.3); } }
+        
+        .header { text-align: center; margin-bottom: 32px; }
+        .logo-wrap { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 50px; background: linear-gradient(135deg, var(--accent), var(--accent2)); margin-bottom: 20px; box-shadow: 0 0 40px rgba(37,211,102,0.3); overflow: hidden; }
+        .logo-wrap img { width: 100%; height: 100%; object-fit: cover; }
+        .header h1 { font-family: sans-serif; font-size: 2rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.1; background: linear-gradient(135deg, #fff 30%, #b8acf6); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 8px; }
+        .header p { color: var(--muted); font-size: .9rem; }
+        
+        .card { background: var(--surface); border: 1px solid var(--border); border-radius: 28px; padding: 35px 10px; position: relative; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.5); text-align: center; }
+        .card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--accent), var(--accent2), transparent); opacity: .8; }
+        
+        .info-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 16px; padding: 11px; margin-bottom: 24px; text-align: left; }
+        .info-row { display: flex; justify-content: space-between; align-items: center; padding: 10px 0; border-bottom: 1px solid var(--border); }
+        .info-row:last-child { border-bottom: none; }
+        .info-label { font-size: 10px; color: #000000; text-transform: uppercase; letter-spacing: .04em; }
+        .info-value { font-weight: 600; font-size: 13px; color: var(--text); }
+        .info-value.price { color: var(--gold); font-size: 1.1rem; font-weight: 700; }
+        
+        .wa-btn {
+            width: 100%; padding: 18px; border: none; border-radius: 50px;
+            font-family: 'Syne', sans-serif; font-size: 1.1rem; font-weight: 700;
+            cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 12px;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: #fff; box-shadow: 0 10px 30px rgba(37,211,102,0.35);
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+        .wa-btn:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(37,211,102,0.45); }
+        .wa-btn i { font-size: 1.4rem; }
+        
+        .note { text-align: center; margin-top: 20px; font-size: .78rem; color: var(--muted); }
+        .note i { color: var(--accent); margin-right: 6px; }
+        
+        /* ERROR PAGE */
+        .error-page { display: none; text-align: center; }
+        .error-page .error-icon { font-size: 3rem; color: var(--red); margin-bottom: 16px; }
+        .error-page h2 { font-family: 'Syne', sans-serif; font-size: 1.3rem; margin-bottom: 8px; }
+        .error-page p { color: var(--muted); font-size: .9rem; margin-bottom: 20px; }
+        .home-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; background: var(--surface2); color: var(--text); border: 1px solid var(--border); border-radius: 50px; text-decoration: none; font-weight: 600; font-size: .9rem; transition: all .2s; }
+        .home-btn:hover { background: var(--surface); border-color: var(--accent); }
+    </style>
+    <link rel="stylesheet" href="/liquid-glass.css?v=20260604-status-wa-admin2-v1">
+<link rel="stylesheet" href="/theme.css?v=20260604-status-wa-admin2-v1">
+
+    <!-- MujaPrime install popup: tampil di browser, hilang di WebView/PWA -->
+    <link rel="manifest" href="/manifest.json?v=20260604-install-akun-v1">
+    <link rel="stylesheet" href="/install-popup.css?v=20260910-device-install-v3">
+    <script defer src="/install-popup.js?v=20260910-device-install-v3"></script>
+<script src="/theme.js?v=20260604-status-wa-admin2-v1"></script>
+
+    <!-- MUJA PRIME Professional Responsive Upgrade -->
+    <link rel="stylesheet" href="/professional.css?v=20260907-pro-v3-adminfix">
+    <script src="/professional-ui.js?v=20260907-pro-v2" defer></script>
+</head>
+<body>
+
+<!-- HALAMAN NORMAL -->
+<div class="page-wrap" id="normalPage">
+    <div class="payment-strip"><span class="dot"></span> Pembayaran berhasil diverifikasi</div>
+    
+    <div class="header">
+        <div class="logo-wrap"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhekcIVmNU9dKjOXDwDfb7ehV3gOBwcy3Jcz_8SLXKihRzyMKXsVk242pVsFCRezu_teHB6hLdfdWuDOKFTAeNGogzLik71EvdDcbSOYYNNWgIxRodEJU81_40nrVrarmRCPl_ppyjFE8t7PMhATtjm2Alzwza20Vh_RWs0_4vtvXymSIpaCVc3nUrTS6M/s2000/Desain%20tanpa%20judul%20%281%29.png" alt="Logo"></div>
+        <h1 id="headerTitle">Canva Pro Private</h1>
+        <p id="headerSubtitle">Aktivasi via WhatsApp Admin 2</p>
+    </div>
+
+    <div class="card">
+        <div class="info-box" id="orderInfo">
+            <div class="info-row">
+                <span class="info-label">📦 Produk</span>
+                <span class="info-value" id="infoProduct">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">💰 Total</span>
+                <span class="info-value price" id="infoPrice">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">⏱️ Durasi</span>
+                <span class="info-value" id="infoDuration">-</span>
+            </div>
+            <div class="info-row">
+                <span class="info-label">💳 Metode</span>
+                <span class="info-value" id="infoMethod">-</span>
+            </div>
+        </div>
+        
+        <button class="wa-btn" id="waButton" onclick="aktivasiSekarang()">
+            <i class="fab fa-whatsapp"></i> Chat Admin 2 Sekarang
+        </button>
+    </div>
+
+    <div class="note"><i class="fas fa-lock"></i> Admin 2 akan memproses aktivasi Anda melalui WhatsApp</div>
+</div>
+
+<!-- HALAMAN ERROR (TOKEN TIDAK DITEMUKAN/TIDAK VALID) -->
+<div class="page-wrap error-page" id="errorPage">
+    <div class="error-icon">⛔</div>
+    <h2>Link Tidak Tersedia</h2>
+    <p>Data pesanan tidak ditemukan. Silakan hubungi admin dengan bukti pembayaran.</p>
+    <a href="/" class="home-btn"><i class="fas fa-home"></i> Kembali ke Beranda</a>
+</div>
+
+<!-- LOADING -->
+<div class="page-wrap" id="loadingPage" style="text-align:center; display:none;">
+    <div style="width:40px;height:40px;border:3px solid var(--border);border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;margin:0 auto 16px;"></div>
+    <p style="color:var(--muted);">Memvalidasi akses...</p>
+</div>
+
+<style>
+    @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+<script src="/firebase-config.js?v=20260908-performance-payment-v1"></script>
+<script>
+(function() {
+    if (window.initMujaFirebase) window.initMujaFirebase();
+    if (!firebase.apps.length) firebase.initializeApp(firebaseConfig);
+    const db = window.db || firebase.firestore();
+    
+    const ADMIN_WHATSAPP = '6282230234058';
+    const HOME_URL = '/';
+    
+    // Ambil data dari URL
+    const params = new URLSearchParams(window.location.search);
+    const TOKEN = params.get('token');
+
+    // Ubah durasi menjadi jumlah bulan. Mendukung "6 Bulan" dan "1 Tahun".
+    function getDurationMonths(rawDuration, productName) {
+        const name = String(productName || '').toLowerCase();
+        let match = name.match(/(\d+)\s*(tahun|thn|year|years)\b/i);
+        if (match) return Math.max(1, parseInt(match[1], 10) * 12);
+
+        match = name.match(/(\d+)\s*(bulan|bln|month|months)\b/i);
+        if (match) return Math.max(1, parseInt(match[1], 10));
+
+        const parsed = parseInt(rawDuration, 10);
+        return Number.isFinite(parsed) && parsed > 0 ? parsed : 1;
+    }
+
+    function formatDuration(months) {
+        const totalMonths = Math.max(1, parseInt(months, 10) || 1);
+        if (totalMonths % 12 === 0) {
+            const years = totalMonths / 12;
+            return years + ' Tahun';
+        }
+        return totalMonths + ' Bulan';
+    }
+    
+    let orderData = {
+        productName: params.get('product') || '',
+        price: parseInt(params.get('price')) || 0,
+        duration: getDurationMonths(params.get('duration'), params.get('product')),
+        method: params.get('method') || 'qris',
+        type: params.get('type') || 'private',
+        customerName: params.get('name') || 'User',
+        customerWa: params.get('wa') || localStorage.getItem('muja_user_whatsapp') || '',
+        customerEmail: (params.get('email') || localStorage.getItem('muja_user_email') || '').trim().toLowerCase(),
+        poin: parseInt(params.get('poin')) || 0
+    };
+    let tokenDocRef = null;
+    let tokenLocked = false;
+    
+    // ✅ FUNGSI VALIDASI TOKEN
+    async function validateToken() {
+        if (!TOKEN) {
+            showErrorPage();
+            return false;
+        }
+        
+        try {
+            const tokenSnap = await db.collection('access_tokens')
+                .where('token', '==', TOKEN)
+                .limit(1)
+                .get();
+            
+            if (tokenSnap.empty) {
+                showErrorPage();
+                return false;
+            }
+
+            // ✅ Lengkapi data dari dokumen token jika URL/localStorage tidak lengkap
+            tokenDocRef = tokenSnap.docs[0].ref;
+            const tokenData = tokenSnap.docs[0].data() || {};
+            if (!['unused','used','completed'].includes(tokenData.status)) {
+                showErrorPage();
+                return false;
+            }
+            tokenLocked = tokenData.status === 'used' || tokenData.status === 'completed';
+            orderData.productName = orderData.productName || tokenData.productName || 'Canva Pro';
+            orderData.duration = getDurationMonths(
+                params.get('duration') || tokenData.duration || tokenData.durationMonths,
+                orderData.productName
+            );
+            orderData.customerEmail = orderData.customerEmail || (tokenData.customerEmail || '').trim().toLowerCase();
+            orderData.customerWa = orderData.customerWa || tokenData.customerWa || '';
+            orderData.customerName = orderData.customerName !== 'User' ? orderData.customerName : (tokenData.customerName || 'User');
+            orderData.poin = orderData.poin || Number(tokenData.poinReward || 0);
+            
+            // ✅ Token valid, tampilkan halaman
+            showNormalPage();
+            return true;
+            
+        } catch(e) {
+            console.error('Error validasi token:', e);
+            showErrorPage();
+            return false;
+        }
+    }
+    
+    function showNormalPage() {
+        document.getElementById('loadingPage').style.display = 'none';
+        document.getElementById('normalPage').style.display = 'block';
+        document.getElementById('errorPage').style.display = 'none';
+        
+        // Tampilkan info order
+        document.getElementById('headerTitle').textContent = orderData.productName;
+        document.getElementById('headerSubtitle').textContent = 'Aktivasi via WhatsApp Admin 2';
+        document.title = orderData.productName + ' — Hubungi Admin 2';
+        
+        document.getElementById('infoProduct').textContent = orderData.productName;
+        document.getElementById('infoPrice').textContent = 'Rp' + new Intl.NumberFormat('id-ID').format(orderData.price);
+        document.getElementById('infoDuration').textContent = formatDuration(orderData.duration);
+        document.getElementById('infoMethod').textContent = orderData.method.toUpperCase();
+    }
+    
+    function showErrorPage() {
+        document.getElementById('loadingPage').style.display = 'none';
+        document.getElementById('normalPage').style.display = 'none';
+        document.getElementById('errorPage').style.display = 'block';
+        document.title = 'Link Tidak Valid — Muja Prime';
+    }
+
+    function formatWhatsapp(p) {
+        let c = (p || '').replace(/\D/g, '');
+        if (c.startsWith('0')) c = '62' + c.substring(1);
+        if (c && !c.startsWith('62')) c = '62' + c;
+        return c;
+    }
+
+    // ✅ Ambil poin dari Firestore jika poin tidak terbawa dari URL/token
+    async function getPoinFromFirestore(productName) {
+        try {
+            const snap = await db.collection('products').where('name', '==', productName).limit(1).get();
+            if (!snap.empty) return Number(snap.docs[0].data().poinReward || 0);
+            return 0;
+        } catch(e) {
+            console.log('⚠️ Gagal ambil poin produk:', e.message);
+            return 0;
+        }
+    }
+
+    // ✅ Simpan riwayat poin agar terbaca di admin/top pembeli
+    async function logPoinToFirestore(email, whatsapp, poinAmount, productName) {
+        try {
+            await db.collection('user_poins').add({
+                email: email || '',
+                whatsapp: whatsapp || '',
+                poinAdded: poinAmount,
+                productName: productName || '',
+                source: 'status-whatsapp-admin2',
+                createdAt: firebase.firestore.FieldValue.serverTimestamp()
+            });
+        } catch(e) {
+            console.log('⚠️ Gagal simpan log poin:', e.message);
+        }
+    }
+
+    // ✅ Tambah poin ke akun user di collection registrations
+    async function addPoinToUser(email, whatsapp, poinAmount, productName) {
+        if (!poinAmount || poinAmount <= 0) return 0;
+
+        const cleanEmail = (email || '').trim().toLowerCase();
+        const rawWa = (whatsapp || '').trim();
+        const waClean = rawWa.replace(/\D/g, '');
+        const waVariants = Array.from(new Set([
+            rawWa,
+            waClean,
+            waClean.startsWith('0') ? '62' + waClean.substring(1) : '',
+            waClean.startsWith('62') ? '0' + waClean.substring(2) : '',
+            waClean ? formatWhatsapp(waClean) : ''
+        ].filter(Boolean)));
+
+        try {
+            let targetDoc = null;
+
+            if (cleanEmail) {
+                const snapEmail = await db.collection('registrations').where('email', '==', cleanEmail).limit(1).get();
+                if (!snapEmail.empty) targetDoc = snapEmail.docs[0];
+            }
+
+            if (!targetDoc) {
+                for (const wa of waVariants) {
+                    const snapWa = await db.collection('registrations').where('whatsapp', '==', wa).limit(1).get();
+                    if (!snapWa.empty) { targetDoc = snapWa.docs[0]; break; }
+                }
+            }
+
+            const payload = {
+                poin: firebase.firestore.FieldValue.increment(poinAmount),
+                lastPoinUpdate: firebase.firestore.FieldValue.serverTimestamp(),
+                lastPoinProduct: productName || orderData.productName || ''
+            };
+
+            if (targetDoc) {
+                await targetDoc.ref.update(payload);
+            } else {
+                await db.collection('registrations').add({
+                    name: orderData.customerName || localStorage.getItem('muja_user_name') || '',
+                    email: cleanEmail,
+                    whatsapp: waVariants[0] || '',
+                    poin: poinAmount,
+                    registeredAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastPoinUpdate: firebase.firestore.FieldValue.serverTimestamp(),
+                    lastPoinProduct: productName || orderData.productName || '',
+                    autoCreatedFromPurchase: true
+                });
+            }
+
+            return poinAmount;
+        } catch(e) {
+            console.error('❌ Gagal update poin:', e);
+            return 0;
+        }
+    }
+
+    // ✅ Hanya tambah poin reward, tidak mengubah paket aktif/durasi
+    async function addPoinOnly() {
+        try {
+            const userEmail = (orderData.customerEmail || localStorage.getItem('muja_user_email') || '').trim().toLowerCase();
+            const userWhatsapp = (orderData.customerWa || localStorage.getItem('muja_user_whatsapp') || '').trim();
+
+            let poinAmount = Number(orderData.poin || 0);
+            if (!poinAmount) poinAmount = await getPoinFromFirestore(orderData.productName);
+
+            if (poinAmount > 0) {
+                const localPoin = parseInt(localStorage.getItem('muja_user_poin') || '0') || 0;
+                localStorage.setItem('muja_user_poin', String(localPoin + poinAmount));
+
+                await addPoinToUser(userEmail, userWhatsapp, poinAmount, orderData.productName);
+                await logPoinToFirestore(userEmail, userWhatsapp, poinAmount, orderData.productName);
+                console.log('✅ Poin status-whatsapp-admin2 ditambahkan: +' + poinAmount);
+            } else {
+                console.log('ℹ️ Produk ini tidak memiliki poin reward.');
+            }
+        } catch(e) {
+            console.error('❌ Gagal tambah poin status-whatsapp-admin2:', e);
+        }
+    }
+    
+    // ✅ FUNGSI AKTIVASI (KLIK TOMBOL)
+    window.aktivasiSekarang = async function() {
+        const btn = document.getElementById('waButton');
+        btn.disabled = true;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Memproses...';
+        
+        // 1. Kunci token secara transaction supaya poin tidak dobel saat tombol diklik berkali-kali
+        if (TOKEN) {
+            try {
+                if (!tokenDocRef) {
+                    const tokenSnap = await db.collection('access_tokens')
+                        .where('token', '==', TOKEN)
+                        .limit(1)
+                        .get();
+                    if (tokenSnap.empty) {
+                        showErrorPage();
+                        return;
+                    }
+                    tokenDocRef = tokenSnap.docs[0].ref;
+                }
+
+                const claimResult = await db.runTransaction(async function(transaction) {
+                    const freshToken = await transaction.get(tokenDocRef);
+                    if (!freshToken.exists) throw new Error('TOKEN_NOT_FOUND');
+
+                    const tokenData = freshToken.data() || {};
+                    if (tokenData.status === 'used' || tokenData.status === 'completed') return 'already';
+                    if (tokenData.status !== 'unused') throw new Error('TOKEN_INVALID');
+                    orderData.customerEmail = orderData.customerEmail || (tokenData.customerEmail || '').trim().toLowerCase();
+                    orderData.customerWa = orderData.customerWa || tokenData.customerWa || '';
+                    orderData.customerName = orderData.customerName !== 'User' ? orderData.customerName : (tokenData.customerName || 'User');
+                    orderData.poin = orderData.poin || Number(tokenData.poinReward || 0);
+
+                    transaction.update(tokenDocRef, {
+                        status: 'used',
+                        usedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        poinAdded: orderData.poin || 0,
+                        source: 'status-whatsapp-admin2'
+                    });
+                    return 'claimed';
+                });
+
+                tokenLocked = true;
+
+                // ✅ Tambahkan poin setelah token berhasil dikunci supaya tidak dobel
+                if (claimResult === 'claimed') await addPoinOnly();
+            } catch(e) {
+                console.error('Gagal update token / tambah poin:', e);
+                if (e && (e.code === 'DATA_CHANGED' || e.message === 'DATA_CHANGED')) {
+                    try {
+                        const latest = await tokenDocRef.get();
+                        if (latest.exists && ['used','completed'].includes((latest.data() || {}).status)) {
+                            tokenLocked = true;
+                        } else { showErrorPage(); return; }
+                    } catch (_) { showErrorPage(); return; }
+                } else {
+                showErrorPage();
+                return;
+                }
+            }
+        }
+        
+        // 2. Buat pesan WhatsApp
+        const message = encodeURIComponent(
+            '📦 *PESANAN BARU - ' + orderData.productName + '*\n\n' +
+            '👤 Nama: ' + orderData.customerName + '\n' +
+            '📱 WA: ' + orderData.customerWa + '\n' +
+            '📦 Produk: ' + orderData.productName + '\n' +
+            '💰 Total: Rp' + new Intl.NumberFormat('id-ID').format(orderData.price) + '\n' +
+            '⏱️ Durasi: ' + formatDuration(orderData.duration) + '\n' +
+            '💳 Metode: ' + orderData.method.toUpperCase() + '\n\n' +
+            '🙏 Mohon dibantu aktivasi akun Saya.\n' +
+            'Terima kasih! 🙏'
+        );
+        
+        const waUrl = 'https://wa.me/' + ADMIN_WHATSAPP + '?text=' + message;
+        
+        // 3. Buka WhatsApp di tab baru
+        window.open(waUrl, '_blank');
+        
+        // 4. Redirect ke halaman utama setelah 1 detik
+        setTimeout(function() {
+            window.location.href = HOME_URL;
+        }, 1000);
+    };
+    
+    // ✅ START: Tampilkan loading, lalu validasi
+    document.getElementById('normalPage').style.display = 'none';
+    document.getElementById('errorPage').style.display = 'none';
+    document.getElementById('loadingPage').style.display = 'block';
+    
+    validateToken();
+    
+})();
+</script>
+
+    <script src="/liquid-icons.js?v=20260604-status-wa-admin2-v1" defer></script>
+<script src="/ai-chat-global.js?v=20260604-status-wa-admin2-v1"></script>
+</body>
+</html>

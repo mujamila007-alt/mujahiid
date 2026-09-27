@@ -1,0 +1,23 @@
+MUJA PRIME - ADMIN & LAYOUT FIX 2026
+
+Perbaikan:
+1. admin.html sekarang memuat professional.css + admin-professional.css + professional-ui.js.
+2. Tabel admin dinormalisasi agar thead/tbody tidak terpisah oleh liquid-glass.
+3. Tab admin dibuat satu baris scroll horizontal, tidak menumpuk berantakan.
+4. Dashboard admin responsif: 4 kolom desktop, 3 tablet, 2 mobile.
+5. Modal, form, search, action button dan tabel dibuat responsif.
+6. Duplikasi stylesheet dibersihkan pada halaman:
+   - list-produk.html
+   - list-produk-2.html
+   - detail-produk.html
+   - tentang/index.html
+   - top-pembeli/index.html
+   - kontak/index.html
+   - payment/index.html
+7. Seluruh 26 halaman HTML diperiksa:
+   - tidak ada duplicate id
+   - tidak ada asset lokal hilang
+   - tidak ada duplicate stylesheet tersisa
+   - semua file JavaScript lolos node --check
+
+Fungsi database, login, order, poin, payment, AI dan API tidak diubah.

@@ -1,0 +1,371 @@
+
+/* MUJA PRIME Admin Professional Fix 2026
+   Scoped visual/responsive fixes only. No admin business logic is changed. */
+:root{
+  --admin-max:1440px;
+  --admin-gap:14px;
+  --admin-line:rgba(255,255,255,.08);
+  --admin-panel:rgba(15,18,29,.84);
+  --admin-panel-2:rgba(23,27,41,.9);
+  --admin-radius:16px;
+}
+
+html,body{max-width:100%;overflow-x:hidden;}
+body{min-width:0;}
+
+.login-screen{
+  width:min(calc(100% - 28px),420px) !important;
+  margin:clamp(52px,11vh,120px) auto !important;
+  padding:clamp(24px,5vw,40px) !important;
+}
+.login-screen input,
+.login-screen button{min-height:46px;}
+
+.admin-container{
+  width:min(calc(100% - 28px),var(--admin-max)) !important;
+  max-width:var(--admin-max) !important;
+  margin:0 auto !important;
+  padding:18px 0 34px !important;
+  min-width:0 !important;
+}
+.main-panel{min-width:0 !important;}
+
+.panel-header{
+  position:sticky !important;
+  top:10px !important;
+  z-index:60 !important;
+  gap:12px !important;
+  padding:16px 18px !important;
+  border-radius:16px !important;
+  background:rgba(16,19,30,.9) !important;
+  backdrop-filter:blur(18px) saturate(130%) !important;
+  -webkit-backdrop-filter:blur(18px) saturate(130%) !important;
+}
+.panel-header > div{
+  display:flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  flex-wrap:wrap !important;
+}
+
+/* Tabs become one clean horizontal navigation row instead of a tall wrapped block. */
+.tabs{
+  display:flex !important;
+  flex-wrap:nowrap !important;
+  align-items:center !important;
+  gap:6px !important;
+  width:100% !important;
+  max-width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:hidden !important;
+  padding:7px !important;
+  margin:0 0 18px !important;
+  border-radius:15px !important;
+  scrollbar-width:thin;
+  scroll-snap-type:x proximity;
+}
+.tabs::-webkit-scrollbar{height:5px;}
+.tabs::-webkit-scrollbar-thumb{background:rgba(255,107,43,.45);border-radius:99px;}
+.tab{
+  flex:0 0 auto !important;
+  white-space:nowrap !important;
+  min-height:40px !important;
+  padding:9px 14px !important;
+  scroll-snap-align:start;
+}
+
+.stats-grid{
+  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+  gap:12px !important;
+}
+.stat-card{
+  min-width:0 !important;
+  padding:16px !important;
+  border-radius:15px !important;
+  overflow:hidden !important;
+}
+.stat-card .value{
+  font-size:clamp(22px,2.2vw,30px) !important;
+  line-height:1.15 !important;
+  overflow-wrap:anywhere;
+}
+
+.section-container{
+  min-width:0 !important;
+  width:100% !important;
+  max-width:100% !important;
+  padding:20px !important;
+  border-radius:18px !important;
+  overflow:visible !important;
+}
+.section-header{
+  gap:12px !important;
+  margin-bottom:16px !important;
+}
+.section-header h2{line-height:1.3 !important;}
+
+.quick-actions{
+  display:flex !important;
+  gap:8px !important;
+  flex-wrap:wrap !important;
+}
+.search-box{
+  display:flex !important;
+  gap:8px !important;
+  align-items:center !important;
+  flex-wrap:nowrap !important;
+}
+.search-box input{
+  width:min(260px,100%) !important;
+  min-width:170px !important;
+  min-height:42px !important;
+}
+.search-box button,.quick-actions .btn{min-height:40px !important;}
+
+/* Tables stay real tables. Liquid-glass must not split/animate the header and body. */
+.table-wrapper{
+  display:block !important;
+  width:100% !important;
+  max-width:100% !important;
+  overflow-x:auto !important;
+  overflow-y:visible !important;
+  border:1px solid var(--admin-line) !important;
+  border-radius:13px !important;
+  background:rgba(8,11,19,.28) !important;
+  box-shadow:none !important;
+  -webkit-overflow-scrolling:touch;
+}
+.table-wrapper table,
+.section-container table{
+  width:100% !important;
+  min-width:820px !important;
+  border-collapse:collapse !important;
+  border-spacing:0 !important;
+  table-layout:auto !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+  animation:none !important;
+  transform:none !important;
+}
+.table-wrapper thead,
+.table-wrapper tbody,
+.table-wrapper tr,
+.table-wrapper th,
+.table-wrapper td{
+  transform:none !important;
+  animation:none !important;
+  filter:none !important;
+}
+.table-wrapper thead{
+  overflow:visible !important;
+  background:var(--surface-2) !important;
+}
+.table-wrapper th{
+  position:sticky !important;
+  top:0 !important;
+  z-index:3 !important;
+  padding:11px 12px !important;
+  background:#202334 !important;
+  color:#c6c8d7 !important;
+  border:0 !important;
+  border-bottom:1px solid rgba(255,255,255,.12) !important;
+  white-space:nowrap !important;
+}
+.table-wrapper td{
+  padding:11px 12px !important;
+  background:transparent !important;
+  border:0 !important;
+  border-bottom:1px solid rgba(255,255,255,.065) !important;
+  vertical-align:middle !important;
+  overflow-wrap:anywhere;
+}
+.table-wrapper tbody tr:hover{
+  background:rgba(255,255,255,.04) !important;
+  filter:none !important;
+  transform:none !important;
+}
+.table-wrapper tbody tr:hover td{transform:none !important;}
+
+.product-image{flex:0 0 auto;}
+.action-btn,.btn-sm{
+  min-height:32px !important;
+  margin:2px 3px 2px 0 !important;
+  white-space:nowrap !important;
+}
+td .btn,td button{max-width:100%;}
+
+.health-item{min-width:0 !important;}
+.health-item > *{min-width:0 !important;}
+
+.modal{
+  padding:14px !important;
+  overflow-y:auto !important;
+}
+.modal-content{
+  width:min(100%,620px) !important;
+  max-width:620px !important;
+  max-height:calc(100dvh - 28px) !important;
+  padding:24px !important;
+  margin:auto !important;
+  border-radius:18px !important;
+}
+.modal-content::before{
+  margin:-24px -24px 18px !important;
+}
+.form-row{grid-template-columns:repeat(2,minmax(0,1fr)) !important;}
+.form-group{min-width:0;}
+.form-group input,.form-group select,.form-group textarea{min-width:0 !important;}
+.form-actions{
+  display:flex !important;
+  gap:9px !important;
+  flex-wrap:wrap !important;
+}
+.form-actions .btn{min-width:120px;}
+
+.toast{
+  max-width:min(360px,calc(100vw - 24px)) !important;
+  right:12px !important;
+  bottom:12px !important;
+}
+
+@media (max-width:1100px){
+  .stats-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}
+}
+@media (max-width:820px){
+  .admin-container{
+    width:calc(100% - 18px) !important;
+    padding-top:10px !important;
+  }
+  .panel-header{
+    position:relative !important;
+    top:auto !important;
+    align-items:stretch !important;
+    padding:14px !important;
+  }
+  .panel-header h1{font-size:18px !important;}
+  .panel-header > div{width:100% !important;}
+  .panel-header > div .btn{flex:1 1 130px !important;text-align:center !important;}
+
+  .tabs{margin-bottom:12px !important;}
+  .stats-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:8px !important;}
+  .stat-card{padding:13px !important;}
+  .stat-card h3{font-size:10px !important;}
+  .stat-card .value{font-size:21px !important;}
+
+  .section-container{padding:13px !important;border-radius:15px !important;}
+  .section-header{
+    flex-direction:column !important;
+    align-items:stretch !important;
+  }
+  .section-header h2{font-size:16px !important;}
+  .quick-actions{
+    display:grid !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+  }
+  .quick-actions .btn{width:100% !important;padding:9px 8px !important;}
+  .search-box{width:100% !important;}
+  .search-box input{width:100% !important;min-width:0 !important;flex:1 1 100% !important;}
+  .search-box button{flex:1 1 auto !important;}
+
+  .table-wrapper table,.section-container table{min-width:760px !important;}
+  .table-wrapper th,.table-wrapper td{padding:9px 10px !important;font-size:11px !important;}
+
+  .form-row{grid-template-columns:1fr !important;}
+  .modal{align-items:flex-start !important;}
+  .modal-content{
+    width:100% !important;
+    max-width:100% !important;
+    padding:18px !important;
+    margin:8px 0 !important;
+  }
+  .modal-content::before{margin:-18px -18px 16px !important;}
+  .form-actions{position:sticky;bottom:-18px;background:var(--surface-2);padding:10px 0 2px;z-index:2;}
+}
+@media (max-width:480px){
+  .login-screen{padding:22px 18px !important;}
+  .admin-container{width:calc(100% - 12px) !important;}
+  .panel-header h1{font-size:16px !important;}
+  .tab{font-size:11px !important;padding:8px 11px !important;}
+  .quick-actions{grid-template-columns:1fr !important;}
+  .section-container{padding:11px !important;}
+}
+
+/* ============================================================
+   MUJAPRIME ADMIN PRODUCT TABLE FIX - 2026-09-10
+   liquid-glass.css has a global .product-row rule that forces
+   display:flex. On the admin product table, .product-row is a <tr>,
+   so it must remain a real table row.
+   ============================================================ */
+#productsTab .table-wrapper tbody tr.product-row {
+  display: table-row !important;
+  width: auto !important;
+  min-width: 0 !important;
+  height: auto !important;
+  padding: 0 !important;
+  gap: 0 !important;
+  align-items: initial !important;
+  justify-content: initial !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  overflow: visible !important;
+  transform: none !important;
+  filter: none !important;
+}
+
+#productsTab .table-wrapper tbody tr.product-row > td {
+  display: table-cell !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+  padding: 11px 12px !important;
+  vertical-align: middle !important;
+  white-space: normal !important;
+  overflow-wrap: normal !important;
+  word-break: normal !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+
+/* Keep name readable instead of one character per line. */
+#productsTab .table-wrapper tbody tr.product-row > td:nth-child(3) {
+  min-width: 190px !important;
+  max-width: 300px !important;
+  overflow-wrap: break-word !important;
+}
+
+/* Fixed, predictable utility columns. */
+#productsTab .table-wrapper th:nth-child(1),
+#productsTab .table-wrapper td:nth-child(1) { width: 58px !important; text-align:center !important; }
+#productsTab .table-wrapper th:nth-child(2),
+#productsTab .table-wrapper td:nth-child(2) { width: 76px !important; text-align:center !important; }
+#productsTab .table-wrapper th:nth-child(4),
+#productsTab .table-wrapper td:nth-child(4) { min-width: 105px !important; }
+#productsTab .table-wrapper th:nth-child(5),
+#productsTab .table-wrapper td:nth-child(5) { min-width: 105px !important; white-space:nowrap !important; }
+#productsTab .table-wrapper th:nth-child(6),
+#productsTab .table-wrapper td:nth-child(6),
+#productsTab .table-wrapper th:nth-child(7),
+#productsTab .table-wrapper td:nth-child(7) { min-width: 88px !important; white-space:nowrap !important; }
+#productsTab .table-wrapper th:nth-child(8),
+#productsTab .table-wrapper td:nth-child(8) { min-width: 85px !important; white-space:nowrap !important; }
+#productsTab .table-wrapper th:nth-child(9),
+#productsTab .table-wrapper td:nth-child(9) { min-width: 96px !important; white-space:nowrap !important; }
+
+#productsTab .product-image {
+  display:block !important;
+  width:48px !important;
+  height:48px !important;
+  min-width:48px !important;
+  object-fit:cover !important;
+}
+
+#productsTab .product-row:hover {
+  background: rgba(255,255,255,.04) !important;
+  border: 0 !important;
+  box-shadow: none !important;
+}

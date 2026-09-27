@@ -1,0 +1,165 @@
+/* nav.css - Styling Mobile Navigation Muja Prime (untuk semua halaman) */
+
+/* ============================================================ */
+/* MOBILE NAVIGATION (BOTTOM) */
+/* ============================================================ */
+.mobile-nav,
+.bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(255,255,255,.26), rgba(255,255,255,.08) 48%, rgba(255,255,255,.16)),
+    radial-gradient(circle at 0 0, rgba(255,216,107,.16), transparent 35%),
+    radial-gradient(circle at 100% 0, rgba(47,243,255,.14), transparent 34%) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 -1px 0 var(--border-subtle), 0 -10px 30px rgba(0, 0, 0, 0.4);
+    z-index: 90;
+    padding: 6px 12px;
+    border-top: 1px solid var(--border-subtle);
+}
+
+body.light-mode .mobile-nav,
+body.light-mode .bottom-nav {
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* Nav Inner Container */
+.mobile-nav-menu,
+.nav-inner {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+/* Nav Item */
+.mobile-nav-item,
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3px;
+    color: var(--text-muted);
+    font-size: 9.5px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    background: none;
+    border: none;
+    font-family: 'Outfit', sans-serif;
+}
+
+.mobile-nav-item.active,
+.mobile-nav-item:hover,
+.nav-item.active,
+.nav-item:hover {
+    color: var(--ember-400);
+}
+
+/* SVG Icons */
+.mobile-nav-item svg,
+.nav-item svg {
+    width: 18px;
+    height: 18px;
+    stroke: currentColor;
+    fill: none;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Span wrapper untuk icon di mobile */
+.mobile-nav-item span:first-child,
+.nav-item span:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    margin-bottom: 2px;
+}
+
+/* Label text */
+.mobile-nav-item span:last-child,
+.nav-item span:last-child {
+    font-size: 9.5px;
+    text-transform: uppercase;
+}
+
+/* Theme toggle di mobile nav */
+#themeToggleMobile,
+#themeNavBtn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#themeToggleMobile span:first-child,
+#themeNavBtn span:first-child {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 20px;
+    margin-bottom: 2px;
+}
+
+#themeToggleMobile span:last-child,
+#themeNavBtn span:last-child {
+    font-size: 9.5px;
+    text-transform: uppercase;
+}
+
+/* ============================================================ */
+/* RESPONSIVE */
+/* ============================================================ */
+@media (max-width: 480px) {
+    .mobile-nav,
+    .bottom-nav {
+        padding: 4px 8px;
+    }
+    
+    .mobile-nav-item,
+    .nav-item {
+        padding: 3px 8px;
+        font-size: 8.5px;
+    }
+    
+    .mobile-nav-item svg,
+    .nav-item svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+@media (max-width: 380px) {
+    .mobile-nav-item,
+    .nav-item {
+        padding: 2px 6px;
+        font-size: 7.5px;
+    }
+    
+    .mobile-nav-item svg,
+    .nav-item svg {
+        width: 14px;
+        height: 14px;
+    }
+}
+/* GLOBAL FIX V3: active nav dibuat blur/glass, bukan background solid pekat */
+.mobile-nav-item.active,
+.nav-item.active,
+.bottom-nav .active {
+    color: var(--ember-400) !important;
+    background: linear-gradient(135deg, rgba(var(--muja-rgb-primary,255,107,43), .18), rgba(var(--muja-rgb-secondary,245,200,66), .10)) !important;
+    border: 1px solid rgba(var(--muja-rgb-primary,255,107,43), .26) !important;
+    box-shadow: 0 8px 24px rgba(var(--muja-rgb-primary,255,107,43), .16), inset 0 1px 0 rgba(255,255,255,.14) !important;
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+}
