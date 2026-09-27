@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Portal materi dan catatan kelas pelatihan digital marketing BLK.">
   <meta name="theme-color" content="#071128">
-  <link rel="icon" href="logo-mujahiid.png">
+  <link rel="icon" href="../logo-mujahiid.png">
   <title>Portal Pelatihan Digital Marketing | Mujahiid</title>
   <style>
     :root{--navy:#071128;--navy2:#0d1b3b;--panel:#111f43;--purple:#755cf2;--purple2:#9a83ff;--cyan:#4ed9ea;--green:#2bc18a;--orange:#ff9a62;--ink:#17213d;--muted:#7d879d;--line:#e4e7ef;--paper:#f5f7fb;--red:#e35c70}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#eef1fc;background:var(--navy)}body.locked{overflow:hidden}button,input{font:inherit}button{cursor:pointer}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 48px));margin:auto}.shell{min-height:100vh;overflow:hidden;position:relative;background:radial-gradient(circle at 77% 9%,rgba(116,89,245,.16),transparent 31%),var(--navy)}.shell:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(#000,transparent 75%)}.orb{position:absolute;pointer-events:none;border-radius:50%;filter:blur(1px);animation:drift 10s ease-in-out infinite alternate}.orb.one{width:650px;height:650px;right:-260px;top:-310px;background:radial-gradient(circle,rgba(117,92,242,.24),transparent 68%)}.orb.two{width:470px;height:470px;left:-320px;top:650px;background:radial-gradient(circle,rgba(78,217,234,.09),transparent 69%);animation-delay:-4s}@keyframes drift{to{transform:translate3d(-24px,32px,0) scale(1.04)}}
@@ -26,10 +26,11 @@
     .dialog-tabs button.hidden-tab{display:none!important}.photo-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.photo-card{overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:13px;background:rgba(255,255,255,.025)}.photo-frame{height:230px;position:relative;overflow:hidden;background:#08142d;cursor:zoom-in}.photo-frame img{width:100%;height:100%;display:block;object-fit:contain;pointer-events:none;-webkit-user-drag:none;user-select:none}.photo-frame:after{content:"PRATINJAU • HANYA LIHAT";position:absolute;right:8px;bottom:8px;padding:5px 7px;border-radius:6px;color:#dcd8f5;background:rgba(5,11,27,.72);backdrop-filter:blur(5px);font-size:6px;font-weight:900;letter-spacing:.07em}.photo-copy{padding:12px 13px}.photo-copy strong{display:block;font-size:10px}.photo-copy p{margin:5px 0 0;color:#7e8aa2;font-size:8px;line-height:1.6}.photo-notice{margin-bottom:12px;padding:10px 12px;border:1px solid rgba(139,118,255,.18);border-radius:10px;color:#8e99b0;background:rgba(116,89,245,.06);font-size:11px;line-height:1.6}.photo-viewer{position:fixed;z-index:190;inset:0;padding:20px;display:none;place-items:center;background:rgba(3,8,20,.94);backdrop-filter:blur(10px)}.photo-viewer.show{display:grid}.photo-viewer-card{width:min(980px,100%);max-height:calc(100vh - 40px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:#0c1731}.photo-viewer-head{min-height:58px;padding:11px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.08)}.photo-viewer-head div{min-width:0;flex:1}.photo-viewer-head strong{display:block;font-size:10px}.photo-viewer-head small{display:block;margin-top:3px;color:#7f8aa2;font-size:8px}.photo-viewer-head button{width:34px;height:34px;border:0;border-radius:8px;color:#a0a9bc;background:rgba(255,255,255,.07)}.photo-viewer-image{min-height:0;padding:14px;display:grid;place-items:center;overflow:auto}.photo-viewer-image img{max-width:100%;max-height:calc(100vh - 125px);display:block;pointer-events:none;-webkit-user-drag:none;user-select:none}.module-counts:empty,.preview-list:empty{display:none}
     @media(max-width:650px){.photo-gallery{grid-template-columns:1fr}.photo-frame{height:210px}}
   </style>
+  <link rel="stylesheet" href="portal-animations.css">
 </head>
 <body>
 <div class="loading" id="loading">
-<img src="logo-mujahiid.png" alt="Logo Mujahiid">
+<img src="../logo-mujahiid.png" alt="Logo Mujahiid">
 <div class="loader">
 <i>
 </i>
@@ -43,7 +44,7 @@
 </div>
   <header class="wrap">
 <a class="brand" href="../">
-<img src="logo-mujahiid.png" alt="Logo Mujahiid">
+<img src="../logo-mujahiid.png" alt="Logo Mujahiid">
 <span>
 <strong>MUJAHIID</strong>
 <small>Digital Marketing Training Center</small>
@@ -166,7 +167,7 @@
   <footer class="page-footer" id="bantuan">
 <div class="wrap">
 <a class="brand" href="../">
-<img src="logo-mujahiid.png" alt="">
+<img src="../logo-mujahiid.png" alt="">
 <span>
 <strong>MUJAHIID</strong>
 <small>Digital Marketing Training</small>
@@ -239,6 +240,7 @@
 </section>
 <div class="toast" id="toast">
 </div>
+<script src="portal-animations.js" defer></script>
 <script type="module">
   import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
   import{getFirestore,doc,getDoc,collection,onSnapshot,query,orderBy}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
@@ -248,7 +250,7 @@
     {id:"01-daftar-usaha",title:"Daftar & Profil Usaha",description:"Menentukan identitas usaha, produk atau jasa, harga, target pelanggan, dan tujuan digital marketing.",category:"Fondasi",icon:"01",accent:"#755cf2",published:true,sortOrder:1,files:[{id:"profil",title:"Template Profil Usaha",description:"Dokumen Word untuk menyusun profil usaha.",format:"DOCX",url:"https://mujaprime.co-id.id/fileblk/Profil_Usaha_Mujahidin.docx"}],notes:[{id:"01a",title:"Hasil yang harus dibuat",content:"Buat Profil Usaha, minimal tiga produk atau jasa, harga, target pelanggan, cara pemesanan, serta tujuan Digital Marketing."}]},
     {id:"02-google-trends",title:"Google Trends & Kata Kunci",description:"Membandingkan kata kunci untuk memilih istilah yang paling relevan dengan usaha.",category:"Riset Pasar",icon:"02",accent:"#4386f4",published:true,sortOrder:2,files:[{id:"trends",title:"Buka Google Trends",description:"Alat gratis untuk membandingkan minat pencarian.",format:"LINK",url:"https://trends.google.com/trends/"}],notes:[{id:"02a",title:"Tugas peserta",content:"Bandingkan dua kata, pilih satu kata utama, tulis alasannya, lalu simpan screenshot grafik."}]},
     {id:"03-desain-canva",title:"Desain Usaha di Canva",description:"Membuat logo, poster, daftar harga, dan foto produk sebagai identitas visual usaha.",category:"Konten",icon:"03",accent:"#e76f9d",published:true,sortOrder:3,files:[{id:"desain",title:"Template Desain Grafis",description:"Bahan latihan desain grafis peserta.",format:"ZIP",url:"desain-grafis.zip"}],notes:[{id:"03a",title:"Hasil praktik",content:"Buat logo, poster promosi, daftar harga, dan minimal dua foto produk atau jasa. Unduh hasil dalam format PNG."}]},
-    {id:"04-blogger",title:"Blogger & Website Usaha",description:"Membuat situs promosi, memasang template toko, menulis artikel, dan menampilkan kontak usaha.",category:"Website",icon:"04",accent:"#4f8df7",published:true,sortOrder:4,files:[{id:"b1",title:"Template Website Umum",description:"Template dasar berbagai jenis usaha.",format:"ZIP",url:"template_mumum_mujahidin.zip"},{id:"b2",title:"Template Hotel & Homestay",description:"Untuk hotel, losmen, dan rumah inap.",format:"ZIP",url:"Hotel_Losmen_Rumahinab.zip"},{id:"b3",title:"Template Usaha Makanan",description:"Untuk bisnis kuliner dan katalog menu.",format:"ZIP",url:"makanan.zip"},{id:"b4",title:"Template Barbershop",description:"Untuk jasa pangkas rambut.",format:"ZIP",url:"barbershop.zip"},{id:"b5",title:"Template Coffee Shop",description:"Untuk kedai kopi dan kafe.",format:"ZIP",url:"coffee-shop.zip"},{id:"b6",title:"Template Usaha Parfum",description:"Untuk katalog produk parfum.",format:"ZIP",url:"parfum.zip"},{id:"b7",title:"Template Website Bisnis",description:"Template umum untuk latihan lanjutan.",format:"ZIP",url:"website.zip"}],notes:[{id:"04a",title:"Hasil praktik",content:"Buat Blogger, pasang template, ubah nama dan logo, buat halaman usaha serta minimal dua artikel. Simpan link dan screenshot."}]},
+    {id:"04-blogger",title:"Blogger & Website Usaha",description:"Membuat situs promosi, memasang template toko, menulis artikel, dan menampilkan kontak usaha.",category:"Website",icon:"04",accent:"#4f8df7",published:true,sortOrder:4,files:[{id:"b1",title:"Template Website Umum",description:"Template dasar berbagai jenis usaha.",format:"ZIP",url:"template_umum_mujahidin.zip"},{id:"b2",title:"Template Hotel & Homestay",description:"Untuk hotel, losmen, dan rumah inap.",format:"ZIP",url:"Hotel_Losmen_Rumahinab.zip"},{id:"b3",title:"Template Usaha Makanan",description:"Untuk bisnis kuliner dan katalog menu.",format:"ZIP",url:"makanan.zip"},{id:"b4",title:"Template Barbershop",description:"Untuk jasa pangkas rambut.",format:"ZIP",url:"barbershop.zip"},{id:"b5",title:"Template Coffee Shop",description:"Untuk kedai kopi dan kafe.",format:"ZIP",url:"coffee-shop.zip"},{id:"b6",title:"Template Usaha Parfum",description:"Untuk katalog produk parfum.",format:"ZIP",url:"parfum.zip"},{id:"b7",title:"Template Website Bisnis",description:"Template umum untuk latihan lanjutan.",format:"ZIP",url:"website.zip"}],notes:[{id:"04a",title:"Hasil praktik",content:"Buat Blogger, pasang template, ubah nama dan logo, buat halaman usaha serta minimal dua artikel. Simpan link dan screenshot."}]},
     {id:"05-google-bisnis",title:"Google Profil Bisnis",description:"Membuat atau mengklaim profil usaha agar tampil di Google Search dan Google Maps.",category:"Pondasi Digital",icon:"05",accent:"#34bf83",published:true,sortOrder:5,files:[],notes:[{id:"05a",title:"Gunakan data usaha nyata",content:"Isi nama, kategori, alamat atau area layanan, jam buka, nomor HP, deskripsi, dan foto. Jangan membuat alamat palsu."}]},
     {id:"06-google-ads",title:"Google Ads",description:"Menyusun simulasi iklan pencarian berdasarkan kata kunci, lokasi, pesan, dan anggaran.",category:"Iklan Digital",icon:"06",accent:"#f6a84d",published:true,sortOrder:6,files:[],notes:[{id:"06a",title:"Simulasi tanpa pembayaran",content:"Pilih tujuan, kata kunci, lokasi, tiga judul, dua deskripsi, dan anggaran. Simpan pratinjau tanpa menayangkan iklan."}]},
     {id:"07-sosial-media",title:"Media Sosial Bisnis",description:"Menyiapkan Instagram, WhatsApp Business, dan Facebook sebagai saluran komunikasi usaha.",category:"Media Sosial",icon:"07",accent:"#8a5cf6",published:true,sortOrder:7,files:[],notes:[{id:"07a",title:"Instagram dan WhatsApp Business",content:"Lengkapi profil, kontak, katalog atau konten, pesan salam, balasan cepat, link, dan screenshot. Jangan pernah memberikan kode OTP."}]},
