@@ -106,7 +106,21 @@
 }
 body.fx-pointer-active .fx-cursor-glow { opacity: 1; }
 
-.shell > *:not(.fx-particle-canvas):not(.fx-aurora):not(.fx-stars) { position: relative; }
+/* Keep portal content above FX without changing the layout of decorative .orb elements. */
+.shell > header,
+.shell > .hero,
+.shell > .ribbon,
+.shell > .modules,
+.shell > .flow,
+.shell > .page-footer {
+  position: relative;
+  z-index: 2;
+}
+
+.shell > .orb {
+  position: absolute;
+  z-index: 0;
+}
 
 /* Header glass state */
 .shell > header.wrap {
