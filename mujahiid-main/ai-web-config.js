@@ -6,7 +6,7 @@
 
 // Catatan: key di JavaScript bisa terlihat publik oleh pengunjung.
 // Jika sudah dipakai di website publik, sebaiknya ganti/rotate key secara berkala.
-const GROQ_WEB_API_KEY = "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";
+const GROQ_WEB_API_KEY = "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";
 
 const AI_WEB_PENGETAHUAN = `
 Kamu adalah AI customer service resmi situs Mujahiid.
@@ -131,8 +131,8 @@ Jawab: Kuota gratis memang terbatas kak. Coba lagi nanti, cek grup/YouTube @Muja
 window.AI_WEB_CONFIG = {
   apiKey: GROQ_WEB_API_KEY,
   pengetahuan: AI_WEB_PENGETAHUAN,
-  model: 'openai/gpt-oss-20b',
-  fallbackModel: 'openai/gpt-oss-20b',
+  model: 'llama-3.3-70b-versatile',
+  fallbackModel: 'llama-3.1-8b-instant',
   siteName: 'Mujahiid',
   primeUrl: 'https://mujaprime.biz.id',
   mode: 'direct-groq-browser'
