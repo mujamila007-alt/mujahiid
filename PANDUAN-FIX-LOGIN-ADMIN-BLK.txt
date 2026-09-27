@@ -1,0 +1,38 @@
+FIX LOGIN ADMIN BLK - MUJAHIID
+================================
+
+PENYEBAB ERROR LAMA
+Halaman admin sebelumnya memakai Firebase Email Link (magic link).
+Firebase menolak continue URL dari mujahiid.biz.id jika domain tersebut belum dimasukkan ke Authorized domains.
+Itulah sebabnya muncul pesan: Domain website belum diizinkan Firebase.
+
+PERUBAHAN PADA VERSI INI
+1. Login Admin BLK sekarang memakai Firebase Email + Password.
+2. Tidak lagi membutuhkan email-link untuk login normal.
+3. Tombol reset password disediakan.
+4. Link login lama masih dapat diselesaikan jika pengguna membuka link lama yang valid.
+5. Logo Admin BLK diarahkan ke file logo-mujahiid.png yang benar.
+6. Tampilan login dan dashboard diberi animasi, glass effect, aurora/orb background, shimmer button, hover card, dan transisi.
+
+SETUP FIREBASE WAJIB
+1. Buka Firebase Console.
+2. Pilih project: akses-canva-pro-terbatas.
+3. Authentication > Sign-in method.
+4. Aktifkan Email/Password.
+5. Authentication > Users.
+6. Pastikan akun admin sudah ada dan memiliki password. Jika belum, buat user admin atau gunakan tombol reset password pada halaman Admin BLK.
+
+CATATAN AUTHORIZED DOMAINS
+Untuk login Email + Password, mujahiid.biz.id tidak perlu menjadi continue URL magic-link.
+Namun tetap disarankan menambahkan:
+- mujahiid.biz.id
+- www.mujahiid.biz.id (jika dipakai)
+ke Authentication > Settings > Authorized domains untuk fitur Firebase lain yang mungkin menggunakan redirect/email action.
+
+SUPABASE
+Fungsi upload file/foto tetap memakai /api/supabase-storage.js dan tidak diubah.
+Pastikan SUPABASE_SECRET_KEY tetap tersedia di Environment Variables Vercel.
+
+DEPLOY
+Upload isi folder project ini sebagai root project Vercel, lalu Redeploy.
+Setelah deploy, buka /admin-blk/ dan login dengan email + password Firebase.
