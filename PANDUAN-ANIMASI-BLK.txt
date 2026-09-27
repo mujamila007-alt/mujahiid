@@ -1,0 +1,39 @@
+MUJAHIID — UPDATE ANIMASI PORTAL BLK
+=====================================
+
+Halaman yang diperbarui:
+  /blk/
+
+File yang ditambah:
+  /blk/portal-animations.css
+  /blk/portal-animations.js
+
+File yang diubah:
+  /blk/index.html
+
+Efek utama:
+- Background particle canvas ringan.
+- Aurora / bintang bergerak.
+- Glow mengikuti pointer pada desktop.
+- Scroll progress bar.
+- Header berubah menjadi glass saat scroll.
+- Gradient bergerak pada judul hero.
+- Floating tech chips AI / SEO / code / ADS.
+- Parallax dan 3D tilt pada panel hero.
+- 3D spotlight tilt pada kartu modul.
+- Ripple effect tombol.
+- Animated counter modul/file/catatan.
+- Animasi modal dan gate password.
+- Shimmer tombol dan ribbon scanner.
+- Respect prefers-reduced-motion.
+- Efek berat otomatis dikurangi di mobile.
+
+Perbaikan kecil:
+- Path logo /blk diperbaiki ke ../logo-mujahiid.png.
+- Nama fallback template Website Umum diperbaiki menjadi template_umum_mujahidin.zip.
+
+Deploy:
+1. Upload seluruh isi project ini ke repository/deployment yang sama.
+2. Pastikan tiga file /blk/index.html, /blk/portal-animations.css, dan /blk/portal-animations.js ikut ter-upload.
+3. Redeploy Vercel.
+4. Bila browser masih menampilkan versi lama, lakukan hard refresh Ctrl+F5.

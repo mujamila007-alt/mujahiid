@@ -1,0 +1,18 @@
+CLEANUP MUJAHIID
+================
+
+Project ini sudah dibersihkan dari source project MujaPrime yang sebelumnya ikut berada di root ZIP Mujahiid.
+
+Yang dipertahankan:
+- Source asli situs Mujahiid.
+- /blk beserta animasi CSS + JavaScript terbaru.
+- /admin-blk dan konfigurasi BLK/Supabase/Firebase milik Mujahiid.
+- File materi/template BLK.
+
+Yang tidak disertakan:
+- Folder update-and-apk MujaPrime.
+- MujaPrime_2.2.exe dan MujaPrime_2.2_Android.apk.
+- Halaman toko/payment/produk/admin MujaPrime yang sebelumnya ikut di root.
+- Folder project MujaPrime lainnya.
+
+Struktur ZIP sekarang langsung memakai folder mujahiid-main sebagai root project deployment.

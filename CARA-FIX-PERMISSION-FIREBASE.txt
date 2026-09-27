@@ -1,0 +1,23 @@
+CARA MEMPERBAIKI ERROR FIREBASE PERMISSION:
+
+Error:
+FirebaseError: Missing or insufficient permissions
+
+Penyebab:
+Firestore Rules di project Firebase "check-akses-mode-iklan-mujahid" belum mengizinkan halaman admin membaca/menulis:
+- settings/iklanMethod
+- iklanRegistrations
+
+Cara memperbaiki:
+1. Buka Firebase Console.
+2. Pilih project: check-akses-mode-iklan-mujahid
+3. Buka Firestore Database.
+4. Buka tab Rules.
+5. Untuk testing, tempel isi file firestore-rules-metode-iklan.rules.
+6. Klik Publish.
+7. Buka ulang:
+   /admin-metode-iklan/?v=svg-fix-permission-v2
+
+Catatan penting:
+Rules yang saya beri adalah rules sementara agar halaman langsung jalan.
+Untuk keamanan penuh, nanti sebaiknya admin panel memakai login Firebase Authentication.
