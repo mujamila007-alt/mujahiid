@@ -842,6 +842,14 @@ svg[viewBox] {
         </div>
 
         <div class="input-row">
+          <div class="input-group" style="grid-column: 1 / -1;">
+            <label>Link Video Password (terpisah dari link verifikasi)</label>
+            <input type="url" id="passwordLinkInput" placeholder="https://youtube.com/..." value="https://youtube.com/shorts/xvO7-WyBJ-k?si=BmnKiS0u7Ef1_dXr" required>
+            <p style="margin:6px 0 0;color:var(--muted);font-size:12px;line-height:1.5;">Link ini hanya dibuka saat pengguna menekan tombol “Lihat Password di Video”. Mengubahnya tidak mengubah link tujuan verifikasi.</p>
+          </div>
+        </div>
+
+        <div class="input-row">
           <div>
             <div class="input-group">
               <label>Link Gambar Tampilan</label>
@@ -1168,6 +1176,7 @@ svg[viewBox] {
     const inviteLinkInput = document.getElementById('inviteLinkInput');
     const verificationMethodInput = document.getElementById('verificationMethodInput');
     const verificationLinkInput = document.getElementById('verificationLinkInput');
+    const passwordLinkInput = document.getElementById('passwordLinkInput');
     const verificationImageInput = document.getElementById('verificationImageInput');
     const verificationImageFileInput = document.getElementById('verificationImageFileInput');
     const verificationImagePreview = document.getElementById('verificationImagePreview');
@@ -1674,6 +1683,7 @@ svg[viewBox] {
                 verificationMethodInput.value = VERIFICATION_PRESETS[savedMethod] ? savedMethod : 'other';
                 applyVerificationPreset(verificationMethodInput.value);
                 verificationLinkInput.value = data.verificationLink || data.youtubeLink || verificationLinkInput.value;
+                passwordLinkInput.value = data.passwordLink || data.tutorialLink || passwordLinkInput.value;
 
                 const savedImage = data.verificationImage || '';
                 if (savedImage.startsWith('data:image/')) {
@@ -1734,12 +1744,28 @@ svg[viewBox] {
             currentPassword = passwordInput.value.trim() || "GBG";
             const verificationLink = verificationLinkInput.value.trim();
             if (!verificationLink) throw new Error('Link tujuan verifikasi wajib diisi.');
+            const passwordLink = passwordLinkInput.value.trim();
+            let parsedPasswordUrl, parsedVerificationUrl;
+            try {
+                parsedPasswordUrl = new URL(passwordLink);
+                parsedVerificationUrl = new URL(verificationLink);
+            } catch (urlError) {
+                throw new Error('Link video verifikasi dan link video password harus berupa URL yang valid.');
+            }
+            if (!['http:', 'https:'].includes(parsedPasswordUrl.protocol) || !parsedPasswordUrl.hostname) {
+                throw new Error('Link video password harus menggunakan URL http atau https yang valid.');
+            }
+            const normalizeUrl = url => `${url.protocol}//${url.host}${url.pathname.replace(/\/+$/, '')}${url.search}`;
+            if (normalizeUrl(parsedPasswordUrl) === normalizeUrl(parsedVerificationUrl)) {
+                throw new Error('Link video password harus berbeda dari link tujuan verifikasi.');
+            }
             
             const configData = {
                 inviteLink: inviteLinkInput.value.trim(),
                 youtubeLink: verificationLink,
                 verificationMethod: verificationMethodInput.value,
                 verificationLink: verificationLink,
+                passwordLink: passwordLink,
                 verificationImage: verificationUploadedImage || verificationImageInput.value.trim(),
                 verificationHeroText: verificationHeroTextInput.value.trim(),
                 verificationCardTitle: verificationCardTitleInput.value.trim(),

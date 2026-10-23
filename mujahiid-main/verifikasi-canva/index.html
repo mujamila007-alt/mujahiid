@@ -1991,7 +1991,7 @@ Canva Unlock • Verifikasi Email, WA, dan Password
   const db=firebase.firestore();
   const COLLECTION_USERS="canva_peserta_email",COLLECTION_BLOCKED="email_blocked",ACTIVATIONS_COLLECTION="user_activations",DEVICE_COLLECTION="device_fingerprints",DEVICE_BLOCKED_COLLECTION="device_blocked";
   const BLOKIR_HARI=5,DEVICE_BLOCK_DAYS=30;
-  let MAX_USERS=100,REQUIRED_PASSWORD="GBG",CANVA_LINK="https://www.canva.com/brand/join?token=587NGnwuwj14rSzFrW2C1Q&referrer=team-invite",VERIFICATION_LINK="https://youtube.com/shorts/nleNUMqCwhc",VERIFICATION_METHOD="youtube_like_comment",VERIFICATION_IMAGE="",WA_GROUP="https://chat.whatsapp.com/JsDrkBB1g1iIelyQU1PVcz",TG_GROUP="https://t.me/yourgroup",TUTORIAL_LINK="https://youtube.com/shorts/xvO7-WyBJ-k?si=BmnKiS0u7Ef1_dXr";
+  let MAX_USERS=100,REQUIRED_PASSWORD="GBG",CANVA_LINK="https://www.canva.com/brand/join?token=587NGnwuwj14rSzFrW2C1Q&referrer=team-invite",VERIFICATION_LINK="https://youtube.com/shorts/nleNUMqCwhc",PASSWORD_LINK="https://youtube.com/shorts/xvO7-WyBJ-k?si=BmnKiS0u7Ef1_dXr",VERIFICATION_METHOD="youtube_like_comment",VERIFICATION_IMAGE="",WA_GROUP="https://chat.whatsapp.com/JsDrkBB1g1iIelyQU1PVcz",TG_GROUP="https://t.me/yourgroup",TUTORIAL_LINK="https://youtube.com/shorts/xvO7-WyBJ-k?si=BmnKiS0u7Ef1_dXr";
   let VERIFICATION_HERO_TEXT='Selesaikan verifikasi video YouTube, masukkan email Gmail dan WhatsApp, lalu konfirmasi password untuk membuka akses Canva Pro.',VERIFICATION_CARD_TITLE='YouTube Check',VERIFICATION_CARD_SUBTITLE='Like & komentar',VERIFICATION_TITLE='Verifikasi Video YouTube',VERIFICATION_DESCRIPTION='Buka video YouTube, lalu lakukan like dan komentar sebagai bukti verifikasi.',VERIFICATION_REQUIRED_TEXT='Wajib like dan komentar video sebagai bukti verifikasi.',VERIFICATION_BUTTON_TEXT='Verifikasi Video',VERIFICATION_PROGRESS_TEXT='Verifikasi video YouTube',VERIFICATION_START_MESSAGE='Verifikasi video dimulai. Like dan komentar video sebagai bukti.',VERIFICATION_OPENED_MESSAGE='Video YouTube dibuka. Verifikasi berlangsung 10 detik.',VERIFICATION_WAITING_TEXT='Menunggu Like & Komentar',VERIFICATION_SUCCESS_MESSAGE='Verifikasi video berhasil. Sekarang masukkan email dan WhatsApp.',VERIFICATION_PASSWORD_HINT='Password ada di dalam video YouTube. Tiga huruf berada di waktu yang berbeda.',VERIFICATION_PASSWORD_BUTTON_TEXT='Lihat Password di Video';
   function hashString(str) {
     let h1=0xdeadbeef^str.length,h2=0x41c6ce57^str.length;
@@ -2126,6 +2126,8 @@ Canva Unlock • Verifikasi Email, WA, dan Password
         if(d.verificationMethod)VERIFICATION_METHOD=d.verificationMethod;
         if(d.verificationLink)VERIFICATION_LINK=d.verificationLink;
         else if(d.youtubeLink)VERIFICATION_LINK=d.youtubeLink;
+        if(d.passwordLink)PASSWORD_LINK=d.passwordLink;
+        else if(d.tutorialLink)PASSWORD_LINK=d.tutorialLink;
         if(d.verificationImage)VERIFICATION_IMAGE=d.verificationImage;
         if(d.verificationHeroText)VERIFICATION_HERO_TEXT=d.verificationHeroText;
         if(d.verificationCardTitle)VERIFICATION_CARD_TITLE=d.verificationCardTitle;
@@ -2495,8 +2497,9 @@ Canva Unlock • Verifikasi Email, WA, dan Password
     if(e.key==='Enter')handlePasswordSubmit()
   });
   seePasswordBtn.addEventListener('click',()=> {
-    window.open(VERIFICATION_LINK,'_blank');
-    showMessage(passwordMessage,`Tautan verifikasi dibuka. ${VERIFICATION_PASSWORD_HINT}`,'info')
+    if(!PASSWORD_LINK) return showMessage(passwordMessage,'Link video password belum diatur oleh admin.','error');
+    window.open(PASSWORD_LINK,'_blank','noopener,noreferrer');
+    showMessage(passwordMessage,`Tautan video password dibuka. ${VERIFICATION_PASSWORD_HINT}`,'info')
   });
   async function handleActivateNow() {
     if(!videoVerified)return showMessage(joinMessage,'Verifikasi gagal, ulangi proses.','error');
